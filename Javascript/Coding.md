@@ -2,13 +2,18 @@
 
 ## ✅ Using Method (Built-in Functions)
 
-```javascript
+//using function
 function reverseString(str) {
   return str.split('').reverse().join('');
 }
 
 // Example
 console.log(reverseString("hello")); // "olleh"
+
+const string = "hello javascript"
+const output = string.split("").reverse().join("")
+console.log("output",output) // tpircsavaj olleh
+
 
 // Dame space reverse
 const string = "hello javascript";
