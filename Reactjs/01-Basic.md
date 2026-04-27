@@ -83,16 +83,4 @@ If only one list item changes → React updates only that item, not the whole pa
 
 👉 Key concept: React follows **"Update only what changed"**
 
----
 
-## 🔥 Quick Summary (Interview Tip)
-
-- React = UI Library
-- SPA = One page, dynamic updates
-- Virtual DOM = Fast rendering
-- React works using:
-  - Components
-  - Virtual DOM
-  - Diffing & Reconciliation
-
----
