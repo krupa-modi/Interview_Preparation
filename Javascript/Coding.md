@@ -1,30 +1,53 @@
+# 🔁 Reverse a String in JavaScript
 
-# Reverse a String in JavaScript
+---
 
 ## ✅ Using Method (Built-in Functions)
 
-//using function
+### 🔹 Using Function
+
+```javascript
 function reverseString(str) {
   return str.split('').reverse().join('');
 }
 
 // Example
 console.log(reverseString("hello")); // "olleh"
+```
 
-const string = "hello javascript"
-const output = string.split("").reverse().join("")
-console.log("output",output) // tpircsavaj olleh
+---
 
+### 🔹 Direct Approach
 
-// Dame space reverse
+```javascript
 const string = "hello javascript";
-const output = string.split(" ").map(ele =>ele.split("").reverse().join("")).join(" ")
-console.log("output",output) // olleh tpircsavaj
+const output = string.split("").reverse().join("");
+
+console.log("output:", output); // "tpircsavaj olleh"
+```
+
+---
+
+### 🔹 Reverse Each Word (Same Space Maintained)
+
+```javascript
+const string = "hello javascript";
+
+const output = string
+  .split(" ")
+  .map(word => word.split("").reverse().join(""))
+  .join(" ");
+
+console.log("output:", output); // "olleh tpircsavaj"
+```
+
+---
 
 ## ✅ Without Using Method (Manual Approach)
 
-// using function
+### 🔹 Using Function
 
+```javascript
 function reverseString(str) {
   let reversed = "";
 
@@ -37,17 +60,24 @@ function reverseString(str) {
 
 // Example
 console.log(reverseString("hello")); // "olleh"
+```
 
+---
 
-// using loop
+### 🔹 Using Loop (Without Function)
+
+```javascript
 let string = "hello javascript";
 let result = "";
-for(i = string.length - 1 ; i >= 0 ; i--){
-  result += string[i]
+
+for (let i = string.length - 1; i >= 0; i--) {
+  result += string[i];
 }
-console.log("reverse string" , result)// tpircsavaj olleh
+
+console.log("reverse string:", result); // "tpircsavaj olleh"
+```
+
+---
 
 
-
-* **Method approach** is quick and readable.
-* **Manual approach** shows your understanding of loops and string handling (preferred in interviews).
+---
