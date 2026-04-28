@@ -81,3 +81,111 @@ console.log("reverse string:", result); // "tpircsavaj olleh"
 
 
 ---
+
+# 🔥 Remove Duplicates (Array + String) — JavaScript
+
+---
+
+# 📌 1. Array Duplicate Remove
+
+## ✅ Using Method (`Set`)
+
+### 💡 Concept:
+
+`Set` automatically unique values store karta hai.
+
+### 🧠 Code:
+
+```js
+let arr = [1, 2, 3, 2, 4, 1, 5];
+
+const uniqueArr = [...new Set(arr)];
+
+console.log("Unique Array:", uniqueArr);
+```
+
+### ⚡ Output:
+
+```
+Unique Array: [1, 2, 3, 4, 5]
+```
+
+---
+
+## ✅ Without Method (Manual Logic)
+
+### 💡 Concept:
+
+Loop + `includes()` use karke manually duplicate remove karte hai.
+
+### 🧠 Code:
+
+```js
+let arr = [1, 2, 3, 2, 4, 1, 5];
+let result = [];
+
+for (let i = 0; i < arr.length; i++) {
+  if (!result.includes(arr[i])) {
+    result.push(arr[i]);
+  }
+}
+
+console.log("Unique Array:", result);
+```
+
+### ⚡ Output:
+
+```
+Unique Array: [1, 2, 3, 4, 5]
+```
+
+---
+
+# 📌 2. String Duplicate Remove
+
+## ✅ Using Method (`Set`)
+
+### 💡 Concept:
+
+String → Array → Set → String
+
+### 🧠 Code:
+
+```js
+let str = "programming";
+
+let uniqueStr = [...new Set(str)].join("");
+
+console.log("Unique String:", uniqueStr);
+```
+
+### ⚡ Output:
+
+```
+Unique String: progamin
+```
+
+---
+
+## ✅ Without Method (Manual Logic)
+
+### 🧠 Code:
+
+```js
+let str = "programming";
+let resultStr = "";
+
+for (let i = 0; i < str.length; i++) {
+  if (!resultStr.includes(str[i])) {
+    resultStr += str[i];
+  }
+}
+
+console.log("Unique String:", resultStr);
+```
+
+### ⚡ Output:
+
+```
+Unique String: progamin
+
