@@ -85,7 +85,7 @@ age = "hello"; // ❌ Error
 > TypeScript is a statically typed superset of JavaScript that provides better error handling and scalability.
 
 
-6. What is Type Inference?
+## 6. What is Type Inference?
 
 TypeScript automatically detects the type of a variable based on its value.
 
