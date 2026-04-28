@@ -58,6 +58,22 @@ typeof []        // "object"
 `this` refers to the **object that is currently executing the function**.
 Its value depends on **how the function is called**, not where it is written.
 
+this refers to the current context and changes based on how a function is called.
+In object
+const obj = {
+  name: "Amit",
+  show() {
+    console.log(this.name);
+  }
+};
+
+obj.show(); // "Amit"
+
+In global scope (browser)
+console.log(this === window); // true
+
+
+
 ---
 
 ## 1. Global Context
