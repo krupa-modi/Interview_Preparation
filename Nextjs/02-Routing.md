@@ -289,3 +289,270 @@ If interviewer asks “Which one should we use?” →
 
 * Optional → `[[...slug]]`
   👉 Focus on **real-world usage + param handling** to stand out.
+
+  # 🔗 Next.js Navigation – Interview Quick Notes
+
+---
+
+## 1. What is `next/link`?
+
+`next/link` is used for **client-side navigation** between pages in Next.js without full page reload.
+
+👉 Faster than normal `<a>` tag.
+
+**Example:**
+
+```jsx
+import Link from 'next/link';
+
+<Link href="/about">Go to About</Link>
+```
+
+👉 Improves performance by avoiding page refresh.
+
+---
+
+## 2. What is `next/router`?
+
+`next/router` is used for **programmatic navigation** and accessing route data (params, query, path).
+
+**Example:**
+
+```js
+import { useRouter } from 'next/router';
+
+const router = useRouter();
+
+router.push('/about'); // navigate programmatically
+```
+
+👉 Also used to get params:
+
+```js
+const { id } = router.query;
+```
+
+---
+
+## 3. Difference between `<Link>` vs `router.push()`
+
+| Feature | `<Link>`                 | `router.push()`         |
+| ------- | ------------------------ | ----------------------- |
+| Usage   | Navigation in UI         | Programmatic navigation |
+| Trigger | User click               | JS logic / events       |
+| SEO     | ✅ Good                   | ❌ Not directly          |
+| Example | `<Link href="/about" />` | `router.push('/about')` |
+
+👉 **Interview Tip:**
+Use `<Link>` for UI navigation, `router.push()` for logic-based navigation.
+
+---
+
+## 4. What is Shallow Routing?
+
+Shallow routing allows changing the URL **without re-running data fetching methods** like `getServerSideProps`.
+
+👉 Page does not reload fully.
+
+**Example:**
+
+```js
+router.push('/?page=2', undefined, { shallow: true });
+```
+
+👉 Useful for filters, pagination.
+
+---
+
+## 5. What is Prefetching?
+
+Prefetching means Next.js **loads page data in advance** before user clicks.
+
+👉 Makes navigation super fast ⚡
+
+**Example:**
+
+```jsx
+<Link href="/about" prefetch={true}>About</Link>
+```
+
+👉 By default, Next.js prefetches links in viewport (production mode).
+
+---
+
+# 🎯 Final Interview Summary
+
+* `next/link` → Client-side navigation
+* `next/router` → Programmatic navigation + route data
+* `<Link>` vs `router.push()` → UI vs Logic
+* Shallow Routing → Change URL without re-fetch
+* Prefetching → Load page in advance for speed
+
+# 📦 Next.js Params, Query & Routing APIs (Interview Notes)
+
+---
+
+## 1. What are Params in Next.js?
+
+**Params** are dynamic route values defined in the URL using file names like `[id]`.
+
+👉 Used in **dynamic routing**
+
+**Example (Pages Router):**
+
+```js
+// pages/blog/[id].js
+import { useRouter } from 'next/router';
+
+export default function Blog() {
+  const router = useRouter();
+  const { id } = router.query;
+
+  return <h1>Blog ID: {id}</h1>;
+}
+```
+
+👉 URL:
+
+```
+/blog/101 → id = 101
+```
+
+---
+
+## 2. What is Query in Next.js?
+
+**Query** refers to key-value pairs in the URL after `?`
+
+👉 Used for filters, search, pagination.
+
+**Example:**
+
+```
+/products?page=2&category=mobile
+```
+
+**Access Query:**
+
+```js
+import { useRouter } from 'next/router';
+
+const router = useRouter();
+const { page, category } = router.query;
+```
+
+👉 Output:
+
+```
+page = 2
+category = mobile
+```
+
+---
+
+# 🔥 Difference: Params vs Query
+
+| Feature    | Params          | Query              |
+| ---------- | --------------- | ------------------ |
+| Defined in | URL path        | URL after `?`      |
+| Example    | `/blog/1`       | `/blog?page=1`     |
+| Usage      | Dynamic routing | Filtering / search |
+
+---
+
+# 🔗 3. What is `next/router`?
+
+`next/router` is used in **Pages Router** for:
+
+* Navigation
+* Accessing params & query
+* Route info
+
+**Example:**
+
+```js
+import { useRouter } from 'next/router';
+
+const router = useRouter();
+
+router.push('/about'); // navigate
+console.log(router.pathname); // current path
+```
+
+---
+
+# 🔗 4. What is `next/navigation`?
+
+`next/navigation` is used in **App Router (modern Next.js)**.
+
+👉 Replaces `next/router`
+
+**Features:**
+
+* Navigation
+* Access params & search params
+* Works with Server & Client components
+
+---
+
+## Example (App Router)
+
+### 📌 Navigation:
+
+```js
+'use client';
+import { useRouter } from 'next/navigation';
+
+const router = useRouter();
+
+router.push('/about');
+```
+
+---
+
+### 📌 Get Params:
+
+```js
+import { useParams } from 'next/navigation';
+
+const params = useParams();
+console.log(params.id);
+```
+
+---
+
+### 📌 Get Query:
+
+```js
+'use client';
+import { useSearchParams } from 'next/navigation';
+
+const searchParams = useSearchParams();
+
+const page = searchParams.get('page');
+```
+
+---
+
+# 🔥 5. Difference: `next/router` vs `next/navigation`
+
+| Feature     | next/router  | next/navigation   |
+| ----------- | ------------ | ----------------- |
+| Used in     | Pages Router | App Router        |
+| Type        | Old          | New               |
+| Params      | router.query | useParams()       |
+| Query       | router.query | useSearchParams() |
+| Recommended | ❌ No         | ✅ Yes             |
+
+---
+
+# 🎯 Final Interview Answer (Short)
+
+👉 **Params** are dynamic values from URL path (`/blog/[id]`)
+👉 **Query** are key-value pairs after `?`
+
+👉 `next/router` → used in Pages Router
+👉 `next/navigation` → modern API for App Router
+
+
+
