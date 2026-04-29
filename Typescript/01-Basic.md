@@ -191,4 +191,190 @@ let age: number = 25;
 
 > Type annotations explicitly define the type of a variable or function.
 
+Here’s your **proper interview-ready MD file with clear explanations + examples** 👇
+
+---
+
+# TypeScript Interview Notes (Advanced Basics)
+
+---
+
+## 12. What does `noImplicitAny` do?
+
+`noImplicitAny` prevents variables from having an implicit `any` type.
+
+👉 If TypeScript cannot infer a type, it throws an error instead of assigning `any`.
+
+### Example:
+
+```ts
+function greet(name) {
+  return "Hello " + name;
+}
+```
+
+❌ Error (when `noImplicitAny: true`)
+Because `name` has implicit `any`
+
+✔ Fix:
+
+```ts
+function greet(name: string) {
+  return "Hello " + name;
+}
+```
+
+**Why important in interview:**
+
+* Avoids unsafe code
+* Forces proper typing
+
+**One-line:**
+
+> noImplicitAny ensures TypeScript does not allow variables with implicit `any` type.
+
+---
+
+## 13. Does TypeScript affect performance?
+
+👉 **Short Answer:** No (in runtime)
+
+### Explanation:
+
+* TypeScript runs only during development (compile time)
+* It converts into JavaScript
+* Final output is plain JS → same performance as JS
+
+### Example:
+
+```ts
+let num: number = 10;
+```
+
+Compiled JS:
+
+```js
+var num = 10;
+```
+
+👉 No type exists in runtime
+
+**One-line:**
+
+> TypeScript does not affect runtime performance because it compiles to plain JavaScript.
+
+---
+
+## 14. Compile-time vs Runtime Validation
+
+### Compile-time (TypeScript)
+
+* Errors detected before execution
+* Safer code
+
+```ts
+let age: number = "hello"; // ❌ Error
+```
+
+---
+
+### Runtime (JavaScript)
+
+* Errors occur while running code
+
+```js
+let age = "hello";
+console.log(age.toFixed()); // ❌ Runtime error
+```
+
+---
+
+### Key Difference:
+
+| Feature           | Compile-time     | Runtime          |
+| ----------------- | ---------------- | ---------------- |
+| When error occurs | Before execution | During execution |
+| Language          | TypeScript       | JavaScript       |
+| Safety            | High             | Lower            |
+
+**One-line:**
+
+> Compile-time validation catches errors before execution, while runtime validation catches errors during execution.
+
+---
+
+## 15. How does TypeScript compilation work?
+
+### Steps:
+
+1. Write `.ts` file
+2. TypeScript compiler (`tsc`) checks types
+3. Converts TS → JS
+4. Browser/Node runs JS
+
+### Flow:
+
+```
+TypeScript Code → tsc → JavaScript Code → Execution
+```
+
+### Example:
+
+```ts
+let msg: string = "Hello";
+```
+
+Compiled JS:
+
+```js
+var msg = "Hello";
+```
+
+**Key Point:**
+
+* Types are removed during compilation
+
+**One-line:**
+
+> TypeScript compilation checks types and converts TS code into executable JavaScript.
+
+---
+
+## 16. What is the output of TypeScript code?
+
+👉 Output is always **JavaScript**
+
+### Example:
+
+TypeScript:
+
+```ts
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+JavaScript Output:
+
+```js
+function add(a, b) {
+  return a + b;
+}
+```
+
+👉 Notice:
+
+* Types are removed
+* Only logic remains
+
+---
+
+## 🔥 Final Interview Summary
+
+* `noImplicitAny` → prevents unsafe `any` types
+* TypeScript performance → no runtime impact
+* Compile vs Runtime → before vs during execution
+* Compilation → TS → JS using `tsc`
+* Output → always plain JavaScript
+
 
