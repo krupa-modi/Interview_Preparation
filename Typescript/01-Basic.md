@@ -367,9 +367,7 @@ function add(a, b) {
 ## 🔥 Final Interview Summary
 
 * `noImplicitAny` → prevents unsafe `any` types
-* TypeScript performance → no runtime impact
-* Compile vs Runtime → before vs during execution
-* Compilation → TS → JS using `tsc`
-* Output → always plain JavaScript
+* Explicit => we have to define type (const a:string = "name")
+* Implicit => we don't need to define type, automatic understand (const a = "hello")
 
 
