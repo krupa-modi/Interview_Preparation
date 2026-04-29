@@ -229,10 +229,4 @@ BUT real apps me controlled hi zyada use hota hai
 
 ---
 
-Agar tu chahe toh main:
 
-* 🔥 **Form validation ka real project example**
-* 🔥 **Interview ke top 20 React questions**
-* 🔥 **Notes in MD file format (downloadable)**
-
-bhi bana deta hoon 👍
