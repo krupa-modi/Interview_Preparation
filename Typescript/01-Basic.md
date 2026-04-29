@@ -193,11 +193,6 @@ let age: number = 25;
 
 Here’s your **proper interview-ready MD file with clear explanations + examples** 👇
 
----
-
-# TypeScript Interview Notes (Advanced Basics)
-
----
 
 ## 12. What does `noImplicitAny` do?
 
