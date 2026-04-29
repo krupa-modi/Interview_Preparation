@@ -48,9 +48,9 @@ class Counter extends React.Component{
 render()
 return{
 <h1>hello</h1>
+  }
 }
-}
-
+OR
 class Counter extends Component {
   constructor() {
     super();
