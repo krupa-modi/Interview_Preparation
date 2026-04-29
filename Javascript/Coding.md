@@ -28,6 +28,72 @@ console.log("output:", output); // "tpircsavaj olleh"
 
 ---
 
+# 🔹 Find Second Largest Number 
+
+---
+
+## ✅ 1. Using Method
+
+```js
+const number = [10,20,30,50,80,20,90,11,4,48,566]
+
+const uniqueNumber = [...new Set(number)]
+
+const sorted = uniqueNumber.sort((a, b) => b - a)
+
+const secondLargest = sorted[1]
+
+console.log("secondLargest", secondLargest)
+```
+
+### 📊 Output
+
+```
+secondLargest 90
+```
+
+---
+
+## ✅ 2. Without Method (Using `for` loop)
+## Infinity means: sabse chhota possible number
+```js
+const number = [10,20,30,50,80,20,90,11,4,48,566]
+
+const uniqueNumber = [...new Set(number)]
+
+let firstLargest = -Infinity
+let secondlargest = -Infinity
+
+for(let i = 0; i < uniqueNumber.length; i++){
+  let num = uniqueNumber[i]
+
+  if(num > firstLargest){
+    secondlargest = firstLargest
+    firstLargest = num
+  } else if(num > secondlargest && num !== firstLargest){
+    secondlargest = num
+  }
+}
+
+console.log("secondlargest", secondlargest)
+```
+
+### 📊 Output
+
+```
+secondlargest 90
+```
+
+---
+
+## 🚀 Summary
+
+* `sort()` method → simple but slower (O(n log n))
+* `for` loop method → faster and best for interviews (O(n))
+
+---
+
+
 ### 🔹 Reverse Each Word (Same Space Maintained)
 
 ```javascript
