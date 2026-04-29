@@ -10,7 +10,9 @@ Closure function nahi hota, balki **function ke saath uska lexical scope hota ha
 
 👉 Closure outer function ke variables ko **yaad rakhta hai**, even jab outer function ka execution khatam ho chuka ho.
 
--> A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives a function access to its outer scope. 
+👉 **Formal Definition (Interview Ready):**
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).
+In simple words, closure gives a function access to its outer scope.
 
 ---
 
@@ -28,19 +30,26 @@ Closure function nahi hota, balki **function ke saath uska lexical scope hota ha
 
 ---
 
-## Example
+## 🧪 Basic Example
+
+```js
 function makeFunc() {
   const name = "Mozilla";
+
   function displayName() {
     console.log(name);
   }
+
   return displayName;
 }
 
 const myFunc = makeFunc();
-myFunc(); 
+myFunc(); // Mozilla
+```
 
-Output = Mozilla
+👉 `displayName()` ne `name` ko yaad rakha → **Closure**
+
+---
 
 ## ✅ Perfect Example (Function Factory)
 
@@ -196,5 +205,3 @@ for (let i = 0; i < 3; i++) {
 > **Closure ek aisa mechanism hai jisme function apne outer scope ke variables ko yaad rakhta hai, even after execution ends.**
 
 ---
-
-Agar chaho toh main iska **super short 30-second revision version** ya **interview answers format (Q&A)** bhi bana deta hoon 👍
