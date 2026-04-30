@@ -1,4 +1,4 @@
-# setTimeout in JavaScript (Deep Dive for Interview)
+# SetTimeout in JavaScript (Deep Dive for Interview)
 
 ## What is `setTimeout`?
 
@@ -179,6 +179,159 @@ for (let i = 1; i <= 3; i++) {
 ## Interview One-Liner
 
 👉 "`setTimeout` schedules a callback to run after a delay using the Web API and event loop; it is asynchronous and non-blocking."
+
+
+
+# Difference between `setTimeout` and `setInterval` (Interview Guide)
+
+## 1. What is `setTimeout`?
+
+* Executes a function **once after a delay**
+
+```js id="st1"
+setTimeout(() => {
+  console.log("Runs once after 2 sec");
+}, 2000);
+```
+
+---
+
+## 2. What is `setInterval`?
+
+* Executes a function **repeatedly at a fixed interval**
+
+```js id="si1"
+setInterval(() => {
+  console.log("Runs every 2 sec");
+}, 2000);
+```
+
+---
+
+## 3. Key Differences 🔥
+
+| Feature      | setTimeout       | setInterval       |
+| ------------ | ---------------- | ----------------- |
+| Execution    | Runs once        | Runs repeatedly   |
+| Control      | Easier to manage | Needs manual stop |
+| Use case     | Delay execution  | Repeated tasks    |
+| Return value | Timeout ID       | Interval ID       |
+
+---
+
+## 4. How They Work Internally
+
+Both use:
+
+* Web APIs
+* Callback Queue
+* Event Loop
+
+👉 They are **asynchronous**
+
+---
+
+## 5. Clearing Execution
+
+### clearTimeout
+
+```js id="ct1"
+const id = setTimeout(() => {
+  console.log("Hello");
+}, 2000);
+
+clearTimeout(id);
+```
+
+### clearInterval
+
+```js id="ci1"
+const id = setInterval(() => {
+  console.log("Running...");
+}, 1000);
+
+clearInterval(id);
+```
+
+---
+
+## 6. Important Interview Point 🔥
+
+### Problem with `setInterval`
+
+```js id="prob1"
+setInterval(() => {
+  console.log("Task");
+}, 1000);
+```
+
+👉 If task takes longer → **overlapping executions**
+
+---
+
+## 7. Better Alternative (Recursive setTimeout)
+
+```js id="better1"
+function run() {
+  console.log("Task");
+
+  setTimeout(run, 1000);
+}
+
+run();
+```
+
+👉 Ensures:
+
+* No overlap
+* Better control
+
+---
+
+## 8. setTimeout vs setInterval (Behavior)
+
+```js id="compare1"
+setTimeout(() => console.log("Timeout"), 0);
+setInterval(() => console.log("Interval"), 0);
+```
+
+👉 Both go to **callback queue**
+👉 Execution depends on **event loop**
+
+---
+
+## 9. When to Use What?
+
+### Use `setTimeout`
+
+* Delay execution
+* Retry logic
+* Controlled recursion
+
+### Use `setInterval`
+
+* Clock/timer UI
+* Polling APIs
+* Repeated updates
+
+---
+
+## 10. Interview One-Liner
+
+👉 "`setTimeout` runs a function once after a delay, while `setInterval` runs it repeatedly at fixed intervals; both are asynchronous and managed by the event loop."
+
+---
+
+## Final Tips
+
+* Prefer `setTimeout` for better control
+* Avoid `setInterval` in heavy tasks
+* Always clear timers to prevent memory issues
+
+---
+
+If you want, I can give you **real interview coding questions based on timers & event loop** (very frequently asked 🔥).
+
 
 
 
