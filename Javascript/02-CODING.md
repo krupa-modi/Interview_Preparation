@@ -258,3 +258,39 @@ console.log("secondlargest", secondlargest)
 secondlargest 90
 ``
 
+# Find Largest Number in an Array (JavaScript)
+
+## 🔹 Method 1: Using `Math.max()`
+
+```js
+const arr = [10, 20, 90, 50, 30, 70, 80];
+const largestData = Math.max(...arr);
+
+console.log("largestData", largestData);
+```
+
+---
+
+## 🔹 Method 2: Using Loop
+
+```js
+let arr1 = [10, 20, 90, 50, 30, 70, 80];
+let largestNumber = arr1[0];
+
+for (let i = 1; i < arr1.length; i++) {
+  if (arr1[i] > largestNumber) {
+    largestNumber = arr1[i];
+  }
+}
+
+console.log("largestNumber", largestNumber);
+```
+
+---
+
+## ✅ Output
+
+```
+90
+```
+
