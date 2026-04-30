@@ -252,11 +252,8 @@ for(let i = 0; i < uniqueNumber.length; i++){
 console.log("secondlargest", secondlargest)
 ```
 
-### 📊 Output
+### 📊 Output -> secondlargest 90
 
-```
-secondlargest 90
-``
 
 # Find Largest Number in an Array (JavaScript)
 
@@ -293,4 +290,6 @@ console.log("largestNumber", largestNumber);
 ```
 90
 ```
+
+
 
