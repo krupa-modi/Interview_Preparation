@@ -1,6 +1,4 @@
 
-# 🚀 Nested Layouts in Next.js (App Router) — Complete Guide
-
 ## 📌 1. What is `layout.tsx`?
 
 `layout.tsx` is a special file in Next.js App Router used to define **UI structure that wraps pages**.
