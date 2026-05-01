@@ -85,7 +85,6 @@ class NormalComp extends React.Component {
 ```
 
 ```
-# ⚛️ React Example: Component vs PureComponent (Based on Your Code)
 
 ## 🔴 1. Normal Component Example
 
