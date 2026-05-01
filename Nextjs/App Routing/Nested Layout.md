@@ -281,6 +281,3 @@ export default function DashboardLayout({ children }) {
 
 > "In Next.js App Router, layouts are hierarchical components defined using `layout.tsx` files that wrap pages and persist across navigation, enabling shared UI and optimized rendering."
 
-
-
-Just tell me 👍
