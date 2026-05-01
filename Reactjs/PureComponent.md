@@ -72,7 +72,6 @@ export default MyComponent;
 
 ---
 
-## 🧪 Example: Normal Component vs PureComponent
 
 ### ❌ Normal Component
 
