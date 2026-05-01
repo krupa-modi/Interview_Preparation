@@ -253,67 +253,14 @@ function test2(a: number, b: number = 0) {
 
 ---
 
-# 🔥 4. Common Interview Questions
-
----
-
-## ❓ Q1: What is function return type?
-
-👉 It specifies the type of value a function returns.
-
----
-
-## ❓ Q2: What is `void`?
-
-👉 Function returns nothing.
-
----
-
-## ❓ Q3: What is `never`?
-
-👉 Function never returns (error / infinite loop).
-
----
-
-## ❓ Q4: Is return type mandatory?
-
-👉 ❌ No (TypeScript infers it)
-👉 ✅ But recommended in interviews
-
----
-
-## ❓ Q5: What are optional parameters?
-
-👉 Parameters that are not required when calling function.
-
----
-
-## ❓ Q6: How to define optional parameter?
-
-👉 Using `?`
-
----
-
-## ❓ Q7: Where should optional parameter be placed?
-
-👉 At the **end of parameter list**
-
----
-
-## ❓ Q8: Difference between optional & default parameter?
+## ❓ Difference between optional & default parameter?
 
 👉 Optional → undefined
 👉 Default → predefined value
 
----
 
-## ❓ Q9: Can optional parameter be first?
 
-👉 ❌ No
-
----
-
-## ❓ Q10: What is benefit of optional parameters?
+## ❓  What is benefit of optional parameters?
 
 👉 Flexible and reusable functions
 
