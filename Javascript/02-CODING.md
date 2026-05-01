@@ -291,5 +291,43 @@ console.log("largestNumber", largestNumber);
 90
 ```
 
+# 📌 Find Even Numbers in JavaScript 
+
+## ✅ 1. Using Array Method 
+
+```js
+let arr = [1, 2, 3, 4, 5, 6, 8, 8];
+
+let evenNumber = arr.filter((num) => num % 2 === 0);
+
+let countEvenNumber = arr.filter((num) => num % 2 === 0).length;
+
+console.log("EvenNumber Output", evenNumber); 
+// [2, 4, 6, 8, 8]
+
+console.log("Count EvenNumber Output", countEvenNumber); 
+// 5
+```
+
+
+
+## ✅ 2. Without Using Method
+
+```
+let arr1 = [2,3,4,6,8,9,10,11,15,8];
+let result = [];
+
+for(let i = 0; i < arr1.length; i++){
+  if(arr1[i] % 2 === 0){
+    result.push(arr1[i]);
+  }
+}
+
+console.log("EvenNumber Output", [...new Set(result)]); //  [ 2, 4, 6, 8, 10 ]
+```
+
+
+
+
 
 
