@@ -1,8 +1,4 @@
 
-# 📘 Type Narrowing & Type Guards in TypeScript (Interview Guide)
-
----
-
 # 🔹 1. What is Type Narrowing?
 
 ## ✅ Definition
@@ -10,10 +6,6 @@
 **Type Narrowing** is the process of **reducing a broad type into a more specific type**.
 
 👉 TypeScript does this using conditions so it can safely determine:
-
-> "Which exact type are we dealing with right now?"
-
----
 
 ## ✅ Why is Narrowing Needed?
 
@@ -145,129 +137,26 @@ function speak(animal: Dog | Cat) {
 
 ---
 
-# ✅ 4. Equality Narrowing
-
-```ts id="l1jkkd"
-function example(value: string | null) {
-  if (value !== null) {
-    console.log(value.toUpperCase());
-  }
-}
-```
-
----
-
-# ✅ 5. Truthiness Narrowing
-
-```ts id="c2e8m3"
-function printLength(text?: string) {
-  if (text) {
-    console.log(text.length);
-  }
-}
-```
-
-👉 Removes:
-
-* `undefined`
-* `null`
-* `false`
-* `0`
-* `""`
-
----
-
-# 🔥 4. User-Defined Type Guard (VERY IMPORTANT 🔥)
-
-## ✅ Definition
-
-Custom function that tells TypeScript about type.
-
----
-
-## ✅ Syntax
-
-```ts id="z3fuv1"
-function isType(value: any): value is Type {
-  return condition;
-}
-```
-
----
-
-## ✅ Example
-
-```ts id="k8nv4s"
-type Dog = { bark: () => void };
-type Cat = { meow: () => void };
-
-function isDog(animal: Dog | Cat): animal is Dog {
-  return (animal as Dog).bark !== undefined;
-}
-
-function speak(animal: Dog | Cat) {
-  if (isDog(animal)) {
-    animal.bark(); // ✅
-  } else {
-    animal.meow(); // ✅
-  }
-}
-```
-
----
-
-# 🔥 5. Discriminated Union (BEST PRACTICE 🔥)
-
-## ✅ Definition
-
-Using a **common property** to narrow types safely.
-
----
-
-## ✅ Example
-
-```ts id="8q2zbf"
-type Shape =
-  | { type: "circle"; radius: number }
-  | { type: "square"; size: number };
-
-function area(shape: Shape) {
-  if (shape.type === "circle") {
-    return Math.PI * shape.radius ** 2;
-  } else {
-    return shape.size ** 2;
-  }
-}
-```
-
-👉 Most recommended in real projects
-
----
-
-# 🔥 6. Common Interview Questions
-
----
-
-## ❓ Q1: What is narrowing?
+## What is narrowing?
 
 👉 Process of converting a broad type into a specific type.
 
 ---
 
-## ❓ Q2: What is a type guard?
+## What is a type guard?
 
 👉 A method used to perform narrowing.
 
 ---
 
-## ❓ Q3: Difference between narrowing & type guard?
+## Difference between narrowing & type guard?
 
 👉 Narrowing = result
 👉 Type guard = method
 
 ---
 
-## ❓ Q4: Types of type guards?
+##  Types of type guards?
 
 * `typeof`
 * `instanceof`
@@ -275,21 +164,14 @@ function area(shape: Shape) {
 * Equality check
 * User-defined
 
----
 
-## ❓ Q5: What is user-defined type guard?
-
-👉 Custom function using `value is Type`
-
----
-
-## ❓ Q6: What is discriminated union?
+## What is discriminated union?
 
 👉 Union with a common property for safe narrowing
 
 ---
 
-## ❓ Q7: Why is narrowing important?
+## Why is narrowing important?
 
 👉 Prevents runtime errors and ensures type safety
 
@@ -311,13 +193,166 @@ function area(shape: Shape) {
 
 ---
 
-# 🚀 Final Interview Tip
 
-👉 MOST IMPORTANT:
+# 📘 Discriminated Unions in TypeScript
 
-* `typeof`
-* `in`
-* User-defined type guard
-* Discriminated union
+---
+
+# 🔹 1. What is a Discriminated Union?
+
+## ✅ Definition
+
+A **Discriminated Union** is a pattern where:
+
+* Multiple types are combined using **Union (`|`)**
+* Each type has a **common property (called discriminator)**
+* That property has **unique literal values**
+
+👉 This helps TypeScript **automatically narrow types safely**
+
+---
+
+## 🔥 Key Idea
+
+👉 Union + Common Property + Literal Values = Discriminated Union
+
+---
+
+# 🔹 2. Basic Example
+
+```ts id="2t4l2g"
+type Shape =
+  | { kind: "circle"; radius: number }
+  | { kind: "square"; size: number };
+```
+
+👉 Here:
+
+* `kind` = discriminator
+* `"circle"` & `"square"` = literal types
+
+---
+
+## ✅ Usage Example
+
+```ts id="rtsqnj"
+function area(shape: Shape) {
+  if (shape.kind === "circle") {
+    return Math.PI * shape.radius ** 2;
+  } else {
+    return shape.size ** 2;
+  }
+}
+```
+
+👉 TypeScript automatically narrows:
+
+* `"circle"` → radius available
+* `"square"` → size available
+
+---
+
+# 🔹 3. Why Use Discriminated Union?
+
+## ❌ Without Discriminated Union
+
+```ts id="zqqi3s"
+type Shape = {
+  radius?: number;
+  size?: number;
+};
+
+function area(shape: Shape) {
+  // ❌ Unsafe (may be undefined)
+}
+```
+
+👉 Problem:
+
+* No type safety
+* Possible runtime errors
+
+---
+
+## ✅ With Discriminated Union
+
+✔ Safe
+✔ Clear
+✔ Predictable
+
+---
+# 🔹 6. Real World Example
+
+## ✅ API Response Handling
+
+```ts id="4npn4w"
+type ApiResponse =
+  | { status: "loading" }
+  | { status: "success"; data: string }
+  | { status: "error"; message: string };
+
+function handleResponse(res: ApiResponse) {
+  switch (res.status) {
+    case "loading":
+      return "Loading...";
+
+    case "success":
+      return res.data;
+
+    case "error":
+      return res.message;
+  }
+}
+```
+
+---
+
+# 🔥 8. Rules of Discriminated Union
+
+* Must have a **common property**
+* Property must have **literal types**
+* Each type must have **unique value**
+
+## What is a discriminated union?
+
+👉 A union of types with a common property used for type narrowing.
+
+---
+
+##  What is a discriminator?
+
+👉 A common property (like `kind`, `type`, `status`)
+
+---
+
+## Why use discriminated union?
+
+👉 For safe and predictable type narrowing
+
+---
+
+## Difference between union & discriminated union?
+
+| Feature   | Union Type         | Discriminated Union |
+| --------- | ------------------ | ------------------- |
+| Safety    | Low                | High                |
+| Narrowing | Manual             | Automatic           |
+| Structure | No common property | Has common property |
+
+---
+
+## What is exhaustive checking?
+
+👉 Ensuring all cases are handled using `never`
+
+# 🔥 12. Summary
+
+* Discriminated Union = **Safe Union**
+* Uses a **common property**
+* Helps TypeScript auto-narrow types
+* Best used with:
+
+  * `switch`
+  * `never` (exhaustive check)
 
 ---
