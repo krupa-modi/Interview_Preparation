@@ -123,7 +123,11 @@ Page Component
 
 ## 📌 4. How Layouts Persist Between Navigation?
 
-This is one of the **most important concepts 🔥**
+* Layouts re-render nahi hote jab tak unka route segment change nahi hota.
+   Matlab:
+  * Same layout ke andar navigation → layout persist karta hai
+  * Layout ke bahar navigation → layout replace ho jata hai
+* Layouts in Next.js persist between navigation because the App Router uses segment-based rendering. When navigating within the same route segment, only the page component updates while the parent layout remains mounted, preserving state and improving performance."
 
 ### 💡 Key Idea:
 
