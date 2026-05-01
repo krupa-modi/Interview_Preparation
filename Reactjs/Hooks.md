@@ -311,6 +311,3 @@ Avoid overusing useLayoutEffect → it blocks rendering and can slow UI
 
 ---
 
-
-* 🧠 **Tricky scenarios (very commonly asked)**
-* ⚡ **1-page revision sheet (quick recall before interview)**
