@@ -99,13 +99,22 @@ componentDidMount() {
 
 ### 2️⃣ shouldComponentUpdate() ⭐
 
+* shouldComponentUpdate is a lifecycle method in Class Components used to control whether a component should re-render or not.
+
+👉 By default, React re-renders on every state or props change
+👉 This method lets you optimize performance by preventing unnecessary renders
+
 * Decide karta hai re-render hona chahiye ya nahi
 * Performance optimization ke liye
-
-```js
+* "shouldComponentUpdate is a lifecycle method used to optimize performance by controlling whether a component should re-render. It returns a boolean value, and is mainly used when we want to avoid unnecessary renders. In modern React, it is often replaced by PureComponent or React.memo."
+```
+📌 Syntax
 shouldComponentUpdate(nextProps, nextState) {
-  return true;
+  return true; // or false
 }
+true → Component WILL re-render
+false → Component WILL NOT re-render
+
 ```
 
 👉 Agar `false` return kare → re-render nahi hoga
