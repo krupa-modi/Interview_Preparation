@@ -180,4 +180,102 @@ user.greet(); // Krupa
 
 
 
+# ⚙️ Interpreter vs Compiler (Interview Ready)
+
+
+* **Interpreter** → Executes code **line by line**
+* **Compiler** → Converts entire code into **machine code at once**
+
+---
+
+## 🔄 Working Flow
+
+### 🟢 Interpreter Flow
+
+```text
+Source Code → Interpreter → Execute line by line → Output
+```
+
+### 🔵 Compiler Flow
+
+```text
+Source Code → Compiler → Machine Code → Execute → Output
+```
+
+---
+
+## 📊 Comparison Table
+
+| Feature           | Interpreter 🟢       | Compiler 🔵                    |
+| ----------------- | -------------------- | ------------------------------ |
+| Execution         | Line by line         | Whole program at once          |
+| Speed             | Slower               | Faster                         |
+| Error Handling    | Stops at first error | Shows all errors after compile |
+| Output            | No separate file     | Generates executable file      |
+| Example Languages | JavaScript, Python   | C, C++                         |
+
+---
+
+## 💻 Example
+
+### 🟢 Interpreter (JavaScript)
+
+```javascript
+console.log("Hello");
+console.log(a); // Error here
+console.log("World");
+```
+
+👉 Output:
+
+```
+Hello
+Error → stops here ❌
+```
+
+---
+
+### 🔵 Compiler (C)
+
+```c
+#include <stdio.h>
+int main() {
+    printf("Hello");
+    printf("%d", a); // Error
+    printf("World");
+}
+```
+
+👉 Output:
+
+* Compilation fails ❌
+* Shows all errors before running
+
+---
+
+## ⚡ Real-World Understanding
+
+* Interpreter = Like reading instructions and cooking **step by step**
+* Compiler = Like preparing full recipe first, then cooking
+
+---
+
+## 🧠 Key Points (Interview Quick Notes)
+
+* Interpreter executes **immediately**
+* Compiler needs **compile step**
+* Interpreter is **flexible but slower**
+* Compiler is **fast but less flexible**
+* JavaScript uses **Interpreter + JIT Compiler (Modern Engines)**
+
+---
+
+## 🧾 One-Line Difference
+
+👉 *Interpreter runs code line-by-line, while Compiler translates entire code before execution.*
+
+
+
+
+
 
