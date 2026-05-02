@@ -1,6 +1,6 @@
 ## 1. What is JavaScript?
 
-JavaScript is a **high-level, interpreted programming language** used to make web pages interactive. It runs in the browser and on servers (via Node.js).
+JavaScript is a **high-level, interpreted programming language** used to make web pages interactive. It runs in the browser and on servers (via Node.js)..
 
 ---
 

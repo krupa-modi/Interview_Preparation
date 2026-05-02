@@ -1,4 +1,4 @@
-# 🔁 Reverse a String in JavaScript
+# 🔁 Reverse a String in JavaScript.
 
 ---
 
