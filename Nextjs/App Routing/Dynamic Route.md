@@ -1,10 +1,4 @@
 
-Here’s a clean, interview-ready **Markdown (MD) guide** for **Dynamic Routing in App Router (Next.js)** with clear explanations and examples 👇
-
----
-
-# 📌 Dynamic Routing in App Router – Next.js
-
 ## 🚀 What is Dynamic Routing?
 
 Dynamic routing allows you to create routes based on **dynamic values (IDs, slugs, etc.)** instead of fixed paths.
