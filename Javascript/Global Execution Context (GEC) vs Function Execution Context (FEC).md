@@ -220,4 +220,3 @@ Execution Phase:
 
 ---
 
-If you want next step → I can connect this with **Closures + Scope Chain + Event Loop** (very important combo for interviews 🚀)
