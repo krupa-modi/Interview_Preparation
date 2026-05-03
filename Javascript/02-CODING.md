@@ -324,10 +324,27 @@ for(let i = 0; i < arr1.length; i++){
 }
 
 console.log("EvenNumber Output", [...new Set(result)]); //  [ 2, 4, 6, 8, 10 ]
+
 ```
 
 
+# 📌 Convert Array to Object in JavaScript
 
+let arr = ["a", "1", "b", "2", "c", "3"];
 
+## ✅ Code
 
+```js
+let arr = ["a", "1", "b", "2", "c", "3"];
+
+let obj = {};
+
+for (let i = 0; i < arr.length; i += 2) {
+  obj[arr[i]] = Number(arr[i + 1]);
+}
+
+console.log("Output", obj); //  { a: 1, b: 2, c: 3 }
+```
+
+---
 
