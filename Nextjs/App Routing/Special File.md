@@ -88,6 +88,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
 `loading.tsx` is used to show a **loading UI (fallback)** while a route or data is loading.
 
+loading.tsx is a special file in the App Router that shows a loading UI automatically while a route is being loaded.
+
+👉 It triggers when:
+
+A route is loading (navigation happening)
+Data fetching is in progress
+Server components are not ready yet
+
 ---
 
 ## 📁 Example
@@ -101,6 +109,34 @@ export default function Loading() {
 ```
 
 ---
+
+## 🚀 2. How Streaming works with loading.tsx?
+
+Streaming is a feature where UI is sent in parts (chunks) instead of waiting for the full page.
+
+👉 Flow:
+
+User navigates to page
+loading.tsx renders immediately
+Server starts sending UI in chunks
+Parts of page appear as soon as ready
+
+## Example
+// app/dashboard/page.tsx
+async function Page() {
+  const data = await fetchData(); // takes time
+
+  return <div>{data}</div>;
+}
+
+👉 While fetchData() runs:
+
+loading.tsx is shown
+Then actual UI replaces it
+🔥 Key Point
+
+👉 Streaming + loading =
+Faster perceived performance (user sees UI early)
 
 ## ⏱️ When does it trigger?
 
@@ -328,5 +364,10 @@ app/
 * Suspense (for loading)
 * Error Boundary (for error.tsx)
 * Segment-based routing
+
+## 🎯 Final Interview Answer (Short)
+
+👉 loading.tsx shows fallback UI during data loading and works with streaming to improve performance.
+👉 error.tsx handles runtime errors and provides a way to recover UI using reset().
 
 ---

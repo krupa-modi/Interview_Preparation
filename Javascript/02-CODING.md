@@ -340,7 +340,7 @@ let arr = ["a", "1", "b", "2", "c", "3"];
 let obj = {};
 
 for (let i = 0; i < arr.length; i += 2) {
-  obj[arr[i]] = Number(arr[i + 1]);
+obj[arr[i]] = Number(arr[i + 1]);
 }
 
 console.log("Output", obj); //  { a: 1, b: 2, c: 3 }
