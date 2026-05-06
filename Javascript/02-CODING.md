@@ -346,5 +346,50 @@ obj[arr[i]] = Number(arr[i + 1]);
 console.log("Output", obj); //  { a: 1, b: 2, c: 3 }
 ```
 
+
+# 📌Find Smallest Value in Array (JavaScript)
+
+## 1. Using Method
+
+```javascript
+function smallvalue(ele) {
+  return Math.min(...ele)
+}
+
+console.log(smallvalue([1,2,3,4,5,1]))
+```
+
+### Output
+
+```
+1
+```
+
+---
+
+## 2. Without Method (Using Function)
+
+```javascript
+function findSmallest(arr) {
+  let small = arr[0]
+
+  for(let i = 1; i < arr.length; i++){
+    if(arr[i] < small){
+      small = arr[i]
+    }
+  }
+
+  return small
+}
+
+console.log(findSmallest([3,5,7,1,9]))
+```
+
+### Output
+
+```
+1
+```
+
 ---
 

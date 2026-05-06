@@ -1,6 +1,3 @@
-Here’s a clean **Markdown (.md) file** you can directly use 👇
-
----
 
 # 📘 TypeScript: Union, Intersection, Type, Interface & Type Alias
 
