@@ -1,4 +1,20 @@
 
+# What is a Function in JavaScript?
+
+A **function** in JavaScript is a block of reusable code that performs a specific task.
+
+Instead of writing the same code again and again, we can put that code inside a function and call it whenever needed.
+
+---
+
+# Syntax
+
+```javascript
+function functionName() {
+   // code
+}
+````
+
 # 1. What is Function Statement?
 
 Function Statement means defining a function directly using the `function` keyword.
