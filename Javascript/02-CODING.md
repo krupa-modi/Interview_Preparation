@@ -91,13 +91,7 @@ console.log("reverse string:", result); // "tpircsavaj olleh"
 ---
 
 
----
-
-# 🔥 Remove Duplicates (Array + String) — JavaScript
-
----
-
-# 📌 1. Array Duplicate Remove
+# 📌 Array Duplicate Remove
 
 ## ✅ Using Method (`Set`)
 
@@ -175,7 +169,20 @@ console.log("Unique String:", uniqueStr);
 ```
 Unique String: progamin
 ```
+# using filter
+```
+let arr = [1, 2, 2, 3, 4, 4, 5];
+let result = arr.filter((ele,index,arr) => arr.indexOf(ele) == index )
+console.log("result",result) // [1,2,3,4,5]
 
+| Parameter | Meaning                  |
+| --------- | ------------------------ |
+| ele       | Current element          |
+| index     | Current element ka index |
+| arr       | Original array           |
+
+
+```
 ---
 
 ## ✅ Without Method (Manual Logic)
@@ -391,5 +398,135 @@ console.log(findSmallest([3,5,7,1,9]))
 1
 ```
 
+#  📌 JavaScript Array Sum Program 
+
+```javascript
+function sum(val){
+  let result = 0
+
+  for(let ele = 0; ele < val.length; ele++){
+    result += val[ele]
+  }
+
+  return result
+}
+
+console.log("Sum output", sum([1,2,3,4,5,6]))
+```
+
+## Output
+
+```javascript
+Sum output 21
+```
+
 ---
+
+# JavaScript Array Sum Program Using reduce() Method
+
+```javascript
+let arr = [1,2,3,4,5,6]
+
+const result = arr.reduce((acc, cur) => acc + cur, 0)
+
+console.log("result", result)
+```
+
+## Output
+
+```javascript
+result 21
+```
+
+# 📌 JavaScript Program to Find Average of Array Elements
+
+---
+
+# 1. Average Program Without Method (Using for loop)
+
+```javascript
+function average(arr){
+  let sum = 0
+
+  for(let i = 0; i < arr.length; i++){
+    sum += arr[i]
+  }
+
+  return sum / arr.length
+}
+
+console.log("Average Output", average([10,20,30,40,50]))
+```
+
+## Output
+
+```javascript
+Average Output 30
+```
+
+---
+
+# 2. Average Program Using reduce() Method
+
+```javascript
+let arr = [10,20,30,40,50]
+
+let sum = arr.reduce((acc, cur) => acc + cur, 0)
+
+let average = sum / arr.length
+
+console.log("Average Output", average)
+```
+
+## Output
+
+```javascript
+Average Output 30
+```
+
+-
+
+# 📌Even and Odd Numbers Separate Program in JavaScript
+
+---
+
+# 1. Without Method (Using Loop)
+
+```js
+const arr = [1,2,3,4,5,6,7,8,9,10];
+function OddEvenfilter(arr){
+  let odd = [];
+  let even = [];
+
+  for(let i = 0 ; i < arr.length ; i++){
+    if(arr[i] % 2 === 0){
+      even.push(arr[i]);
+    } else {
+      odd.push(arr[i]);
+    }
+
+  }
+
+  return {odd, even};
+
+}
+
+const result = OddEvenfilter(arr);
+
+console.log("Odd Data:", result.odd); // [ 1, 3, 5, 7, 9 ]
+console.log("Even Data:", result.even); // [ 2, 4, 6, 8, 10 ]
+```
+
+---
+
+# 2. Using Method (`filter()`)
+
+```js
+const arr = [1,2,3,4,5,6,7,8,9,10];
+const evenData = arr.filter((ele) => ele % 2 === 0);
+const oddData = arr.filter((ele) => ele % 2 !== 0);
+
+console.log("Odd Data:", oddData); // [ 1, 3, 5, 7, 9 ]
+console.log("Even Data:", evenData); // [ 2, 4, 6, 8, 10 ]
+```
 

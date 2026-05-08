@@ -179,11 +179,4 @@ function increment(count) {
 
 ---
 
-## Final Tips (Interview Ready 🔥)
 
-* Always give **definition + example**
-* Mention **side effects**
-* Explain **why pure is preferred**
-* Give **real-world usage (React)**
-
----

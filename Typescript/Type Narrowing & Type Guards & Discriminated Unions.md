@@ -1,103 +1,154 @@
 
-# 🔹 1. What is Type Narrowing?
+# Type Narrowing in TypeScript
 
-## ✅ Definition
+## What is Type Narrowing?
 
-**Type Narrowing** is the process of **reducing a broad type into a more specific type**.
+Type Narrowing means:
 
-👉 TypeScript does this using conditions so it can safely determine:
+> TypeScript kisi variable ka exact type identify karta hai based on conditions.
 
-## ✅ Why is Narrowing Needed?
+Simple words mein:
 
-When we use **Union Types (`|`)**, TypeScript doesn't know the exact type.
+Agar variable multiple types hold kar sakta hai, to TypeScript conditions laga ke uska actual type samajhta hai.
 
-```ts id="kz1w2m"
+---
+
+# Why Type Narrowing Needed?
+
+Example:
+
+```ts id="f2s5qa"
 function print(value: string | number) {
-  // ❌ Error without narrowing
   console.log(value.toUpperCase());
 }
 ```
 
-👉 Problem:
+## Error
 
-* `toUpperCase()` works only on string
-* But `value` can also be number
+```ts id="v5c9cz"
+Property 'toUpperCase' does not exist on type 'string | number'
+```
+
+Why?
+
+Because:
+
+* `string` ke paas `toUpperCase()` hai
+* `number` ke paas nahi hai
+
+TypeScript ko exact type nahi pata.
 
 ---
 
-## ✅ Solution → Type Narrowing
+# Solution → Type Narrowing
 
-```ts id="2wpxd4"
+```ts id="ff4xxg"
 function print(value: string | number) {
   if (typeof value === "string") {
-    console.log(value.toUpperCase()); // ✅ string
-  } else {
-    console.log(value.toFixed(2)); // ✅ number
+    console.log(value.toUpperCase());
   }
 }
 ```
 
-👉 Now TypeScript understands the type correctly.
+Now TypeScript samaj gaya:
+
+```ts id="8z6wqk"
+value = string
+```
+
+inside if block.
+
+This is called:
+
+# Type Narrowing
 
 ---
 
-## 🔥 Key Idea
+# How Type Narrowing Works
 
-* Narrowing = **filtering down type**
-* Happens at runtime using conditions
-* Makes code **safe and predictable**
+TypeScript conditions check karta hai:
 
----
-
-# 🔹 2. What is a Type Guard?
-
-## ✅ Definition
-
-A **Type Guard** is a **technique used to narrow down types**.
-
-👉 It tells TypeScript:
-
-> "Inside this block, the type is specific."
+* typeof
+* instanceof
+* in operator
+* equality checking
+* truthy/falsy checking
+* custom type guards
 
 ---
 
-## 🔥 Simple Understanding
+# 1. typeof Narrowing
 
-👉 Type Guard = Tool
-👉 Narrowing = Result
-
----
-
-# 🔹 3. Types of Type Guards
+Primitive types check karne ke liye.
 
 ---
 
-# ✅ 1. `typeof` Type Guard
+# Syntax
 
-👉 Used for **primitive types**
+```ts id="b1lch7"
+typeof variable === "string"
+```
 
-```ts id="5ktm2p"
-function check(value: string | number | boolean) {
+---
+
+# Example
+
+```ts id="d4i4rb"
+function print(value: string | number) {
+
   if (typeof value === "string") {
-    console.log("String:", value.toUpperCase());
-  } else if (typeof value === "number") {
-    console.log("Number:", value.toFixed(2));
-  } else {
-    console.log("Boolean:", value);
+    console.log(value.toUpperCase());
+  }
+
+  if (typeof value === "number") {
+    console.log(value.toFixed(2));
   }
 }
 ```
 
 ---
 
-# ✅ 2. `instanceof` Type Guard
+# Internally
 
-👉 Used for **classes / objects**
+Inside:
 
-```ts id="0lfnkj"
+```ts id="ehp7kw"
+typeof value === "string"
+```
+
+TypeScript narrow karta hai:
+
+```ts id="6r8s91"
+value → string
+```
+
+---
+
+# typeof Supports
+
+| Type      | Value         |
+| --------- | ------------- |
+| string    | `"string"`    |
+| number    | `"number"`    |
+| boolean   | `"boolean"`   |
+| undefined | `"undefined"` |
+| function  | `"function"`  |
+| object    | `"object"`    |
+
+---
+
+# 2. instanceof Narrowing
+
+Classes ke sath use hota hai.
+
+---
+
+# Example
+
+```ts id="l8fz7g"
 class Dog {
   bark() {
-    console.log("Woof");
+    console.log("Bark");
   }
 }
 
@@ -108,9 +159,12 @@ class Cat {
 }
 
 function speak(animal: Dog | Cat) {
+
   if (animal instanceof Dog) {
     animal.bark();
-  } else {
+  }
+
+  if (animal instanceof Cat) {
     animal.meow();
   }
 }
@@ -118,16 +172,191 @@ function speak(animal: Dog | Cat) {
 
 ---
 
-# ✅ 3. `in` Operator Type Guard
+# Why?
 
-👉 Used to check **property existence**
+`instanceof` check karta hai object kis class ka instance hai.
 
-```ts id="7i6y0l"
-type Dog = { bark: () => void };
-type Cat = { meow: () => void };
+---
 
+# 3. in Operator Narrowing
+
+Object property check karne ke liye.
+
+---
+
+# Example
+
+```ts id="p8c1lt"
+type User = {
+  name: string;
+};
+
+type Admin = {
+  role: string;
+};
+
+function check(person: User | Admin) {
+
+  if ("name" in person) {
+    console.log(person.name);
+  }
+
+  if ("role" in person) {
+    console.log(person.role);
+  }
+}
+```
+
+---
+
+# Meaning
+
+```ts id="x5d23z"
+"name" in person
+```
+
+means:
+
+> kya object ke andar name property hai?
+
+---
+
+# 4. Equality Narrowing
+
+Comparison se narrowing.
+
+---
+
+# Example
+
+```ts id="wwn0qv"
+function check(a: string | number,
+               b: string) {
+
+  if (a === b) {
+    // a becomes string
+    console.log(a.toUpperCase());
+  }
+}
+```
+
+Why?
+
+Because:
+
+```ts id="10b28n"
+b = string
+```
+
+to agar:
+
+```ts id="2f48ya"
+a === b
+```
+
+then `a` bhi string hi hoga.
+
+---
+
+# 5. Truthy/Falsy Narrowing
+
+Null or undefined remove karne ke liye.
+
+---
+
+# Example
+
+```ts id="5b3tqy"
+function print(value?: string) {
+
+  if (value) {
+    console.log(value.toUpperCase());
+  }
+}
+```
+
+Inside if block:
+
+```ts id="bs1a79"
+value = string
+```
+
+because:
+
+* undefined remove ho gaya
+* empty values ignore ho gaye
+
+---
+
+# Type Guards in TypeScript
+
+## What is Type Guard?
+
+Type Guard ek technique hai jo TypeScript ko batati hai:
+
+> Variable ka exact type kya hai.
+
+Simple words:
+
+> Type ko safely identify karna.
+
+---
+
+# Types of Type Guards
+
+| Type Guard        | Purpose         |
+| ----------------- | --------------- |
+| typeof            | Primitive check |
+| instanceof        | Class check     |
+| in                | Property check  |
+| Custom Type Guard | Custom logic    |
+
+---
+
+# Custom Type Guard
+
+Most important interview topic.
+
+---
+
+# Syntax
+
+```ts id="8mxn1h"
+function isType(value): value is Type
+```
+
+---
+
+# Example
+
+```ts id="yyg81r"
+type Dog = {
+  bark: () => void;
+};
+
+type Cat = {
+  meow: () => void;
+};
+```
+
+---
+
+# Custom Type Guard Function
+
+```ts id="md0k8n"
+function isDog(animal: Dog | Cat): animal is Dog {
+  return "bark" in animal;
+}
+```
+
+---
+
+# Usage
+
+```ts id="nq4u7f"
 function speak(animal: Dog | Cat) {
-  if ("bark" in animal) {
+
+  if (isDog(animal)) {
     animal.bark();
   } else {
     animal.meow();
@@ -137,32 +366,121 @@ function speak(animal: Dog | Cat) {
 
 ---
 
-## What is narrowing?
+# Important Part
 
-👉 Process of converting a broad type into a specific type.
+```ts id="lbh3h8"
+animal is Dog
+```
 
----
+means:
 
-## What is a type guard?
-
-👉 A method used to perform narrowing.
-
----
-
-## Difference between narrowing & type guard?
-
-👉 Narrowing = result
-👉 Type guard = method
+> agar function true return kare,
+> to animal ko Dog treat karo.
 
 ---
 
-##  Types of type guards?
+# How Type Guard Works
 
-* `typeof`
-* `instanceof`
-* `in`
-* Equality check
-* User-defined
+```ts id="bzhv54"
+return "bark" in animal;
+```
+
+If true:
+
+```ts id="3ydc3f"
+animal = Dog
+```
+
+Else:
+
+```ts id="4e18r7"
+animal = Cat
+```
+
+---
+
+# Real World Example
+
+## API Response
+
+```ts id="vjj8xq"
+type Success = {
+  success: true;
+  data: string;
+};
+
+type ErrorResponse = {
+  success: false;
+  error: string;
+};
+```
+
+---
+
+# Type Guard
+
+```ts id="f9o0q1"
+function isSuccess(
+  response: Success | ErrorResponse
+): response is Success {
+
+  return response.success;
+}
+```
+
+---
+
+# Usage
+
+```ts id="1x1a0z"
+function handleResponse(
+  response: Success | ErrorResponse
+) {
+
+  if (isSuccess(response)) {
+    console.log(response.data);
+  } else {
+    console.log(response.error);
+  }
+}
+```
+
+---
+
+# Difference Between Narrowing and Type Guard
+
+| Type Narrowing                  | Type Guard                 |
+| ------------------------------- | -------------------------- |
+| General process                 | Technique for narrowing    |
+| Automatic bhi hota hai          | Mostly custom function     |
+| TypeScript internally karta hai | Developer define karta hai |
+
+---
+
+# Interview Definition
+
+## Type Narrowing
+
+> Type Narrowing process hai jisme TypeScript conditions ke basis pe variable ka exact type identify karta hai.
+
+---
+
+## Type Guard
+
+> Type Guard ek technique/function hai jo TypeScript ko variable ka exact type batata hai.
+
+---
+
+# Quick Revision
+
+| Concept       | Use                   |
+| ------------- | --------------------- |
+| typeof        | Primitive types       |
+| instanceof    | Classes               |
+| in            | Object property       |
+| truthy/falsy  | Remove undefined/null |
+| Custom Guard  | Custom type checking  |
+| value is Type | Type predicate        |
 
 
 ## What is discriminated union?
