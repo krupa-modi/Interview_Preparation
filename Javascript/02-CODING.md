@@ -107,6 +107,10 @@ let arr = [1, 2, 3, 2, 4, 1, 5];
 const uniqueArr = [...new Set(arr)];
 
 console.log("Unique Array:", uniqueArr);
+
+OR
+
+const data = arr.filter((ele,index,arr) => arr.indexOf(ele) === index)
 ```
 
 ### ⚡ Output:
@@ -528,5 +532,257 @@ const oddData = arr.filter((ele) => ele % 2 !== 0);
 
 console.log("Odd Data:", oddData); // [ 1, 3, 5, 7, 9 ]
 console.log("Even Data:", evenData); // [ 2, 4, 6, 8, 10 ]
+
 ```
+
+# 📌 JavaScript Array Sorting Program
+
+```js 
+let arr = [1,6,3,4,2,9,8];
+
+
+// ================= ASCENDING ORDER =================
+
+let ascending = [...arr].sort((a,b) => a - b);
+
+console.log("Ascending Result:", ascending); // [1, 2, 3, 4, 6, 8, 9]
+
+
+// ================= DESCENDING ORDER =================
+
+let descending = [...arr].sort((a,b) => b - a);
+
+console.log("Descending Result:", descending); // [9, 8, 6, 4, 3, 2, 1]
+```
+
+
+# 📌 Prime Number Program in JavaScript
+
+Prime Number Kya Hota Hai?
+
+```
+  Prime number wo number hota hai jo:
+
+  1 se bada ho
+  Sirf 2 numbers se divide ho
+  * 1
+  * khud number
+
+```
+
+```
+0 → Not Prime
+1 → Not Prime
+negative → Not Prime
+```
+
+```js id="n8r0zv"
+function prime(num){
+
+  if(num <= 1){
+    return "Not a Prime Number";
+  }
+
+  for(let i = 2; i < num; i++){
+    // OR  for(let i = 2; i < Math.sqrt(num); i++){
+
+    if(num % i === 0){
+      return "Not a Prime Number";
+    }
+
+  }
+
+  return "Prime Number";
+}
+
+console.log(prime(7));
+```
+
+---
+
+# ✅ Output
+
+```txt id="e7w9c8"
+Prime Number
+```
+
+# 📌Print Duplicate Value
+
+```js id="5wz6pt"
+// With Method
+
+const arr = [1,2,2,3,4,4,5,6,6,7,8,8,9,1];
+
+const data = arr.filter((ele,index,arr) => 
+    arr.indexOf(ele) !== index
+);
+
+console.log("Print Duplicate Value", data); //[ 2, 4, 6, 8, 1 ]
+
+
+
+// Without Method
+
+let arr1 = [1,2,2,3,4,4,5,6,6,7,8,8,9,1];
+
+let element = [];
+
+for(let i = 0 ; i < arr1.length ; i++){
+
+    for(let j = i + 1 ; j < arr1.length ; j++){
+
+        if(arr1[i] === arr1[j]){
+            element.push(arr1[i]);
+        }
+
+    }
+}
+
+console.log("Print Duplicate Value", element); //[ 2, 4, 6, 8, 1 ]
+```
+
+# String Palindrome Program
+
+## Program
+
+```js id="3sz4yy"
+const str = "madam";
+
+const reverseStr = str.split("").reverse().join("");
+
+if(str === reverseStr){
+  console.log("Palindrome");
+}else{
+  console.log("Not Palindrome");
+}
+
+*************************************************************OR**********************************************
+
+function palindromeString(ele) {
+
+  let lowerCase = ele.toLowerCase();
+  let reverse = "";
+
+  for(let i = lowerCase.length - 1; i >= 0; i--) {
+    reverse += lowerCase[i];
+  }
+
+  if(lowerCase === reverse) {
+    console.log("Palindrome");
+  } else {
+    console.log("Not Palindrome");
+  }
+}
+
+palindromeString("Madam");
+```
+
+## Output
+
+```js id="jlwmd1"
+Palindrome
+```
+
+---
+
+# Number Palindrome Program
+
+## Program
+
+```js id="jlwmf3"
+const num = 121;
+
+const reverseNumber = Number(
+  num.toString().split("").reverse().join("")
+);
+
+if(num === reverseNumber){
+  console.log("Palindrome");
+}else{
+  console.log("Not Palindrome");
+}
+
+
+*********************************************************OR*********************************************************
+
+function palindromeNumber(num) {
+
+  let convertNumber = num.toString();
+
+  let reverse = "";
+
+  for(let i = convertNumber.length - 1; i >= 0; i--) {
+    reverse += convertNumber[i];
+  }
+
+  if(convertNumber === reverse) {
+    console.log("Palindrome");
+  } else {
+    console.log("Not Palindrome");
+  }
+}
+
+palindromeNumber(121);
+```
+
+## Output
+
+```js id="jlwmg7"
+Palindrome
+```
+
+# 📌 Factorial Program Using Recursion
+
+```javascript id="t8m2x5"
+function factorialOne(n){
+  if(n === 0){
+    return 1
+  }else{
+    return n * factorialOne(n - 1) 
+  }
+}
+
+console.log(factorialOne(5)) 
+```
+
+## ✅ Output
+
+```javascript id="q4n7m1"
+120
+```
+
+---
+
+# Factorial Program Using Loop
+
+```javascript id="k1x8m4"
+function factorialTwo(num){
+
+  let result = 1
+
+  // i = 1 liya because 0 se start karte to
+  // 1 * 0 = 0 ho jata
+
+  for(let i = 1 ; i <= num ; i++){
+
+    // num ek number hai
+    // number me length nahi hoti
+    // length sirf string aur array me hoti hai
+
+    result = result * i
+  }
+
+  console.log(result)
+}
+
+factorialTwo(5)
+```
+
+## ✅ Output
+
+```javascript id="w6m3q9"
+120
+```
+
+
 
