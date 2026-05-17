@@ -1,0 +1,355 @@
+# 📘 React Router Scenario Based Interview Questions
+
+# 📌 Agar User Login Nahi Hai To Route Access Kaise Rokoge?
+
+## 🔹 Solution
+
+Protected Routes use karte hain.
+
+Authentication check karte hain before rendering route.
+
+Agar user logged in nahi hai:
+
+✅ Redirect to Login Page
+
+---
+
+# 📌 Example
+
+```jsx id="jlwm1m"
+import {
+  Navigate
+} from "react-router-dom";
+
+function ProtectedRoute({
+  children
+}) {
+  const token =
+    localStorage.getItem("token");
+
+  return token
+    ? children
+    : <Navigate to="/login" />;
+}
+```
+
+---
+
+# 📌 Usage
+
+```jsx id="jlwm7n"
+<Route
+  path="/dashboard"
+  element={
+    <ProtectedRoute>
+      <Dashboard />
+    </ProtectedRoute>
+  }
+/>
+```
+
+---
+
+# 📌 How it Works?
+
+If token exists:
+
+✅ Route access allowed
+
+Else:
+
+❌ Redirect to login page
+
+---
+
+# 🎯 Interview Answer
+
+## ❓ Agar user login nahi hai to route access kaise rokoge?
+
+### ✅ Answer:
+
+Protected routes create karke authentication check karenge. Agar user authenticated nahi hoga to `Navigate` component se login page par redirect karenge.
+
+---
+
+# 📘 Page Refresh Pe State Kaise Maintain Karoge?
+
+---
+
+# 📌 Problem
+
+React state refresh hone par reset ho jati hai.
+
+---
+
+# 📌 Common Solutions
+
+✅ localStorage
+✅ sessionStorage
+✅ Redux Persist
+✅ Context + Storage
+
+---
+
+# 📌 Example
+
+## Save State
+
+```jsx id="jlwm4d"
+localStorage.setItem(
+  "token",
+  token
+);
+```
+
+---
+
+## Get State After Refresh
+
+```jsx id="jlwm9f"
+const token =
+  localStorage.getItem("token");
+```
+
+---
+
+# 📌 Why localStorage?
+
+Because browser refresh ke baad bhi data persist rehta hai.
+
+---
+
+# 📌 Real Example
+
+Login token save karte hain taaki refresh ke baad user logout na ho.
+
+---
+
+# 🎯 Interview Answer
+
+## ❓ Page refresh pe state kaise maintain karoge?
+
+### ✅ Answer:
+
+State ko localStorage, sessionStorage, ya Redux Persist me store karke refresh ke baad restore karte hain.
+
+---
+
+# 📘 URL Change Hone Pe API Call Kaise Trigger Karoge?
+
+---
+
+# 📌 Solution
+
+`useLocation` ya `useParams` ke saath `useEffect` use karte hain.
+
+---
+
+# 📌 Example Using useParams
+
+```jsx id="jlwm2s"
+import {
+  useParams
+} from "react-router-dom";
+
+import {
+  useEffect
+} from "react";
+
+function Product() {
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetchProduct(id);
+  }, [id]);
+
+  return <h1>Product</h1>;
+}
+```
+
+---
+
+# 📌 How it Works?
+
+Whenever URL param changes:
+
+```txt id="jlwm6x"
+id changes
+```
+
+then:
+
+```txt id="’winijlwm"
+API call triggers
+```
+
+---
+
+# 📌 Example URL
+
+```txt id="’winiijlwm5"
+/product/1
+/product/2
+```
+
+---
+
+# 🎯 Interview Answer
+
+## ❓ URL change hone pe API call kaise trigger karoge?
+
+### ✅ Answer:
+
+useEffect ke dependency array me route params ya location add karte hain. URL change hone par API call automatically trigger hoti hai.
+
+---
+
+# 📘 Breadcrumb Navigation Kaise Banaoge?
+
+---
+
+# 📌 What is Breadcrumb?
+
+Breadcrumb current page path show karta hai.
+
+---
+
+# 📌 Example
+
+```txt id="’winiijlwm8"
+Home > Products > Mobile
+```
+
+---
+
+# 📌 Solution
+
+`useLocation` use karke pathname split karte hain.
+
+---
+
+# 📌 Example
+
+```jsx id="’winiijlwm2"
+import {
+  useLocation
+} from "react-router-dom";
+
+function Breadcrumb() {
+  const location = useLocation();
+
+  const paths =
+    location.pathname.split("/");
+
+  return (
+    <div>
+      {paths.map((path, index) => (
+        <span key={index}>
+          {path} /
+        </span>
+      ))}
+    </div>
+  );
+}
+```
+
+---
+
+# 📌 How it Works?
+
+For URL:
+
+```txt id="’winiijlwm0"
+/products/mobile
+```
+
+Output:
+
+```txt id="’winiijlwm7"
+products / mobile
+```
+
+---
+
+# 🎯 Interview Answer
+
+## ❓ Breadcrumb navigation kaise banaoge?
+
+### ✅ Answer:
+
+Breadcrumb navigation useLocation hook ke pathname ko split karke dynamic links generate karke banaya jata hai.
+
+---
+
+# 📘 Deep Linking Kaise Handle Karte Ho?
+
+---
+
+# 📌 What is Deep Linking?
+
+Deep linking means directly opening a specific page using URL.
+
+---
+
+# 📌 Example
+
+```txt id="’winiijlwm1"
+/product/10
+```
+
+User directly product page open kar sakta hai.
+
+---
+
+# 📌 How React Router Handles It?
+
+React Router automatically route match karta hai.
+
+---
+
+# 📌 Important Requirement
+
+Server configuration required hota hai.
+
+Otherwise refresh pe:
+
+❌ 404 error aa sakta hai.
+
+---
+
+# 📌 BrowserRouter Fix
+
+Server ko configure karte hain to always serve:
+
+```txt id="’winiijlwm4"
+index.html
+```
+
+---
+
+# 📌 Example
+
+```jsx id="’winiijlwm9"
+<Route
+  path="/product/:id"
+  element={<Product />}
+/>
+```
+
+---
+
+# 📌 Benefits
+
+✅ Shareable URLs
+✅ Bookmark support
+✅ Better user experience
+
+---
+
+# 🎯 Interview Answer
+
+## ❓ Deep linking kaise handle karte ho?
+
+### ✅ Answer:
+
+Deep linking React Router routes ke through handle hota hai. BrowserRouter use karte waqt server configuration bhi required hoti hai taaki page refresh par 404 error na aaye.

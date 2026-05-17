@@ -275,6 +275,392 @@ int main() {
 👉 *Interpreter runs code line-by-line, while Compiler translates entire code before execution.*
 
 
+# 📌 Why JavaScript is Single-Threaded?
+
+JavaScript is called **single-threaded** because it has:
+
+* **One Call Stack**
+* Executes **one task at a time**
+
+This means JavaScript can perform only **one operation in a single thread** at a given moment.
+
+---
+
+# 🔹 Why was JavaScript designed as Single-Threaded?
+
+JavaScript was originally created for browsers to handle:
+
+* User interactions
+* DOM manipulation
+* Events
+
+If multiple threads changed the DOM at the same time, it could create:
+
+* Race conditions
+* Data inconsistency
+* Unexpected UI behavior
+
+So JavaScript uses a single thread to keep execution simple and predictable.
+
+---
+
+# 📌 Example
+
+```js id="yc3x7l"
+console.log("Start");
+
+console.log("Middle");
+
+console.log("End");
+```
+
+## ✅ Output
+
+```js id="g2tydx"
+Start
+Middle
+End
+```
+
+JavaScript executes code **line by line** using a single call stack.
+
+---
+
+# 📌 How Browser Executes JavaScript?
+
+Browser does not run only JavaScript.
+
+Browser has:
+
+* JS Engine
+* Web APIs
+* Callback Queue
+* Event Loop
+
+Together they execute asynchronous JavaScript.
+
+---
+
+# 🔥 Execution Flow
+
+## 1️⃣ Call Stack
+
+JavaScript code first goes into the **Call Stack**.
+
+Example:
+
+```js id="ehy6p6"
+console.log("Hello");
+```
+
+The function is pushed into stack and executed.
+
+---
+
+## 2️⃣ Web APIs
+
+Browser provides Web APIs like:
+
+* `setTimeout`
+* `fetch`
+* `DOM events`
+
+Example:
+
+```js id="1hz0pf"
+setTimeout(() => {
+  console.log("Timer Done");
+}, 2000);
+```
+
+`setTimeout` is handled by browser Web APIs, not directly by JS engine.
+
+---
+
+## 3️⃣ Callback Queue
+
+After timer completes, callback moves to:
+
+```txt id="mxjv1v"
+Callback Queue
+```
+
+---
+
+## 4️⃣ Event Loop
+
+Event Loop checks:
+
+* Is Call Stack empty?
+
+If yes:
+
+👉 Callback from queue moves to Call Stack.
+
+Then it executes.
+
+---
+
+# 📌 Complete Example
+
+```js id="j8n8j2"
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Inside Timeout");
+}, 0);
+
+console.log("End");
+```
+
+## ✅ Output
+
+```js id="9zc6qb"
+Start
+End
+Inside Timeout
+```
+
+---
+
+# 🔥 Why?
+
+Even though timeout is `0ms`:
+
+* `setTimeout` goes to Web APIs
+* Callback waits in queue
+* Event Loop pushes it later
+
+So synchronous code executes first.
+
+---
+
+# 📌 Important Components
+
+| Component      | Work                        |
+| -------------- | --------------------------- |
+| Call Stack     | Executes JS functions       |
+| Web APIs       | Browser handles async tasks |
+| Callback Queue | Stores completed callbacks  |
+| Event Loop     | Moves callbacks to stack    |
+
+---
+
+# 📌 Interview One-Line Answer
+
+> JavaScript is single-threaded because it uses a single call stack and executes one task at a time. The browser handles asynchronous operations using Web APIs, Callback Queue, and the Event Loop.
+
+
+````md id="j5k2xp"
+# ✅ JavaScript Engine (V8)
+
+## 🎯 Definition
+JavaScript Engine code ko execute karta hai.
+
+Chrome aur Node.js me mostly **V8 Engine** use hota hai.
+
+---
+
+# 🔥 V8 Engine Kya Karta Hai?
+
+- JavaScript code ko machine code me convert karta hai
+- Fast execution provide karta hai
+- Google ne develop kiya hai
+
+---
+
+# ✅ Interview Answer
+
+> V8 JavaScript engine hai jo Chrome aur Node.js me use hota hai.  
+> Ye JavaScript code ko machine code me convert karta hai for fast execution.
+
+---
+
+# ✅ Dynamic Typing
+
+## 🎯 Definition
+JavaScript dynamically typed language hai.
+
+Matlab:
+```js
+variable ka type runtime par decide hota hai
+````
+
+---
+
+# ✅ Example
+
+```js id="k7p2wm"
+let data = 10;
+
+data = "Hello";
+```
+
+Same variable me:
+
+* pehle number
+* baad me string
+
+store ho gaya ✅
+
+---
+
+# ✅ Interview Answer
+
+> JavaScript dynamically typed language hai because variable type runtime par automatically change ho sakta hai.
+
+---
+
+# ✅ Type Coercion
+
+## 🎯 Definition
+
+JavaScript automatically ek type ko dusre type me convert karta hai.
+
+---
+
+# ✅ Example
+
+```js id="m4x9qa"
+console.log("5" + 2);
+```
+
+## ✅ Output
+
+```js id="n2v8lk"
+52
+```
+
+Number `2` string me convert ho gaya.
+
+---
+
+# ✅ Another Example
+
+```js id="y7r3pd"
+console.log("5" - 2);
+```
+
+## ✅ Output
+
+```js id="q1t6mv"
+3
+```
+
+String `"5"` number me convert ho gaya.
+
+---
+
+# ✅ Interview Answer
+
+> Type coercion me JavaScript automatically data types convert karta hai during operations.
+
+---
+
+# ✅ NaN
+
+## 🎯 Definition
+
+NaN means:
+
+```js
+Not a Number
+```
+
+Jab invalid mathematical operation hota hai tab NaN aata hai.
+
+---
+
+# ✅ Example
+
+```js id="w8k2zt"
+console.log("hello" * 2);
+```
+
+## ✅ Output
+
+```js id="e5m7qx"
+NaN
+```
+
+---
+
+# ⚡ Important Point
+
+```js id="v4n1pk"
+typeof NaN
+```
+
+## ✅ Output
+
+```js id="b7r9tw"
+number
+```
+
+Interview me bahot puchte hain ✅
+
+---
+
+# ✅ Interview Answer
+
+> NaN ka meaning "Not a Number" hai.
+> Ye invalid numeric operations me aata hai.
+
+---
+
+# ✅ Comments in JavaScript
+
+Comments ignored hote hain by JavaScript engine.
+
+Used for:
+
+* explanation
+* notes
+* debugging
+
+---
+
+# ✅ Single Line Comment
+
+```js id="x3q8lm"
+// This is comment
+```
+
+---
+
+# ✅ Multi Line Comment
+
+```js id="f6p2wr"
+/*
+Multi line
+comment
+*/
+```
+
+---
+
+# ✅ Interview Answer
+
+> Comments readable code likhne aur explanation dene ke liye use hote hain.
+> JavaScript engine comments ko execute nahi karta.
+
+---
+
+# 🚀 Quick Revision Table
+
+| Topic          | Meaning                     |
+| -------------- | --------------------------- |
+| V8 Engine      | JS code execute karta       |
+| Dynamic Typing | Type runtime pe change hota |
+| Type Coercion  | Automatic type conversion   |
+| NaN            | Invalid number result       |
+| Comments       | Non-executable notes        |
+
+
+
+
+
+
 
 
 

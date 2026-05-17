@@ -784,5 +784,458 @@ factorialTwo(5)
 120
 ```
 
+````md
+# 📌 Flatten Array in JavaScript
+
+---
+
+# 1. Using flat() Method
+
+## Program
+
+```js
+const arr = [1, [2, 3], [4, [5, 6]]];
+
+const result = arr.flat(Infinity); 
+// const result = arr.flat(1);
+// const result = arr.flat(2);
+
+console.log(result);
+````
+
+## Output
+
+```js
+[1, 2, 3, 4, 5, 6]
+```
+
+---
+
+# 2. Without Method (Using Recursion)
+
+* Jab koi function khud ko hi call karta hai usko Recursive Function bolte hai.
+
+## Program
+
+```js
+function flattenArray(arr) {
+
+  let result = [];
+
+  for (let item of arr) {
+
+    if (Array.isArray(item)) {
+
+      result = result.concat(flattenArray(item));
+
+    } else {
+
+      result.push(item);
+    }
+  }
+
+  return result;
+}
+
+console.log(flattenArray([1, [2, 3], [4, [5, 6]]]));
+
+******************************************************OR******************************************************
+
+let result = [];
+function flattenArray(arr){
+  for(let i = 0 ; i<arr.length ; i++){
+
+    if(Array.isArray(arr[i])){
+      flattenArray(arr[i]) // recursion function 
+    }else{
+      result.push(arr[i])
+    }
+    
+  }
+}
+
+flattenArray([1, [2, 3], [4, [5, 6]]])
+console.log("result",result)
+```
+
+## Output
+
+```js
+[1, 2, 3, 4, 5, 6]
+```
+
+
+# 📌 String में Vowels Count और Print Program
+
+## 1. Using `includes()` Method
+
+```js id="xkn9e1"
+// Using includes() method
+
+function checkVowel(e) {
+  let ele = e.toLowerCase();
+  let count = 0;
+  let vowel = "aeiou";
+  let result = "";
+
+  for (let i = 0; i < ele.length; i++) {
+    if (vowel.includes(ele[i])) {
+      count++;
+      result += ele[i];
+    }
+  }
+
+  console.log("count", count);   // 7
+  console.log("result", result); // eooaeou
+
+  return count;
+}
+
+console.log(checkVowel("hello how are yoU"));
+```
+
+# 2. Without Using Any Method
+
+```js id="qf7t0g"
+// Without using includes() method
+
+function checkVowelOne(e) {
+  let ele = e.toLowerCase();
+  let count = 0;
+  let result = "";
+
+  for (let i = 0; i < ele.length; i++) {
+    let ch = ele[i];
+
+    if ( ch === "a" || ch === "e" || ch === "i" || ch === "o" || ch === "u") 
+    {
+      count++;
+      result += ele[i];
+    }
+  }
+
+  console.log("count", count);   // 7
+  console.log("result", result); // eooaeou
+
+  return count;
+}
+
+console.log(checkVowelOne("hello how are yoU"));
+```
+
+# Union of Array in JavaScript
+
+## 1. Union With Method (`Set`)
+
+```javascript
+// union(+) combine two arrays with removing duplicates
+
+const arr1 = [1, 2, 3];
+const arr2 = [3, 4, 5];
+
+const resultData = [...new Set([...arr1, ...arr2])];
+
+console.log("Union Result With Method:", resultData);
+```
+
+### Output
+
+```javascript
+Union Result With Method: [1, 2, 3, 4, 5]
+```
+
+---
+
+## 2. Union Without Method (`includes` + loop)
+
+* Union combines all unique elements from multiple arrays.
+
+```javascript
+const arr3 = [1, 2, 3];
+const arr4 = [3, 4, 5];
+
+let result = [];
+
+// First array values
+for (let i = 0; i < arr3.length; i++) {
+  if (!result.includes(arr3[i])) {
+    result.push(arr3[i]);
+  }
+}
+
+// Second array values
+for (let i = 0; i < arr4.length; i++) {
+  if (!result.includes(arr4[i])) {
+    result.push(arr4[i]);
+  }
+}
+
+console.log("Union Result Without Method:", result);
+```
+
+### Output
+
+```javascript
+Union Result Without Method: [1, 2, 3, 4, 5]
+```
+
+
+# Intersection of Array in JavaScript
+
+## 1. Intersection With Method (`filter` + `includes`)
+
+* Intersection(&) returns only common elements between arrays.
+
+```javascript id="0q6c8f"
+
+const arr1 = [1, 2, 3];
+const arr2 = [3, 4, 5];
+
+const result = arr1.filter((ele) => arr2.includes(ele));
+
+console.log("Intersection With Method:", result);
+```
+
+### Output
+
+```javascript id="s7n2kx"
+Intersection With Method: [3]
+```
+
+---
+
+## 2. Intersection Without Method (`for loop`)
+
+```javascript id="z5v1mc"
+const arr3 = [1, 2, 3, 4];
+const arr4 = [3, 4, 5, 1];
+
+let result2 = [];
+
+for (let i = 0; i < arr3.length; i++) {
+  for (let j = 0; j < arr4.length; j++) {
+    if (arr3[i] === arr4[j]) {
+      result2.push(arr3[i]);
+    }
+  }
+}
+
+console.log("Intersection Without Method:", result2);
+```
+
+### Output
+
+```javascript id="v3f8qa"
+Intersection Without Method: [1, 3, 4]
+```
+
+
+# Word Count in JavaScript
+
+---
+
+# 1. Using Method
+
+```javascript
+const str = "hello How are you all";
+const result = str.trim().split(" ").length;
+
+console.log("result", result);
+````
+
+## Output
+
+```javascript
+result 5
+```
+
+---
+
+# 2. Without Method (Using For Loop)
+
+```javascript
+function wordCount(word) {
+  let count = 0;
+
+  for (let i = 0; i < word.length; i++) {
+
+    // Agar current character space hai
+    // aur previous character space nahi hai
+    // to word complete hua
+    if (word[i] === " " && word[i - 1] !== " ") {
+      count++;
+    }
+  }
+
+  return count + 1;
+}
+
+console.log(wordCount("hello How are you all"));
+```
+
+## Output
+
+```javascript
+5
+```
+
+# Double Array Elements Using map() in JavaScript - (map() का use करके array को double करना)
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+const result = arr.map((item) => item * 2);
+
+console.log(result);
+````
+
+## Output
+
+```javascript
+[2, 4, 6, 8, 10]
+```
+
+# Filter Positive Numbers in JavaScript - (filter() से positive numbers निकालना)
+
+```javascript
+const numbers = [-5, 10, -2, 7, -1, 15];
+
+const positiveNumbers = numbers.filter((num) => num > 0);
+
+console.log(positiveNumbers);
+````
+
+## Output
+
+```javascript id="c9r2n5"
+[10, 7, 15]
+```
+
+
+# find() से first matching value ढूंढना
+
+`find()` method array me se first matching value return karta hai.
+
+```javascript id="zmnl0m"
+const numbers = [10, 20, 30, 40];
+
+const result = numbers.find((num) => num > 20);
+
+console.log(result);
+```
+
+## Output
+
+```javascript id="8llhhn"
+30
+```
+
+
+# Example 2
+
+```javascript id="e8t9bc"
+const users = [
+  { id: 1, name: "Krupa" },
+  { id: 2, name: "Rahul" }
+];
+
+const result = users.find((user) => user.id === 2);
+
+console.log(result);
+```
+
+## Output
+
+```javascript id="bx6y3x"
+{ id: 2, name: "Rahul" }
+```
+
+
+# includes() से value exist करती है या नहीं check करना
+
+`includes()` method check karta hai ki value array ya string me exist karti hai ya nahi.
+
+# Example 1 (Array)
+
+```javascript id="4q2zwd"
+const numbers = [10, 20, 30, 40];
+
+const result = numbers.includes(20);
+
+console.log(result);
+```
+
+## Output
+
+```javascript id="9shd7r"
+true
+```
+
+# Example 2 (String)
+
+```javascript id="gx99mk"
+const str = "Hello JavaScript";
+
+const result = str.includes("Java");
+
+console.log(result);
+```
+
+## Output
+
+```javascript id="70we4r"
+true
+```
+
+
+# Swap Two Numbers in JavaScript
+
+# 1. With Method (Using Destructuring)
+
+```javascript
+let a = 10;
+let b = 20;
+
+[a, b] = [b, a];
+
+console.log("a =", a);
+console.log("b =", b);
+````
+
+## Output
+
+```javascript id="t8u0m7"
+a = 20
+b = 10
+```
+
+---
+
+# 2. Without Method (Using Third Variable)
+
+```javascript id="o3r8fy"
+let a = 10;
+let b = 20;
+
+let temp = a;
+a = b;
+b = temp;
+
+console.log("a =", a);
+console.log("b =", b);
+```
+
+## Output
+
+```javascript id="h5m7qp"
+a = 20
+b = 10
+```
+
+
+
+
+
+
 
 

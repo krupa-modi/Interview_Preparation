@@ -638,3 +638,7 @@ Arrow functions are best for callbacks, while normal functions are better for ob
 | `arguments` | Yes                  | No                        |
 | Hoisting    | Full                 | Partial                   |
 | Best For    | Methods/constructors | Callbacks/short functions |
+
+
+
+

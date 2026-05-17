@@ -659,4 +659,251 @@ Say this 👇
 
 👉 “Parameters are placeholders, arguments are real values supplied to those placeholders.” 🚀
 
+````md id="k7x2qp"
+# ✅ Default Parameters in JavaScript
+
+# 🔥 What are Default Parameters?
+
+Agar function call me value pass na ho,
+to default value use hoti hai.
+
+---
+
+# ✅ Example
+
+```js
+function greet(name = "Guest") {
+  console.log(name);
+}
+
+greet();
+````
+
+## ✅ Output
+
+```js
+Guest
+```
+
+---
+
+# ✅ Passing Value
+
+```js id="q9m4tw"
+greet("Aman");
+```
+
+## ✅ Output
+
+```js id="h2p8vl"
+Aman
+```
+
+---
+
+# 🎯 Interview Definition
+
+> Default parameters function parameters ko default value dene ke liye use hote hain.
+
+---
+
+# 🚀 Real Example
+
+```js id="u4x7mk"
+function sum(a, b = 0) {
+  return a + b;
+}
+
+console.log(sum(5));
+```
+
+## ✅ Output
+
+```js id="r1m9qx"
+5
+```
+
+---
+
+# ✅ Rest Parameters
+
+# 🔥 What are Rest Parameters?
+
+Multiple values ko single array me collect karta hai.
+
+```js id="e7q2vp"
+...
+```
+
+operator use hota hai.
+
+---
+
+# ✅ Example
+
+```js id="v8m1tw"
+function numbers(...nums) {
+  console.log(nums);
+}
+
+numbers(1, 2, 3, 4);
+```
+
+## ✅ Output
+
+```js id="z5p7la"
+[1, 2, 3, 4]
+```
+
+---
+
+# 🔍 Explanation
+
+```js id="n3x8qt"
+...nums
+```
+
+sab arguments ko array me convert kar deta hai.
+
+---
+
+# ✅ Sum Example
+
+```js id="b6m4wr"
+function sum(...nums) {
+
+  let total = 0;
+
+  for (let num of nums) {
+    total += num;
+  }
+
+  return total;
+}
+
+console.log(sum(1, 2, 3));
+```
+
+## ✅ Output
+
+```js id="k1p9vx"
+6
+```
+
+
+# 🎯 Interview Definition
+
+> Rest parameters multiple arguments ko single array me collect karte hain.
+
+---
+
+# ⚠️ Important Point
+
+Rest parameter:
+
+```js id="f4q7mt"
+always last parameter hota hai
+```
+
+✅ Correct
+
+```js id="w8m2lp"
+function test(a, ...nums)
+```
+
+❌ Wrong
+
+```js id="t5p1qx"
+function test(...nums, a)
+```
+
+---
+
+# ✅ Callback Functions
+
+# 🔥 What is Callback Function?
+
+Ek function jo dusre function me argument ke roop me pass hota hai.
+
+---
+
+# ✅ Example
+
+```js id="m7x4tw"
+function greet(name) {
+  console.log("Hello " + name);
+}
+
+function processUser(callback) {
+  callback("Aman");
+}
+
+processUser(greet);
+```
+
+## ✅ Output
+
+```js id="q2m8vp"
+Hello Aman
+```
+
+---
+
+# 🔍 Explanation
+
+```js id="y5p1lx"
+greet
+```
+
+callback function hai.
+
+Ye:
+
+```js id="c8m4qt"
+processUser()
+```
+
+ke andar call hua.
+
+---
+
+# 🚀 Real Example
+
+## setTimeout()
+
+```js id="r3x7mk"
+setTimeout(() => {
+  console.log("Hello");
+}, 1000);
+```
+
+Arrow function callback hai.
+
+---
+
+# 🎯 Interview Definition
+
+> Callback function ek function hota hai jo dusre function me argument ke roop me pass kiya jata hai aur later execute hota hai.
+
+---
+
+# 🚀 Quick Revision Table
+
+| Concept           | Meaning                         |
+| ----------------- | ------------------------------- |
+| Default Parameter | Default value dena              |
+| Rest Parameter    | Multiple values ko array banana |
+| Callback Function | Function as argument            |
+
+---
+
+# 💡 One-Line Memory Trick
+
+```js id="n6p2vw"
+Default → fallback value
+
+Rest → collect values
+
+Callback → function inside function
+```
 
