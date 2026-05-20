@@ -1606,3 +1606,176 @@ function NotFound() {
 
 A 404 page is implemented using `path="*"` which catches all unmatched routes and renders a Not Found component.
 
+
+# 📘 replace: true Navigation Me Kya Karta Hai?
+
+---
+
+# 📌 Definition
+
+`replace: true` current history entry ko replace karta hai instead of adding a new entry in browser history.
+
+---
+
+# 📌 Normal Navigation
+
+```jsx id="’winiijlwm"
+navigate("/dashboard");
+```
+
+---
+
+# 📌 History Stack
+
+```txt id="’winiijlwm7"
+/login → /dashboard
+```
+
+Back button dabane par:
+
+❌ User login page par wapas ja sakta hai.
+
+---
+
+# 📘 Using replace: true
+
+```jsx id="’winiijlwm2"
+navigate("/dashboard", {
+  replace: true
+});
+```
+
+---
+
+# 📌 What Happens?
+
+Current page history se replace ho jata hai.
+
+---
+
+# 📌 Result
+
+```txt id="’winiijlwm5"
+/dashboard
+```
+
+Back button se:
+
+❌ Login page nahi open hoga.
+
+---
+
+# 📌 Common Use Cases
+
+✅ Login redirect
+✅ Logout redirect
+✅ Payment success page
+
+---
+
+# 🎯 Interview Answer
+
+## ❓ What does replace: true do in navigation?
+
+### ✅ Answer:
+
+`replace: true` replaces the current history entry instead of adding a new one, preventing users from going back to the previous page.
+
+---
+# 📌 What is Immutable Update?
+
+Redux/React me original state directly modify nahi karte.
+
+Instead:
+
+# 👉 New copy create karke update karte hain.
+
+---
+
+# ❌ Wrong Way (Mutation)
+
+```js id="’winiijlwm0"
+state.count = 5;
+```
+
+Directly state modify ho raha hai.
+
+---
+
+# ✅ Correct Immutable Update
+
+```js id="’winiijlwm8"
+return {
+  ...state,
+  count: 5
+};
+```
+
+---
+
+# 📌 Array Immutable Update
+
+## ✅ Add Item
+
+```js id="’winiijlwm3"
+return {
+  ...state,
+  users: [
+    ...state.users,
+    newUser
+  ]
+};
+```
+
+---
+
+# 📌 Update Object
+
+```js id="’winiijlwm6"
+return {
+  ...state,
+  user: {
+    ...state.user,
+    name: "Krupa"
+  }
+};
+```
+
+---
+
+# 📘 Why Immutable Updates Important?
+
+✅ Predictable state
+✅ React re-render detection
+✅ Better debugging
+✅ Performance optimization
+
+---
+
+# 📘 Important Point in Redux Toolkit
+
+Redux Toolkit internally:
+
+# 👉 Immer
+
+use karta hai.
+
+Isliye ye syntax allowed hota hai:
+
+```js id="’winiijlwm1"
+state.count += 1;
+```
+
+Lekin internally immutable update hi hota hai.
+
+---
+
+# 🎯 Interview Answer
+
+## ❓ How do you perform immutable updates?
+
+### ✅ Answer:
+
+Immutable updates are done by creating new copies of objects or arrays using spread operators instead of directly modifying the original state.
+
+

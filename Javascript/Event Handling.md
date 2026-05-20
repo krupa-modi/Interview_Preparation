@@ -716,3 +716,191 @@ controller.abort();
 addEventListener() is used to attach events to elements with support for bubbling, capturing, and multiple handlers.
 ```
 
+````md id="m8x2qp"
+# ✅ JavaScript Events (Interview Notes)
+
+# ✅ 1. addEventListener()
+
+`addEventListener()` is used to attach an event to an element.
+
+---
+
+# ✅ Syntax
+
+```js
+element.addEventListener("event", callback);
+````
+
+---
+
+# ✅ Example
+
+```js id="p4m8tw"
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", function() {
+  console.log("Button Clicked");
+});
+```
+
+---
+
+# 🎯 Interview Definition
+
+> `addEventListener()` is used to attach event handlers to HTML elements.
+
+---
+
+# ✅ Advantages of addEventListener()
+
+✅ Multiple events attach kar sakte
+✅ Better than inline events
+✅ Supports event bubbling/capturing
+
+---
+
+# ✅ 2. Event Object
+
+When an event occurs,
+JavaScript automatically passes an event object.
+
+It contains information about the event.
+
+---
+
+# ✅ Example
+
+```js id="v7q1la"
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", function(event) {
+
+  console.log(event);
+
+});
+```
+
+---
+
+# 🔥 Important Properties
+
+| Property                  | Meaning                      |
+| ------------------------- | ---------------------------- |
+| `event.target`            | Element that triggered event |
+| `event.type`              | Event type                   |
+| `event.preventDefault()`  | Prevent default behavior     |
+| `event.stopPropagation()` | Stop bubbling                |
+
+---
+
+# ✅ event.target Example
+
+```js id="k5r2vt"
+btn.addEventListener("click", function(event) {
+
+  console.log(event.target);
+
+});
+```
+
+---
+
+# 🎯 Interview Definition
+
+> Event object contains information related to the triggered event.
+
+---
+
+# ✅ 3. stopPropagation()
+
+Used to stop event bubbling.
+
+---
+
+# 🔥 What is Event Bubbling?
+
+Event child → parent → grandparent tak move karta hai.
+
+---
+
+# ✅ Example Without stopPropagation()
+
+```js id="x2m9pw"
+<div id="parent">
+  <button id="child">Click</button>
+</div>
+```
+
+```js id="f8x2lm"
+document.getElementById("parent")
+.addEventListener("click", () => {
+  console.log("Parent Clicked");
+});
+
+document.getElementById("child")
+.addEventListener("click", () => {
+  console.log("Button Clicked");
+});
+```
+
+---
+
+# ✅ Output
+
+```js id="r4p7qa"
+Button Clicked
+Parent Clicked
+```
+
+Because event bubbled to parent.
+
+---
+
+# ✅ Using stopPropagation()
+
+```js id="z6m1tw"
+document.getElementById("child")
+.addEventListener("click", (event) => {
+
+  event.stopPropagation();
+
+  console.log("Button Clicked");
+});
+```
+
+---
+
+# ✅ Output
+
+```js id="c2q8vp"
+Button Clicked
+```
+
+Parent event stop ho gaya.
+
+---
+
+# 🎯 Interview Definition
+
+> `stopPropagation()` prevents an event from bubbling to parent elements.
+
+---
+
+# 🚀 Quick Revision Table
+
+| Concept          | Purpose           |
+| ---------------- | ----------------- |
+| addEventListener | Attach event      |
+| Event Object     | Event information |
+| stopPropagation  | Stop bubbling     |
+| event.target     | Triggered element |
+
+---
+
+# 💡 One-Line Memory Trick
+
+```js id="j7p3lx"
+stopPropagation() stops event from moving to parent elements.
+```
+
+

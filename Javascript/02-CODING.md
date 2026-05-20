@@ -751,7 +751,6 @@ console.log(factorialOne(5))
 120
 ```
 
----
 
 # Factorial Program Using Loop
 
@@ -784,10 +783,6 @@ factorialTwo(5)
 120
 ```
 
-````md
-# 📌 Flatten Array in JavaScript
-
----
 
 # 1. Using flat() Method
 
@@ -1233,9 +1228,568 @@ b = 10
 ```
 
 
+# Program: Missing Number in Array Using for Loop
+
+## Program 1
+
+```js
+let arr = [1,2,3,5,6,7,8,9]; // ismain ek hi number missing hai 
+
+let n = arr.length + 1;
+let totalSum = (n * (n + 1)) / 2;// formula hai
+let arrSum = 0;
+
+for(let i = 0; i < arr.length ; i++){
+  arrSum += arr[i];
+}
+
+let missingNumber = totalSum - arrSum;
+
+console.log("Missing Number" , missingNumber);
+````
+
+## Output
+
+```js
+Missing Number 4
+```
+
+---
+
+# Program: Missing Number in Array Using reduce()
+
+## Program 2
+
+```js
+let arr1 = [1,2,3,5,6,8,9]; // ismian 2 number mssing hai so o/p main dono value ka sum hai but total sum ka formula one missing value ke liye use hota hai
+
+let n1  = arr1.length + 2;
+
+let totalSum1 = (n1 * (n1 + 1)) / 2;
+
+let result = arr1.reduce((acc,curr) => acc + curr,0);
+
+let missingNumber1 = totalSum1 - result;
+
+console.log("Missing Number1" , missingNumber1);
+```
+
+## Output
+
+```js
+Missing Number1 11
+```
+
+## Why Output is 11?
+
+Because array has two missing numbers:
+
+```js
+4 and 7
+```
+
+Formula approach adds both missing numbers:
+
+```js
+4 + 7 = 11
+```
+
+So output becomes:
+
+```js
+11
+```
+
+
+# First Non-Repeating Character in JavaScript
+
+# 1. Using String Methods (`indexOf` and `lastIndexOf`)
+
+## Program
+
+```javascript
+const str = "aabbbcddef";
+let result = [];
+
+for (let char of str) {
+  if (str.indexOf(char) === str.lastIndexOf(char)) {
+    result.push(char);
+    break;
+  }
+}
+
+console.log(result.join(","));
+```
+
+## Output
+
+```javascript
+c
+```
+---
+
+# 2. Without Using String Methods (Nested Loop)
+
+## Program
+
+```javascript
+function strCount(str) {
+  for (let i = 0; i < str.length; i++) {
+    let count = 0;
+
+    for (let j = 0; j < str.length; j++) {
+      if (str[i] === str[j]) {
+        count++;
+      }
+    }
+
+    if (count === 1) {
+      return str[i];
+    }
+  }
+}
+
+console.log(strCount("aabbbcddef"));
+```
+
+## Output
+
+```javascript
+c
+```
+
+
+# Non-Repeating Characters in JavaScript
+
+# 1. Using `indexOf()` and `lastIndexOf()`
+
+## Program
+
+```javascript id="vf1qpn"
+const str = "aabbbcddef";
+let result = [];
+
+for (let char of str) {
+
+  if (str.indexOf(char) === str.lastIndexOf(char)) {
+    result.push(char);
+  }
+
+}
+
+console.log(result.join(","));
+```
+
+## Output
+
+```javascript id="v4uw86"
+c,e,f
+```
+
+---
+
+# 2. Without Using Methods (Nested Loop)
+
+## Program
+
+```javascript id="v0y3bm"
+function strCount(str) {
+
+  let total = 0;
+
+  for (let i = 0; i < str.length; i++) {
+
+    let count = 0;
+
+    for (let j = 0; j < str.length; j++) {
+
+      if (str[i] === str[j]) {
+        count++;
+      }
+
+    }
+
+    if (count === 1) {
+      console.log(str[i]);
+      total++;
+    }
+
+  }
+
+  console.log("Total Length", total);
+
+}
+
+strCount("aabbbcddef");
+```
+
+## Output
+
+```javascript id="t1s1mk"
+c
+e
+f
+
+Total Length 3
+```
+
+
+# Merge Two Arrays in JavaScript
+
+Example:
+
+```js id="8r0e5m"
+[1,2,3,4] + [5,6,7,8]
+```
+
+Merged Array:
+
+```js id="7c4m2n"
+[1,2,3,4,5,6,7,8]
+```
+
+---
+
+# 1. Using Methods
+
+## Using `concat()`
+
+### Program
+
+```javascript id="1g5m9v"
+const arr = [1,2,3,4];
+const arr1 = [5,6,7,8];
+
+const result = arr.concat(arr1);
+
+console.log("Merged Two Arrays:", result);
+```
+
+### Output
+
+```javascript id="x5m3z7"
+Merged Two Arrays: [1,2,3,4,5,6,7,8]
+```
+
+---
+
+## Using Spread Operator
+
+### Program
+
+```javascript id="q4z2lm"
+const arr = [1,2,3,4];
+const arr1 = [5,6,7,8];
+
+const result = [...arr, ...arr1];
+
+console.log("Merged Two Arrays:", result);
+```
+
+### Output
+
+```javascript id="6l7p1v"
+Merged Two Arrays: [1,2,3,4,5,6,7,8]
+```
+
+---
+
+# 2. Without Using Methods
+
+## Program
+
+```javascript id="n3v9xq"
+const arr = [1,2,3,4];
+const arr1 = [5,6,7,8];
+
+let result = [];
+
+// First Array Elements
+for(let i = 0; i < arr.length; i++) {
+  result.push(arr[i]);
+}
+
+// Second Array Elements
+for(let i = 0; i < arr1.length; i++) {
+  result.push(arr1[i]);
+}
+
+console.log("Merged Two Arrays:", result);
+```
+
+### Output
+
+```javascript id="p9m4tw"
+Merged Two Arrays: [1,2,3,4,5,6,7,8]
+```
 
 
 
+# Two Sum problem 
+* Two sum probelm me hume array ke andar aise 2 numbers find karne hote hai jinka sum target ke equal ho.  
+Agar sum match ho jaye to unke indexes aur values return karte hai.
 
 
+```js
+function twoSum(num, target) {
+
+  for (let i = 0; i < num.length; i++) {
+
+    for (let j = i + 1; j < num.length; j++) {
+
+      if (num[i] + num[j] === target) {
+        // return [i,j] // [0,2]
+        return {
+          indexes: [i, j],
+          values: [num[i], num[j]]
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+console.log(twoSum([2, 7, 11, 15], 13))
+```
+
+---
+
+# Output
+
+```js
+{
+  indexes: [0, 2],
+  values: [2, 11]
+}
+```
+
+
+# Move All Zeros To End
+
+# 1. With Method
+
+```js
+function zeroOne(arr){
+
+  const withoutZero = arr.filter((num) => num !== 0);
+  const withZero = arr.filter((num) => num === 0);
+  
+  const result = withoutZero.concat(withZero)
+  
+  return result
+}
+
+console.log(zeroOne([1, 0, 2, 0, 3, 0, 4]))
+```
+
+## Output
+
+```js
+[1, 2, 3, 4, 0, 0, 0]
+```
+
+---
+
+# 2. Without Method
+
+```js
+function zeroTwo(arr){
+
+  let count = 0;
+  let emptyArr = [];
+  
+  for(let i = 0 ; i < arr.length ; i++){
+
+    if(arr[i] !== 0){
+      emptyArr.push(arr[i])
+
+    }else{
+      count ++ 
+    }
+
+  }
+
+  for(let i = 0 ; i < count ; i++){
+    emptyArr.push(0)
+  }
+
+  return emptyArr
+}
+
+console.log(zeroTwo([1, 0, 2, 0, 3, 0, 4]))
+```
+
+## Output
+
+```js
+[1, 2, 3, 4, 0, 0, 0]
+```
+
+
+# Fibonacci Series Program
+
+Fibonacci series me har next number pichle 2 numbers ka sum hota hai.
+
+```js
+function fibonacci(num){
+
+  let a  = 0;
+  let b = 1;
+  
+  console.log(a)
+  console.log(b)
+  
+  for(let i = 2 ; i < num ; i++){
+    let c = a + b 
+    console.log(c)
+    a = b;
+    b = c
+  }
+}
+
+fibonacci(9)
+```
+
+---
+
+# Output
+
+```js
+0
+1
+1
+2
+3
+5
+8
+13
+21
+```
+
+# Longest Substring Without Repeating Characters
+
+Is program me string ka longest substring find kiya jata hai jisme koi bhi character repeat na ho.
+
+---
+
+# Program
+
+```js
+function strData(str){
+
+  let max = 0;
+  let temp = ""
+
+  for(let i = 0 ; i < str.length ; i++){ // starting point choose karta hai
+
+    for(let j = i ; j < str.length ; j++){ // remaining elements check karta hai
+
+      if(temp.includes(str[j])){
+        break;
+      }
+
+      temp += str[j]
+      
+      if(temp.length > max){
+        max = temp.length
+      }
+
+    }
+
+  }
+
+  // return {temp,max};//{ temp: 'abc', max: 3 }
+  // return [temp,max] // [ 'abc', 3 ]
+  // return [temp,max].join(",") // abc,3
+  // return temp // abc
+  return max // 3
+}
+
+console.log(strData("abcabcbb"))
+```
+
+---
+
+# Output
+
+```js
+3
+```
+
+# String Compression OR String compression 
+
+Is program me string ke repeated characters ko count karke compressed format me convert kiya jata hai.
+
+```js
+function strData(str){
+
+  let temp = "";
+  let count = 1;
+  
+  for(let i = 0 ; i < str.length ; i++){
+
+    if(str[i] === str[i+1]){
+      count++
+    }else{
+      temp += str[i] + count
+      count = 1
+    }
+
+  }
+
+  return temp
+}
+
+console.log(strData("aaabbcc"))
+```
+
+---
+
+# Output
+
+```js
+a3b2c2
+```
+
+
+# String Character Count(different sequence)
+
+Is program me string ke har character ka total count find karke compressed format me return kiya jata hai.
+
+# Program
+
+```js
+function strData(str){
+
+  let temp = "";
+  for(let i = 0 ; i < str.length ; i++){
+    let count = 0;
+    for(let j = 0 ; j < str.length ; j++){
+      if(str[i] === str[j]){
+        count++
+      }
+    }
+
+    if(!temp.includes(str[i])){
+      temp += str[i] + count
+    }
+
+  }
+
+  return temp
+}
+
+console.log(strData("aabbaccabc"))
+```
+
+---
+
+# Output
+
+```js
+a4b3c3
+```
 

@@ -550,3 +550,229 @@ Arrow functions inherit `this` from their lexical scope.
 | Constructor     | New object         |
 | Event listener  | Triggered element  |
 | Class method    | Class instance     |
+
+````md id="k8x2qp"
+# ✅ JavaScript `this` Keyword (Interview Notes)
+
+# ✅ What is `this`?
+
+`this` refers to the object that is currently executing the function.
+
+Its value depends on how the function is called.
+
+---
+
+# ✅ 1. `this` in Global Scope
+
+In browser global scope,
+`this` refers to the `window` object.
+
+---
+
+# ✅ Example
+
+```js
+console.log(this);
+````
+
+## ✅ Output (Browser)
+
+```js id="m7p2vx"
+window
+```
+
+---
+
+# 🎯 Interview Definition
+
+> In global scope, `this` refers to the global object (`window` in browsers).
+
+---
+
+# ✅ 2. `this` in Function
+
+In a normal function,
+`this` refers to the global object in non-strict mode.
+
+---
+
+# ✅ Example
+
+```js id="p4m8tw"
+function test() {
+  console.log(this);
+}
+
+test();
+```
+
+## ✅ Output (Browser)
+
+```js id="v7q1la"
+window
+```
+
+---
+
+# ⚠️ Strict Mode
+
+```js id="k5r2vt"
+"use strict";
+
+function test() {
+  console.log(this);
+}
+
+test();
+```
+
+## ✅ Output
+
+```js id="x2m9pw"
+undefined
+```
+
+---
+
+# 🎯 Interview Definition
+
+> In a regular function, `this` refers to the global object in non-strict mode and `undefined` in strict mode.
+
+---
+
+# ✅ 3. `this` in Object Method
+
+Inside an object method,
+`this` refers to the current object.
+
+---
+
+# ✅ Example
+
+```js id="f8x2lm"
+const user = {
+
+  name: "Aman",
+
+  greet: function() {
+    console.log(this.name);
+  }
+};
+
+user.greet();
+```
+
+## ✅ Output
+
+```js id="r4p7qa"
+Aman
+```
+
+---
+
+# 🔍 Explanation
+
+```js id="z6m1tw"
+this = user object
+```
+
+---
+
+# 🎯 Interview Definition
+
+> Inside an object method, `this` refers to the object calling the method.
+
+---
+
+# ✅ 4. `this` in Arrow Function
+
+Arrow functions do NOT have their own `this`.
+
+They inherit `this` from the parent scope.
+
+---
+
+# ✅ Example
+
+```js id="c2q8vp"
+const user = {
+
+  name: "Aman",
+
+  greet: () => {
+    console.log(this.name);
+  }
+};
+
+user.greet();
+```
+
+## ✅ Output
+
+```js id="j7p3lx"
+undefined
+```
+
+---
+
+# 🔍 Explanation
+
+Arrow function ka own `this` nahi hota.
+
+It uses lexical `this`
+(from parent scope).
+
+---
+
+# ✅ Best Example
+
+```js id="m9q2wr"
+const user = {
+
+  name: "Aman",
+
+  greet: function() {
+
+    setTimeout(() => {
+      console.log(this.name);
+    }, 1000);
+
+  }
+};
+
+user.greet();
+```
+
+## ✅ Output
+
+```js id="s5x8tv"
+Aman
+```
+
+---
+
+# 🎯 Interview Definition
+
+> Arrow functions do not bind their own `this`; they inherit it from the surrounding scope.
+
+---
+
+# 🚀 Quick Revision Table
+
+| Situation       | Value of `this`        |
+| --------------- | ---------------------- |
+| Global scope    | `window`               |
+| Normal function | `window` / `undefined` |
+| Object method   | Current object         |
+| Arrow function  | Parent scope `this`    |
+
+---
+
+# 💡 One-Line Memory Trick
+
+```js id="w1m4qp"
+Normal function → own this
+
+Arrow function → parent this
+```
+

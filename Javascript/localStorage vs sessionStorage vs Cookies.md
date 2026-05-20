@@ -17,8 +17,18 @@ Used for:
 
 Data permanently browser me store hota hai  
 until manually delete na karo.
+* localStorage synchronous hota hai
 
----
+
+# LocalStorage me Object / Array Store Kaise Kare?
+* LocalStorage sirf string store karta hai Store Object
+
+let user = { name: "Krupa", age: 25 };
+localStorage.setItem("user", JSON.stringify(user));
+
+Get Object
+let data = JSON.parse(localStorage.getItem("user"));
+
 
 # 🚀 Example
 
@@ -247,4 +257,8 @@ localStorage → permanent
 sessionStorage → tab tak
 
 cookies → server communication
+
+ LocalStorage & Cookies me difference?
+ * Cookies server ke saath jati hain, localStorage nahi
+
 ```

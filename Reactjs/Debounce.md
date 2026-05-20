@@ -111,8 +111,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [input, setInput] = useState("");
-  const [debouncedValue, setDebouncedValue] =
-    useState("");
+  const [debouncedValue, setDebouncedValue] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {

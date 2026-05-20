@@ -656,6 +656,283 @@ comment
 | NaN            | Invalid number result       |
 | Comments       | Non-executable notes        |
 
+````md
+
+# JavaScript Notes
+
+## continue
+- `continue` → skip current loop(iteration)
+
+```js
+for(let i = 1; i <= 5; i++) {
+  if(i === 3) continue;
+
+  console.log(i);
+}
+````
+
+Output:
+1 2 4 5
+
+---
+
+## return
+
+* `return` function se value wapas bhejne ke liye use hota hai.
+* Function execution bhi stop ho jata hai.
+* `return` ke baad ka code execute nahi hota.
+
+### Example
+
+```js
+function add(a, b) {
+  return a + b;
+
+  console.log("Hello"); // execute nahi hoga
+}
+
+console.log(add(2, 3));
+```
+
+---
+
+# while Loop
+
+* Condition true tak loop chalta hai.
+
+## Syntax
+
+```js
+while(condition) {
+
+}
+```
+
+## Example
+
+```js
+let i = 1;
+
+while(i <= 5) {
+  console.log(i);
+  i++;
+}
+```
+
+Output:
+1 2 3 4 5
+
+---
+
+# do while Loop
+
+* Pehle code execute hota hai
+* Phir condition check hoti hai
+* `do while` minimum 1 baar execute hota hai
+
+## Syntax
+
+```js
+do {
+
+} while(condition);
+```
+
+## Example
+
+```js
+let i = 1;
+
+do {
+  console.log(i);
+  i++;
+} while(i <= 5);
+```
+
+Output:
+1 2 3 4 5
+
+---
+
+# forEach()
+
+* Array method hai
+* Har element par callback function run karta hai
+
+## Example
+
+```js
+const arr = [1, 2, 3];
+
+arr.forEach((item) => {
+  console.log(item);
+});
+```
+
+Output:
+1 2 3
+
+---
+
+# Important Point
+
+* `forEach()` sirf arrays par use hota hai
+
+| Loop                         | forEach             |
+| ---------------------------- | ------------------- |
+| Arrays & objects dono        | Sirf arrays         |
+| break/continue use kar sakte | break/continue nahi |
+| Faster                       | Slightly slower     |
+| More control                 | Easy syntax         |
+
+
+# ✅ Generators in JavaScript
+
+# 🎯 Definition
+
+Generators are special functions that can pause and resume execution.
+
+They use:
+```js
+function*
+````
+
+and
+
+```js
+yield
+```
+
+---
+
+# ✅ Example
+
+```js
+function* numbers() {
+
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const gen = numbers();
+
+console.log(gen.next());
+console.log(gen.next());
+```
+
+## ✅ Output
+
+```js id="p4m8tw"
+{ value: 1, done: false }
+
+{ value: 2, done: false }
+```
+
+---
+
+# 🎯 Interview Answer
+
+> Generators are special functions that can pause execution using `yield` and continue later using `next()`.
+
+---
+
+# ✅ Shadow DOM
+
+# 🎯 Definition
+
+Shadow DOM creates a separate hidden DOM tree for an element.
+
+It provides:
+
+* encapsulation
+* isolated styles/components
+
+---
+
+# ✅ Example
+
+```js id="v7q1la"
+const element = document.querySelector("#box");
+
+const shadow = element.attachShadow({ mode: "open" });
+```
+
+---
+
+# 🎯 Interview Answer
+
+> Shadow DOM is used to create isolated DOM and CSS for reusable components.
+
+---
+
+# ✅ Benefits
+
+✅ Style isolation
+✅ Encapsulation
+✅ Reusable components
+
+---
+
+# ✅ Service Workers
+
+# 🎯 Definition
+
+Service Workers are scripts that run in the background of the browser.
+
+Used for:
+
+* caching
+* offline support
+* push notifications
+
+---
+
+# ✅ Example
+
+```js id="k5r2vt"
+navigator.serviceWorker.register("sw.js");
+```
+
+---
+
+# 🎯 Interview Answer
+
+> Service Workers run in the background and are mainly used for caching, offline functionality, and push notifications.
+
+---
+
+# ✅ Real Uses
+
+✅ Progressive Web Apps (PWA)
+✅ Offline websites
+✅ Background sync
+
+---
+
+# 🚀 Quick Revision Table
+
+| Concept         | Purpose                    |
+| --------------- | -------------------------- |
+| Generators      | Pause/resume functions     |
+| Shadow DOM      | Isolated DOM & styles      |
+| Service Workers | Background tasks & caching |
+
+---
+
+# 💡 One-Line Memory Trick
+
+```js id="x2m9pw"
+Generator → pause function
+
+Shadow DOM → isolated component
+
+Service Worker → background browser worker
+```
+
+
+
+
 
 
 

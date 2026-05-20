@@ -1,5 +1,110 @@
 # JavaScript Array Methods – Interview Quick Revision
 
+
+# Array Access in JavaScript
+
+# 1. Normal Array Access
+
+```js
+let arr = [10, 20, 30, 40];
+````
+
+## Access Value
+
+```js
+console.log(arr[0]); // 10
+console.log(arr[1]); // 20
+console.log(arr[2]); // 30
+```
+
+👉 Index always starts from `0`
+
+| Index | Value |
+| ----- | ----- |
+| 0     | 10    |
+| 1     | 20    |
+| 2     | 30    |
+| 3     | 40    |
+
+---
+
+# Add Value in Normal Array
+
+## Add at Last
+
+```js
+arr[4] = 50;
+
+console.log(arr);
+// [10, 20, 30, 40, 50]
+```
+
+---
+
+# Change Value in Normal Array
+
+```js
+arr[1] = 200;
+
+console.log(arr);
+// [10, 200, 30, 40]
+```
+
+---
+
+# 2. Nested Array Access
+
+```js
+let nestedArr = [ [1, 2],[3, 4],[5, 6]];
+```
+
+## Access Nested Array Value
+
+```js
+console.log(nestedArr[0]); 
+// [1, 2]
+```
+
+```js
+console.log(nestedArr[0][0]); 
+// 1
+```
+
+```js
+console.log(nestedArr[0][1]); 
+// 2
+```
+
+```js
+console.log(nestedArr[1][0]); 
+// 3
+```
+
+```js
+console.log(nestedArr[2][1]); 
+// 6
+```
+
+# Add Value in Nested Array
+
+```js
+nestedArr[0][2] = 100;
+
+console.log(nestedArr);
+// [ [1, 2, 100], [3, 4], [5, 6] ]
+```
+
+---
+
+# Change Value in Nested Array
+
+```js
+nestedArr[1][1] = 400;
+
+console.log(nestedArr);
+// [ [1, 2], [3, 400], [5, 6] ]
+```
+
 ## 1. push()
 
 **Definition:** Array ke end me element add karta hai.
