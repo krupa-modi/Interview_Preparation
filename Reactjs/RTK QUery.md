@@ -501,3 +501,186 @@ RTK Query React me APIs handle karne ka modern aur optimized way hai.
 ```
 RTK Query sirf CRUD ke liye nahi hai.ye React applications me API fetching, caching, authentication, polling, pagination aur server state management ke liye use hota hai.
 ```
+
+RTK Query me mostly cases me `dispatch` aur `useSelector` manually use nahi karna padta.
+
+Kyuki RTK Query:
+
+* API call
+* data store
+* caching
+* loading
+* error handling
+
+sab automatically Redux store me handle karta hai.
+
+---
+
+# Traditional Redux Me
+
+Normally aapko ye sab likhna padta hai:
+
+```jsx id="n8t4qy"
+dispatch(fetchUsers())
+```
+
+and
+
+```jsx id="z3k7mp"
+const users = useSelector((state) => state.users)
+```
+
+---
+
+# RTK Query Me
+
+Sirf hook use karte hai:
+
+```jsx id="v6r2xd"
+const { data, isLoading } = useGetUsersQuery()
+```
+
+Bas.
+
+---
+
+# Means
+
+RTK Query internally:
+
+* dispatch bhi karta hai
+* store me data bhi rakhta hai
+* selector bhi handle karta hai
+
+Automatically.
+
+---
+
+# Simple Comparison
+
+# Old Redux Way
+
+```text id="r9w5jb"
+Component
+   ↓
+dispatch()
+   ↓
+API Call
+   ↓
+Reducer
+   ↓
+Store Update
+   ↓
+useSelector()
+   ↓
+UI Update
+```
+
+---
+
+# RTK Query Way
+
+```text id="p2x8vn"
+Component
+   ↓
+useGetUsersQuery()
+   ↓
+Everything Automatic
+```
+
+---
+
+# Example
+
+# Without RTK Query
+
+```jsx id="m1k7zc"
+const dispatch = useDispatch();
+
+const users = useSelector(
+  (state) => state.users.data
+);
+
+useEffect(() => {
+  dispatch(fetchUsers());
+}, []);
+```
+
+---
+
+# With RTK Query
+
+```jsx id="d5v9qt"
+const { data } = useGetUsersQuery();
+```
+
+---
+
+# Kya dispatch bilkul use nahi hota?
+
+Hota hai.
+
+Agar:
+
+* custom redux state manage karni ho
+* counter
+* theme
+* auth user
+* UI state
+
+to normal Redux use hota hai.
+
+---
+
+# Real Project Example
+
+| Data Type        | Best Option |
+| ---------------- | ----------- |
+| API Data         | RTK Query   |
+| Theme State      | Redux Slice |
+| Modal Open/Close | Redux Slice |
+| Logged User Info | Redux Slice |
+| Products API     | RTK Query   |
+
+---
+
+# RTK Query + Redux Together
+
+Real projects me dono use hote hai:
+
+```text id="w7n3fk"
+RTK Query → Server/API Data
+Redux Slice → Local UI State
+```
+
+---
+
+# Important
+
+## RTK Query Redux ke upar hi bana hai.
+
+Isliye internally:
+
+* dispatch
+* reducers
+* selectors
+
+sab use karta hai.
+
+Lekin manually aapko nahi likhna padta.
+
+---
+
+# Interview Answer
+
+## Do we use dispatch and useSelector in RTK Query?
+
+Mostly no.
+
+RTK Query automatically handles dispatching, caching, and selecting API data through generated hooks.
+
+---
+
+# Short Easy Answer
+
+RTK Query me manually `dispatch` aur `useSelector` likhne ki zarurat mostly nahi hoti, kyuki generated hooks sab automatically handle kar dete hai.

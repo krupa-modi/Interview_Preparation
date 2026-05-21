@@ -1793,3 +1793,130 @@ console.log(strData("aabbaccabc"))
 a4b3c3
 ```
 
+# Anagram Program in JavaScript
+
+Two strings are called anagrams if they contain:
+
+- Same characters
+- Same number of times
+- Order can be different
+
+---
+
+# 1. Anagram Using Method
+
+```js
+function Anagram(str1, str2) {
+
+  const result1 = str1.toLowerCase().split("").sort().join("");
+
+  const result2 = str2.toLowerCase().split("").sort().join("");
+
+  if (result1 === result2) {
+    console.log("This is Anagram");
+  } else {
+    console.log("Not Anagram");
+  }
+}
+
+Anagram("listen", "silent");
+```
+
+---
+
+## Output
+
+```js
+This is Anagram
+```
+
+# 2. Anagram Without Method (Using for Loop)
+
+## Program
+
+```js
+function Anagram(str1, str2) {
+
+  let count = 0;
+
+  if (str1.length !== str2.length) {
+    console.log("Not Anagram");
+    return;
+  }
+
+  for (let i = 0; i < str1.length; i++) {
+
+    for (let j = 0; j < str2.length; j++) {
+
+      if (str1[i] === str2[j]) {
+
+        count++;
+
+        str2 = str2.substring(0, j) + str2.substring(j + 1);// remove same character
+
+        break;
+      }
+    }
+  }
+
+  if (count === str1.length) {
+    console.log("Anagram");
+  } else {
+    console.log("Not Anagram");
+  }
+}
+
+Anagram("listen", "silent");
+```
+
+---
+
+## Output
+
+```js
+Anagram
+```
+
+
+# Binary Search in JavaScript
+
+Binary Search is a searching algorithm used to find an element in a sorted array.
+
+
+```js
+function binary(arr,target){
+  
+  let low = 0;
+  let high = arr.length - 1;
+  
+  while(low <= high){
+    
+    let mid = Math.floor((low + high) / 2);
+    
+    if(arr[mid] === target){
+      return mid;
+    }
+    
+    else if(arr[mid] < target){
+      low = mid + 1;
+    }
+    
+    else{
+      high = mid - 1;
+    }
+  }
+  
+  return -1;
+}
+
+console.log(binary([1,2,3,4,5,6,7,8,9],6));
+```
+
+---
+
+# Output
+
+```js
+5
+```
+
