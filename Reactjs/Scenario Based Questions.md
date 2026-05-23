@@ -989,3 +989,342 @@ Usually:
 
 redux-persist Redux state ko localStorage/sessionStorage me save karta hai taaki refresh ke baad state maintain rahe.
 
+
+# React application slow हो तो कैसे optimize करेंगे?
+
+## Answer:
+
+```text id="z9q2mk"
+If React application is slow, I optimize it by:
+- Using React.memo to prevent unnecessary re-renders
+- Using useMemo and useCallback for expensive calculations and functions
+- Lazy loading components using React.lazy and Suspense
+- Virtualization for large lists
+- Optimizing API calls and state updates
+- Code splitting and bundle optimization
+- Using proper keys in list rendering
+````
+
+---
+
+# 2. Bundle size कैसे reduce करते हैं?
+
+## Answer:
+
+```text id="7x1mjq"
+Bundle size can be reduced by:
+- Using code splitting
+- Lazy loading components
+- Removing unused libraries
+- Tree shaking
+- Dynamic imports
+- Compressing images/assets
+- Using lightweight libraries
+- Avoiding unnecessary dependencies
+```
+
+---
+
+# Example of Lazy Loading
+
+```jsx id="b0r8xu"
+const Home = React.lazy(() => import("./Home"));
+```
+
+---
+
+# 3. Caching Strategies क्या होती हैं?
+
+## Answer:
+
+```text id="x2g8pn"
+Caching strategies are used to store data temporarily for faster performance and fewer API calls.
+```
+
+---
+
+# Common Caching Strategies
+
+| Strategy             | Purpose                          |
+| -------------------- | -------------------------------- |
+| Browser Cache        | Stores static files in browser   |
+| API Cache            | Stores API responses             |
+| React Query Cache    | Prevents repeated API calls      |
+| CDN Cache            | Delivers files faster globally   |
+| Service Worker Cache | Offline support and fast loading |
+
+---
+
+# React Query Example
+
+```jsx id="0m2dwa"
+useQuery({
+  queryKey: ["users"],
+  queryFn: fetchUsers,
+  staleTime: 5000
+});
+```
+
+---
+
+# Short Interview Line
+
+```text id="1w0jzn"
+Performance optimization in React is done using memoization, lazy loading, code splitting, caching and reducing unnecessary re-renders.
+```
+
+# React Architecture & Design System (Interview Notes)
+
+# 1. Large React application architecture कैसे design करेंगे?
+
+## Answer
+
+```text id="w5q8zn"
+For large React applications, I use feature-based folder structure, reusable components, proper state management, API service layer, lazy loading and clean separation of concerns.
+````
+
+---
+
+# Common Structure
+
+```text id="v1p6rm"
+src/
+ ├── components
+ ├── pages
+ ├── features
+ ├── services
+ ├── hooks
+ ├── store
+ ├── utils
+```
+
+---
+
+# Important Points
+
+* Reusable components
+* Scalable folder structure
+* Centralized state management
+* API separation
+* Performance optimization
+
+---
+
+# 2. Reusable component library कैसे बनाएंगे?
+
+## Answer
+
+```text id="m7x2qp"
+Reusable component library is created by building common UI components like Button, Input, Modal and Card which can be reused across application.
+```
+
+---
+
+# Best Practices
+
+* Keep components generic
+* Use props for customization
+* Follow consistent styling
+* Write proper documentation
+* Use TypeScript for type safety
+
+---
+
+# Example
+
+```jsx id="u3k9rx"
+<Button
+  variant="primary"
+  size="large"
+>
+  Submit
+</Button>
+```
+
+---
+
+# 3. What is Design System?
+
+## Answer
+
+```text id="r6p1vz"
+Design system is a collection of reusable components, design rules, colors, typography and UI guidelines used to maintain consistency across application.
+```
+
+---
+
+# Includes
+
+* Colors
+* Typography
+* Buttons
+* Forms
+* Spacing
+* Icons
+
+---
+
+# Examples
+
+* Material UI
+* Ant Design
+* Chakra UI
+
+---
+
+# 4. State management tools कौन-से use किये हैं?
+
+## Answer
+
+```text id="n4q7bx"
+I have used useState and useReducer for local state, Context API for shared state, Redux Toolkit and Zustand for global state management, and React Query/TanStack Query for server state management.
+```
+
+# 1. आपने किसी difficult bug को कैसे solve किया?
+
+## Answer
+
+```text id="m2q7vn"
+In one project, component was re-rendering continuously and API was calling multiple times. 
+I checked React DevTools and found useEffect dependency issue. 
+I optimized dependencies and used memoization which fixed the issue and improved performance.
+````
+
+---
+
+# 2. Team conflict कैसे handle किया?
+
+## Answer
+
+```text id="r8x1pm"
+I first understand both sides calmly, focus on project goals instead of personal opinions and discuss the best technical solution with proper communication and teamwork.
+```
+
+---
+
+# 3. Junior developer को mentor कैसे करते हैं?
+
+## Answer
+
+```text id="w6p4zt"
+I help juniors by explaining concepts in simple way, doing code reviews, sharing best practices and helping them debug issues instead of directly giving answers.
+```
+
+---
+
+# 4. Production issue आया तो क्या process follow करेंगे?
+
+## Answer
+
+```text id="q3v8ns"
+First I identify issue impact, check logs and monitoring tools, reproduce the issue, fix it in staging, test properly and then deploy hotfix safely with team communication.
+```
+
+---
+
+# 5. React में infinite re-render क्यों होता है?
+
+## Answer
+
+```text id="u7m2qx"
+Infinite re-render happens when state updates continuously during rendering or inside useEffect without proper dependency array.
+```
+
+---
+
+# Wrong Example
+
+```jsx id="d8x3pl"
+useEffect(() => {
+  setCount(count + 1);
+});
+```
+
+---
+
+# Correct Example
+
+```jsx id="g1n7vr"
+useEffect(() => {
+  setCount(count + 1);
+}, []);
+```
+
+---
+
+# 6. React key prop क्यों important है?
+
+## Answer
+
+```text id="n4q8zm"
+Key prop helps React identify which list items changed, added or removed. 
+It improves rendering performance and prevents unnecessary re-renders.
+```
+
+---
+
+# Example
+
+```jsx id="z2p6kt"
+users.map((user) => (
+  <li key={user.id}>{user.name}</li>
+))
+```
+
+---
+
+# 7. React app में API error handling कैसे करते हैं?
+
+## Answer
+
+```text id="f5x9qn"
+API error handling is done using try-catch, proper error messages, loading states and fallback UI. 
+I also handle 401, 404 and server errors separately.
+```
+
+---
+
+# Example
+
+```jsx id="c7v3mp"
+try {
+  const data = await axios.get("/users");
+} catch (error) {
+  console.log(error);
+}
+```
+
+---
+
+# 8. Reusable component example explain करें.
+
+## Answer
+
+```text id="k8q2pw"
+A reusable component is a generic component that can be used in multiple places with different props.
+```
+
+---
+
+# Example
+
+```jsx id="p6x1zr"
+<Button
+  text="Submit"
+  color="blue"
+/>
+
+<Button
+  text="Delete"
+  color="red"
+/>
+```
+
+---
+
+# Short Interview Line
+
+```text id="y4n7qx"
+I focus on reusable components, proper debugging, performance optimization, clean communication and structured problem solving in real projects.
+```
+

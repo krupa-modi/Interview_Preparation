@@ -972,3 +972,12 @@ console.log(Number(undefined))
 
 ```js
 NaN
+```
+# 14 prototype 
+```
+function User() {}
+
+const user1 = new User();
+
+console.log(user1.__proto__ === User.prototype); // true
+```

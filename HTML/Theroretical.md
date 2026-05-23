@@ -3281,3 +3281,138 @@ console.log(btn.dataset.userId)
 # Interview Line
 
 > Data attributes HTML aur JavaScript ke beech clean communication provide karte hain without affecting UI structure.
+
+
+# Accessibility (WCAG) - Interview Notes
+
+# What is Accessibility?
+
+Accessibility means making websites usable for everyone including:
+
+- Disabled users
+- Screen reader users
+- Keyboard users
+
+---
+
+# What is WCAG?
+
+WCAG stands for:
+
+# Web Content Accessibility Guidelines
+
+These are rules for making websites accessible.
+
+---
+
+# Why Accessibility is Important?
+
+- Better user experience
+- Helps disabled users
+- Improves SEO
+- Important in real projects
+
+---
+
+# 1. aria-label
+
+Used to give readable label for screen readers.
+
+Useful when button/icon has no visible text.
+
+---
+
+# Example
+
+```html
+<button aria-label="Close Menu">X</button>
+````
+
+Screen reader reads:
+
+```text id="7g2w5m"
+Close Menu
+```
+
+---
+
+# 2. alt Attribute
+
+Used inside image tag.
+
+Describes image for screen readers.
+
+---
+
+# Example
+
+```html
+<img src="logo.png" alt="Company Logo" />
+```
+
+If image does not load or user uses screen reader,
+`alt` text is used.
+
+---
+
+# 3. Keyboard Navigation
+
+Website should work using keyboard only.
+
+Users should navigate using:
+
+* Tab
+* Enter
+* Arrow keys
+
+---
+
+# Example
+
+```html
+<button>Submit</button>
+<a href="/home">Home</a>
+```
+
+Buttons and links are keyboard accessible by default.
+
+---
+
+# Bad Example
+
+```html
+<div onclick="handleClick()">Click</div>
+```
+
+`div` is not keyboard accessible ❌
+
+---
+
+# Good Example
+
+```html
+<button>Click</button>
+```
+
+Accessible ✅
+
+---
+
+# Important Interview Points
+
+| Feature             | Purpose                   |
+| ------------------- | ------------------------- |
+| aria-label          | Label for screen readers  |
+| alt                 | Image description         |
+| Keyboard navigation | Use website without mouse |
+| Semantic HTML       | Better accessibility      |
+
+---
+
+# Short Interview Answer
+
+```text id="p6j1qs"
+Accessibility means making websites usable for all users including disabled users. 
+WCAG provides guidelines for accessibility. 
+Important practices include using aria-label, alt attributes, semantic HTML and keyboard navigation.
+```

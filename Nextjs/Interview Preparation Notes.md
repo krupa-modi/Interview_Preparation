@@ -1108,3 +1108,543 @@ Instead of saying:
 Say:
 
 ✅ “I have worked with App Router architecture, dynamic routing, middleware authentication, Server Components, SSR/SSG strategies, API routes, and performance optimization techniques in Next.js applications.”
+
+
+# Next.js में routing कैसे काम करता है?
+
+# What is Routing in Next.js?
+
+Routing means navigating between pages in application.
+
+Next.js provides:
+
+# File-Based Routing
+
+Meaning:
+- File name = Route name
+
+---
+
+# Example
+
+```text id="z0vfrs"
+pages/
+ ├── index.js
+ ├── about.js
+ └── contact.js
+````
+
+Routes become:
+
+```text id="2t3d5q"
+/           → index.js
+/about      → about.js
+/contact    → contact.js
+```
+
+---
+
+# App Router (Next.js 13+)
+
+Modern Next.js uses:
+
+```text id="q9udmj"
+app/
+```
+
+folder instead of `pages/`.
+
+---
+
+# Example
+
+```text id="thxq6j"
+app/
+ ├── page.js
+ ├── about/
+ │    └── page.js
+```
+
+Routes:
+
+```text id="l4ptt1"
+/        → page.js
+/about   → about/page.js
+```
+
+---
+
+# Dynamic Routing
+
+Used when route changes dynamically.
+
+Example:
+
+* Product details
+* User profile
+
+---
+
+# Example
+
+```text id="7hmqzh"
+app/product/[id]/page.js
+```
+
+URL:
+
+```text id="5xz9lq"
+/product/1
+/product/25
+```
+
+---
+
+# Access Dynamic Route
+
+```jsx
+export default function Product({ params }) {
+  return <h1>{params.id}</h1>;
+}
+```
+
+---
+
+# Nested Routing
+
+Folders create nested routes automatically.
+
+---
+
+# Example
+
+```text id="0ynrzm"
+app/dashboard/settings/page.js
+```
+
+URL:
+
+```text id="g3yr6f"
+/dashboard/settings
+```
+
+---
+
+# Link Navigation
+
+Use `Link` component for navigation.
+
+---
+
+# Example
+
+```jsx id="u7o0bm"
+import Link from "next/link";
+
+<Link href="/about">About</Link>
+```
+
+Benefits:
+
+* Fast navigation
+* No full page reload
+* Client-side routing
+
+---
+
+# Programmatic Navigation
+
+Use router for navigation through code.
+
+---
+
+# Example
+
+```jsx id="8i90d9"
+"use client";
+
+import { useRouter } from "next/navigation";
+
+const router = useRouter();
+
+router.push("/about");
+```
+
+---
+
+# Route Groups
+
+Used to organize folders without affecting URL.
+
+---
+
+# Example
+
+```text id="m2x6n4"
+app/(auth)/login/page.js
+```
+
+URL:
+
+```text id="0n7y9k"
+/login
+```
+
+`(auth)` does not appear in URL.
+
+---
+
+# Loading Page
+
+Create:
+
+```text id="k7p4vr"
+loading.js
+```
+
+Shows loading UI while page loads.
+
+---
+
+# Not Found Page
+
+Create:
+
+```text id="v3q6ts"
+not-found.js
+```
+
+Custom 404 page.
+
+---
+
+# Layouts in Routing
+
+`layout.js` creates shared UI.
+
+Example:
+
+* Navbar
+* Sidebar
+* Footer
+
+---
+
+# Example
+
+```text id="2zq0ph"
+app/dashboard/layout.js
+```
+
+Shared across dashboard pages.
+
+---
+
+# Important Interview Points
+
+| Feature            | Purpose                   |
+| ------------------ | ------------------------- |
+| File-based routing | File name becomes route   |
+| Dynamic routing    | Dynamic URLs              |
+| Nested routing     | Folder-based nested pages |
+| Link               | Client-side navigation    |
+| useRouter          | Navigation using code     |
+| layout.js          | Shared layouts            |
+| loading.js         | Loading UI                |
+| not-found.js       | 404 page                  |
+
+---
+
+# Common Interview Questions
+
+## Q1: How routing works in Next.js?
+
+Next.js uses file-based routing where file/folder structure automatically creates routes.
+
+---
+
+## Q2: What is dynamic routing?
+
+Dynamic routing allows dynamic URLs using `[id]`.
+
+Example:
+
+```text id="dxx3ye"
+product/[id]
+```
+
+---
+
+## Q3: Difference between `<a>` and `Link`?
+
+| `<a>` Tag        | `Link`                 |
+| ---------------- | ---------------------- |
+| Full page reload | Client-side navigation |
+| Slower           | Faster                 |
+
+---
+
+# Short Interview Answer
+
+```text id="o8rwyf"
+Next.js uses file-based routing. 
+Each file inside pages or app folder automatically becomes a route. 
+Dynamic routing is created using [id]. 
+Navigation is done using Link component or useRouter hook.
+```
+
+# Next.js में SEO कैसे improve करते हैं?
+
+# What is SEO?
+
+SEO (Search Engine Optimization) helps website rank better on Google and search engines.
+
+Better SEO = Better visibility + More traffic.
+
+---
+
+# Why Next.js is Good for SEO?
+
+React normally uses Client-Side Rendering (CSR).
+
+Problem:
+- Search engines may not see content properly.
+
+Next.js solves this using:
+
+- Server-Side Rendering (SSR)
+- Static Site Generation (SSG)
+- Metadata support
+
+---
+
+# Ways to Improve SEO in Next.js
+
+---
+
+# 1. Use Metadata
+
+Add title and description.
+
+---
+
+# Example
+
+```jsx id="evh7kx"
+export const metadata = {
+  title: "My Website",
+  description: "Best website for learning"
+};
+````
+
+Benefits:
+
+* Better Google ranking
+* Proper search preview
+
+---
+
+# 2. Use Server-Side Rendering (SSR)
+
+Content rendered on server before sending to browser.
+
+Better for:
+
+* SEO
+* Dynamic content
+
+---
+
+# Example
+
+```jsx id="w4w0pw"
+export async function getServerSideProps() {
+  return {
+    props: {}
+  };
+}
+```
+
+---
+
+# 3. Use Static Site Generation (SSG)
+
+Pre-build pages at build time.
+
+Very fast and SEO friendly.
+
+---
+
+# Example
+
+```jsx id="w8t0yl"
+export async function getStaticProps() {
+  return {
+    props: {}
+  };
+}
+```
+
+---
+
+# 4. Semantic HTML
+
+Use proper tags:
+
+```html
+<header>
+<nav>
+<main>
+<section>
+<footer>
+```
+
+Helps search engines understand structure.
+
+---
+
+# 5. Optimize Images
+
+Use Next.js Image component.
+
+---
+
+# Example
+
+```jsx id="9wz03v"
+import Image from "next/image";
+
+<Image
+  src="/logo.png"
+  width={200}
+  height={200}
+  alt="Logo"
+/>
+```
+
+Benefits:
+
+* Lazy loading
+* Faster website
+* Better SEO
+
+---
+
+# 6. Fast Performance
+
+Google prefers fast websites.
+
+Next.js improves performance using:
+
+* Code splitting
+* Image optimization
+* Static generation
+
+---
+
+# 7. Use Clean URLs
+
+Good:
+
+```text id="y86g20"
+/products/shoes
+```
+
+Bad:
+
+```text id="xmb6dg"
+/page?id=123
+```
+
+---
+
+# 8. Mobile Friendly Design
+
+Responsive websites rank better.
+
+Use:
+
+* Responsive CSS
+* Mobile-first design
+
+---
+
+# 9. Sitemap & Robots.txt
+
+Help search engines crawl website properly.
+
+---
+
+# Example
+
+```text id="z8h5pl"
+sitemap.xml
+robots.txt
+```
+
+---
+
+# 10. Open Graph Tags
+
+Used for social media preview.
+
+---
+
+# Example
+
+```jsx id="ib6q3t"
+export const metadata = {
+  openGraph: {
+    title: "My Site",
+    description: "Learning Next.js"
+  }
+};
+```
+
+---
+
+# Important Interview Points
+
+| Feature          | SEO Benefit      |
+| ---------------- | ---------------- |
+| SSR              | Better indexing  |
+| SSG              | Fast loading     |
+| Metadata         | Better ranking   |
+| next/image       | Optimized images |
+| Semantic HTML    | Better structure |
+| Fast performance | Better SEO score |
+
+---
+
+# Common Interview Questions
+
+## Q1: Why is Next.js better for SEO than React?
+
+Because Next.js supports SSR and SSG, which render content before page reaches browser.
+
+---
+
+## Q2: What is SSR?
+
+Server renders page on every request.
+
+---
+
+## Q3: What is SSG?
+
+Page generated at build time and served as static HTML.
+
+---
+
+## Q4: Why use next/image?
+
+For automatic image optimization and faster loading.
+
+---
+
+# Short Interview Answer
+
+```text id="p9d2ls"
+SEO in Next.js is improved using SSR, SSG, metadata, optimized images, semantic HTML and fast performance. 
+Next.js renders pages on server side which helps search engines crawl content easily.
+```

@@ -1,3 +1,55 @@
+# program list
+# 📋 Programs List
+
+1. Reverse a String
+2. Reverse Each Word
+3. Remove Duplicate from Array
+4. Remove Duplicate from String
+5. Find Second Largest Number
+6. Find Largest Number in Array
+7. Find Even Numbers
+8. Convert Array to Object
+9. Find Smallest Value in Array
+10. Array Sum Program
+11. Find Average of Array Elements
+12. Separate Even and Odd Numbers
+13. Array Sorting Program
+14. Prime Number Program
+15. Print Duplicate Values
+16. String Palindrome Program
+17. Number Palindrome Program
+18. Factorial Program Using Recursion
+19. Factorial Program Using Loop
+20. Flatten Nested Array
+21. Count and Print Vowels
+22. Union of Arrays
+23. Intersection of Arrays
+24. Word Count Program
+25. Double Array Elements using map()
+26. Filter Positive Numbers
+27. find() Method Example
+28. includes() Method Example
+29. Swap Two Numbers
+30. Missing Number in Array
+31. First Non-Repeating Character
+32. Non-Repeating Characters
+33. Merge Two Arrays
+34. Two Sum Problem
+35. Move All Zeros To End
+36. Fibonacci Series Program
+37. Longest Substring Without Repeating Characters
+38. String Compression
+39. String Character Count
+40. Anagram Program
+41. Binary Search Program
+42. Armstrong number
+43. Positive or Negative
+44. Prime numbers in range
+
+
+
+
+
 # 🔁 Reverse a String in JavaScript.
 
 ---
@@ -1920,3 +1972,200 @@ console.log(binary([1,2,3,4,5,6,7,8,9],6));
 5
 ```
 
+# Armstrong Number
+
+Armstrong Number woh number hota hai jisme har digit ka power total digits se karke add karne par same original number milta hai.
+
+### Example
+
+```javascript id="5m2x8q"
+153
+```
+
+```javascript id="2q7v1m"
+1³ + 5³ + 3³ = 153
+```
+
+✅ Isliye `153` Armstrong Number hai.
+
+---
+
+# Program
+
+```javascript id="8x1m4q"
+function armStrong(num) {
+  let originalNum = num;
+  let digit = num.toString().length;
+  let sum = 0;
+
+  while (num > 0) {
+    let val = num % 10;
+
+    sum = sum + val ** digit;
+
+    num = Math.floor(num / 10);
+  }
+
+  if (sum === originalNum) {
+    console.log("Armstrong");
+  } else {
+    console.log("Not Armstrong");
+  }
+}
+
+armStrong(153);
+```
+
+---
+
+# Output
+
+```javascript id="6q2m9x"
+Armstrong
+```
+
+# Positive, Negative, Zero Program in JavaScript
+
+## Code
+
+```js id="j7tqww"
+function checkNumber(num){
+
+  if(num > 0){
+    console.log("positive")
+  }
+  else if(num < 0){
+    console.log("negative")
+  }
+  else{
+    console.log("zero")
+  }
+
+}
+
+checkNumber(10)
+checkNumber(-10)
+checkNumber(0)
+```
+---
+
+## Output
+
+```txt id="9c2ryv"
+positive
+negative
+zero
+```
+
+# Program 2: Arrange Positive, Negative, and Zero
+
+## Code
+
+```js id="6xvffr"
+function arrangeNumbers(arr){
+
+  let positive = [];
+  let negative = [];
+  let zero = [];
+
+  for(let i = 0; i < arr.length; i++){
+
+    if(arr[i] > 0){
+      positive.push(arr[i]);
+    }
+    else if(arr[i] < 0){
+      negative.push(arr[i]);
+    }
+    else{
+      zero.push(arr[i]);
+    }
+
+  }
+
+  return [...positive, ...negative, ...zero];
+}
+
+console.log(arrangeNumbers([2,0,3,4,6,-4]));
+```
+
+---
+
+## Output
+
+```js id="3brdmg"
+[2, 3, 4, 6, -4, 0]
+```
+
+
+# Prime Numbers in Range
+
+```javascript
+function primeCount(start,end){
+
+  for(let num = start ; num < end ; num++){
+
+    let isPrime = true;
+
+    if(num < 2){
+      isPrime = false
+    }
+
+    for(let i = 2 ; i < num ; i++ ){
+
+      if(num % i === 0){
+        isPrime = false
+        break;
+      }
+
+    }
+
+    if(isPrime){
+      console.log(num)
+    }
+
+  }
+
+}
+
+primeCount(1, 10)
+````
+
+---
+
+## Output
+
+```javascript
+2
+3
+5
+7
+```
+
+# Count Digits
+
+```javascript
+function digitCount(num){
+
+  let count = 0;
+
+  while(num > 0){
+
+    num = Math.floor(num / 10)
+
+    count++
+
+  }
+
+  return count
+}
+
+console.log(digitCount(123498867676))
+````
+
+---
+
+## Output
+
+```javascript
+12
+```

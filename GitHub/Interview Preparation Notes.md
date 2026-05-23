@@ -1023,4 +1023,852 @@ git reset → Undo commits
 git revert → Reverse commit safely
 ```
 
+# Git Important Terms & Commands (Interview Purpose)
 
+---
+
+## 1. Clean Untracked Files
+
+### What is it?
+Remove files that are not tracked by Git.
+
+### Command
+```bash
+git clean -f
+````
+
+### Use Case
+
+When unwanted files are created and you want to delete them.
+
+### Important
+
+* `-f` means force delete.
+* Only removes untracked files.
+
+---
+
+## 2. Amend Last Commit
+
+### What is it?
+
+Modify the last commit without creating a new commit.
+
+### Command
+
+```bash
+git commit --amend
+```
+
+### Use Case
+
+* Fix commit message
+* Add missed files in last commit
+
+### Example
+
+```bash
+git add file.js
+git commit --amend
+```
+
+---
+
+## 3. Create PR (Pull Request)
+
+### What is PR?
+
+A request to merge your code into another branch (mostly `main` or `develop`).
+
+### Flow
+
+1. Create branch
+2. Push code
+3. Open PR on GitHub/GitLab
+4. Team reviews code
+5. Merge PR
+
+### Commands
+
+```bash
+git checkout -b feature-login
+git push origin feature-login
+```
+
+Then create PR from GitHub UI.
+
+### Interview Point
+
+PR is used for:
+
+* Code review
+* Collaboration
+* Safe merging
+
+---
+
+## 4. `git restore file.js`
+
+### What is it?
+
+Restore file changes back to last committed state.
+
+### Command
+
+```bash
+git restore file.js
+```
+
+### Use Case
+
+Undo local changes in a file.
+
+### Example
+
+```bash
+git restore app.js
+```
+
+---
+
+## 5. `git fetch`
+
+### What is it?
+
+Download latest changes from remote repository without merging.
+
+### Command
+
+```bash
+git fetch
+```
+
+### Difference
+
+* `git fetch` → only downloads
+* `git pull` → download + merge
+
+### Interview Point
+
+Used to safely check latest remote changes before merging.
+
+---
+
+## 6. Remote Repository
+
+### What is it?
+
+Repository stored on server/platform like GitHub.
+
+### Example
+
+* GitHub
+* GitLab
+* Bitbucket
+
+### Common Command
+
+```bash
+git remote -v
+```
+
+### Add Remote
+
+```bash
+git remote add origin https://github.com/user/repo.git
+```
+
+---
+
+## 7. Tracked Files
+
+### What are tracked files?
+
+Files that Git is monitoring.
+
+### Example
+
+After:
+
+```bash
+git add file.js
+```
+
+Git starts tracking that file.
+
+### Types
+
+* Tracked files
+* Untracked files
+
+### Check Status
+
+```bash
+git status
+```
+
+---
+
+# Quick Interview Difference
+
+| Topic          | Meaning                   |
+| -------------- | ------------------------- |
+| Tracked File   | Git monitors the file     |
+| Untracked File | New file not added to Git |
+| git fetch      | Download remote changes   |
+| git pull       | Fetch + merge             |
+| git restore    | Undo local file changes   |
+| PR             | Request to merge code     |
+| Amend Commit   | Edit last commit          |
+
+
+````md
+# Advanced Git Interview Questions & Scenarios (3–4 Years Experience)
+
+These are commonly asked in MNC and product-based companies.
+
+---
+
+# 1. Difference Between `git merge` and `git rebase`
+
+| Merge | Rebase |
+|---|---|
+| Creates merge commit | Cleaner history |
+| History remains non-linear | Linear history |
+| Safe for teams | Risky if used wrongly |
+
+### Interview Answer
+Use `merge` for shared branches and `rebase` for clean commit history.
+
+---
+
+# 2. What happens when you do `git pull`?
+
+### Answer
+`git pull` does:
+```bash
+git fetch + git merge
+````
+
+First downloads latest changes then merges into current branch.
+
+---
+
+# 3. Difference Between `git reset` and `git revert`
+
+| git reset                  | git revert             |
+| -------------------------- | ---------------------- |
+| Removes commits            | Creates reverse commit |
+| Dangerous in shared branch | Safe in shared branch  |
+| Changes history            | Keeps history          |
+
+### Scenario
+
+If code already pushed → use `revert`.
+
+---
+
+# 4. What is Stash?
+
+### Answer
+
+Temporary storage for uncommitted changes.
+
+### Commands
+
+```bash
+git stash
+git stash pop
+```
+
+### Scenario
+
+Need to switch branch quickly without committing incomplete work.
+
+---
+
+# 5. What is Cherry Pick?
+
+### Answer
+
+Copy specific commit from one branch to another.
+
+### Command
+
+```bash
+git cherry-pick commit-id
+```
+
+### Scenario
+
+Need only one bug-fix commit from another branch.
+
+---
+
+# 6. Explain Git Workflow in Company
+
+```text
+main/master
+   ↓
+Create feature branch
+   ↓
+Development
+   ↓
+Commit changes
+   ↓
+Push branch
+   ↓
+Create PR
+   ↓
+Code Review
+   ↓
+Merge
+   ↓
+Deployment
+```
+
+---
+
+# 7. What will happen if two developers modify same line?
+
+### Answer
+
+Merge conflict occurs.
+
+Git cannot decide which code to keep.
+
+---
+
+# 8. How do you resolve merge conflicts?
+
+### Steps
+
+1. Open conflicted file
+2. Remove conflict markers
+3. Keep correct code
+4. `git add .`
+5. Commit again
+
+---
+
+# 9. What is Detached HEAD State?
+
+### Answer
+
+When HEAD points directly to commit instead of branch.
+
+### Example
+
+```bash
+git checkout commit-id
+```
+
+### Important
+
+Changes may get lost if branch not created.
+
+---
+
+# 10. What is HEAD in Git?
+
+### Answer
+
+Pointer to current active commit/branch.
+
+---
+
+# 11. Difference Between Fork and Clone
+
+| Fork             | Clone       |
+| ---------------- | ----------- |
+| Server-side copy | Local copy  |
+| GitHub feature   | Git command |
+
+---
+
+# 12. What is Squash Commit?
+
+### Answer
+
+Combine multiple commits into single commit.
+
+### Command
+
+```bash
+git rebase -i HEAD~3
+```
+
+### Benefit
+
+Cleaner PR history.
+
+---
+
+# 13. Explain `.gitignore`
+
+### Purpose
+
+Ignore unnecessary files.
+
+### Example
+
+```bash
+node_modules
+.env
+dist
+```
+
+---
+
+# 14. Scenario: Accidentally committed sensitive data
+
+### Answer
+
+1. Remove file
+2. Change credentials immediately
+3. Use:
+
+```bash
+git reset
+```
+
+OR
+
+```bash
+git filter-branch
+```
+
+---
+
+# 15. Scenario: Wrong commit pushed to main branch
+
+### Best Answer
+
+Use:
+
+```bash
+git revert commit-id
+```
+
+Never use hard reset on shared branch.
+
+---
+
+# 16. Difference Between `origin` and `upstream`
+
+| Term     | Meaning             |
+| -------- | ------------------- |
+| origin   | Your repository     |
+| upstream | Original repository |
+
+---
+
+# 17. What is Fast Forward Merge?
+
+### Answer
+
+When branch history is linear and Git moves pointer forward without merge commit.
+
+---
+
+# 18. What is Git Hook?
+
+### Answer
+
+Scripts that run automatically before/after Git events.
+
+### Examples
+
+* pre-commit
+* pre-push
+
+### Use Cases
+
+* Run tests
+* Check linting
+* Prevent bad commits
+
+---
+
+# 19. Explain Rebase Conflict
+
+### Answer
+
+During rebase if same code modified, conflict occurs.
+
+### Continue Rebase
+
+```bash
+git rebase --continue
+```
+
+### Cancel Rebase
+
+```bash
+git rebase --abort
+```
+
+---
+
+# 20. Difference Between `git fetch` and `git pull`
+
+| Fetch         | Pull                    |
+| ------------- | ----------------------- |
+| Download only | Download + merge        |
+| Safer         | Directly changes branch |
+
+---
+
+# 21. Scenario: Need latest code but don't want merge immediately
+
+### Answer
+
+Use:
+
+```bash
+git fetch
+```
+
+---
+
+# 22. Scenario: Need to undo local changes completely
+
+### Commands
+
+```bash
+git restore .
+```
+
+OR
+
+```bash
+git reset --hard
+```
+
+---
+
+# 23. Scenario: Commit done in wrong branch
+
+### Solution
+
+1. Create new branch
+2. Cherry-pick commit
+3. Remove commit from wrong branch
+
+---
+
+# 24. Scenario: PR has too many commits
+
+### Answer
+
+Use squash/rebase before merge.
+
+---
+
+# 25. What is CI/CD in GitHub/GitLab?
+
+### CI
+
+Automatically build/test code.
+
+### CD
+
+Automatically deploy code.
+
+### Tools
+
+* GitHub Actions
+* Jenkins
+* GitLab CI/CD
+
+---
+
+# 26. Scenario-Based Interview Questions
+
+## Q1.
+
+You and teammate changed same file. What happens?
+
+### Answer
+
+Merge conflict.
+
+---
+
+## Q2.
+
+You want temporary backup without commit.
+
+### Answer
+
+Use stash.
+
+---
+
+## Q3.
+
+You pushed wrong code to production branch.
+
+### Answer
+
+Use revert instead of reset.
+
+---
+
+## Q4.
+
+Need one commit from another branch only.
+
+### Answer
+
+Use cherry-pick.
+
+---
+
+## Q5.
+
+How do you keep commit history clean?
+
+### Answer
+
+Use rebase/squash.
+
+---
+
+# 27. Important Commands for Experienced Developers
+
+```bash
+git stash
+git cherry-pick
+git rebase
+git revert
+git reset
+git blame
+git clean
+git reflog
+git squash
+git fetch
+git restore
+```
+
+---
+
+# 28. What is `git reflog`?
+
+### Answer
+
+Shows history of HEAD movements.
+
+### Command
+
+```bash
+git reflog
+```
+
+### Use Case
+
+Recover deleted/lost commits.
+
+---
+
+# 29. What is `git blame`?
+
+### Answer
+
+Shows who changed each line in file.
+
+### Command
+
+```bash
+git blame app.js
+```
+
+---
+
+# 30. Real Company Best Practices
+
+* Always pull before push
+* Use feature branches
+* Small meaningful commits
+* Never push secrets
+* Write proper PR description
+* Resolve conflicts carefully
+* Use rebase for clean history
+
+---
+
+# Most Important Topics for 3–4 Years Experience
+
+✅ Rebase
+✅ Merge Conflict
+✅ PR Workflow
+✅ Stash
+✅ Cherry-pick
+✅ Reset vs Revert
+✅ CI/CD Basics
+✅ Git Hooks
+✅ Squash Commits
+✅ Reflog
+✅ Feature Branch Workflow
+
+```
+
+Your previous Git notes file already covers many basics well. :contentReference[oaicite:0]{index=0}
+```
+
+# What is Code Review?
+
+Code review means checking another developer’s code before merging into main branch.
+
+Purpose:
+- Improve code quality
+- Find bugs
+- Maintain clean code
+- Share knowledge
+
+---
+
+# Best Practices
+
+## 1. Keep PR Small
+
+Small pull requests are easier to review and understand.
+
+---
+
+## 2. Check Code Readability
+
+Code should be:
+- Clean
+- Simple
+- Easy to understand
+
+Use meaningful variable and function names.
+
+---
+
+## 3. Follow Coding Standards
+
+Check:
+- Naming conventions
+- Folder structure
+- Formatting
+- Best practices
+
+---
+
+## 4. Focus on Logic
+
+Review:
+- Business logic
+- Edge cases
+- Error handling
+- Performance issues
+
+---
+
+## 5. Avoid Hardcoded Values
+
+Use:
+- Constants
+- Environment variables
+
+---
+
+# Bad Example
+
+```js id="pr0f2y"
+const api = "test123";
+````
+
+---
+
+# Good Example
+
+```js id="m8x7qw"
+const API_URL = process.env.API_URL;
+```
+
+---
+
+## 6. Check Reusability
+
+Avoid duplicate code.
+
+Create reusable functions/components.
+
+---
+
+## 7. Write Constructive Feedback
+
+Good review comments should:
+
+* Be respectful
+* Explain issue clearly
+* Suggest improvements
+
+---
+
+# Bad Comment
+
+```text id="v3n6ks"
+This is wrong.
+```
+
+---
+
+# Good Comment
+
+```text id="r1m9qt"
+Can we move this logic into a reusable helper function for better maintainability?
+```
+
+---
+
+## 8. Check Performance
+
+Look for:
+
+* Unnecessary re-renders
+* Large loops
+* Unoptimized API calls
+
+---
+
+## 9. Ensure Proper Testing
+
+Verify:
+
+* Unit tests added
+* Existing tests passing
+
+---
+
+## 10. Security Checks
+
+Check for:
+
+* Sensitive data exposure
+* Input validation
+* Authentication issues
+
+---
+
+# Important Interview Points
+
+| Best Practice         | Purpose            |
+| --------------------- | ------------------ |
+| Small PRs             | Easy review        |
+| Clean code            | Better readability |
+| Reusability           | Less duplication   |
+| Proper testing        | Fewer bugs         |
+| Constructive feedback | Better teamwork    |
+
+---
+
+# Short Interview Answer
+
+```text id="x7n4pq"
+Code review improves code quality and helps find bugs before deployment. 
+Best practices include keeping PRs small, checking readability, performance, testing, security and giving constructive feedback.
+```

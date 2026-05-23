@@ -2,6 +2,12 @@
 
 # 📌 What is Prototype?
 
+In JavaScript, every object has a hidden property called `[[Prototype]]`.
+
+This prototype is another object from which it can inherit properties and methods.
+
+JavaScript uses prototypes for inheritance.
+
 JavaScript me har object ke paas ek hidden property hoti hai:
 
 ```js id="jhd58h"
@@ -716,6 +722,25 @@ Object.getPrototypeOf(obj);
 * `__proto__` → object reference
 
 ---
+
+# Why Prototype is Important?
+
+Without prototype:
+
+Every object gets separate copy of methods
+More memory usage
+
+With prototype:
+
+Methods shared among all objects
+Better performance
+
+| Feature   | `__proto__`      | `prototype`                 |
+| --------- | ---------------- | --------------------------- |
+| Used in   | Objects          | Functions                   |
+| Points to | Parent object    | Object used for inheritance |
+| Purpose   | Access prototype | Used when creating objects  |
+
 
 # 📌 Real Interview Definition
 

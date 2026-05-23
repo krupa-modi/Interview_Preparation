@@ -1658,3 +1658,131 @@ Usually caused by:
 # 📌 60. Golden Advanced Interview Line
 
 > “In React Testing Library, the goal is not to test implementation details but to ensure the application behaves correctly from the user’s perspective.”
+
+
+
+# 1. What is Unit Testing?
+
+## Answer
+
+```text id="0x8v3j"
+Unit testing means testing a small individual part of application like a function, component or module independently.
+````
+
+Purpose:
+
+* Find bugs early
+* Ensure code works correctly
+
+---
+
+# Example
+
+```js id="m8s0pq"
+function sum(a, b) {
+  return a + b;
+}
+
+test("adds numbers", () => {
+  expect(sum(2, 3)).toBe(5);
+});
+```
+
+---
+
+# 2. What is Jest?
+
+## Answer
+
+```text id="f6n2wr"
+Jest is a JavaScript testing framework used for unit testing in React and Node.js applications.
+```
+
+Features:
+
+* Fast
+* Easy setup
+* Mocking support
+* Snapshot testing
+
+---
+
+# 3. Cypress vs Playwright
+
+| Feature           | Cypress            | Playwright          |
+| ----------------- | ------------------ | ------------------- |
+| Browser Support   | Limited            | Multiple browsers   |
+| Multi-tab support | No                 | Yes                 |
+| Speed             | Good               | Faster              |
+| Best For          | Simple E2E testing | Advanced automation |
+| Language Support  | JS/TS              | Multiple languages  |
+
+---
+
+# Short Answer
+
+```text id="r4q7mz"
+Cypress is easier for frontend testing, while Playwright provides better browser support and advanced automation features.
+```
+
+---
+
+# 4. Component Testing कैसे करते हैं?
+
+## Answer
+
+```text id="8q5t7x"
+Component testing means testing React component UI, rendering, props, events and behavior independently.
+```
+
+Usually done using:
+
+* Jest
+* React Testing Library
+
+---
+
+# Example
+
+```jsx id="v0z8ph"
+render(<Button />);
+
+expect(screen.getByText("Submit")).toBeInTheDocument();
+```
+
+---
+
+# 5. What is Test Coverage?
+
+## Answer
+
+```text id="1p4w6k"
+Test coverage shows how much percentage of application code is tested.
+```
+
+It measures:
+
+* Functions tested
+* Lines covered
+* Branches covered
+
+---
+
+# Example
+
+```text id="f2n8qy"
+80% coverage means 80% code is tested.
+```
+
+---
+
+# Short Interview Answer
+
+```text id="7t5zxm"
+Unit testing tests individual parts of application. 
+Jest is a testing framework. 
+Component testing checks React component behavior. 
+Test coverage measures how much code is tested.
+```
+
+
