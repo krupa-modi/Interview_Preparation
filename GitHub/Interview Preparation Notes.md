@@ -1872,3 +1872,396 @@ Check for:
 Code review improves code quality and helps find bugs before deployment. 
 Best practices include keeping PRs small, checking readability, performance, testing, security and giving constructive feedback.
 ```
+
+
+# Git Stage vs Unstaged
+
+## 1. Unstaged Changes
+
+जब आप file में changes करते हो लेकिन अभी तक Git को नहीं बताया कि ये changes save करने हैं, तब वो **unstaged** होते हैं।
+
+### Example
+
+```bash
+git status
+```
+
+Output:
+
+```bash
+modified: app.js
+```
+
+मतलब file change हुई है लेकिन अभी commit के लिए ready नहीं है।
+
+---
+
+## 2. Staged Changes
+
+जब आप `git add` करते हो, तब changes **staged** हो जाते हैं।
+
+### Example
+
+```bash
+git add app.js
+```
+
+अब Git बोलता है:
+“ठीक है, ये changes next commit में डालने हैं।”
+
+---
+
+## Simple Flow
+
+```bash
+File Change
+    ↓
+Unstaged
+    ↓ git add
+Staged
+    ↓ git commit
+Saved in Git
+```
+
+---
+
+## Important Commands
+
+### Unstaged देखने के लिए
+
+```bash
+git status
+```
+
+### Stage करने के लिए
+
+```bash
+git add filename
+```
+
+### Stage हटाने के लिए
+
+```bash
+git restore --staged filename
+```
+
+---
+
+## Real Life Example
+
+मान लो आपने `index.js` में code लिखा।
+
+* अभी सिर्फ save किया → **Unstaged**
+* `git add index.js` किया → **Staged**
+* `git commit` किया → permanently save in Git history
+
+
+# Git Reset vs Revert vs Merge vs Rebase
+
+## 1. Git Reset
+
+### Purpose
+
+Commit या staged changes को पीछे ले जाने के लिए use होता है।
+
+### Command
+
+```bash id="5axr5m"
+git reset HEAD~1
+```
+
+### What Happens?
+
+* Commit history change हो सकती है
+* Changes remove या unstage हो सकते हैं
+
+### Types
+
+| Type      | Meaning                            |
+| --------- | ---------------------------------- |
+| `--soft`  | Commit हटेगा but code staged रहेगा |
+| `--mixed` | Commit हटेगा + unstaged हो जाएगा   |
+| `--hard`  | Commit और code दोनों delete        |
+
+### Example
+
+```bash id="c5g7z5"
+git reset --hard HEAD~1
+```
+
+Last commit और code दोनों हट जाएंगे।
+
+### Use Case
+
+* Local mistake fix करना
+* Wrong commit हटाना
+
+### Important
+
+⚠️ Shared branch पर `reset` dangerous हो सकता है।
+
+---
+
+# 2. Git Revert
+
+### Purpose
+
+Old commit को undo करना without history delete किए।
+
+### Command
+
+```bash id="0f3v4z"
+git revert commit_id
+```
+
+### What Happens?
+
+* Old commit delete नहीं होता
+* नया reverse commit बनता है
+
+### Example
+
+```bash id="d7x1dn"
+git revert a123bc
+```
+
+अगर किसी commit ने:
+
+```js id="m14tlj"
+console.log("Hello")
+```
+
+add किया था, revert नया commit बनाकर उसे remove करेगा।
+
+### Use Case
+
+* Production bug rollback
+* Team projects
+
+### Important
+
+✅ Safe for shared branches
+
+---
+
+# 3. Git Merge
+
+### Purpose
+
+2 branches को combine करने के लिए।
+
+### Command
+
+```bash id="0j3slq"
+git merge feature-branch
+```
+
+### What Happens?
+
+* Branch histories combine होती हैं
+* Merge commit बन सकता है
+
+### Example
+
+```bash id="mjlwmv"
+main
+  A---B
+
+feature
+      C---D
+```
+
+After merge:
+
+```bash id="kjskup"
+main
+  A---B-------M
+       \     /
+        C---D
+```
+
+### Use Case
+
+* Feature complete होने के बाद main में add करना
+
+### Important
+
+✅ History safe रहती है
+❌ History थोड़ी messy हो सकती है
+
+---
+
+# 4. Git Rebase
+
+### Purpose
+
+Branch history को clean और linear बनाना।
+
+### Command
+
+```bash id="8rnhvq"
+git rebase main
+```
+
+### What Happens?
+
+Feature branch commits को main के latest commit के ऊपर move करता है।
+
+### Example
+
+Before:
+
+```bash id="jlwm6w"
+main
+A---B
+
+feature
+    C---D
+```
+
+After rebase:
+
+```bash id="i6f7h6"
+main
+A---B
+
+feature
+        C'---D'
+```
+
+(C and D new commits बन जाते हैं)
+
+### Use Case
+
+* Clean history
+* Pull request clean रखना
+
+### Important
+
+✅ Linear history
+❌ Shared branch पर risky हो सकता है
+
+---
+
+# Main Difference Table
+
+| Feature            | Reset        | Revert      | Merge            | Rebase        |
+| ------------------ | ------------ | ----------- | ---------------- | ------------- |
+| Purpose            | Undo commits | Undo safely | Combine branches | Clean history |
+| History Changes    | Yes          | No          | No               | Yes           |
+| Safe for Team      | ❌            | ✅           | ✅                | ⚠️            |
+| New Commit Created | ❌            | ✅           | ✅                | ❌             |
+| Deletes Commit     | Yes          | No          | No               | Rewrites      |
+
+---
+
+# Easy Memory Trick
+
+| Command | Easy Meaning             |
+| ------- | ------------------------ |
+| Reset   | “Delete/Move Back”       |
+| Revert  | “Undo Safely”            |
+| Merge   | “Join Branches”          |
+| Rebase  | “Clean & Linear History” |
+
+---
+
+# Interview One-Line Answers
+
+### Reset
+
+Moves HEAD backward and can remove commits/history.
+
+### Revert
+
+Creates a new commit to undo old changes safely.
+
+### Merge
+
+Combines two branches while preserving history.
+
+### Rebase
+
+Moves branch commits on top of another branch for clean history.
+
+
+# SSH in Git
+
+## Full Form
+
+**SSH = Secure Shell**
+
+---
+
+## Why SSH is Used in Git
+
+SSH Git में secure connection बनाने के लिए use होता है।
+
+जब हम GitHub/GitLab/Bitbucket पर code push या pull करते हैं, तब SSH encrypted connection provide करता है।
+
+---
+
+## Main Purpose
+
+* Secure authentication
+* Password बार-बार डालने की जरूरत नहीं
+* Safe data transfer
+* Developer machine और Git server के बीच trusted connection
+
+---
+
+## How it Works
+
+SSH में 2 keys होती हैं:
+
+1. **Public Key** → GitHub पर add करते हैं
+2. **Private Key** → आपकी system में रहती है
+
+जब connection बनता है, GitHub verify करता है कि आप authorized user हो।
+
+---
+
+## Interview Line
+
+> “SSH is used in Git to create a secure authenticated connection between local machine and remote repository without entering username and password every time.”
+
+---
+
+## SSH vs HTTPS
+
+| SSH                    | HTTPS                          |
+| ---------------------- | ------------------------------ |
+| More secure            | Simple setup                   |
+| No password every time | Username/password/token needed |
+| Uses SSH keys          | Uses credentials               |
+
+---
+
+## Common SSH Command
+
+### Generate SSH Key
+
+```bash id="b9z42l"
+ssh-keygen -t ed25519 -C "your_email@gmail.com"
+```
+
+### Test Connection
+
+```bash id="ew4qz9"
+ssh -T git@github.com
+```
+
+---
+
+## Example SSH URL
+
+```bash id="n7gx54"
+git@github.com:user/repo.git
+```
+
+---
+
+## Short Interview Answer
+
+> SSH stands for Secure Shell.
+> It is used in Git for secure communication and authentication between local system and remote repository using SSH keys.
