@@ -3416,3 +3416,90 @@ Accessibility means making websites usable for all users including disabled user
 WCAG provides guidelines for accessibility. 
 Important practices include using aria-label, alt attributes, semantic HTML and keyboard navigation.
 ```
+
+# What is the purpose of metadata?
+
+---
+
+# Definition
+
+Metadata means:
+
+## “Data about data”
+
+Ye information provide karta hai kisi data ke bare me.
+
+---
+
+# Example
+
+## Image Metadata
+
+Contains:
+
+* File size
+* Resolution
+* Format
+* Creation date
+
+---
+
+# Website Metadata
+
+Contains:
+
+* Title
+* Description
+* Keywords
+
+---
+
+# HTML Metadata Example
+
+```html id="meta1"
+<meta name="description" content="React Interview Questions">
+```
+
+---
+
+# Purpose of Metadata
+
+| Purpose               | Explanation                |
+| --------------------- | -------------------------- |
+| SEO                   | Search engine optimization |
+| Better Search         | Content identification     |
+| File Information      | Data details               |
+| Social Sharing        | Preview information        |
+| Browser Understanding | Page information           |
+
+---
+
+# Common Metadata in Websites
+
+```html id="meta2"
+<title>My Website</title>
+
+<meta charset="UTF-8">
+
+<meta name="description" content="Learning React">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+---
+
+# Important Meta Tags
+
+| Meta Tag    | Purpose            |
+| ----------- | ------------------ |
+| title       | Page title         |
+| description | SEO description    |
+| viewport    | Responsive design  |
+| charset     | Character encoding |
+
+---
+
+# Interview Answer
+
+“Metadata is information about data.
+In web development, metadata helps browsers and search engines understand the webpage content, improve SEO, and provide better user experience.”

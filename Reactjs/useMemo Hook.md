@@ -154,3 +154,277 @@ const multiCount = () => {
 
 ---
 
+
+
+````md id="usememo-not-use"
+# When NOT to Use useMemo in React
+
+---
+
+# What is useMemo?
+
+`useMemo` is a React hook used to memoize (cache) expensive calculations so they don’t run on every render.
+
+---
+
+# Syntax
+
+```jsx id="6l6jvx"
+const memoizedValue = useMemo(() => {
+  return expensiveCalculation()
+}, [dependency])
+````
+
+---
+
+# But useMemo is NOT always needed ❌
+
+Many developers overuse `useMemo`.
+
+React itself is already very fast.
+
+Using `useMemo` unnecessarily can:
+
+* Increase complexity
+* Reduce readability
+* Add memory overhead
+* Sometimes decrease performance
+
+---
+
+# When NOT to Use useMemo
+
+---
+
+# 1. For Small / Simple Calculations ❌
+
+If calculation is very simple, no need for `useMemo`.
+
+---
+
+## Bad Example ❌
+
+```jsx id="m6q8hb"
+const sum = useMemo(() => a + b, [a, b])
+```
+
+Here:
+
+* Addition is already very fast
+* useMemo overhead is unnecessary
+
+---
+
+## Good Example ✅
+
+```jsx id="7v4qdy"
+const sum = a + b
+```
+
+---
+
+# 2. When Component Rarely Re-renders ❌
+
+If component renders very few times, memoization is unnecessary.
+
+---
+
+## Example ❌
+
+```jsx id="xgj0ic"
+const userName = useMemo(() => {
+  return user.firstName + user.lastName
+}, [user])
+```
+
+Simple string concatenation does not need memoization.
+
+---
+
+# 3. For Primitive Values ❌
+
+Primitive values:
+
+* string
+* number
+* boolean
+
+are already cheap to calculate.
+
+---
+
+## Bad Example ❌
+
+```jsx id="8vvgw9"
+const fullName = useMemo(() => "Krupa Modi", [])
+```
+
+---
+
+## Good Example ✅
+
+```jsx id="h6m2y8"
+const fullName = "Krupa Modi"
+```
+
+---
+
+# 4. If Calculation is NOT Expensive ❌
+
+useMemo should mainly be used for:
+
+* heavy loops
+* filtering large data
+* sorting large arrays
+* complex calculations
+
+Not for normal logic.
+
+---
+
+## Bad Example ❌
+
+```jsx id="a2zqqy"
+const isAdult = useMemo(() => age > 18, [age])
+```
+
+---
+
+## Good Example ✅
+
+```jsx id="4g2t1r"
+const isAdult = age > 18
+```
+
+---
+
+# 5. To “Optimize Everything” ❌
+
+Some developers add useMemo everywhere thinking:
+“More optimization = better app”
+
+This is wrong.
+
+Overusing `useMemo` can actually hurt performance.
+
+---
+
+# 6. When Dependency Changes Frequently ❌
+
+If dependencies change every render, memoization becomes useless.
+
+---
+
+## Example ❌
+
+```jsx id="j7n7qt"
+const value = useMemo(() => {
+  return calculate(data)
+}, [newObject])
+```
+
+If `newObject` changes every render:
+
+* useMemo recalculates every time
+* no performance benefit
+
+---
+
+# 7. For JSX Without Performance Issue ❌
+
+---
+
+## Bad Example ❌
+
+```jsx id="5y4vnm"
+const button = useMemo(() => {
+  return <Button />
+}, [])
+```
+
+Usually unnecessary unless rendering is very expensive.
+
+---
+
+# 8. If You Haven’t Measured Performance ❌
+
+Never use useMemo blindly.
+
+First:
+
+* Profile performance
+* Identify bottleneck
+* Then optimize
+
+---
+
+# Correct Use Cases of useMemo ✅
+
+---
+
+# Use useMemo When:
+
+✅ Expensive calculations
+✅ Large array filtering
+✅ Sorting big datasets
+✅ Preventing unnecessary recalculations
+✅ Passing stable derived values to child components
+
+---
+
+# Good Example ✅
+
+```jsx id="q0h4kg"
+const filteredUsers = useMemo(() => {
+  return users.filter(user => user.active)
+}, [users])
+```
+
+Here:
+
+* Filtering large array may be expensive
+* useMemo is useful
+
+---
+
+# Interview Answer
+
+## Short Professional Answer
+
+“I avoid using useMemo for small or inexpensive calculations because memoization itself has overhead.
+
+I mainly use useMemo only for expensive computations, large data filtering/sorting, or when preventing unnecessary recalculations improves performance.”
+
+---
+
+# Important Rule 🚀
+
+## Don’t use useMemo because you CAN.
+
+## Use it because you NEED performance optimization.
+
+---
+
+# Quick Summary Table
+
+| Situation              | Use useMemo? |
+| ---------------------- | ------------ |
+| Simple calculations    | ❌ No         |
+| Primitive values       | ❌ No         |
+| Rare re-renders        | ❌ No         |
+| Expensive calculations | ✅ Yes        |
+| Large array filtering  | ✅ Yes        |
+| Heavy computations     | ✅ Yes        |
+| Performance bottleneck | ✅ Yes        |
+
+---
+
+# Common Interview Question
+
+## Q. Can useMemo decrease performance?
+
+### Answer:
+
+“Yes. If used unnecessarily, useMemo adds memory and comparison overhead which can reduce performance instead of improving it.”
+
+

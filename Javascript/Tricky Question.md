@@ -981,3 +981,214 @@ const user1 = new User();
 
 console.log(user1.__proto__ === User.prototype); // true
 ```
+
+---
+
+# 1. NaN === NaN
+
+```js
+console.log(NaN === NaN);
+````
+
+## Output
+
+```js
+false
+```
+
+## Explanation
+
+`NaN` means **Not a Number**.
+
+In JavaScript:
+
+* `NaN` is not equal to anything
+* Even `NaN` is not equal to itself
+
+```js
+NaN === NaN // false
+```
+
+This behavior comes from IEEE floating-point rules.
+
+---
+
+## Correct Way to Check NaN
+
+Use:
+
+```js
+Number.isNaN(value)
+```
+
+## Example
+
+```js
+Number.isNaN(NaN) // true
+```
+
+---
+
+# 2. 1 < 2 < 3
+
+```js
+console.log(1 < 2 < 3);
+```
+
+## Output
+
+```js
+true
+```
+
+## Step-by-Step Evaluation
+
+JavaScript evaluates expressions from **left to right**.
+
+---
+
+### Step 1
+
+```js
+1 < 2
+```
+
+Result:
+
+```js
+true
+```
+
+---
+
+### Step 2
+
+```js
+true < 3
+```
+
+JavaScript converts:
+
+```js
+true → 1
+```
+
+Now expression becomes:
+
+```js
+1 < 3
+```
+
+Result:
+
+```js
+true
+```
+
+---
+
+## Final Output
+
+```js
+true
+```
+
+---
+
+# 3. 3 > 2 > 1
+
+```js
+console.log(3 > 2 > 1);
+```
+
+## Output
+
+```js
+false
+```
+
+## Step-by-Step Evaluation
+
+---
+
+### Step 1
+
+```js
+3 > 2
+```
+
+Result:
+
+```js
+true
+```
+
+---
+
+### Step 2
+
+```js
+true > 1
+```
+
+JavaScript converts:
+
+```js
+true → 1
+```
+
+Now expression becomes:
+
+```js
+1 > 1
+```
+
+Result:
+
+```js
+false
+```
+
+---
+
+## Final Output
+
+```js
+false
+```
+
+---
+
+# Quick Interview Trick
+
+## Boolean Conversion in Comparison
+
+```js
+true  → 1
+false → 0
+```
+
+Example:
+
+```js
+true < 3   // 1 < 3  → true
+false < 1  // 0 < 1  → true
+```
+
+---
+
+# Important Interview Point
+
+Expressions like:
+
+```js
+1 < 2 < 3
+3 > 2 > 1
+```
+
+do NOT compare all values together.
+
+JavaScript evaluates them one by one from left to right.
+
+---
+

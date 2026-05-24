@@ -931,14 +931,349 @@ Service Worker → background browser worker
 ```
 
 
+# find() vs filter()
 
+---
 
+# find()
 
+## Definition
+`find()` first matching element return karta hai.
 
+Agar match nahi mila:
+```js id="o1p2q3"
+undefined
+````
 
+---
 
+# Example
 
+```js id="f1g2h3"
+const arr = [1,2,3,4,5]
 
+const result = arr.find(num => num > 3)
 
+console.log(result)
+```
 
+## Output
 
+```js id="i4j5k6"
+4
+```
+
+---
+
+# filter()
+
+## Definition
+
+`filter()` saare matching elements return karta hai in array form.
+
+Agar match nahi mila:
+
+```js id="l7m8n9"
+[]
+```
+
+---
+
+# Example
+
+```js id="a1b2c3"
+const arr = [1,2,3,4,5]
+
+const result = arr.filter(num => num > 3)
+
+console.log(result)
+```
+
+## Output
+
+```js id="d4e5f6"
+[4,5]
+```
+
+---
+
+# Main Difference
+
+| find()                          | filter()                      |
+| ------------------------------- | ----------------------------- |
+| First match return karta hai    | All matches return karta hai  |
+| Single value return             | Array return                  |
+| Match milte hi stop ho jata hai | Pure array traverse karta hai |
+
+---
+
+# Kaun Fast Hai?
+
+## Answer
+
+`find()` generally faster hota hai because:
+
+* First match milte hi loop stop ho jata hai
+
+`filter()` slower ho sakta hai because:
+
+* Pure array check karta hai
+
+---
+
+# Example
+
+```js id="g7h8i9"
+const arr = [1,2,3,4,5]
+
+arr.find(num => num === 2)
+```
+
+Yaha:
+
+* `find()` 2 milte hi stop ho jayega
+
+But:
+
+```js id="j1k2l3"
+arr.filter(num => num === 2)
+```
+
+Ye pura array traverse karega.
+
+---
+
+# Time Complexity
+
+| Method   | Complexity |
+| -------- | ---------- |
+| find()   | O(n)       |
+| filter() | O(n)       |
+
+But practical performance me:
+
+* `find()` usually faster hota hai
+
+---
+
+# Interview Answer
+
+“find() first matching element return karta hai while filter() all matching elements array me return karta hai.
+
+find() generally faster hota hai because it stops after first match, while filter() entire array traverse karta hai.”
+
+---
+
+# map() vs forEach()
+
+---
+
+# map()
+
+## Definition
+
+`map()` new array return karta hai.
+
+Mostly use hota hai:
+
+* Data transformation
+* UI rendering
+
+---
+
+# Example
+
+```js id="m4n5o6"
+const arr = [1,2,3]
+
+const result = arr.map(num => num * 2)
+
+console.log(result)
+```
+
+## Output
+
+```js id="p7q8r9"
+[2,4,6]
+```
+
+---
+
+# forEach()
+
+## Definition
+
+`forEach()` sirf iterate karta hai.
+
+Ye:
+
+* New array return nahi karta
+
+Mostly use hota hai:
+
+* Logging
+* Side effects
+
+---
+
+# Example
+
+```js id="s1t2u3"
+const arr = [1,2,3]
+
+arr.forEach(num => {
+  console.log(num)
+})
+```
+
+---
+
+# Main Difference
+
+| map()                       | forEach()              |
+| --------------------------- | ---------------------- |
+| New array return karta hai  | Kuch return nahi karta |
+| Data transformation ke liye | Iteration ke liye      |
+| Chaining possible           | Chaining possible nahi |
+
+---
+
+# Example Difference
+
+## map()
+
+```js id="v4w5x6"
+const result = arr.map(num => num * 2)
+```
+
+Returns:
+
+```js id="y7z8a9"
+[2,4,6]
+```
+
+---
+
+## forEach()
+
+```js id="b1c2d3"
+const result = arr.forEach(num => num * 2)
+```
+
+Returns:
+
+```js id="e4f5g6"
+undefined
+```
+
+---
+
+# Interview Answer
+
+“map() is used when we need a transformed new array, while forEach() is used only for iteration or side effects.
+
+map() returns a new array but forEach() does not return anything.”
+
+# What is the difference between slice() and splice()?
+
+---
+
+# slice()
+
+## Definition
+
+`slice()` array ka selected portion copy karta hai and new array return karta hai.
+
+Original array change nahi hota ❌
+
+---
+
+# Syntax
+
+```js id="slice1"
+array.slice(start, end)
+````
+
+---
+
+# Example
+
+```js id="slice2"
+const arr = [1,2,3,4,5]
+
+const result = arr.slice(1,4)
+
+console.log(result)
+```
+
+## Output
+
+```js id="slice3"
+[2,3,4]
+```
+
+---
+
+# Important Point
+
+✅ Original array unchanged
+
+---
+
+# splice()
+
+## Definition
+
+`splice()` array me:
+
+* add
+* remove
+* replace
+
+kar sakta hai.
+
+Original array change hota hai ✅
+
+---
+
+# Syntax
+
+```js id="splice1"
+array.splice(start, deleteCount, item)
+```
+
+---
+
+# Example
+
+```js id="splice2"
+const arr = [1,2,3,4,5]
+
+arr.splice(1,2)
+
+console.log(arr)
+```
+
+## Output
+
+```js id="splice3"
+[1,4,5]
+```
+
+---
+
+# Main Difference
+
+| slice()                         | splice()                        |
+| ------------------------------- | ------------------------------- |
+| New array return karta hai      | Original array modify karta hai |
+| Original array change nahi hota | Original array change hota hai  |
+| Copy/extract ke liye            | Add/remove/update ke liye       |
+
+---
+
+# Interview Answer
+
+“slice() array ka portion copy karke new array return karta hai without modifying original array, while splice() original array ko modify karta hai for adding, removing, or replacing elements.”
+
+---

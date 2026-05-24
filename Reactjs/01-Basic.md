@@ -1537,3 +1537,268 @@ Form submit hone par onSubmit event call hota hai.
 * React components ka naming convention mostly PascalCase hota hai.
 Example: UserCard.jsx, Navbar.jsx.
 * Component folders bhi generally PascalCase me rakhte hain, while utility folders lowercase/camelCase me hote hain like utils, hooks, services,components.
+
+
+
+# Lighthouse / DevTools Ka Use Kaise Karte Ho? (Interview Purpose)
+
+---
+
+# 1. What is Chrome DevTools?
+
+Chrome DevTools browser ka built-in debugging tool hai.
+
+Use hota hai:
+- Debugging
+- Performance checking
+- API testing
+- CSS inspection
+- Memory analysis
+- Network monitoring
+
+---
+
+# Common DevTools Tabs
+
+| Tab | Purpose |
+|---|---|
+| Elements | HTML/CSS inspect |
+| Console | Errors & logs |
+| Network | API requests |
+| Application | LocalStorage/Cookies |
+| Performance | Performance analysis |
+| Sources | Debug JS code |
+
+---
+
+# 2. DevTools Kaise Use Karte Ho?
+
+## Interview Answer
+
+“I use Chrome DevTools for:
+- Debugging UI issues
+- Checking API calls
+- Monitoring network requests
+- Analyzing performance
+- Inspecting elements
+- Finding console errors”
+
+---
+
+# 3. API Debugging Kaise Karte Ho?
+
+## Network Tab
+
+Check:
+- API URL
+- Request payload
+- Response data
+- Status code
+- Headers
+- Failed requests
+
+---
+
+# Example
+
+```text id="p2b3f4"
+Network Tab
+   ↓
+Click API
+   ↓
+Check:
+- Response
+- Headers
+- Payload
+- Timing
+````
+
+---
+
+# 4. Console Tab Use
+
+Use for:
+
+* Error debugging
+* Logs checking
+* Runtime issue detection
+
+---
+
+# Example
+
+```jsx id="l7g8h9"
+console.log(data)
+console.error(error)
+```
+
+---
+
+# 5. Lighthouse Kya Hai?
+
+Lighthouse ek auditing tool hai jo:
+
+* Performance
+* Accessibility
+* SEO
+* Best Practices
+
+analyze karta hai.
+
+---
+
+# Lighthouse Metrics
+
+| Metric         | Meaning                 |
+| -------------- | ----------------------- |
+| Performance    | App speed               |
+| Accessibility  | Accessibility support   |
+| Best Practices | Secure coding practices |
+| SEO            | Search optimization     |
+
+---
+
+# 6. Lighthouse Kaise Run Karte Ho?
+
+## Steps
+
+```text id="x1y2z3"
+Open Website
+   ↓
+Right Click → Inspect
+   ↓
+Lighthouse Tab
+   ↓
+Generate Report
+```
+
+---
+
+# 7. Lighthouse Se Kya Check Karte Ho?
+
+## Performance Issues
+
+* Large bundle size
+* Slow loading
+* Unused JS
+* Heavy images
+* Blocking resources
+
+---
+
+# Optimization Techniques
+
+✅ Lazy loading
+✅ Code splitting
+✅ Image optimization
+✅ Memoization
+✅ API optimization
+
+---
+
+# 8. Performance Optimization Example
+
+## Before
+
+Large component loading at once ❌
+
+---
+
+## After
+
+```jsx id="a4s5d6"
+const Home = lazy(() => import("./Home"))
+```
+
+Using:
+
+* Lazy loading
+* Suspense
+
+---
+
+# 9. Common DevTools Features
+
+---
+
+# Element Inspection
+
+```text id="e4r5t6"
+Inspect Element
+   ↓
+Edit CSS Live
+```
+
+---
+
+# Device Testing
+
+Responsive mode for:
+
+* Mobile
+* Tablet
+* Desktop
+
+---
+
+# Local Storage Check
+
+```text id="u7i8o9"
+Application Tab
+   ↓
+LocalStorage
+```
+
+---
+
+# 10. Production Bug Debugging
+
+## Interview Answer
+
+“If production issue comes:
+
+* First check console errors
+* Then verify API calls in Network tab
+* Analyze failed requests
+* Check recent deployment changes
+* Reproduce issue locally
+* Fix and test in staging”
+
+---
+
+# Short Interview Answer
+
+“I use Chrome DevTools for debugging UI, checking API requests, monitoring performance, and inspecting errors.
+I use Lighthouse for performance auditing and identifying optimization opportunities.”
+
+---
+
+# Professional One-Liners
+
+## DevTools
+
+“DevTools helps me debug UI, API, and performance-related issues efficiently.”
+
+---
+
+## Lighthouse
+
+“I use Lighthouse reports to improve performance, accessibility, and best practices.”
+
+---
+
+
+# Q1. Which DevTools tab do you use most?
+
+## Answer
+
+“Mostly Network, Console, and Elements tabs.”
+
+---
+
+# Q2. How do you debug API issues?
+
+## Answer
+
+“I use the Network tab to inspect request payload, response data, headers, and status codes.”
+

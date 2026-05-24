@@ -45,6 +45,9 @@
 42. Armstrong number
 43. Positive or Negative
 44. Prime numbers in range
+45. Swap Two Numbers Without Using Third Variable
+46. Specific Character Count in String
+47. Count Digits
 
 
 
@@ -2168,4 +2171,165 @@ console.log(digitCount(123498867676))
 
 ```javascript
 12
+```
+
+# Swap Two Numbers Without Using Third Variable
+
+## Question
+
+```js
+a = 10
+b = 5
+````
+
+```js
+let a = 10;
+let b = 5;
+
+a = a + b; // 15
+b = a - b; // 10
+a = a - b; // 5
+
+console.log("a =", a);
+console.log("b =", b);
+```
+
+---
+
+# Output
+
+```js
+a = 5
+b = 10
+```
+
+---
+
+# Method 2 → Best Modern JavaScript Way (Most Asked)
+
+## Using Destructuring
+
+```js
+let a = 10;
+let b = 5;
+
+[a, b] = [b, a];
+
+console.log(a);
+console.log(b);
+```
+
+---
+
+# Output
+
+```js
+5
+10
+```
+
+
+# Find common numbers from given array
+
+```js
+function commonNumber(arr){
+  return arr[0].filter(
+    (ele1) => arr.every(
+      (ele2) => ele2.includes(ele1)
+    )
+  )
+}
+
+console.log(commonNumber([[2, 4, 5, 3],[2, 3, 5],[4, 2, 5]]))
+```
+
+## Output
+
+```js
+[2, 5]
+```
+
+# Method 2 — Using Loops
+
+```js
+function commonNumber(arr){
+  let result = [];
+
+  for(let i = 0 ; i < arr[0].length ; i++){
+
+    let num = arr[0][i]; // arr[0] means [2, 4, 5, 3] and arr[0][i] means 2
+    let isCommon = true;
+
+    for(let j = 1 ; j < arr.length ; j++){
+
+      if(!arr[j].includes(num)){
+        isCommon = false;
+        break;
+      }
+
+    }
+
+    if(isCommon){
+      result.push(num);
+    }
+
+  }
+
+  return result;
+
+}
+
+console.log(
+  commonNumber([[2, 4, 5, 3],[2, 3, 5],[4, 2, 5]])
+)
+```
+
+## Output
+
+```js
+[2, 5]
+```
+
+
+# Specific Character Count in String
+
+```js id="dfm71t"
+function specificCharCount(str, target){
+
+  let count = 0;
+
+  for(let i = 0; i < str.length; i++){
+
+    if(str[i] === target){
+      count++;
+    }
+
+  }
+
+  return count;
+}
+
+*****************************************************OR*************************************************************
+function specificCharCount(str, target){
+
+  let count = 0;
+  for(let char of str){
+    if(char === target){
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(specificCharCount("apple", "a"));
+
+console.log(specificCharCount("apple", "p"));
+```
+---
+
+# Final Output
+
+```js id="js9j4q"
+2
 ```
