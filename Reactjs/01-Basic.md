@@ -1802,3 +1802,947 @@ I use Lighthouse for performance auditing and identifying optimization opportuni
 
 “I use the Network tab to inspect request payload, response data, headers, and status codes.”
 
+
+# 1. Compound Components Pattern in React
+
+## Definition
+Compound Components pattern means multiple components work together to manage one functionality.
+
+It gives users flexible and clean component structure.
+
+Example:
+```jsx
+<Modal>
+  <Modal.Header />
+  <Modal.Body />
+  <Modal.Footer />
+</Modal>
+````
+
+Here all child components are connected with the parent component.
+
+---
+
+## Why Use Compound Components?
+
+* Better code readability
+* Flexible UI structure
+* Reusable components
+* Avoid prop drilling
+
+---
+
+## Simple Example
+
+```jsx
+function Card({ children }) {
+  return <div>{children}</div>;
+}
+
+Card.Title = function ({ children }) {
+  return <h2>{children}</h2>;
+};
+
+Card.Body = function ({ children }) {
+  return <p>{children}</p>;
+};
+
+export default function App() {
+  return (
+    <Card>
+      <Card.Title>React</Card.Title>
+      <Card.Body>Compound Components Example</Card.Body>
+    </Card>
+  );
+}
+```
+
+---
+
+## Interview Short Answer
+
+Compound Components pattern allows multiple related components to work together under one parent component. It improves flexibility, readability, and reusability in React applications.
+
+---
+
+# 2. What are Children Props in React?
+
+## Definition
+
+`children` is a special prop in React used to pass components, text, or JSX between opening and closing tags of a component.
+
+---
+
+## Example
+
+```jsx
+function Wrapper({ children }) {
+  return <div>{children}</div>;
+}
+
+export default function App() {
+  return (
+    <Wrapper>
+      <h1>Hello React</h1>
+    </Wrapper>
+  );
+}
+```
+
+Here:
+
+```jsx
+<h1>Hello React</h1>
+```
+
+is passed as `children`.
+
+---
+
+## Uses of Children Props
+
+* Wrapper components
+* Layout components
+* Reusable UI components
+* Compound Components pattern
+
+---
+
+## Interview Short Answer
+
+Children props allow passing dynamic content inside components. It helps create reusable and flexible components in React.
+
+---
+
+# 3. Different Approaches for API Handling in React
+
+## 1. Using Fetch API
+
+```jsx
+useEffect(() => {
+  fetch("https://api.example.com/users")
+    .then(res => res.json())
+    .then(data => console.log(data));
+}, []);
+```
+
+### Advantages
+
+* Built into browser
+* Simple to use
+
+---
+
+## 2. Using Axios
+
+```jsx
+import axios from "axios";
+
+useEffect(() => {
+  axios.get("https://api.example.com/users")
+    .then(res => console.log(res.data));
+}, []);
+```
+
+### Advantages
+
+* Cleaner syntax
+* Better error handling
+* Request interceptors
+
+---
+
+## 3. Using Async/Await
+
+```jsx
+const fetchData = async () => {
+  try {
+    const res = await fetch("https://api.example.com/users");
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
+
+---
+
+## 4. Using React Query / TanStack Query
+
+Used for:
+
+* Caching
+* Auto refetching
+* API state management
+
+---
+
+## 5. Using Redux Thunk / Redux Toolkit
+
+Used in large applications for centralized API handling.
+
+---
+
+## Interview Short Answer
+
+In React, APIs can be handled using Fetch API, Axios, Async/Await, React Query, and Redux Toolkit depending on project size and requirements.
+
+---
+
+# 4. Explain JWT Authentication Flow
+
+## Definition
+
+JWT (JSON Web Token) is used for secure authentication between frontend and backend.
+
+---
+
+# JWT Authentication Flow
+
+## Step 1: User Login
+
+User enters:
+
+* Email
+* Password
+
+Frontend sends request to backend.
+
+```js
+POST /login
+```
+
+---
+
+## Step 2: Backend Verifies User
+
+Backend checks credentials from database.
+
+If valid:
+
+* JWT token is generated
+
+---
+
+## Step 3: Token Sent to Frontend
+
+Backend sends token:
+
+```js
+{
+  token: "jwt_token_here"
+}
+```
+
+---
+
+## Step 4: Frontend Stores Token
+
+Usually stored in:
+
+* LocalStorage
+* SessionStorage
+* Cookies
+
+---
+
+## Step 5: Token Sent with API Requests
+
+Frontend sends token in headers:
+
+```js
+Authorization: Bearer token
+```
+
+---
+
+## Step 6: Backend Verifies Token
+
+Backend checks:
+
+* Token validity
+* Expiry
+* Signature
+
+If valid:
+
+* API response is returned
+
+---
+
+## Step 7: User Logout
+
+Token removed from storage.
+
+---
+
+## Advantages of JWT
+
+* Stateless authentication
+* Secure communication
+* Works well with React apps
+* Easy API authorization
+
+---
+
+## Interview Short Answer
+
+JWT authentication works by generating a token after login. The frontend stores the token and sends it with every API request. Backend verifies the token before giving access to protected resources.
+
+---
+
+# Why We Write `{ children }` Instead of `(children)` in React?
+
+## Correct Way
+
+```jsx
+function Wrapper({ children }) {
+  return <div>{children}</div>;
+}
+````
+
+---
+
+# Reason
+
+React component always receives a single object called `props`.
+
+Example:
+
+```jsx
+<Wrapper>
+  <h1>Hello</h1>
+</Wrapper>
+```
+
+Internally React sends:
+
+```js
+{
+  children: <h1>Hello</h1>
+}
+```
+
+So component receives:
+
+```js
+props
+```
+
+not directly `children`.
+
+---
+
+# If We Write Round Brackets
+
+```jsx
+function Wrapper(children) {
+  return <div>{children}</div>;
+}
+```
+
+Then `children` becomes full props object.
+
+Meaning:
+
+```js
+children = {
+  children: <h1>Hello</h1>
+}
+```
+
+So output will not work properly.
+
+---
+
+# Correct Alternative
+
+You can also write:
+
+```jsx
+function Wrapper(props) {
+  return <div>{props.children}</div>;
+}
+```
+
+Here:
+
+* `props` = full object
+* `props.children` = actual child content
+
+---
+
+# Why `{ children }` is Preferred?
+
+This is called **object destructuring**.
+
+```jsx
+function Wrapper({ children })
+```
+
+means:
+
+```js
+const children = props.children;
+```
+
+Advantages:
+
+* Cleaner code
+* Short syntax
+* Easy to read
+
+---
+
+# Interview Short Answer
+
+React components receive a `props` object.
+`{ children }` is object destructuring used to directly access `props.children`.
+If we use `(children)`, it receives the entire props object instead of only children.
+
+---
+# Why Do We Use `{{ }}` in React?
+
+In React, double curly braces `{{ }}` are mostly used for:
+
+- Inline CSS styling
+- Passing JavaScript objects
+
+---
+
+# 1. Inline CSS Styling
+
+## Example
+
+```jsx
+<h1 style={{ color: "red", fontSize: "30px" }}>
+  Hello React
+</h1>
+````
+
+---
+
+# Why Double Curly Braces?
+
+## First `{ }`
+
+Outer curly braces mean:
+➡ "Write JavaScript inside JSX"
+
+```jsx
+style={ ... }
+```
+
+---
+
+## Second `{ }`
+
+Inner curly braces mean:
+➡ JavaScript Object
+
+```js
+{
+  color: "red",
+  fontSize: "30px"
+}
+```
+
+---
+
+# Combined Meaning
+
+```jsx
+style={{ color: "red" }}
+```
+
+means:
+
+```jsx
+style={JavaScript Object}
+```
+
+---
+
+# 2. Passing Object as Props
+
+## Example
+
+```jsx
+const user = {
+  name: "Krupa",
+  age: 22
+};
+
+<Component data={user} />
+```
+
+Sometimes directly:
+
+```jsx
+<Component data={{ name: "Krupa", age: 22 }} />
+```
+
+Here also:
+
+* Outer `{}` = JavaScript
+* Inner `{}` = Object
+
+---
+
+# Important Difference
+
+## Single Curly Braces `{}`
+
+Used for:
+
+* Variables
+* Expressions
+* Functions
+
+Example:
+
+```jsx
+<h1>{name}</h1>
+```
+
+---
+
+## Double Curly Braces `{{}}`
+
+Used for:
+
+* Objects
+* Inline styles
+
+Example:
+
+```jsx
+style={{ color: "blue" }}
+```
+
+---
+
+# Interview Short Answer
+
+In React, `{{}}` is used when we need to pass a JavaScript object inside JSX.
+Outer `{}` represents JavaScript expression, and inner `{}` represents an object.
+
+---
+
+# 1. What is React and why is it efficient?
+
+## What is React?
+
+React is a JavaScript library used to build fast and interactive user interfaces, especially Single Page Applications (SPA).
+
+It was developed by Meta Platforms.
+
+React uses a component-based architecture, where UI is divided into reusable components.
+
+Example:
+
+* Navbar
+* Sidebar
+* Button
+* Card
+
+Each can be created as a separate component and reused anywhere.
+
+---
+
+## Why is React Efficient?
+
+### 1. Virtual DOM
+
+React uses a Virtual DOM instead of directly updating the Real DOM.
+
+Process:
+
+1. React creates a virtual copy of the UI.
+2. When state changes, React compares old and new Virtual DOM.
+3. Only changed elements are updated in the Real DOM.
+
+Because updating the Real DOM is slow, React becomes faster and more efficient.
+
+---
+
+### 2. Reusable Components
+
+Components can be reused multiple times.
+
+Benefits:
+
+* Less code
+* Easy maintenance
+* Faster development
+
+---
+
+### 3. One-Way Data Flow
+
+Data moves from Parent → Child.
+
+This makes:
+
+* Debugging easier
+* Application predictable
+* State management simpler
+
+---
+
+### 4. Fast Rendering
+
+React updates only necessary parts of the UI instead of reloading the full page.
+
+This improves:
+
+* Performance
+* User experience
+
+---
+
+### Interview Short Answer
+
+“React is a JavaScript library used for building user interfaces using reusable components. It is efficient because it uses Virtual DOM, which updates only changed parts of the UI instead of re-rendering the entire page.”
+
+---
+
+# 2. How does React work internally?
+
+## Internal Working of React
+
+### Step 1: Component Creation
+
+Developer creates components using JSX.
+
+Example:
+
+```jsx
+function App() {
+  return <h1>Hello</h1>;
+}
+```
+
+---
+
+### Step 2: JSX Conversion
+
+React converts JSX into normal JavaScript using Babel.
+
+```jsx
+<h1>Hello</h1>
+```
+
+becomes:
+
+```js
+React.createElement("h1", null, "Hello")
+```
+
+---
+
+### Step 3: Virtual DOM Creation
+
+React creates a Virtual DOM object from components.
+
+Virtual DOM is a lightweight JavaScript representation of the Real DOM.
+
+---
+
+### Step 4: Diffing Algorithm
+
+When state or props change:
+
+* React creates a new Virtual DOM
+* Compares it with the old Virtual DOM
+
+This comparison process is called Diffing.
+
+---
+
+### Step 5: Reconciliation
+
+React finds the exact changed elements and updates only those parts in the Real DOM.
+
+This process is called Reconciliation.
+
+---
+
+### Step 6: UI Update
+
+Finally, React updates the browser UI efficiently.
+
+---
+
+# Important Internal Concepts
+
+## 1. Virtual DOM
+
+A lightweight copy of the Real DOM.
+
+Purpose:
+
+* Faster updates
+* Better performance
+
+---
+
+## 2. Diffing
+
+Comparison between old and new Virtual DOM.
+
+---
+
+## 3. Reconciliation
+
+Process of updating changed elements in Real DOM.
+
+---
+
+## 4. Fiber Architecture
+
+React Fiber is React’s internal rendering engine.
+
+Benefits:
+
+* Better rendering
+* Priority-based updates
+* Smooth UI rendering
+
+---
+
+## Interview Short Answer
+
+“React works by creating a Virtual DOM. When data changes, React compares old and new Virtual DOM using the Diffing algorithm and updates only changed parts in the Real DOM through Reconciliation, making the application fast and efficient.”
+
+
+# Manipulating API Response Data in React
+
+## What is API Response Manipulation?
+
+API response manipulation means modifying or transforming the data received from an API before displaying it in the UI.
+
+Common operations:
+
+* Filtering data
+* Mapping data
+* Sorting data
+* Combining multiple API responses
+* Adding custom fields
+
+---
+
+# Example API Response
+
+```js
+[
+  {
+    id: 1,
+    name: "John",
+    age: 24
+  },
+  {
+    id: 2,
+    name: "Peter",
+    age: 30
+  }
+]
+```
+
+---
+
+# Manipulating Data in React
+
+## Example
+
+```jsx
+import React, { useEffect, useState } from "react";
+
+const Users = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((data) => {
+
+        // Manipulating API response
+        const updatedUsers = data.map((user) => ({
+          id: user.id,
+          name: user.name.toUpperCase(),
+          email: user.email,
+        }));
+
+        setUsers(updatedUsers);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h2>User List</h2>
+
+      {users.map((user) => (
+        <div key={user.id}>
+          <p>{user.name}</p>
+          <p>{user.email}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Users;
+```
+
+---
+
+# Important Interview Points
+
+## Why manipulate API data?
+
+* UI-friendly structure
+* Remove unnecessary fields
+* Improve performance
+* Better readability
+
+---
+
+# Implementing Concurrent API Calls Based on IDs
+
+## Scenario
+
+First API gives user IDs.
+
+```js
+[1, 2, 3]
+```
+
+Then we call multiple APIs together using those IDs.
+
+---
+
+# Why Concurrent Calls?
+
+Instead of calling APIs one by one:
+
+* Faster performance
+* Better user experience
+* Reduced waiting time
+
+---
+
+# Example Using Promise.all
+
+```jsx
+import React, { useEffect, useState } from "react";
+
+const UsersPosts = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then(async (users) => {
+
+        // Extract user IDs
+        const ids = users.map((user) => user.id);
+
+        // Concurrent API calls
+        const apiCalls = ids.map((id) =>
+          fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+            .then((res) => res.json())
+        );
+
+        // Wait for all APIs
+        const postsData = await Promise.all(apiCalls);
+
+        setPosts(postsData);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h2>Posts Data</h2>
+
+      {posts.map((post) => (
+        <div key={post.id}>
+          <p>{post.title}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default UsersPosts;
+```
+
+---
+
+# Flow Explanation
+
+```text
+First API Call
+      ↓
+Get IDs
+      ↓
+Create Multiple API Calls
+      ↓
+Promise.all()
+      ↓
+Get All Responses Together
+      ↓
+Update UI
+```
+
+---
+
+# Important Interview Points
+
+## Promise.all
+
+* Runs APIs in parallel
+* Improves performance
+* Returns result in same order
+
+---
+
+## Concurrent API Calls
+
+* Better than sequential calls
+* Reduces loading time
+
+---
+
+## Common Real-Time Use Cases
+
+* Dashboard data
+* User profile + posts + comments
+* Product details + reviews
+* Multiple analytics APIs
+
+---
+
+# Difference Between Sequential and Concurrent Calls
+
+## Sequential
+
+```js
+await api1();
+await api2();
+await api3();
+```
+
+* Slow
+* Waits one by one
+
+---
+
+## Concurrent
+
+```js
+await Promise.all([api1(), api2(), api3()]);
+```
+
+* Faster
+* Runs together

@@ -1985,3 +1985,175 @@ Retry handling
 
 “I fix multiple API calls by checking useEffect dependencies, using debouncing, caching, and preventing duplicate requests.”
 
+
+# Promise APIs Real Use Cases
+
+# 1. Promise.all()
+
+## Use Case
+
+Multiple APIs parallel में call करनी हो।
+
+## Real Production Example
+
+```txt id="4f3t8k"
+Dashboard Data Load
+- User Profile API
+- Notifications API
+- Orders API
+```
+
+## Example
+
+```js id="n7h2qx"
+Promise.all([
+  fetchUser(),
+  fetchOrders(),
+  fetchNotifications()
+])
+.then((data) => console.log(data))
+.catch((err) => console.log(err));
+```
+
+## Important Point
+
+* सभी promises successful होने चाहिए
+* एक fail → पूरा fail
+
+---
+
+# 2. Promise.allSettled()
+
+## Use Case
+
+सभी API results चाहिए चाहे success हो या fail।
+
+## Real Production Example
+
+```txt id="4m7jda"
+E-commerce Page
+- Reviews API fail हो जाए
+- Product details फिर भी दिखाने हैं
+```
+
+## Example
+
+```js id="k1v7rw"
+Promise.allSettled([
+  fetchUser(),
+  fetchOrders(),
+  fetchReviews()
+])
+.then((result) => console.log(result));
+```
+
+## Important Point
+
+* Success + Failure दोनों return करता है
+
+---
+
+# 3. Promise.race()
+
+## Use Case
+
+जो promise पहले complete हो वही चाहिए।
+
+## Real Production Example
+
+```txt id="s1n8oe"
+API Timeout Handling
+```
+
+## Example
+
+```js id="7p9xre"
+Promise.race([
+  fetchData(),
+  timeoutPromise()
+])
+.then((data) => console.log(data))
+.catch((err) => console.log(err));
+```
+
+## Important Point
+
+* First completed promise return होता है
+
+---
+
+# 4. Promise.any()
+
+## Use Case
+
+पहला successful promise चाहिए।
+
+## Real Production Example
+
+```txt id="gr5vba"
+Multiple Server Requests
+- Fastest successful server response लेना
+```
+
+## Example
+
+```js id="9t4wqe"
+Promise.any([
+  fetchServer1(),
+  fetchServer2(),
+  fetchServer3()
+])
+.then((data) => console.log(data));
+```
+
+## Important Point
+
+* पहला success return करता है
+* सभी fail → error
+
+---
+
+# Quick Difference Table
+
+| API                  | Return          |
+| -------------------- | --------------- |
+| Promise.all()        | सभी success     |
+| Promise.allSettled() | सभी result      |
+| Promise.race()       | पहला completed  |
+| Promise.any()        | पहला successful |
+
+---
+
+# Interview One-Line Answers
+
+## Why Promise.all()?
+
+```txt id="v8f2pk"
+Parallel API calls fast बनाने के लिए
+```
+
+## Why Promise.allSettled()?
+
+```txt id="d3m9lx"
+Partial failure handle करने के लिए
+```
+
+## Why Promise.race()?
+
+```txt id="f7n2za"
+Timeout handling के लिए
+```
+
+## Why Promise.any()?
+
+```txt id="t6w1ey"
+Fastest successful response के लिए
+```
+E-commerce website open करते समय:
+
+Profile API, 
+Cart API,  
+Product API, 
+Notification API,  
+
+इन सभी को parallel चलाने के लिए Promise.all() use करते हैं ताकि performance fast हो जाए।

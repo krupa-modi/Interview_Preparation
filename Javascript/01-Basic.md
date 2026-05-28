@@ -1277,3 +1277,694 @@ console.log(arr)
 “slice() array ka portion copy karke new array return karta hai without modifying original array, while splice() original array ko modify karta hai for adding, removing, or replacing elements.”
 
 ---
+
+
+# Map
+
+```js id="n0z7va"
+let map = new Map();
+```
+
+Ye JavaScript me ek new `Map` object create karta hai.
+
+`Map` ek special data structure hai jo:
+
+```txt id="96mybc"
+key → value
+```
+
+format me data store karta hai.
+
+---
+
+# Easy Example
+
+```js id="vjlwm0"
+let map = new Map();
+
+map.set("name", "Rahul");
+map.set("age", 25);
+
+console.log(map);
+```
+
+---
+
+# Output
+
+```js id="6gvjlwm"
+Map(2) {
+  'name' => 'Rahul',
+  'age' => 25
+}
+```
+
+---
+
+# Understanding
+
+Here:
+
+| Key      | Value     |
+| -------- | --------- |
+| `"name"` | `"Rahul"` |
+| `"age"`  | `25`      |
+
+---
+
+# Important Methods
+
+| Method     | Meaning          |
+| ---------- | ---------------- |
+| `set()`    | value add/update |
+| `get()`    | value get        |
+| `has()`    | check key exists |
+| `delete()` | remove key       |
+
+---
+
+# Example
+
+## Add Value
+
+```js id="jlwm1a"
+map.set("city", "Mumbai");
+```
+
+---
+
+## Get Value
+
+```js id="jlwm2b"
+console.log(map.get("city"));
+```
+
+Output:
+
+```js id="jlwm3c"
+Mumbai
+```
+
+---
+
+## Check Key
+
+```js id="jlwm4d"
+console.log(map.has("city"));
+```
+
+Output:
+
+```js id="jlwm5e"
+true
+```
+
+---
+
+# Why Use Map?
+
+Because:
+
+* fast searching
+* key-value storage
+* any datatype as key allowed
+
+---
+
+# Difference Between Object and Map
+
+| Object           | Map                |
+| ---------------- | ------------------ |
+| `{}`             | `new Map()`        |
+| normal key-value | advanced key-value |
+| limited features | extra methods      |
+
+---
+
+# Interview Line
+
+> `new Map()` creates a Map object used to store data in key-value pair format.
+
+
+
+## 1. Difference Between `substring()`, `substr()`, and `slice()`
+
+| Method        | Syntax                      | Negative Index Support | Second Parameter Meaning | Notes                       |
+| ------------- | --------------------------- | ---------------------- | ------------------------ | --------------------------- |
+| `substring()` | `str.substring(start, end)` | ❌ No                   | Ending index             | Swaps values if start > end |
+| `substr()`    | `str.substr(start, length)` | ✅ Yes                  | Length                   | Deprecated                  |
+| `slice()`     | `str.slice(start, end)`     | ✅ Yes                  | Ending index             | Most commonly used          |
+
+---
+
+# A. `substring()`
+
+## Syntax
+
+```js
+string.substring(start, end)
+```
+
+* `start` → starting index
+* `end` → ending index (not included)
+
+---
+
+## Example
+
+```js
+let str = "JavaScript";
+
+console.log(str.substring(0, 4));
+```
+
+### Output
+
+```js
+Java
+```
+
+---
+
+## Important Points
+
+### 1. End index is NOT included
+
+```js
+let str = "Hello";
+
+console.log(str.substring(0, 2));
+```
+
+### Output
+
+```js
+He
+```
+
+---
+
+### 2. Negative values become 0
+
+```js
+let str = "Hello";
+
+console.log(str.substring(-2, 3));
+```
+
+### Output
+
+```js
+Hel
+```
+
+---
+
+### 3. If start > end, values are swapped
+
+```js
+let str = "JavaScript";
+
+console.log(str.substring(7, 4));
+```
+
+### Output
+
+```js
+Scr
+```
+
+---
+
+# B. `substr()` (Deprecated)
+
+## Syntax
+
+```js
+string.substr(start, length)
+```
+
+* `start` → starting index
+* `length` → number of characters
+
+---
+
+## Example
+
+```js
+let str = "JavaScript";
+
+console.log(str.substr(4, 6));
+```
+
+### Output
+
+```js
+Script
+```
+
+---
+
+## Negative Index Supported
+
+```js
+let str = "JavaScript";
+
+console.log(str.substr(-6, 6));
+```
+
+### Output
+
+```js
+Script
+```
+
+---
+
+# Important Interview Point
+
+`substr()` is deprecated.
+
+👉 Modern projects mainly use:
+
+* `slice()`
+* `substring()`
+
+---
+
+# C. `slice()`
+
+## Syntax
+
+```js
+string.slice(start, end)
+```
+
+* `start` → starting index
+* `end` → ending index (not included)
+
+---
+
+## Example
+
+```js
+let str = "JavaScript";
+
+console.log(str.slice(4, 10));
+```
+
+### Output
+
+```js
+Script
+```
+
+---
+
+## Negative Index Supported
+
+```js
+let str = "JavaScript";
+
+console.log(str.slice(-6));
+```
+
+### Output
+
+```js
+Script
+```
+
+---
+
+# Important Difference
+
+## `slice()` DOES NOT swap values
+
+```js
+let str = "JavaScript";
+
+console.log(str.slice(7, 4));
+```
+
+### Output
+
+```js
+```
+
+(Empty string)
+
+---
+
+# Quick Interview Comparison
+
+| Feature               | substring() | substr() | slice()       |
+| --------------------- | ----------- | -------- | ------------- |
+| Negative Index        | ❌           | ✅        | ✅             |
+| Deprecated            | ❌           | ✅        | ❌             |
+| Swaps Start & End     | ✅           | ❌        | ❌             |
+| Most Used in Projects | Medium      | Rare     | ✅ Very Common |
+
+---
+
+# Which One Should You Use?
+
+## Best Practice
+
+### Use `slice()` in modern applications
+
+Why?
+
+* Supports negative indexes
+* Cleaner behavior
+* Most common in React/JavaScript projects
+* Preferred in interviews
+
+---
+
+# Interview Question
+
+## Q: Why is `substr()` avoided nowadays?
+
+### Answer
+
+`substr()` is deprecated, meaning it may be removed in future JavaScript versions. Modern applications mainly use `slice()` or `substring()`.
+
+---
+
+# Real Project Examples
+
+## 1. Extract File Extension
+
+```js
+let file = "photo.png";
+
+console.log(file.slice(file.lastIndexOf(".")));
+```
+
+### Output
+
+```js
+.png
+```
+
+---
+
+## 2. Get Last 4 Digits of Card
+
+```js
+let card = "1234567890123456";
+
+console.log(card.slice(-4));
+```
+
+### Output
+
+```js
+3456
+```
+
+---
+
+# Valid Parentheses Problem (Using Stack)
+
+# Problem Statement
+
+Given a string containing:
+
+```txt
+() {} []
+```
+
+Check if the parentheses are valid.
+
+A string is valid if:
+
+* Every opening bracket has a closing bracket
+* Correct order is maintained
+
+---
+
+# Example
+
+## Input
+
+```js
+"()[]{}"
+```
+
+## Output
+
+```js
+true
+```
+
+---
+
+## Input
+
+```js
+"(]"
+```
+
+## Output
+
+```js
+false
+```
+
+# Is JavaScript Tightly Coupled or Loosely Coupled?
+
+JavaScript is a **loosely coupled language**.
+
+---
+
+# What is Loosely Coupled?
+
+In a loosely coupled system:
+
+* Components/modules depend less on each other.
+* One module can change without affecting others much.
+* Code becomes flexible and reusable.
+
+JavaScript supports:
+
+* Functions
+* Objects
+* Modules
+* Event-driven programming
+
+Because of this, JavaScript applications are generally loosely coupled.
+
+---
+
+# Why is JavaScript Loosely Coupled?
+
+## 1. Dynamic Typing
+
+Variables can store any type of value.
+
+Example:
+
+```js id="h7x0dl"
+let data = 10;
+data = "Hello";
+```
+
+No strict dependency on data types.
+
+---
+
+## 2. Functions are Independent
+
+Functions can work separately and can be passed as arguments.
+
+```js id="9rwjlwm"
+function greet(name) {
+  return "Hello " + name;
+}
+```
+
+---
+
+## 3. Modules can be Separate
+
+JavaScript allows splitting code into different files/modules.
+
+Example:
+
+```js id="fxx13x"
+export function add(a, b) {
+  return a + b;
+}
+```
+
+Different modules communicate only when needed.
+
+---
+
+## 4. Event-Driven Nature
+
+JavaScript uses events and callbacks, reducing direct dependency between components.
+
+Example:
+
+```js id="ecoj69"
+button.addEventListener("click", handleClick);
+```
+
+Button does not need to know internal logic of `handleClick`.
+
+---
+
+# Can JavaScript be Tightly Coupled?
+
+Yes, if developers write code where modules heavily depend on each other.
+
+Example:
+
+* Direct object dependency
+* Global variable dependency
+* Hardcoded logic
+
+But by nature, JavaScript supports loose coupling.
+
+---
+
+# Interview Short Answer
+
+“JavaScript is generally considered a loosely coupled language because its components, functions, and modules can work independently with minimal dependency on each other. Features like dynamic typing, first-class functions, and modular programming help achieve loose coupling.”
+
+
+# localeCompare() in JavaScript
+
+## Definition
+
+`localeCompare()` is a string method used to compare two strings.
+
+It is mainly used for:
+
+* Sorting strings
+* Alphabetical order
+* Case-sensitive comparison
+
+---
+
+# Syntax
+
+```js id="q1mx3u"
+string1.localeCompare(string2)
+```
+
+---
+
+# Return Values
+
+| Value         | Meaning                |
+| ------------- | ---------------------- |
+| Negative (-1) | string1 comes first    |
+| Positive (1)  | string2 comes first    |
+| 0             | Both strings are equal |
+
+---
+
+# Example 1
+
+```js id="w0xgj1"
+console.log("Amit".localeCompare("Rahul"));
+```
+
+## Output
+
+```js id="ny3i67"
+-1
+```
+
+### Explanation
+
+`Amit` comes before `Rahul`.
+
+---
+
+# Example 2
+
+```js id="z8r3x5"
+console.log("Rahul".localeCompare("Amit"));
+```
+
+## Output
+
+```js id="p5h2w9"
+1
+```
+
+### Explanation
+
+`Rahul` comes after `Amit`.
+
+---
+
+# Example 3
+
+```js id="v9l2d4"
+console.log("Amit".localeCompare("Amit"));
+```
+
+## Output
+
+```js id="t8g7e1"
+0
+```
+
+---
+
+# Used in Sorting Array of Objects
+
+## Program
+
+```js id="k3n8y2"
+const users = [
+  { name: "Rahul" },
+  { name: "Amit" },
+  { name: "Neha" }
+];
+
+users.sort((a, b) => a.name.localeCompare(b.name));
+
+console.log(users);
+```
+
+---
+
+# Output
+
+```js id="d4m1q7"
+[
+  { name: "Amit" },
+  { name: "Neha" },
+  { name: "Rahul" }
+]
+```
+
+---
+
+# Descending Order
+
+```js id="x7w5f2"
+users.sort((a, b) => b.name.localeCompare(a.name));
+```
+
+---
+
+# Interview Points
+
+* `localeCompare()` is used for string comparison.
+* Mostly used inside `sort()`.
+* Helpful for alphabetical sorting.
+* Works better than normal string comparison.
+
+---
+
+# Simple Interview Answer
+
+`localeCompare()` is a JavaScript string method used to compare two strings and mainly used for sorting strings alphabetically.

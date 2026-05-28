@@ -1186,9 +1186,148 @@ Expressions like:
 3 > 2 > 1
 ```
 
-do NOT compare all values together.
+## 1.
+```js
+let a = null
+let b = null
 
-JavaScript evaluates them one by one from left to right.
+let c = a + b
+console.log(c)
+```
+
+### Output:
+```js
+0
+```
+
+### Why?
+`null` is converted to `0` in numeric operations.
 
 ---
+
+## 2.
+```js
+typeof "5 " === " 5"
+```
+
+### Output:
+```js
+false
+```
+
+### Why?
+`typeof "5 "` returns `"string"` not `" 5"`.
+
+---
+
+## 3.
+```js
+for(;;) {
+  console.log("Loop")
+}
+```
+
+### Output:
+```js
+Infinite Loop
+```
+
+### Why?
+No condition is given, so it always remains `true`.
+
+---
+
+## 4.
+```js
+console.log(typeof function(){});
+```
+
+### Output:
+```js
+function
+```
+
+### Why?
+Functions have special type `"function"` in JavaScript.
+
+---
+
+## 5.
+```js
+console.log(typeof function(){}());
+```
+
+### Output:
+```js
+undefined
+```
+
+### Why?
+Function executes immediately and returns nothing, so default return is `undefined`.
+
+---
+
+## 6.
+```js
+console.log(..."Hello");
+```
+
+### Output:
+```js
+H e l l o
+```
+
+### Why?
+Spread operator breaks string into individual characters.
+
+---
+
+## 7.
+```js
+console.log(parseInt("10px"));
+```
+
+### Output:
+```js
+10
+```
+
+### Why?
+`parseInt()` reads numbers until a non-number character appears.
+
+---
+
+## 8.
+```js
+console.log([] == false);
+```
+
+### Output:
+```js
+true
+```
+
+### Why?
+`[]` converts to empty string `""` and `false` converts to `0`.  
+Both become `0`.
+
+---
+
+## 9.
+```js
+async function foo() {
+    return "Hello";
+}
+
+console.log(foo());
+```
+
+### Output:
+```js
+Promise { 'Hello' }
+```
+
+### Why?
+`async` function always returns a Promise.
+
 

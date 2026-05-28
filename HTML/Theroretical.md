@@ -2303,11 +2303,49 @@ Ye important topics abhi add karne chahiye:
 * Why are meta tags important?
 * What is viewport meta tag?
 
+# Meta Tags
+
+## 1. What are Meta Tags?
+Meta tags are HTML tags placed inside the `<head>` section of a webpage.  
+They provide information about the webpage to browsers and search engines.
+
+Example:
+```html
+<meta charset="UTF-8">
+<meta name="description" content="Learning HTML">
+````
+
+---
+
+## 2. Why are Meta Tags Important?
+
+* Improve SEO (Search Engine Optimization)
+* Help search engines understand the page
+* Control webpage responsiveness
+* Improve browser compatibility
+* Provide page description in search results
+
+---
+
+## 3. What is Viewport Meta Tag?
+
+The viewport meta tag makes a webpage responsive on different screen sizes like mobile, tablet, and desktop.
+
+Example:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+### Meaning:
+
+* `width=device-width` → Page width matches device width
+* `initial-scale=1.0` → Default zoom level
+
 ### Example:
 
 ```html id="xv9o6s"
 <meta charset="UTF-8">
-
 <meta 
   name="viewport"
   content="width=device-width, initial-scale=1.0"
@@ -2356,25 +2394,69 @@ Sandbox restricts iframe permissions.
 
 # 4. preload, defer, async
 
-Very common in MNC interviews.
-
-| Attribute | Behavior                    |
-| --------- | --------------------------- |
-| async     | Loads JS parallel           |
-| defer     | Loads JS after HTML parsing |
+## 1. Preload
+`preload` is used to load important resources early for better performance.
 
 ### Example:
+```html
+<link rel="preload" href="style.css" as="style">
+```
 
-```html id="jlwm5u"
+### Uses:
+- Loads critical files faster
+- Improves website speed
+- Used for fonts, CSS, images, scripts
+
+---
+
+## 2. Defer
+`defer` loads the JavaScript file in the background and executes it after HTML parsing is complete.
+
+### Example:
+```html
 <script src="app.js" defer></script>
+```
 
+### Features:
+- HTML parsing does not stop
+- Scripts execute after HTML loads
+- Maintains script order
+
+### Best For:
+- Large JavaScript files
+- DOM-related scripts
+
+---
+
+## 3. Async
+`async` loads the JavaScript file in parallel and executes immediately after download.
+
+### Example:
+```html
 <script src="app.js" async></script>
 ```
 
-### Interview Line:
+### Features:
+- HTML parsing may pause during execution
+- Script order is not guaranteed
+- Faster for independent scripts
 
-* async → Executes immediately after loading
-* defer → Executes after DOM creation
+### Best For:
+- Analytics scripts
+- Ads scripts
+- Third-party scripts
+
+---
+
+# Difference Between defer and async
+
+| Feature | defer | async |
+|---|---|---|
+| HTML Parsing Stops | No | Yes (during execution) |
+| Execution Time | After HTML parsing | Immediately after download |
+| Script Order Maintained | Yes | No |
+| Best Use | Main app scripts | Third-party scripts |
+
 
 ---
 
@@ -2395,6 +2477,69 @@ Very common in MNC interviews.
 * What is DOM?
 * What is DOM tree?
 * Difference between HTML and DOM?
+
+# DOM (Document Object Model)
+
+## 1. What is DOM?
+DOM stands for **Document Object Model**.  
+It is a programming interface that represents an HTML webpage as objects and nodes.
+
+JavaScript uses the DOM to:
+- Access HTML elements
+- Change content
+- Change styles
+- Handle events
+
+### Example:
+```html
+<p id="demo">Hello</p>
+
+<script>
+document.getElementById("demo").innerText = "Hi";
+</script>
+```
+
+---
+
+## 2. What is DOM Tree?
+DOM Tree is the tree-like structure created by the browser from HTML elements.
+
+### Example HTML:
+```html
+<html>
+  <body>
+    <h1>Hello</h1>
+    <p>Welcome</p>
+  </body>
+</html>
+```
+
+### DOM Tree:
+```text
+html
+ └── body
+      ├── h1
+      └── p
+```
+
+Each HTML tag becomes a node in the DOM tree.
+
+---
+
+## 3. Difference Between HTML and DOM
+
+| HTML | DOM |
+|---|---|
+| Static markup language | Dynamic object representation |
+| Written by developer | Created by browser |
+| Defines webpage structure | Allows JavaScript interaction |
+| Cannot change itself | Can be modified dynamically |
+| Stored as text | Stored as objects/nodes |
+
+### Simple Line:
+- HTML = Structure of webpage  
+- DOM = Browser's live representation of webpage
+
 
 ### Interview Line:
 
@@ -2482,9 +2627,72 @@ Full functionality first.
 }
 ```
 
+# preload / prefetch / preconnect
+
+## 1. Preload
+`preload` is used to load important resources early.
+
+### Example:
+```html
+<link rel="preload" href="style.css" as="style">
+```
+
+### Uses:
+- Loads critical resources faster
+- Improves page performance
+- Used for CSS, fonts, images, scripts
+
+### Best For:
+- Important files needed immediately
+
 ---
 
-# 12. preload / prefetch / preconnect
+## 2. Prefetch
+`prefetch` is used to load resources that may be needed in the future.
+
+### Example:
+```html
+<link rel="prefetch" href="next-page.js">
+```
+
+### Uses:
+- Improves future page navigation speed
+- Loads files in idle browser time
+
+### Best For:
+- Next page resources
+- Future navigation
+
+---
+
+## 3. Preconnect
+`preconnect` is used to establish an early connection with another domain.
+
+### Example:
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+```
+
+### Uses:
+- Reduces connection time
+- Faster API or CDN requests
+
+### Best For:
+- External APIs
+- Google Fonts
+- CDN resources
+
+---
+
+# Difference
+
+| Feature | preload | prefetch | preconnect |
+|---|---|---|---|
+| Purpose | Load important resource now | Load future resource | Create early server connection |
+| Priority | High | Low | Medium |
+| Used For | Current page | Next page | External domains |
+| Improves | Initial load speed | Future navigation | Connection speed |
+
 
 Performance optimization questions.
 
@@ -3503,3 +3711,311 @@ Contains:
 
 “Metadata is information about data.
 In web development, metadata helps browsers and search engines understand the webpage content, improve SEO, and provide better user experience.”
+
+
+
+# Critical Rendering Path (CRP)
+
+
+Critical Rendering Path (CRP) is the sequence of steps the browser follows to convert HTML, CSS, and JavaScript into pixels on the screen.
+
+In simple words:
+
+> It is the process used by the browser to display a web page as quickly as possible.
+
+---
+
+# Why Critical Rendering Path is Important
+
+The faster the Critical Rendering Path, the faster the page loads.
+
+Optimizing CRP improves:
+
+- Website speed
+- Performance
+- User experience
+- SEO ranking
+
+---
+
+# Steps in Critical Rendering Path
+
+## 1. HTML Parsing
+
+The browser reads HTML and converts it into the DOM (Document Object Model).
+
+### Example
+
+```html
+<h1>Hello</h1>
+<p>Welcome</p>
+````
+
+Browser creates:
+
+```text
+Document
+ ├── h1
+ └── p
+```
+
+This structure is called the DOM Tree.
+
+---
+
+# 2. CSS Parsing
+
+The browser reads CSS and creates the CSSOM (CSS Object Model).
+
+### Example
+
+```css
+h1 {
+  color: red;
+}
+```
+
+Browser creates style rules internally.
+
+---
+
+# 3. JavaScript Execution
+
+The browser executes JavaScript.
+
+JavaScript can:
+
+* Modify DOM
+* Modify CSS
+* Add/remove elements
+
+Because of this, JavaScript can block rendering.
+
+---
+
+# 4. Render Tree Creation
+
+Browser combines:
+
+* DOM
+* CSSOM
+
+to create the Render Tree.
+
+The Render Tree contains only visible elements.
+
+---
+
+# 5. Layout (Reflow)
+
+Browser calculates:
+
+* Width
+* Height
+* Position
+* Spacing
+
+for every visible element.
+
+This process is called:
+
+* Layout
+* Reflow
+
+---
+
+# 6. Painting
+
+Browser paints pixels on the screen.
+
+Examples:
+
+* Text color
+* Background
+* Borders
+* Shadows
+
+---
+
+# 7. Compositing
+
+Different layers are combined and displayed on the screen.
+
+---
+
+# Complete Flow
+
+```text
+HTML
+ ↓
+DOM Tree
+ ↓
+CSS
+ ↓
+CSSOM Tree
+ ↓
+DOM + CSSOM
+ ↓
+Render Tree
+ ↓
+Layout (Reflow)
+ ↓
+Paint
+ ↓
+Display on Screen
+```
+
+---
+
+# Important Terms
+
+## DOM
+
+Document Object Model created from HTML.
+
+---
+
+## CSSOM
+
+CSS Object Model created from CSS.
+
+---
+
+## Render Tree
+
+Combination of DOM + CSSOM.
+
+---
+
+## Reflow
+
+Calculation of element sizes and positions.
+
+---
+
+## Repaint
+
+Painting pixels again after style changes.
+
+---
+
+# Render Blocking Resources
+
+## CSS is Render Blocking
+
+The browser waits for CSS before rendering.
+
+Example:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+---
+
+## JavaScript Can Block Rendering
+
+Example:
+
+```html
+<script src="app.js"></script>
+```
+
+Browser stops HTML parsing until JS execution completes.
+
+---
+
+# How to Optimize Critical Rendering Path
+
+## 1. Minify CSS and JavaScript
+
+Reduce file size.
+
+---
+
+## 2. Use `defer` for JavaScript
+
+```html
+<script src="app.js" defer></script>
+```
+
+Allows HTML parsing while JS downloads.
+
+---
+
+## 3. Use `async` for Independent Scripts
+
+```html
+<script src="analytics.js" async></script>
+```
+
+---
+
+## 4. Reduce HTTP Requests
+
+Combine files when possible.
+
+---
+
+## 5. Optimize Images
+
+Use:
+
+* WebP
+* Lazy loading
+* Compression
+
+---
+
+## 6. Inline Critical CSS
+
+Load important CSS first.
+
+---
+
+## 7. Lazy Load Components
+
+Especially in React and Next.js.
+
+---
+
+# Example of CRP Optimization
+
+## Bad Example
+
+```html
+<head>
+  <script src="large.js"></script>
+</head>
+```
+
+Problem:
+
+* Blocks HTML parsing
+* Slower rendering
+
+---
+
+## Better Example
+
+```html
+<head>
+  <script src="large.js" defer></script>
+</head>
+```
+
+Benefit:
+
+* Faster rendering
+* Better performance
+
+# Interview Answer (Short)
+
+Critical Rendering Path is the sequence of steps the browser follows to convert HTML, CSS, and JavaScript into pixels on the screen. It includes DOM creation, CSSOM creation, Render Tree generation, Layout, and Painting. Optimizing CRP improves website performance and loading speed.
+
+---
+
+# One-Line Interview Answer
+
+Critical Rendering Path is the browser process used to render a webpage from HTML, CSS, and JavaScript as quickly as possible.
+

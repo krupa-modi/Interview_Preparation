@@ -4329,3 +4329,950 @@ First mobile design:
 
 “I use Flexbox, Grid, media queries, responsive units, and Tailwind breakpoints to build mobile-first responsive websites that work smoothly across all devices.”
 
+# CSS Complete Properties Guide 🚀
+
+## 1. Text Properties
+
+### `color`
+
+Text ka color set karta hai.
+
+```css
+p {
+  color: red;
+}
+```
+
+---
+
+### `text-align`
+
+Text ko left, right, center align karta hai.
+
+```css
+h1 {
+  text-align: center;
+}
+```
+
+Values:
+
+* left
+* right
+* center
+* justify
+
+---
+
+### `text-decoration`
+
+Text ke niche line ya remove karta hai.
+
+```css
+a {
+  text-decoration: none;
+}
+```
+
+Values:
+
+* underline
+* overline
+* line-through
+* none
+
+---
+
+### `text-transform`
+
+Text ko uppercase/lowercase banata hai.
+
+```css
+p {
+  text-transform: uppercase;
+}
+```
+
+Values:
+
+* uppercase
+* lowercase
+* capitalize
+
+---
+
+### `letter-spacing`
+
+Letters ke bich gap deta hai.
+
+```css
+h1 {
+  letter-spacing: 5px;
+}
+```
+
+---
+
+### `word-spacing`
+
+Words ke bich spacing deta hai.
+
+```css
+p {
+  word-spacing: 10px;
+}
+```
+
+---
+
+### `line-height`
+
+Lines ke bich distance deta hai.
+
+```css
+p {
+  line-height: 30px;
+}
+```
+
+---
+
+### `text-shadow`
+
+Text pe shadow lagata hai.
+
+```css
+h1 {
+  text-shadow: 2px 2px 5px gray;
+}
+```
+
+---
+
+## 2. Font Properties
+
+### `font-size`
+
+Font ka size set karta hai.
+
+```css
+p {
+  font-size: 20px;
+}
+```
+
+Units:
+
+* px
+* em
+* rem
+* %
+* vw
+
+---
+
+### `font-family`
+
+Font style change karta hai.
+
+```css
+p {
+  font-family: Arial, sans-serif;
+}
+```
+
+---
+
+### `font-weight`
+
+Text ko bold karta hai.
+
+```css
+p {
+  font-weight: bold;
+}
+```
+
+Values:
+
+* normal
+* bold
+* 100 to 900
+
+---
+
+### `font-style`
+
+Italic text banata hai.
+
+```css
+p {
+  font-style: italic;
+}
+```
+
+---
+
+### `font-variant`
+
+Small caps banata hai.
+
+```css
+p {
+  font-variant: small-caps;
+}
+```
+
+---
+
+## 3. Background Properties
+
+### `background-color`
+
+Background color set karta hai.
+
+```css
+div {
+  background-color: yellow;
+}
+```
+
+---
+
+### `background-image`
+
+Background image lagata hai.
+
+```css
+div {
+  background-image: url("image.jpg");
+}
+```
+
+---
+
+### `background-repeat`
+
+Image repeat control karta hai.
+
+```css
+div {
+  background-repeat: no-repeat;
+}
+```
+
+Values:
+
+* repeat
+* no-repeat
+* repeat-x
+* repeat-y
+
+---
+
+### `background-size`
+
+Background image ka size set karta hai.
+
+```css
+div {
+  background-size: cover;
+}
+```
+
+Values:
+
+* cover
+* contain
+
+---
+
+### `background-position`
+
+Image ki position set karta hai.
+
+```css
+div {
+  background-position: center;
+}
+```
+
+---
+
+## 4. Width & Height
+
+### `width`
+
+```css
+div {
+  width: 300px;
+}
+```
+
+---
+
+### `height`
+
+```css
+div {
+  height: 200px;
+}
+```
+
+---
+
+### `max-width`
+
+```css
+div {
+  max-width: 500px;
+}
+```
+
+---
+
+### `min-width`
+
+```css
+div {
+  min-width: 200px;
+}
+```
+
+---
+
+## 5. Margin Properties
+
+### `margin`
+
+Outside spacing deta hai.
+
+```css
+div {
+  margin: 20px;
+}
+```
+
+---
+
+### Individual Margin
+
+```css
+div {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  margin-left: 40px;
+}
+```
+
+---
+
+### Center Div
+
+```css
+div {
+  margin: auto;
+}
+```
+
+---
+
+## 6. Padding Properties
+
+### `padding`
+
+Inside spacing deta hai.
+
+```css
+div {
+  padding: 20px;
+}
+```
+
+---
+
+### Individual Padding
+
+```css
+div {
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+}
+```
+
+---
+
+## 7. Border Properties
+
+### `border`
+
+```css
+div {
+  border: 2px solid black;
+}
+```
+
+---
+
+### `border-width`
+
+```css
+div {
+  border-width: 5px;
+}
+```
+
+---
+
+### `border-style`
+
+```css
+div {
+  border-style: dashed;
+}
+```
+
+Values:
+
+* solid
+* dashed
+* dotted
+* double
+
+---
+
+### `border-color`
+
+```css
+div {
+  border-color: red;
+}
+```
+
+---
+
+### `border-radius`
+
+Rounded corners deta hai.
+
+```css
+div {
+  border-radius: 10px;
+}
+```
+
+---
+
+## 8. Display Properties
+
+### `display`
+
+```css
+div {
+  display: flex;
+}
+```
+
+Values:
+
+* block
+* inline
+* inline-block
+* flex
+* grid
+* none
+
+---
+
+### `visibility`
+
+```css
+div {
+  visibility: hidden;
+}
+```
+
+---
+
+### `opacity`
+
+```css
+div {
+  opacity: 0.5;
+}
+```
+
+---
+
+## 9. Position Properties
+
+### `position`
+
+```css
+div {
+  position: absolute;
+}
+```
+
+Values:
+
+* static
+* relative
+* absolute
+* fixed
+* sticky
+
+---
+
+### `top`, `right`, `bottom`, `left`
+
+```css
+div {
+  top: 20px;
+  left: 30px;
+}
+```
+
+---
+
+### `z-index`
+
+Layer control karta hai.
+
+```css
+div {
+  z-index: 10;
+}
+```
+
+---
+
+## 10. Flexbox Properties
+
+### `display: flex`
+
+```css
+.container {
+  display: flex;
+}
+```
+
+---
+
+### `justify-content`
+
+Horizontal alignment.
+
+```css
+.container {
+  justify-content: center;
+}
+```
+
+Values:
+
+* center
+* space-between
+* space-around
+* flex-start
+* flex-end
+
+---
+
+### `align-items`
+
+Vertical alignment.
+
+```css
+.container {
+  align-items: center;
+}
+```
+
+---
+
+### `flex-direction`
+
+```css
+.container {
+  flex-direction: column;
+}
+```
+
+Values:
+
+* row
+* column
+
+---
+
+### `gap`
+
+```css
+.container {
+  gap: 20px;
+}
+```
+
+---
+
+## 11. Grid Properties
+
+### `display: grid`
+
+```css
+.container {
+  display: grid;
+}
+```
+
+---
+
+### `grid-template-columns`
+
+```css
+.container {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+```
+
+---
+
+### `grid-template-rows`
+
+```css
+.container {
+  grid-template-rows: 100px 100px;
+}
+```
+
+---
+
+### `place-items`
+
+```css
+.container {
+  place-items: center;
+}
+```
+
+---
+
+## 12. Overflow Properties
+
+### `overflow`
+
+```css
+div {
+  overflow: hidden;
+}
+```
+
+Values:
+
+* hidden
+* scroll
+* auto
+
+---
+
+## 13. Cursor Property
+
+### `cursor`
+
+```css
+button {
+  cursor: pointer;
+}
+```
+
+Values:
+
+* pointer
+* not-allowed
+* grab
+
+---
+
+## 14. Transition Property
+
+### `transition`
+
+```css
+button {
+  transition: 0.3s;
+}
+```
+
+---
+
+## 15. Transform Property
+
+### `transform`
+
+```css
+div {
+  transform: scale(1.2);
+}
+```
+
+Functions:
+
+* scale()
+* rotate()
+* translate()
+
+---
+
+## 16. Animation Property
+
+### `animation`
+
+```css
+div {
+  animation: move 2s infinite;
+}
+```
+
+---
+
+## 17. Box Shadow
+
+### `box-shadow`
+
+```css
+div {
+  box-shadow: 0 0 10px gray;
+}
+```
+
+---
+
+## 18. Object Fit
+
+### `object-fit`
+
+```css
+img {
+  object-fit: cover;
+}
+```
+
+Values:
+
+* cover
+* contain
+* fill
+
+---
+
+# Important CSS Units
+
+| Unit | Meaning         |
+| ---- | --------------- |
+| px   | Pixel           |
+| %    | Percentage      |
+| em   | Parent relative |
+| rem  | Root relative   |
+| vh   | Viewport height |
+| vw   | Viewport width  |
+
+---
+
+# Important CSS Selectors
+
+## Class Selector
+
+```css
+.box {
+  color: red;
+}
+```
+
+---
+
+## ID Selector
+
+```css
+#header {
+  color: blue;
+}
+```
+
+---
+
+## Universal Selector
+
+```css
+* {
+  margin: 0;
+}
+```
+
+---
+
+## Group Selector
+
+```css
+h1, h2, p {
+  color: black;
+}
+```
+
+---
+
+# Pseudo Classes
+
+### `:hover`
+
+```css
+button:hover {
+  background: red;
+}
+```
+
+---
+
+### `:focus`
+
+```css
+input:focus {
+  border: 2px solid blue;
+}
+```
+
+---
+
+### `:first-child`
+
+```css
+li:first-child {
+  color: red;
+}
+```
+
+---
+
+# Media Query (Responsive)
+
+```css
+@media (max-width: 768px) {
+  body {
+    background: red;
+  }
+}
+```
+
+---
+
+# Most Used CSS Shortcuts
+
+## Center Div
+
+```css
+display: flex;
+justify-content: center;
+align-items: center;
+```
+
+---
+
+## Single Line Ellipsis
+
+```css
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+```
+
+---
+
+## Full Screen
+
+```css
+width: 100vw;
+height: 100vh;
+```
+
+---
+
+# CSS Priority
+
+1. Inline CSS
+2. ID
+3. Class
+4. Tag
+
+---
+
+# Position Quick Revision
+
+| Position | Meaning             |
+| -------- | ------------------- |
+| static   | Default             |
+| relative | Apni jagah se move  |
+| absolute | Parent ke according |
+| fixed    | Screen pe fixed     |
+| sticky   | Scroll pe stick     |
+
+---
+
+# Flex Quick Revision
+
+| Property        | Work       |
+| --------------- | ---------- |
+| justify-content | Horizontal |
+| align-items     | Vertical   |
+| flex-direction  | Row/Column |
+| gap             | Space      |
+
+---
+
+# Grid Quick Revision
+
+| Property              | Work    |
+| --------------------- | ------- |
+| grid-template-columns | Columns |
+| grid-template-rows    | Rows    |
+| gap                   | Space   |
+
+---
+
+# Interview Important Properties
+
+* display
+* position
+* z-index
+* flex
+* grid
+* overflow
+* box-sizing
+* transform
+* transition
+* animation
+* media query
+
+---
+
+# Golden Rule 🚀
+
+## Box Model
+
+```text
+Margin → Border → Padding → Content
+```
+
+---
+
+# Best Practice
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+```

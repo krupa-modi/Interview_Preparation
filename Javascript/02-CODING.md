@@ -48,6 +48,26 @@
 45. Swap Two Numbers Without Using Third Variable
 46. Specific Character Count in String
 47. Count Digits
+48. Character Count Using Map
+49. Power of Number
+50. Random Number
+51. Array Rotate(Left/Right)
+52. Find Common Elements in Array
+53. Separate Unique and Duplicate Values in Array
+54. Remove False Values from Array
+55. Find Largest and Smallest Number in Array
+56. Frequency Count in Array
+57. Most Repeated Character in string
+58. Remove Special Characters from String
+59. First Letter Capital of Every Word
+60. Frequency Count in Array
+61. Longest Word in Sentence
+62.  Count Spaces in String
+63. Toggle Case in String
+64. Sort Array of Objects
+65. Object Key with Highest Value
+66. Convert Object to Array
+67. Two Objects Equal or Not
 
 
 
@@ -2002,10 +2022,11 @@ function armStrong(num) {
   let sum = 0;
 
   while (num > 0) {
-    let val = num % 10;
+    // let val = 153 % 10; = 3
+    // let val = 153 / 10; = 15.3
 
-    sum = sum + val ** digit;
-
+    let val = num % 10; 
+    sum = sum + val ** digit
     num = Math.floor(num / 10);
   }
 
@@ -2332,4 +2353,1005 @@ console.log(specificCharCount("apple", "p"));
 
 ```js id="js9j4q"
 2
+```
+
+# Character Count Using Map
+---
+
+# Program
+
+```js id="jlwmz1"
+function CharCount(str){
+
+  const map = new Map();
+
+  for(let i = 0; i < str.length; i++){
+
+    let char = str[i];
+
+    if(map.has(char)){
+      map.set(char, map.get(char) + 1);
+    }else{
+      map.set(char, 1);
+    }
+
+  }
+
+  return map;
+}
+
+console.log(CharCount("apple"));
+```
+
+---
+
+# Output
+
+```js id="jlwmz2"
+Map(4) {
+  'a' => 1,
+  'p' => 2,
+  'l' => 1,
+  'e' => 1
+}
+```
+
+# Power of Number
+
+## Definition
+Power of number means किसी number को कितनी बार multiply करना है।
+
+Example:
+2^4 = 2 × 2 × 2 × 2 = 16
+---
+
+```javascript
+function powerDigit(val, power){
+  let result = 1;
+
+  for(let i = 1; i <= power; i++){
+    result = result * val;
+  }
+
+  return result;
+}
+
+console.log(powerDigit(2,4));
+
+```
+
+# Random Number
+`Math.random()` 0 से 1 के बीच random decimal value देता है।
+`Math.floor()` decimal value को integer में convert करता है।
+
+---
+
+```javascript
+function randomNum(num){
+  const result = Math.floor(Math.random() * 10);
+
+  console.log(result);
+}
+
+randomNum(123);
+````
+
+---
+
+## Output
+
+```javascript
+7 // randomly output change
+```
+
+
+# Array Rotate
+
+# 1. LEFT ROTATE — WITH METHOD
+
+```js
+function leftRotate(arr){
+  let first = arr.shift();
+  arr.push(first);
+  return arr;
+}
+
+console.log(leftRotate([1,2,3,4,5]))
+````
+
+## Output
+
+```js
+[2,3,4,5,1]
+```
+
+---
+
+# 2. LEFT ROTATE — WITHOUT METHOD
+
+## Program
+
+```js
+function leftRotate(arr){
+
+  let first = arr[0];
+
+  for(let i = 0; i < arr.length - 1; i++){
+    arr[i] = arr[i + 1];
+  }
+
+  arr[arr.length - 1] = first;
+  return arr;
+}
+
+console.log(leftRotate([1,2,3,4,5]))
+```
+
+## Output
+
+```js
+[2,3,4,5,1]
+```
+
+---
+
+# Right Rotate
+
+# 1. RIGHT ROTATE — WITH METHOD
+
+## Program
+
+```js
+function rightRotate(arr){
+  let last = arr.pop();
+  arr.unshift(last);
+  return arr;
+}
+
+console.log(rightRotate([1,2,3,4,5]))
+````
+
+## Output
+
+```js
+[5,1,2,3,4]
+```
+
+---
+
+# 2. RIGHT ROTATE — WITHOUT METHOD
+
+## Program
+
+```js
+function rightRotate(arr){
+
+  let last = arr[arr.length - 1];
+  
+  for(let i = arr.length - 1; i > 0; i--){
+    arr[i] = arr[i - 1];
+  }
+
+  arr[0] = last;
+  return arr;
+}
+
+console.log(rightRotate([1,2,3,4,5]))
+```
+
+## Output
+
+```js
+[5,1,2,3,4]
+```
+
+
+# Find Common Elements in Array
+
+
+# 1. Without Method (Using `for` Loop)
+
+```js
+function commonArray(arr1, arr2) {
+  let result = [];
+
+  for (let i = 0; i < arr1.length; i++) {
+
+    for (let j = 0; j < arr2.length; j++) {
+
+      if (arr1[i] === arr2[j]) {
+        result.push(arr1[i]);
+      }
+
+    }
+  }
+
+  return result;
+}
+
+console.log(commonArray([1,2,3,4], [3,4,5,6]));
+````
+
+---
+
+## Output
+
+```js
+[3, 4]
+```
+
+# 2. Using Method (`filter()` + `includes()`)
+
+```js
+let arr1 = [1,2,3,4];
+let arr2 = [3,4,5,6];
+
+const result = arr1.filter(ele => arr2.includes(ele));
+
+console.log(result);
+```
+
+---
+
+## Output
+
+```js
+[3, 4]
+```
+
+
+# Separate Unique and Duplicate Values in Array
+
+# 1. Without Method (Using `for` Loop)
+
+```js
+function uniqueDuplicate(arr){
+  let unique = [];
+  let duplicate = [];
+  
+  for(let i = 0 ; i < arr.length ; i++){
+    let count = 0;
+    
+    for(let j = 0 ; j < arr.length ; j++){
+      
+      if(arr[i] === arr[j]){
+        count++;
+      }
+    }
+
+    if(count === 1){
+      unique.push(arr[i]);
+    }else{
+      if(!duplicate.includes(arr[i])){ // agar ye use nae karte to duplicate value repeat hoti like [1,2,2,1]
+        duplicate.push(arr[i]); // [1,2]
+      }
+
+    }
+  }
+
+  console.log("unique", unique);
+  console.log("duplicate", duplicate);
+}
+
+uniqueDuplicate([1,2,3,2,4,5,1,6]);
+````
+## Output
+
+```js id="kk1hri"
+unique [3,4,5,6]
+duplicate [1,2]
+```
+
+# 2. With Method (`filter()`)
+
+```js id="o9m1yv"
+let arr = [1,2,3,2,4,5,1,6];
+
+let unique = arr.filter(
+  ele => arr.indexOf(ele) === arr.lastIndexOf(ele)
+);
+
+console.log(unique);
+
+let duplicate = arr.filter(
+  (ele, index) => arr.indexOf(ele) !== index
+);
+
+console.log(duplicate);
+```
+
+## Output
+
+```js id="p7z9x4"
+[3,4,5,6]
+[2,1]
+```
+
+
+# Remove False Values from Array
+
+to remove falsy values from array.
+
+`Boolean` converts values into:
+- `true`
+- `false`
+
+Only truthy values are returned.
+
+```js
+const arr = [1,0,false,2,"",null,3,undefined];
+
+const result = arr.filter(Boolean);
+
+console.log("result", result);
+````
+---
+
+## Output
+
+```js id="y8m1qv"
+result [1,2,3]
+```
+
+---
+
+# 2. Without Method (Using `for` Loop)
+
+```js id="k7x2pd"
+function truthyValue(arr){
+  let result = [];
+  
+  for(let i = 0 ; i < arr.length ; i++){
+
+    if(arr[i]){
+      result.push(arr[i]);
+    }
+
+  }
+
+  return result;
+}
+
+console.log(
+  truthyValue([1,0,false,2,"",null,3,undefined])
+);
+```
+
+---
+
+## Output
+
+```js id="n5v8ra"
+[1,2,3]
+```
+
+
+# Find Largest and Smallest Number in Array
+
+
+# 1. Without Method (Using `for` Loop)
+
+```js
+function bigsmallValue(arr){
+  let largest = arr[0];
+  let smallest = arr[0];
+  
+  for(let i = 1 ; i < arr.length ; i++){
+
+    if(arr[i] > largest){
+      largest = arr[i];
+    }
+
+    if(arr[i] < smallest){
+      smallest = arr[i];
+    }
+
+  }
+
+  console.log("largest", largest);
+  console.log("smallest", smallest);
+}
+
+bigsmallValue([2,44,67,84,90,0]);
+````
+
+---
+
+## Output
+
+```js id="j3m8vq"
+largest 90
+smallest 0
+```
+
+---
+
+# 2. With Method (`Math.max()` and `Math.min()`)
+
+---
+
+## Program
+
+```js id="x5p2rk"
+let arr = [2,44,67,84,90,0];
+
+let largest = Math.max(...arr);
+let smallest = Math.min(...arr);
+
+console.log("largest", largest);
+console.log("smallest", smallest);
+```
+
+---
+
+## Output
+
+```js id="w8n4qy"
+largest 90
+smallest 0
+```
+
+---
+
+
+# Frequency Count in Array
+
+## Program
+
+```js
+function countArray(arr){
+  let obj = {};
+  
+  for(let ele of arr){
+    obj[ele] = (obj[ele] || 0) + 1;
+  }
+
+  return obj;
+}
+
+console.log(countArray([1,2,2,3,1,1,4]));
+
+```
+## Output
+
+  1: 3,
+  2: 2,
+  3: 1,
+  4: 1
+}
+```
+```
+# Most Repeated Character Program
+
+```js
+function repeatedStr(str){
+
+  let maxcount = 0;
+  let maxchar = "";
+  
+  for(let i = 0 ; i < str.length ; i++){ // ek ek character check karti hi 
+    
+    let count = 0;
+
+    for(let j = 0 ; j < str.length ; j++){ // pura string check karta hai
+
+        if(str[i] === str[j]){
+          count++;
+        }
+    }
+
+    if(count > maxcount){
+      maxcount = count;
+      maxchar = str[i]
+    }
+  }
+
+  return maxchar
+}
+
+console.log(repeatedStr("aabbddbbbbdedfddadudidod"))
+````
+
+# Output
+
+```js
+d
+```
+
+
+# Remove Special Characters from String
+
+# Program Using Method
+
+```js
+function specialChar(str){
+  return str.replace(/[^a-zA-Z0-9]/g,"")
+}
+
+console.log(specialChar("he@llo#12$3"))
+````
+
+---
+
+# Output
+
+```js
+hello123
+```
+
+---
+
+# Program Without Method
+
+```js
+function removeSpecialChar(str){
+
+  let char = ""
+  
+  for(let i = 0 ; i < str.length ; i++){
+
+    let ch = str[i];
+    
+    if(
+      (ch >= "a" && ch <= "z") || 
+      (ch >= "A" && ch <= "Z") ||
+      (ch >= "0" && ch <= "9")
+    )
+    {
+      char += ch
+    }
+  }
+
+  return char
+}
+
+console.log(removeSpecialChar("he@llo#12$3"))
+```
+
+---
+
+# Output
+
+```js
+hello123
+```
+
+# First Letter Capital of Every Word
+
+# Program Using Method
+
+```js
+function firstCharUpperCase(str){
+
+  return str
+    .split(" ")// ["hello", "world"]
+    .map(ele => ele.charAt(0).toUpperCase() + ele.slice(1))
+    .join(" ")
+}
+
+console.log(firstCharUpperCase("hello world"));
+````
+
+---
+
+# Output
+
+```js
+Hello World
+```
+
+---
+
+# Program Without Method
+
+```js
+function firstCharUpperCase(str){
+
+  let result = "";
+  
+  for(let i = 0 ; i < str.length ; i++){
+
+    if(i === 0){
+      result += str[i].toUpperCase();
+    }
+    else if(str[i - 1] === " "){
+      result += str[i].toUpperCase();
+    }
+    else{
+      result += str[i]
+    }
+  }
+
+  return result
+}
+
+console.log(firstCharUpperCase("hello world"))
+```
+
+---
+
+# Output
+
+```js
+Hello World
+```
+
+# Character Frequency in String
+
+# Program Using Method
+
+```js
+function frequencyString(str){
+
+  let count = {}
+  
+  str.split("").map((ele) => {
+
+    count[ele] = (count[ele] || 0) + 1
+  })
+
+  return count;
+}
+
+console.log(frequencyString("abcdabfdee"))
+````
+
+---
+
+# Output
+
+```js
+{
+  a: 2,
+  b: 2,
+  c: 1,
+  d: 2,
+  f: 1,
+  e: 2
+}
+```
+
+# Program Without Method
+
+```js
+function frequencyStringCount(str){
+
+  let obj = {};
+
+  for(let i = 0 ; i < str.length ; i++){
+
+    let ch = str[i]
+
+    if(obj[ch]){
+      obj[ch]++
+    }
+    else{
+      obj[ch] = 1
+    }
+  }
+
+  return obj
+}
+
+console.log(frequencyStringCount("abcdabfdee"))
+```
+
+---
+
+# Output
+
+```js
+{
+  a: 2,
+  b: 2,
+  c: 1,
+  d: 2,
+  f: 1,
+  e: 2
+}
+```
+
+# Longest Word in Sentence
+
+```js
+function longestString(str){
+
+  let words = str.split(" ")
+  let longsestWord = ""
+  
+  for(let word of words){
+
+    if(word.length > longsestWord.length){
+      longsestWord = word
+    }
+  }
+
+  return longsestWord
+}
+
+console.log(longestString("I love javascript programming"))
+````
+
+---
+
+# Output
+
+```js
+programming
+```
+
+
+# Count Spaces in String
+
+# Program Without Method
+
+```js
+function spaceCount(str){
+
+  let count = 0;
+
+  for(let i = 0 ; i < str.length ; i++){
+
+    if(str[i] === " "){
+      count++
+    }
+  }
+
+  return count;
+}
+
+console.log(spaceCount("I love javascript programming"))
+````
+
+---
+
+# Output
+
+```js
+3
+```
+
+---
+
+# Program Using Method
+
+```js
+function spaceCount(str){
+
+  return str.split(" ").length - 1
+}
+
+console.log(spaceCount("I love javascript programming"))
+```
+
+---
+
+# Output
+
+```js
+3
+```
+
+# Toggle Case in String
+
+# Program
+
+```js
+function toggleCase(str){
+
+  let result = "";
+
+  for(let i = 0 ; i < str.length ; i++){
+
+    let chr = str[i]
+
+    if(chr === chr.toUpperCase()){
+      result += chr.toLowerCase()
+    }
+    else{
+      result += chr.toUpperCase()
+    }
+  }
+
+  return result;
+}
+
+console.log(toggleCase("HeLlO"))
+````
+
+---
+
+# Output
+
+```js
+hElLo
+```
+
+# Sort Array of Objects by ID
+
+# Program
+
+```js
+const users = [
+  { id: 3, name: "Rahul", age: 25 },
+  { id: 1, name: "Amit", age: 20 },
+  { id: 2, name: "Neha", age: 22 },
+];
+
+const result = users.sort((a, b) => a.id - b.id);
+
+console.log(result);
+```
+---
+
+# Output
+
+```js
+[
+  { id: 1, name: "Amit", age: 20 },
+  { id: 2, name: "Neha", age: 22 },
+  { id: 3, name: "Rahul", age: 25 }
+]
+```
+
+# 26. Object Key with Highest Value
+
+```js id="d1f8g4"
+const marks = { math: 70,english: 90,science: 80};
+
+---
+let maxKey = Object.keys(marks).reduce((a, b) => {
+  return marks[a] > marks[b] ? a : b;
+});
+
+console.log(maxKey);
+```
+
+# Output
+
+```js id="x7t4k9"
+english
+```
+---
+
+# Without Method (Easy Way)
+
+```js id="c3y7u2"
+const marks = {math: 70, english: 90,science: 80};
+
+let max = 0;
+let maxKey = "";
+
+for (let key in marks) {
+  if (marks[key] > max) {
+    max = marks[key];
+    maxKey = key;
+  }
+}
+
+console.log(maxKey);
+```
+---
+# Output
+
+```js id="m6r1v8"
+english
+```
+
+# 27. Convert Object to Array
+
+```js id="n4k2x7"
+const user = {
+  name: "Rahul",
+  age: 25
+};
+```
+
+---
+
+## Object.entries()
+
+```js id="q7p5s1"
+const result = Object.entries(user);
+
+console.log(result);
+```
+---
+
+# Output
+
+```js id="u3h9e6"
+[
+  ["name", "Rahul"],
+  ["age", 25]
+]
+```
+
+---
+
+# Without Method
+
+```js id="f6m1w8"
+const user = {
+  name: "Rahul",
+  age: 25
+};
+
+let result = [];
+
+for (let key in user) {
+  result.push([key, user[key]]);
+}
+
+console.log(result);
+```
+
+---
+
+# Output
+
+```js id="b2x7q5"
+[
+  ["name", "Rahul"],
+  ["age", 25]
+]
+```
+
+# Two Objects Equal or Not
+
+## Method Way
+
+```js id="o1x7k4"
+const obj1 = {
+  name: "Rahul"
+};
+
+const obj2 = {
+  name: "Rahul"
+};
+
+const result = JSON.stringify(obj1) === JSON.stringify(obj2);
+console.log(result);
+```
+
+---
+
+# Output
+
+```js id="r6m8v3"
+true
+```
+
+---
+
+# Without Method
+
+```js id="g2w5p9"
+const obj1 = {
+  name: "Rahul",
+  age: 25
+};
+
+const obj2 = {
+  name: "Rahul",
+  age: 25
+};
+
+let isEqual = true;
+
+for (let key in obj1) {
+  if (obj1[key] !== obj2[key]) {
+    isEqual = false;
+  }
+}
+
+console.log(isEqual);
+```
+
+---
+
+# Output
+
+```js id="l4t9x6"
+true
 ```
