@@ -218,3 +218,94 @@ const value = useCallback(() => count * 2, [count]);
 
 * If you want to **avoid recalculating value** → useMemo
 * If you want to **avoid recreating function** → useCallback
+
+
+# useMemo vs useCallback in React
+
+## ✅ `useMemo`
+
+### Kaha Use Karte Hai?
+
+* Jab koi heavy calculation ho
+* Filtering / sorting data
+* Expensive computation ko baar-baar run hone se bachana
+
+---
+
+## Example
+
+```js id="lmk3n8"
+const filteredData = useMemo(() => {
+  return users.filter(user => user.active);
+}, [users]);
+```
+
+---
+
+## Simple Meaning
+
+* Value ko memoize/store karta hai
+* Same dependency hone par calculation dubara nahi hoti
+
+---
+
+# ✅ `useCallback`
+
+## Kaha Use Karte Hai?
+
+* Function ko re-render par recreate hone se bachane ke liye
+* Mostly child component optimization me
+* `React.memo` ke sath
+
+---
+
+## Example
+
+```js id="n8d3pq"
+const handleClick = useCallback(() => {
+  console.log("clicked");
+}, []);
+```
+
+---
+
+## Simple Meaning
+
+* Function ko memoize/store karta hai
+* Har render par new function nahi banata
+
+---
+
+# ✅ Easy Difference
+
+| Hook          | Store Karta Hai | Use                   |
+| ------------- | --------------- | --------------------- |
+| `useMemo`     | Value           | Heavy calculation     |
+| `useCallback` | Function        | Function optimization |
+
+---
+
+# ✅ Real Project Example
+
+## `useMemo`
+
+* Product filtering
+* Search optimization
+* Large table sorting
+
+## `useCallback`
+
+* Button click handler
+* API function
+* Parent → Child function passing
+
+---
+
+# ✅ Short Interview Answer
+
+```txt
+useMemo value ko optimize karta hai.
+useCallback function ko optimize karta hai.
+
+Dono unnecessary re-render aur performance issue ko reduce karte hain.
+```

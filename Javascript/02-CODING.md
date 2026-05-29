@@ -68,6 +68,10 @@
 65. Object Key with Highest Value
 66. Convert Object to Array
 67. Two Objects Equal or Not
+68. Remove Duplicate Words From Sentence
+69. Count Vowels & Consonants
+70. Star Pattern Printing
+71. Number Pattern Printing
 
 
 
@@ -3355,3 +3359,321 @@ console.log(isEqual);
 ```js id="l4t9x6"
 true
 ```
+
+
+# Remove Duplicate Words From Sentence
+
+```js
+const str = "hello world hello react react";
+
+const result = [...new Set(str.split(" "))].join(" ");
+
+console.log(result);
+```
+
+### Output
+
+```js
+hello world react
+```
+---
+
+# ✅ Program Without Method (`Set`)
+
+
+```js
+function removeDuplicateword(str) {
+  const splitWord = str.split(" "); // word main split karta hai means divide
+  const result = [];
+
+  for (let i = 0; i < splitWord.length; i++) {
+    if (!result.includes(splitWord[i])) {
+      result.push(splitWord[i]);
+    }
+  }
+
+  return result.join(" ");
+}
+
+console.log(removeDuplicateword("hello world hello react react"));
+```
+
+### Output
+
+```js
+hello world react
+```
+
+
+# Count Vowels & Consonants
+
+---
+
+# ✅ Using Method (`includes()`)
+
+```js id="ew6fwj"
+function dataCount(str) {
+
+  let vowel = 0;
+  let constant = 0;
+
+  let vowelStr = "aeiou";
+
+  for (let char of str.toLowerCase()) {
+
+    if (vowelStr.includes(char)) {
+      vowel++;
+
+    } else if (char >= "a" && char <= "z") {
+      constant++;
+    }
+  }
+
+  return { vowel, constant };
+}
+
+console.log(dataCount("hello"));
+```
+
+---
+
+## Output
+
+```js id="n20wdu"
+{ vowel: 2, constant: 3 }
+```
+
+---
+
+# ✅ Without Method (`includes`)
+
+## Program
+
+```js id="p04c7w"
+function dataCount(str) {
+
+  let vowel = 0;
+  let constant = 0;
+
+  for (let i = 0; i < str.length; i++) {
+
+    let char = str[i].toLowerCase();
+
+    if (char >= "a" && char <= "z") {
+
+      if (
+        char === "a" ||
+        char === "e" ||
+        char === "i" ||
+        char === "o" ||
+        char === "u"
+      ) {
+        vowel++;
+
+      } else {
+        constant++;
+      }
+    }
+  }
+
+  return { vowel, constant };
+}
+
+console.log(dataCount("hello"));
+```
+
+---
+
+## Output
+
+```js id="z2jlwm"
+{ vowel: 2, constant: 3 }
+```
+
+
+# Star Pattern Printing
+---
+
+# ✅ Method Using `repeat()`
+
+## Program
+
+```js id="eg3gmq"
+function starPattern(num){
+
+  for(let i = 1; i <= num; i++){
+    console.log("*".repeat(i));
+  }
+
+}
+
+starPattern(5);
+```
+
+---
+
+## Output
+
+```js id="7gq0h4"
+*
+**
+***
+****
+*****
+```
+---
+
+# ✅ Without Method (`repeat`)
+
+## Program
+
+```js id="8r1t8q"
+function starPattern(num){
+
+  for(let i = 1; i <= num; i++){ // row
+
+    let result = "";
+
+    for(let j = 1; j <= i; j++){ // column
+      result += "*";
+    }
+
+    console.log(result);
+  }
+}
+
+starPattern(5);
+```
+
+---
+
+## Output
+
+```js id="c8n9p4"
+*
+**
+***
+****
+*****
+```
+
+---
+
+# ✅ Explanation
+
+## Outer Loop (`i`)
+
+```js id="vnrm2z"
+for(let i = 1; i <= num; i++)
+```
+
+* Rows control karta hai
+* Kitni lines print hongi decide karta hai
+
+---
+
+## Inner Loop (`j`)
+
+```js id="5vfgrs"
+for(let j = 1; j <= i; j++)
+```
+
+* Har row me kitne stars print honge decide karta hai
+
+---
+
+## `+=`
+
+```js id="wrr1m7"
+result += "*"
+```
+
+* String me ek-ek star add karta hai
+
+---
+
+# ✅ Easy Understanding
+
+| Loop     | Work             |
+| -------- | ---------------- |
+| `i` loop | Rows             |
+| `j` loop | Stars inside row |
+
+---
+
+
+# Number Pattern Printing
+
+# ✅ Method Using `repeat()`
+
+## Program
+
+```js id="g9t6v4"
+function starPattern(num){
+
+  for(let i = 1; i <= num; i++){
+    console.log((i + " ").repeat(i));
+  }
+
+}
+
+starPattern(5);
+```
+
+---
+
+## Output
+
+```js id="a8u7q2"
+1
+2 2
+3 3 3
+4 4 4 4
+5 5 5 5 5
+```
+
+# ✅ Without Method (`repeat`)
+
+## Program
+
+```js id="f5m9n1"
+function starPattern(num){
+
+  for(let i = 1; i <= num; i++){
+
+    let result = "";
+
+    for(let j = 1; j <= i; j++){
+
+      result += (i + " ");
+
+    }
+
+    console.log(result);
+  }
+}
+
+starPattern(5);
+```
+
+---
+
+## Output
+
+```js id="k7u3p5"
+1
+2 2
+3 3 3
+4 4 4 4
+5 5 5 5 5
+```
+
+---
+
+# ✅ Easy Understanding
+
+| Loop     | Work               |
+| -------- | ------------------ |
+| `i` loop | Rows               |
+| `j` loop | Numbers inside row |
+

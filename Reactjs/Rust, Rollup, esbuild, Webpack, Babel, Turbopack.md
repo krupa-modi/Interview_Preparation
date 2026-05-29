@@ -162,8 +162,6 @@ var add = function(a,b){
 
 ---
 
-# Easy Interview Difference
-
 ## Babel vs Webpack
 
 * Babel → JS convert karta hai
@@ -183,3 +181,41 @@ var add = function(a,b){
 
 * esbuild faster
 * Babel ecosystem bigger and more plugins available
+
+
+# npm vs Yarn vs Webpack vs Vite
+
+## npm
+
+* Package Manager
+* Used to install/manage packages
+* Comes with Node.js
+* Example: `npm install react`
+
+## Yarn
+
+* Alternative to npm
+* Faster package installation (older advantage)
+* Better caching & lock file handling
+* Example: `yarn add react`
+
+## Webpack
+
+* Module Bundler
+* Bundles JS, CSS, images into optimized files
+* Used for production builds
+* Supports loaders & plugins
+
+## Vite
+
+* Modern Build Tool
+* Very fast development server
+* Uses native ES modules
+* Faster than Webpack in development
+* Commonly used with React + Vue projects
+
+## Simple Interview Line
+
+* npm/Yarn → package managers
+* Webpack/Vite → build tools/bundlers
+* Vite is modern & faster, Webpack is older & highly configurable

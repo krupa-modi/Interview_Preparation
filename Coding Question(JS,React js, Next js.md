@@ -1,5 +1,3 @@
-# JavaScript + React JS + Next JS Interview Coding Questions Master List
-
 ## JavaScript Interview Questions
 
 ### Core JavaScript

@@ -2157,3 +2157,282 @@ Product API,
 Notification API,  
 
 इन सभी को parallel चलाने के लिए Promise.all() use करते हैं ताकि performance fast हो जाए।
+
+
+# How Would You Design a Frontend Architecture That Can Handle 1M+ Users Daily?
+
+## Interview Answer
+
+To design a frontend architecture for 1M+ daily users, I would focus on scalability, performance, maintainability, and reliability.
+
+---
+
+# Key Architecture Decisions
+
+## 1. Modular & Scalable Structure
+
+* Use component-based architecture
+* Separate features/modules properly
+* Maintain reusable shared components
+* Follow clean folder structure
+
+---
+
+# 2. Performance Optimization
+
+* Code splitting
+* Lazy loading
+* Dynamic imports
+* Image optimization
+* Memoization using React.memo, useMemo, useCallback
+* Virtualization for large lists
+
+---
+
+# 3. Efficient State Management
+
+* Use Redux Toolkit / Context API / React Query
+* Avoid unnecessary global state
+* Cache API responses properly
+
+---
+
+# 4. API Optimization
+
+* Pagination
+* Debouncing
+* Throttling
+* Request caching
+* Retry handling
+* Error boundaries
+
+---
+
+# 5. Rendering Strategy
+
+For better scalability and SEO:
+
+* SSR
+* SSG
+* ISR
+
+using Next.js.
+
+---
+
+# 6. CDN & Caching
+
+* Serve static assets via CDN
+* Browser caching
+* Cache static pages
+* Minify JS/CSS
+
+---
+
+# 7. Security
+
+* Authentication & authorization
+* Token handling
+* XSS protection
+* Secure API communication
+
+---
+
+# 8. Monitoring & Logging
+
+* Error tracking using Sentry
+* Performance monitoring
+* Analytics tracking
+
+---
+
+# 9. CI/CD Pipeline
+
+* Automated testing
+* Automated deployment
+* Version control
+* Rollback support
+
+---
+
+# 10. Accessibility & Responsive Design
+
+* Mobile-first UI
+* Accessibility standards
+* Cross-browser support
+
+---
+
+# Important Keywords Interviewers Expect
+
+* Scalability
+* Performance optimization
+* Caching
+* Lazy loading
+* CDN
+* SSR/SSG
+* Monitoring
+* Modular architecture
+
+---
+
+# Short Interview Closing Line
+
+> I would design the frontend using a modular, performance-optimized, and scalable architecture with proper caching, lazy loading, SSR strategies, monitoring, and reusable components to efficiently handle millions of daily users.
+
+# How Would You Build a Component Library Used by Multiple Teams?
+
+## Interview Answer
+
+I would focus on reusability, consistency, scalability, and proper documentation while building a component library for multiple teams.
+
+### Key Steps:
+
+* Create reusable and configurable components like Button, Modal, Input, Table, etc.
+* Use TypeScript for type safety and better developer experience.
+* Follow a consistent design system for colors, spacing, typography, and responsiveness.
+* Keep components flexible using props and composition patterns.
+* Write proper documentation using Storybook so teams can easily understand usage.
+* Add unit tests using Jest and React Testing Library for reliability.
+* Ensure accessibility support like keyboard navigation and ARIA attributes.
+* Use versioning and semantic releases for safe updates across teams.
+* Optimize performance using memoization and tree shaking.
+* Publish the library as a private npm package for easy sharing between teams.
+
+---
+
+# Important Points Interviewers Expect
+
+* Reusability
+* Scalability
+* Maintainability
+* Documentation
+* Accessibility
+* Testing
+* Version control
+
+---
+
+# Tools I Would Use
+
+| Purpose       | Tool                   |
+| ------------- | ---------------------- |
+| UI Components | React                  |
+| Type Safety   | TypeScript             |
+| Documentation | Storybook              |
+| Testing       | Jest + RTL             |
+| Styling       | Tailwind / CSS Modules |
+| Build Tool    | Vite / Rollup          |
+| Publishing    | npm / private registry |
+
+---
+
+# Short Interview Closing Line
+
+> The main goal of a component library is to provide reusable, consistent, scalable, and well-documented UI components so multiple teams can build applications faster and maintain a consistent user experience.
+
+---
+
+# 3️⃣ How Would You Optimize React Rendering Performance in Large Lists (10k+ Rows)?
+
+## Interview Answer
+
+For large lists, I would focus on reducing unnecessary renders and rendering only visible items.
+
+---
+
+# Optimization Techniques
+
+## 1. Virtualization
+
+Use:
+
+* react-window
+* react-virtualized
+
+Only visible rows render.
+
+---
+
+# 2. Memoization
+
+Use:
+
+```jsx id="n0m4o9"
+React.memo
+useMemo
+useCallback
+```
+
+to prevent unnecessary re-renders.
+
+---
+
+# 3. Pagination / Infinite Scroll
+
+Instead of rendering all data together.
+
+---
+
+# 4. Stable Keys
+
+Use unique IDs instead of index.
+
+```jsx id="fxbfxv"
+key={item.id}
+```
+
+---
+
+# 5. Avoid Inline Functions
+
+❌ Wrong
+
+```jsx id="2y41rt"
+onClick={() => handleClick()}
+```
+
+---
+
+✅ Better
+
+```jsx id="knrq2u"
+const handleClick = useCallback(() => {}, []);
+```
+
+---
+
+# 6. Lazy Loading
+
+Load components only when needed.
+
+---
+
+# 7. Debouncing / Throttling
+
+Optimize search and scroll events.
+
+---
+
+# 8. Efficient State Management
+
+Avoid unnecessary global state updates.
+
+---
+
+# Important Interview Keywords
+
+* Virtualization
+* Memoization
+* Infinite scrolling
+* Lazy loading
+* React.memo
+* useMemo
+* useCallback
+* Performance optimization
+
+---
+
+# Short Interview Closing Line
+
+> For handling 10k+ rows efficiently, I would use virtualization, memoization, pagination, lazy loading, and optimized rendering techniques to reduce unnecessary DOM updates and improve React performance.

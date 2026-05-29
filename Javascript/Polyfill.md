@@ -1,284 +1,74 @@
-# Promise Polyfill in JavaScript
 
-# 📌 What is Polyfill?
+# JavaScript Polyfills - Complete Interview Preparation Guide
 
-Polyfill ek custom implementation hota hai jo modern JavaScript feature ko old browsers me support deta hai.
+# 📌 What is a Polyfill?
+
+Polyfill ek custom implementation hota hai jo modern JavaScript feature ko old browsers ya unsupported environments me support deta hai.
 
 Simple words:
 
-> Agar browser me Promise support nahi hai, to hum khud Promise jaisa behavior create karte hain → usko Promise Polyfill bolte hain.
+> Agar browser me koi built-in JavaScript feature available nahi hai, to hum uska custom version bana dete hain.
+
+Us custom implementation ko Polyfill kehte hain.
 
 ---
 
-# 📌 Why Promise Polyfill Needed?
+# 📌 Real Example
 
-Old browsers:
+Suppose:
 
-* Internet Explorer
-* Purane mobile browsers
-
-Promise support nahi karte the.
-
-Isliye developers Promise ka custom version banate the.
-
----
-
-# 📌 Real Promise Example
-
-```js id="9kqpr0"
-const p = new Promise((resolve, reject) => {
-  resolve("Success");
-});
-
-p.then((data) => {
-  console.log(data);
-});
+```js
+Array.prototype.map()
 ```
 
----
+Old browsers me support nahi karta.
 
-# 📌 Promise Polyfill Basic Idea
+To hum khud uska implementation likhenge.
 
-Promise ke andar mainly 3 cheeze hoti hain:
-
-* state
-* resolve
-* reject
-* then()
-
----
-
-# 📌 Basic Promise Polyfill
-
-```js id="opvhcu"
-function MyPromise(executor) {
-  let onResolve;
-  let value;
-  let isResolved = false;
-
-  function resolve(val) {
-    value = val;
-    isResolved = true;
-
-    if (onResolve) {
-      onResolve(value);
-    }
-  }
-
-  executor(resolve);
-
-  this.then = function(callback) {
-    onResolve = callback;
-
-    if (isResolved) {
-      onResolve(value);
-    }
-  };
-}
-```
-
----
-
-# 📌 Usage
-
-```js id="aj5m8e"
-const promise = new MyPromise((resolve) => {
-  setTimeout(() => {
-    resolve("Promise Resolved");
-  }, 1000);
-});
-
-promise.then((data) => {
-  console.log(data);
-});
-```
-
----
-
-# 📌 Output
-
-```js id="4v6hm5"
-Promise Resolved
-```
-
----
-
-# 📌 How It Works
-
-## Step 1
-
-Executor function call hota hai.
-
-```js id="vv6t4o"
-new MyPromise((resolve) => {})
-```
-
----
-
-## Step 2
-
-`resolve()` value store karta hai.
-
----
-
-## Step 3
-
-`.then()` callback ko execute karta hai.
-
----
-
-# 📌 Important Concepts Used
-
-| Concept        | Purpose                     |
-| -------------- | --------------------------- |
-| Closure        | Value store karne ke liye   |
-| Callback       | then() handle karne ke liye |
-| Async          | setTimeout simulation       |
-| State handling | resolved/rejected           |
-
----
-
-# 📌 Limitations of This Simple Polyfill
-
-Ye full Promise implementation nahi hai.
-
-Missing features:
-
-* catch()
-* finally()
-* chaining
-* reject()
-* Promise.all()
-* Promise.race()
-
----
-
-# 📌 Interview Important Point
-
-Real Promise internally:
-
-* microtask queue use karta hai
-* async handling karta hai
-* state maintain karta hai
-
-States:
-
-```js id="7y5qgr"
-pending
-fulfilled
-rejected
-```
-
----
-
-# 📌 Better Polyfill with Reject
-
-```js id="im0frs"
-function MyPromise(executor) {
-  let onResolve;
-  let onReject;
-  let isFulfilled = false;
-  let isRejected = false;
-  let value;
-
-  function resolve(val) {
-    isFulfilled = true;
-    value = val;
-
-    if (onResolve) {
-      onResolve(value);
-    }
-  }
-
-  function reject(val) {
-    isRejected = true;
-    value = val;
-
-    if (onReject) {
-      onReject(value);
-    }
-  }
-
-  this.then = function(callback) {
-    onResolve = callback;
-
-    if (isFulfilled) {
-      onResolve(value);
-    }
-
-    return this;
-  };
-
-  this.catch = function(callback) {
-    onReject = callback;
-
-    if (isRejected) {
-      onReject(value);
-    }
-
-    return this;
-  };
-
-  executor(resolve, reject);
-}
-```
-
----
-
-# 📌 Usage
-
-```js id="q9q53q"
-const p = new MyPromise((resolve, reject) => {
-  reject("Error");
-});
-
-p.catch((err) => {
-  console.log(err);
-});
-```
+Ye implementation hi polyfill hai.
 
 ---
 
 # 📌 Interview Definition
 
-> Promise Polyfill is a custom implementation of JavaScript Promise used to mimic Promise behavior in environments where native Promise support is unavailable.
+> Polyfill is a custom implementation of a modern JavaScript feature that provides support in environments where that feature is not available.
 
 ---
 
-# 📌 Interview Important Points 🔥
+# 📌 Why Polyfills Are Needed?
 
-| Topic           | Important                        |
-| --------------- | -------------------------------- |
-| Polyfill        | Feature support for old browsers |
-| Promise States  | pending, fulfilled, rejected     |
-| Main Methods    | then, catch                      |
-| Uses            | Async handling                   |
-| Internally Uses | callbacks + closures             |
+## Reasons
 
----
-
-# 📌 Very Short Interview Answer
-
-> Promise Polyfill is a custom implementation of Promise that provides Promise-like functionality in browsers that do not support native Promises. It handles async operations using resolve, reject, and then/catch methods.
-
-
-# Common JavaScript Polyfills 🔥
-
-Polyfill kisi bhi modern JavaScript feature ka custom implementation hota hai.
-
-Interview me mostly ye polyfills puche jate hain 👇
+* Browser compatibility
+* Old browser support
+* JavaScript internals understanding
+* Interview machine coding rounds
+* Missing functionality support
 
 ---
 
-# 📌 Function Polyfills
+# 📌 Polyfill vs Transpiler
+
+| Polyfill                        | Transpiler               |
+| ------------------------------- | ------------------------ |
+| Missing functionality add karta | Syntax convert karta     |
+| Runtime pe work karta           | Build time pe work karta |
+| Example: Promise polyfill       | Example: Babel           |
+| Feature implement karta         | Syntax transform karta   |
+
+---
+
+# 📌 Most Asked Polyfills in Interviews
+
+# Function Polyfills
 
 | Polyfill   | Use                                    |
 | ---------- | -------------------------------------- |
-| bind()     | Function ka `this` bind karta hai      |
-| call()     | Function ko immediately call karta hai |
+| bind()     | Function ka this bind karta hai        |
+| call()     | Function immediately execute karta hai |
 | apply()    | call jaisa but array arguments         |
 | debounce() | Repeated calls control                 |
-| throttle() | Limited interval me execute            |
+| throttle() | Limited interval execution             |
 
 ---
 
@@ -333,22 +123,9 @@ Interview me mostly ye polyfills puche jate hain 👇
 
 ---
 
-# 📌 Important Browser Polyfills
-
-| Polyfill              | Use             |
-| --------------------- | --------------- |
-| fetch()               | API calls       |
-| localStorage          | Storage         |
-| requestAnimationFrame | Animation       |
-| setImmediate          | Async execution |
-
----
-
 # 📌 Most Important Interview Polyfills 🔥
 
-Ye sabse jyada puche jate hain:
-
-```js id="jybv9t"
+```js
 bind
 call
 apply
@@ -363,83 +140,534 @@ Promise.all
 
 ---
 
-# 📌 Example → map Polyfill
+# 📌 map() Polyfill
 
-```js id="r5r9pr"
-Array.prototype.myMap = function(cb) {
-  let result = [];
+# Native map()
 
-  for (let i = 0; i < this.length; i++) {
-    result.push(cb(this[i], i, this));
-  }
+```js
+const arr = [1,2,3];
 
-  return result;
+const result = arr.map((item) => item * 2);
+
+console.log(result);
+```
+
+Output:
+
+```js
+[2,4,6]
+```
+
+---
+
+# 📌 map() Polyfill
+
+```js
+Array.prototype.myMap = function(callback) {
+
+    const result = [];
+
+    for(let i = 0; i < this.length; i++) {
+
+        result.push(callback(this[i], i, this));
+
+    }
+
+    return result;
+};
+```
+
+Usage:
+
+```js
+const arr = [1,2,3];
+
+const data = arr.myMap((item) => item * 2);
+
+console.log(data);
+```
+
+---
+
+# 📌 Important Interview Explanation
+
+```js
+this
+```
+
+Current array ko represent karta hai.
+
+---
+
+# 📌 filter() Polyfill
+
+```js
+Array.prototype.myFilter = function(callback) {
+
+    const result = [];
+
+    for(let i = 0; i < this.length; i++) {
+
+        if(callback(this[i], i, this)) {
+            result.push(this[i]);
+        }
+
+    }
+
+    return result;
 };
 ```
 
 ---
 
-# 📌 Example → bind Polyfill
+# 📌 reduce() Polyfill
 
-```js id="h4s7ta"
+```js
+Array.prototype.myReduce = function(callback, initialValue) {
+
+    let accumulator = initialValue;
+
+    for(let i = 0; i < this.length; i++) {
+
+        accumulator = callback(
+            accumulator,
+            this[i],
+            i,
+            this
+        );
+
+    }
+
+    return accumulator;
+};
+```
+
+---
+
+# 📌 forEach() Polyfill
+
+```js
+Array.prototype.myForEach = function(callback) {
+
+    for(let i = 0; i < this.length; i++) {
+
+        callback(this[i], i, this);
+
+    }
+
+};
+```
+
+---
+
+# 📌 call() Polyfill
+
+```js
+Function.prototype.myCall = function(context, ...args) {
+
+    context.fn = this;
+
+    context.fn(...args);
+
+};
+```
+
+---
+
+# 📌 apply() Polyfill
+
+```js
+Function.prototype.myApply = function(context, args = []) {
+
+    context.fn = this;
+
+    context.fn(...args);
+
+};
+```
+
+Difference:
+
+```js
+call -> separate arguments
+apply -> array arguments
+```
+
+---
+
+# 📌 bind() Polyfill
+
+```js
 Function.prototype.myBind = function(context, ...args) {
-  let fn = this;
 
-  return function(...newArgs) {
-    return fn.apply(context, [...args, ...newArgs]);
-  };
+    const fn = this;
+
+    return function(...newArgs) {
+
+        return fn.apply(context, [...args, ...newArgs]);
+
+    };
+
 };
 ```
 
 ---
 
-# 📌 Example → reduce Polyfill
+# 📌 Debounce Polyfill
 
-```js id="13j4jf"
-Array.prototype.myReduce = function(cb, initialValue) {
-  let acc = initialValue;
+# What is Debounce?
 
-  for (let i = 0; i < this.length; i++) {
-    acc = acc ? cb(acc, this[i]) : this[i];
+Continuous function calls ko delay karta hai.
+
+Used in:
+
+* search input
+* API optimization
+* resize event
+
+---
+
+# 📌 Debounce Polyfill
+
+```js
+function debounce(fn, delay) {
+
+    let timer;
+
+    return function(...args) {
+
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+
+            fn.apply(this, args);
+
+        }, delay);
+
+    };
+
+}
+```
+
+---
+
+# 📌 Throttle Polyfill
+
+# What is Throttle?
+
+Specific interval ke baad hi function execute hota hai.
+
+Used in:
+
+* scroll events
+* mouse movement
+* resize
+
+---
+
+# 📌 Throttle Polyfill
+
+```js
+function throttle(fn, delay) {
+
+    let lastCall = 0;
+
+    return function(...args) {
+
+        const now = new Date().getTime();
+
+        if(now - lastCall >= delay) {
+
+            lastCall = now;
+
+            fn.apply(this, args);
+
+        }
+
+    };
+
+}
+```
+
+---
+
+# 📌 Promise Polyfill in JavaScript
+
+# What is Promise Polyfill?
+
+Agar browser me native Promise support nahi hai to hum custom Promise behavior create karte hain.
+
+Usko Promise Polyfill bolte hain.
+
+---
+
+# 📌 Basic Promise Polyfill
+
+```js
+function MyPromise(executor) {
+  let onResolve;
+  let value;
+  let isResolved = false;
+
+  function resolve(val) {
+    value = val;
+    isResolved = true;
+
+    if (onResolve) {
+      onResolve(value);
+    }
   }
 
-  return acc;
-};
+  executor(resolve);
+
+  this.then = function(callback) {
+    onResolve = callback;
+
+    if (isResolved) {
+      onResolve(value);
+    }
+  };
+}
 ```
 
 ---
 
-# 📌 Interview Important Line
+# 📌 Usage
 
-> Polyfills are custom implementations of modern JavaScript features used to provide support in older browsers.
+```js
+const promise = new MyPromise((resolve) => {
+  setTimeout(() => {
+    resolve("Promise Resolved");
+  }, 1000);
+});
+
+promise.then((data) => {
+  console.log(data);
+});
+```
 
 ---
 
-# 📌 Interview Tip 🔥
+# 📌 Better Promise Polyfill with Reject
 
-Agar interviewer bole:
+```js
+function MyPromise(executor) {
+  let onResolve;
+  let onReject;
+  let isFulfilled = false;
+  let isRejected = false;
+  let value;
 
-```js id="7kp6ul"
-Implement map polyfill
+  function resolve(val) {
+    isFulfilled = true;
+    value = val;
+
+    if (onResolve) {
+      onResolve(value);
+    }
+  }
+
+  function reject(val) {
+    isRejected = true;
+    value = val;
+
+    if (onReject) {
+      onReject(value);
+    }
+  }
+
+  this.then = function(callback) {
+    onResolve = callback;
+
+    if (isFulfilled) {
+      onResolve(value);
+    }
+
+    return this;
+  };
+
+  this.catch = function(callback) {
+    onReject = callback;
+
+    if (isRejected) {
+      onReject(value);
+    }
+
+    return this;
+  };
+
+  executor(resolve, reject);
+}
 ```
 
-To mostly wo check karta hai:
+---
 
-* Prototype knowledge
-* Callback understanding
+# 📌 Promise States
+
+```js
+pending
+fulfilled
+rejected
+```
+
+---
+
+# 📌 Important Concepts Used
+
+| Concept        | Purpose               |
+| -------------- | --------------------- |
+| Closure        | Value store           |
+| Callback       | then() handling       |
+| Async          | setTimeout simulation |
+| State handling | resolved/rejected     |
+
+---
+
+# 📌 Limitations of Simple Promise Polyfill
+
+Missing features:
+
+* catch()
+* finally()
+* chaining
+* Promise.all()
+* Promise.race()
+
+---
+
+# 📌 Common Interview Questions
+
+# Beginner Level
+
+## Q1. Polyfill kya hota hai?
+
+## Q2. map() ka polyfill likho
+
+## Q3. filter() ka polyfill likho
+
+## Q4. reduce() ka polyfill likho
+
+## Q5. bind() aur call() me difference?
+
+---
+
+# 📌 Intermediate Questions
+
+## Q6. this keyword polyfill me kya hota?
+
+## Q7. bind immediate execute kyu nahi karta?
+
+## Q8. debounce vs throttle difference?
+
+## Q9. call vs apply difference?
+
+## Q10. map() new array return kyu karta?
+
+---
+
+# 📌 Advanced Questions
+
+## Q11. Promise internally kaise work karta?
+
+## Q12. Event loop ka relation promises se?
+
+## Q13. Microtask queue kya hoti?
+
+## Q14. Native methods faster kyu hote?
+
+## Q15. Polyfills performance impact karte hai?
+
+---
+
+# 📌 Machine Coding Questions
+
+Most common:
+
+* custom map
+* custom filter
+* custom reduce
+* custom bind
+* debounce
+* throttle
+* Promise
+
+---
+
+# 📌 Common Mistakes
+
+## Mistake 1
+
+Arrow function prototype me use karna.
+
+Wrong:
+
+```js
+Array.prototype.myMap = () => {}
+```
+
+Reason:
+
+Arrow functions ka own this nahi hota.
+
+---
+
+# 📌 Mistake 2
+
+return statement bhool jana.
+
+---
+
+# 📌 Mistake 3
+
+Original array mutate kar dena.
+
+---
+
+# 📌 Why Companies Ask Polyfills?
+
+Because it checks:
+
+* JavaScript fundamentals
+* prototypes
 * this keyword
-* Loop logic
-* Closures
+* callbacks
+* closures
+* execution flow
+* problem solving
 
 ---
 
-# 📌 Most Asked Polyfill Order in Interviews
+# 📌 Best Revision Plan
 
-1. bind()
-2. debounce()
-3. throttle()
-4. map()
-5. reduce()
-6. Promise
-7. call/apply
-8. filter()
+## Day 1
+
+map/filter/reduce
+
+## Day 2
+
+call/apply/bind
+
+## Day 3
+
+debounce/throttle
+
+## Day 4
+
+Promise basics
+
+## Day 5
+
+Machine coding practice
+
+---
+
+# 📌 Final Interview Advice
+
+Agar aap:
+
+* code likh pao
+* line by line explain kar pao
+* real use case bata pao
+* interviewer ke follow-up answer kar pao
+
+to aapka JavaScript round bahut strong ho jayega 🚀

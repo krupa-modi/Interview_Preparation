@@ -366,3 +366,52 @@ const ref = { current: value };
 
 ---
 
+# 📌 inputRef.current.value
+Current input value.
+
+---
+# 📌 inputRef.current.focus()
+Input focus karta hai.
+
+---
+# 📌 inputRef.current.blur()
+Input ka focus remove karta hai.
+
+---
+# 📌 inputRef.current.style
+DOM style access/change.
+
+---
+# 📌 inputRef.current.checked
+Checkbox checked status.
+
+---
+# 📌 inputRef.current.src
+Image source access.
+
+---
+# 📌 divRef.current.scrollIntoView()
+Element tak scroll karta hai.
+
+---
+# 📌 videoRef.current.play()
+Video play karta hai.
+
+---
+# 📌 videoRef.current.pause()
+Video pause karta hai.
+
+---
+# 📌 timerRef.current
+Timer ID store karta hai.
+
+---
+# 📌 prevValue.current
+Previous value store karta hai.
+
+---
+
+
+
+
+

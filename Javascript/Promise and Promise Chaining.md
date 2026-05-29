@@ -280,11 +280,8 @@ Yes.
 
 That is called Promise Chaining.
 
-````
 
----
 
-```md
 # Promise Chaining in JavaScript
 
 # What is Promise Chaining?
