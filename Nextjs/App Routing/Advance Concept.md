@@ -546,7 +546,7 @@ export async function addUser(formData) {
 # 👉 What is Suspense?
 
 `Suspense` is a React feature used to handle asynchronous loading states.
-* agar ek page main 4 component hai jismain 3 component main static data hai ek componnet main api se jab page render hoga static component pehle dikh jayeg=nge and jo api se data hai wo nae ayega tab tak loading ayega using suspense.
+* agar ek page main 4 component hai jismain 3 component main static data hai ek componnet main api se jab page render hoga static component pehle dikh jayenge and jo api se data hai wo nae ayega tab tak loading ayega using suspense.
 
 👉 Shows fallback UI while content loads.
 

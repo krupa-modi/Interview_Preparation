@@ -128,6 +128,60 @@ const Child = React.memo(({ onClick }) => {
 });
 
 export default Parent;
+
+
+*******************************************************OR********************************************************************
+import { memo, useCallback, useState } from "react"
+
+type ChildProps = {
+    onClick:() => void
+}
+
+const CallBack = () => {
+    const[count,setCount] = useState<number>(0)
+
+    // const handlerClick = () => {
+    //     console.log("Button Clicked")
+    // }// jab bhi parent ke inut filed main kuch bhi type hoga wo child component ko bhi render karega jab ki wo button click pe hai
+
+    const handlerClick = useCallback(() => {
+        console.log("Parent component rendering")
+        setCount((prev) => prev+1)
+    },[])  // without dependency chid component will not re-render but with dependency it will re-render when the dependency value changes
+    // means jab aap count dependency doge tab hi child component render hoga bcz uska referance change hoga
+    
+
+    // const handlerClick = useCallback(() => {
+    //     console.log("Parent component rendering")
+    //     setCount((prev) => prev+1)
+    // },[count]) // with dependency chid component will re-render when the dependency value changes means jab aap count dependency doge tab hi child component render hoga bcz uska referance change hoga
+
+  return (
+    <div>
+      <h1>Using Parent UseCallback Hook count:{count}</h1>
+      {/* <input 
+       className="border border-solid border-black p-2 m-2"
+        type = "text" 
+        value = {count} 
+        onChange = {(e:React.ChangeEvent<HTMLInputElement>) => setCount(Number(e.target.value)) }
+        /> */}
+        <Child onClick = {handlerClick}/>
+    </div>
+  )
+}
+
+const Child = memo(({onClick}:ChildProps) => {
+    console.log("child component rendering")
+    return(
+        <div>
+            <button onClick = {onClick} className="border border-solid border-black p-2 m-2 bg-amber-200">Click Me</button>
+        </div>
+       
+    )
+});
+
+export default CallBack
+
 ```
 
 ---
@@ -273,4 +327,5 @@ const fn = useCallback(() => {}, []);
 * Prevents unnecessary child re-renders
 * Returns same function unless dependencies change
 * Use carefully — not everywhere
+* useCallback + memo same function reference maintain kar raha hai.
 

@@ -1331,3 +1331,91 @@ Promise { 'Hello' }
 `async` function always returns a Promise.
 
 
+# 1. Output of
+
+```js
+{ "a": "b" } === { "c": "d" }
+```
+
+## Answer
+
+```js
+false
+```
+
+## Why?
+
+Objects compare by **reference**, not by value.
+
+Both objects are different memory locations.
+
+Example:
+
+```js
+const obj1 = { a: "b" };
+const obj2 = { c: "d" };
+
+console.log(obj1 === obj2);
+```
+
+Even though both are objects, references are different.
+
+---
+
+# 2. Result of
+
+```js
+typeof { "a": "Hey" } === typeof ["a", "Hey"]
+```
+
+## Answer
+
+```js
+true
+```
+
+---
+
+# Why?
+
+## Object Type
+
+```js
+typeof { "a": "Hey" }
+```
+
+Output:
+
+```js
+"object"
+```
+
+---
+
+## Array Type
+
+```js
+typeof ["a", "Hey"]
+```
+
+Output:
+
+```js
+"object"
+```
+
+Because in JavaScript arrays are also objects.
+
+So:
+
+```js
+"object" === "object"
+```
+
+Result:
+
+```js
+true
+```
+
+---

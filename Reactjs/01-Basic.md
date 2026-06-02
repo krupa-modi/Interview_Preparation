@@ -2746,3 +2746,99 @@ await Promise.all([api1(), api2(), api3()]);
 
 * Faster
 * Runs together
+
+
+# What is JSON?
+
+## Definition
+
+JSON stands for:
+
+```text id="tr06a4"
+JavaScript Object Notation
+```
+
+It is a lightweight format used to store and exchange data between:
+
+* Frontend ↔ Backend
+* Client ↔ Server
+* APIs
+
+---
+
+# Example of JSON
+
+```json id="d3cb0y"
+{
+  "name": "Krupa",
+  "age": 22,
+  "city": "Pune"
+}
+```
+
+---
+
+# Important Rules
+
+* Data is written in `key : value` pairs
+* Keys must be in double quotes `" "`
+* JSON supports:
+
+  * string
+  * number
+  * boolean
+  * array
+  * object
+  * null
+
+---
+
+# Why JSON is Used?
+
+* Easy to read
+* Easy to transfer data
+* Lightweight
+* Mostly used in APIs
+
+---
+
+# API Example
+
+```js id="0s38mk"
+fetch("api/users")
+```
+
+Response usually comes in JSON format.
+
+---
+
+# Convert JavaScript Object → JSON
+
+```js id="n4g8jl"
+JSON.stringify(obj)
+```
+
+---
+
+# Convert JSON → JavaScript Object
+
+```js id="vqgxxf"
+JSON.parse(data)
+```
+
+---
+
+# Interview Answer
+
+JSON is a lightweight data format used for storing and exchanging data between client and server. It is written in key-value pairs and commonly used in APIs.
+
+---
+
+# Important Interview Point
+
+JSON is:
+
+```text id="u2tx8r"
+Data Format
+NOT JavaScript Object
+```

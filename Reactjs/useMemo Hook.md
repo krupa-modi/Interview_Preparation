@@ -76,6 +76,47 @@ function App() {
 }
 
 export default App;
+
+
+
+***************************************************OR*******************************************************
+import React, { useMemo, useState } from "react";
+
+function App() {
+  const [search, setSearch] = useState("");
+
+  const users = [
+    "Krupa",
+    "Rahul",
+    "Aman",
+    "Priya"
+  ];
+
+  const filteredUsers = useMemo(() => {
+    console.log("Filtering...");
+    
+    return users.filter((user) =>
+      user.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [search]);
+
+  return (
+    <div>
+      <input
+        type="text"
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      {
+        filteredUsers.map((user, index) => (
+          <p key={index}>{user}</p>
+        ))
+      }
+    </div>
+  );
+}
+
+export default App;
 ```
 
 # 🖥️ Output Behavior
@@ -151,13 +192,6 @@ const multiCount = () => {
 
   * heavy calculations
   * preventing unnecessary re-renders
-
----
-
-
-
-````md id="usememo-not-use"
-# When NOT to Use useMemo in React
 
 ---
 

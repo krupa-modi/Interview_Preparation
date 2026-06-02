@@ -123,6 +123,7 @@ Parts of page appear as soon as ready
 
 ## Example
 // app/dashboard/page.tsx
+
 async function Page() {
   const data = await fetchData(); // takes time
 

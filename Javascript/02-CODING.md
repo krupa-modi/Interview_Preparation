@@ -72,8 +72,14 @@
 69. Count Vowels & Consonants
 70. Star Pattern Printing
 71. Number Pattern Printing
-
-
+72. Remove spaces
+73. Reverse Words
+74. Replace Characters / Words in JavaScript
+75. Check Sorted Array
+76. Merge Sorted Arrays
+77. Method Chaining Calculator Program
+78. Merge Sort basic
+79. Maximum Subarray Sum
 
 
 
@@ -1988,7 +1994,7 @@ function binary(arr,target){
   return -1;
 }
 
-console.log(binary([1,2,3,4,5,6,7,8,9],6));
+console.log(binary([1,2,3,4,5,6,7,8,9],6)); // means jo target hai 6 uska index find karna
 ```
 
 ---
@@ -3677,3 +3683,528 @@ starPattern(5);
 | `i` loop | Rows               |
 | `j` loop | Numbers inside row |
 
+
+
+# Remove Spaces in JavaScript
+
+```js
+let str = "Hello World";
+
+let result = str.replace(/\s/g, "");
+
+console.log(result);
+```
+
+## Output
+
+```js
+HelloWorld
+```
+
+# 2️⃣ Without Method (Manual Logic)
+
+```js
+let str = "Hello World";
+
+let result = "";
+
+for (let i = 0; i < str.length; i++) {
+  if (str[i] !== " ") {
+    result += str[i];
+  }
+}
+
+console.log(result);
+```
+
+## Output
+
+```js
+HelloWorld
+```
+
+---
+
+# Remove Spaces From Array Strings
+
+```js
+let arr = ["Hello ", " World"];
+
+let result = arr.map((ele) => ele.trim());
+
+console.log(result);
+```
+
+# Reverse Words in JavaScript
+
+## Program
+
+```js id="h7md3m"
+let str = "Hello World JavaScript";
+
+const result = str.split(" ").reverse().join(" ");
+
+console.log(result);
+```
+
+---
+
+## Output
+
+```js id="d7kr6w"
+JavaScript World Hello
+```
+
+---
+
+## Program
+
+```js id="6l9ny7"
+function reverseWord(str) {
+  let splitData = str.split(" ");
+
+  let result = "";
+
+  for (let i = splitData.length - 1; i >= 0; i--) {
+    result += splitData[i] + " ";
+  }
+
+  return result;
+}
+
+console.log(reverseWord("Hello World JavaScript"));
+```
+
+---
+
+## Output
+
+```js id="nvcw70"
+JavaScript World Hello
+```
+
+
+
+# Replace Characters / Words in JavaScript
+
+---
+
+## Program
+
+```js id="p7l2kd"
+const str = "hello world";
+
+const result = str.replace("world", "everyone");
+
+console.log(result);
+```
+
+---
+
+## Output
+
+```js id="x3q8vn"
+hello everyone
+```
+
+---
+
+# 2️⃣ Without Method
+
+---
+
+## Program
+
+```js id="u5m9rt"
+function replaceChar(str) {
+  let result = "";
+
+  let word = str.split(" ");
+
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === "world") {
+      result += "everyone";
+    } else {
+      result += word[i] + " ";
+    }
+  }
+
+  return result;
+}
+
+console.log(replaceChar("hello world"));
+```
+
+---
+
+## Output
+
+```js id="d8n4yk"
+hello everyone
+```
+
+
+# Check Sorted Array
+
+```
+Ye sorted array hai because:
+
+```js
+1 < 2 < 3 < 4 < 5
+```
+
+---
+
+# Program
+
+```js
+function checkSortedArray(arr){ 
+
+  for(let i = 0 ; i < arr.length - 1 ; i++){
+
+    if(arr[i] > arr[i+1]){
+
+      return false
+
+    }
+  }
+
+  return true
+}
+
+console.log(checkSortedArray([1,22,3,55,5]));
+```
+
+---
+
+# Output
+
+```js
+false
+```
+
+---
+
+
+# Merge Sorted Arrays
+
+---
+
+# With Method
+
+```javascript id="jlwmfq"
+let arr1 = [1,3,5]; 
+let arr2 = [2,4,6];
+
+let mergedSortedArray = arr1.concat(arr2).sort((a,b) => a - b);
+
+console.log(mergedSortedArray);
+```
+
+## Output
+
+```javascript id="3rfygi"
+[1, 2, 3, 4, 5, 6]
+```
+
+---
+
+# Without Method
+
+```javascript id="td06qs"
+function twoSortedArray(arr1, arr2){
+  let result = [];
+  
+  for(let i = 0 ; i < arr1.length ; i++){
+    result.push(arr1[i]);
+  }
+  
+  for(let j = 0 ; j < arr2.length ; j++){
+    result.push(arr2[j]);
+  }
+  
+  // Sorting
+  for(let i = 0 ; i < result.length ; i++){
+    for(let j = i + 1 ; j < result.length ; j++){
+      
+      if(result[i] > result[j]){
+        let temp = result[i];
+        result[i] = result[j];
+        result[j] = temp;
+      }
+      
+    }
+  }
+  
+  return result;
+}
+
+console.log(twoSortedArray([1,3,5],[2,4,6]));
+```
+
+## Output
+
+```javascript id="33dgg0"
+[1, 2, 3, 4, 5, 6]
+```
+
+
+# Method Chaining Calculator Program
+
+## Definition
+
+This program demonstrates the concept of **Method Chaining** in JavaScript.
+
+Method chaining means calling multiple methods one after another on the same object using the dot (`.`) operator.
+This is possible because each method returns the same object using:
+
+```js
+return this;
+```
+
+---
+
+# Program
+
+```js
+function createCalc() {
+  return {
+    total: 0,
+
+    add(num) {
+      this.total += num;
+      return this;
+    },
+
+    multiply(num) {
+      this.total *= num;
+      return this;
+    },
+
+    subtract(num) {
+      this.total -= num;
+      return this;
+    }
+  };
+}
+
+const calc = createCalc();
+
+const result = calc
+  .add(10)
+  .multiply(5)
+  .subtract(30)
+  .add(10);
+
+console.log(result.total);
+```
+
+---
+
+# Output
+
+```js
+30
+```
+
+---
+
+# Why `return this` is Used?
+
+```js
+return this;
+```
+
+returns the current object again.
+Because of this, we can write:
+
+```js
+calc.add(10).multiply(5).subtract(30)
+```
+
+without creating separate variables.
+
+---
+
+# What is `this`?
+
+Inside object methods:
+
+```js
+this
+```
+
+refers to the current object.
+
+So:
+
+```js
+this.total
+```
+
+means:
+
+```js
+calc.total
+```
+
+---
+
+# Method Chaining
+
+Method chaining means:
+
+```js
+object.method1().method2().method3()
+```
+
+Each method returns the same object so the next method can be called immediately.
+
+---
+
+## Array Methods
+
+```js
+arr.filter().map().sort()
+```
+
+---
+
+## Express.js
+
+```js
+res.status(200).json(data)
+```
+---
+
+# Important Interview Point
+
+This pattern is called:
+
+## Fluent Interface / Method Chaining
+
+Used to perform multiple operations on the same object in a clean and readable way.
+
+---
+
+# Final Summary
+
+* `this` refers to current object
+* `return this` returns same object
+* Returning object enables chaining
+* Multiple methods can run in one statement
+
+
+
+# Merge Sort basic
+
+---
+
+# Program
+
+```js
+function mergeSort(arr){
+  for(let i = 0 ; i < arr.length ; i++){
+
+    for(let j = i + 1 ; j < arr.length ; j++){
+
+      if(arr[i] > arr[j]){
+
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  }
+
+  return arr;
+}
+
+console.log(mergeSort([5, 33, 8, 1]));
+```
+
+---
+
+# Output
+
+```js
+[1, 5, 8, 33]
+```
+
+
+# Maximum Subarray Sum
+
+* Array ke andar continuous numbers ka sabse bada sum find karne ke liye.
+
+---
+
+# Program
+
+```js id="4twnby"
+function maxSumArray(arr){
+
+  let maxSum = arr[0];
+  let currSum = arr[0];
+  
+  for(let i = 1 ; i < arr.length ; i++){
+
+    currSum = Math.max(arr[i],currSum + arr[i]);
+
+    maxSum = Math.max(currSum,maxSum);
+  }
+
+  return maxSum;
+}
+
+console.log(
+  maxSumArray([-2,1,-3,4,-1,2,1,-5,4])
+);
+```
+
+---
+
+# Output
+
+```js id="jjlwm2"
+6
+```
+
+
+# Bubble Sort
+
+---
+
+```js id="3a1n7p"
+function bubbleSort(arr){
+
+  for(let i = 0 ; i < arr.length ; i++){
+
+    for(let j = 0 ; j < arr.length - 1 ; j++){ // j+1 se kar rahe so arr.length-1 le rahe hai
+
+      if(arr[j] > arr[j + 1]){
+
+        // Swap
+        let temp = arr[j];
+
+        arr[j] = arr[j + 1];
+
+        arr[j + 1] = temp;
+      }
+    }
+  }
+
+  return arr;
+}
+
+console.log(
+  bubbleSort([5,3,8,1])
+);
+```
+
+---
+
+# Output
+
+```js id="qg6m6v"
+[1, 3, 5, 8]
+```
