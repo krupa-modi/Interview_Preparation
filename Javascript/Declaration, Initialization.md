@@ -1,8 +1,3 @@
-Here’s a clean and well-structured **Markdown (.md)** explanation for **Declaration, Initialization, and Accessibility in JavaScript** 👇
-
----
-
-````md
 # JavaScript: Declaration, Initialization, and Accessibility
 
 ## 🔹 1. Declaration

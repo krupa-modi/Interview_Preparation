@@ -167,5 +167,3 @@ Object.isSealed(obj)
 * `seal()` → No add/delete, but update allowed
 * `freeze()` gives stronger security than `seal()`
 
-```
-```

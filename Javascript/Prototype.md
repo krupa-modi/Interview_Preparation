@@ -10,9 +10,8 @@ JavaScript uses prototypes for inheritance.
 
 JavaScript me har object ke paas ek hidden property hoti hai:
 
-```js id="jhd58h"
+
 [[Prototype]]
-```
 
 Ye dusre object ko point karti hai.
 

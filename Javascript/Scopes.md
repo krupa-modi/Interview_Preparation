@@ -5,7 +5,6 @@
 Scope defines where variables are accessible in JavaScript.
 
 ---
-
 # 🔹 Types of Scope
 
 1. Global Scope

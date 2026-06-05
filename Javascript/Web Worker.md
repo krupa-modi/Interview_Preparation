@@ -5,7 +5,6 @@
 Web Worker JavaScript ka ek feature hai jo **background thread** me code run karne deta hai. Normally JavaScript **single-threaded** hota hai aur sab kuch main thread par chalta hai, jis se heavy computation par UI freeze ho sakti hai. Web Workers is problem ko solve karte hain.
 
 👉 Simple words me: **Heavy kaam alag thread me bhej do, UI smooth rahegi.**
-
 ---
 
 ## Web Worker kyun use karte hain?
@@ -146,20 +145,6 @@ Agar interviewer bole:
 
 Answer:
 ➡️ **JavaScript single-threaded hoti hai, lekin browser multi-threaded environment provide karta hai.**
-
----
-
-Agar chaho to main:
-
-* MCQs
-* Advanced interview Q&A
-* Real project example
-
-bhi add kar sakta hoon 🙂
-
-
-Samajhne ke liye seedha-sa aur **interview-friendly** comparison de raha hoon 👇
-(**Web Worker vs Service Worker**)
 
 ---
 

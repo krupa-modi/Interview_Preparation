@@ -7,9 +7,7 @@ Polyfill ek custom implementation hota hai jo modern JavaScript feature ko old b
 
 Simple words:
 
-> Agar browser me koi built-in JavaScript feature available nahi hai, to hum uska custom version bana dete hain.
-
-Us custom implementation ko Polyfill kehte hain.
+> Agar browser me koi built-in JavaScript feature available nahi hai, to hum uska custom version bana dete hain. Us custom implementation ko Polyfill kehte hain.
 
 ---
 
@@ -19,8 +17,9 @@ Suppose:
 
 ```js
 Array.prototype.map()
-```
 
+JavaScript me sabhi arrays internally Array.prototype se methods inherit karti hain.
+```
 Old browsers me support nahi karta.
 
 To hum khud uska implementation likhenge.
@@ -541,41 +540,223 @@ Missing features:
 
 ## Q1. Polyfill kya hota hai?
 
+### Answer
+
+Polyfill ek custom implementation hoti hai jo JavaScript ke naye features ko purane browsers me support karne ke liye banayi jati hai.
+
+---
+
 ## Q2. map() ka polyfill likho
+
+### Answer
+
+```js
+Array.prototype.myMap = function(callback) {
+  let result = [];
+
+  for(let i = 0; i < this.length; i++) {
+    result.push(callback(this[i], i, this));
+  }
+
+  return result;
+};
+```
+
+---
 
 ## Q3. filter() ka polyfill likho
 
+### Answer
+
+```js
+Array.prototype.myFilter = function(callback) {
+  let result = [];
+
+  for(let i = 0; i < this.length; i++) {
+    if(callback(this[i], i, this)) {
+      result.push(this[i]);
+    }
+  }
+
+  return result;
+};
+```
+
+---
+
 ## Q4. reduce() ka polyfill likho
+
+### Answer
+
+```js
+Array.prototype.myReduce = function(callback, initialValue) {
+
+  let accumulator = initialValue;
+
+  for(let i = 0; i < this.length; i++) {
+    accumulator = callback(
+      accumulator,
+      this[i],
+      i,
+      this
+    );
+  }
+
+  return accumulator;
+};
+```
+
+---
 
 ## Q5. bind() aur call() me difference?
 
+### Answer
+
+| bind()                        | call()                                 |
+| ----------------------------- | -------------------------------------- |
+| New function return karta hai | Function immediately execute karta hai |
+| Baad me call kar sakte hain   | Turant execute hota hai                |
+| Reusable hai                  | One-time execution                     |
+
 ---
 
-# 📌 Intermediate Questions
+# Intermediate Questions
 
 ## Q6. this keyword polyfill me kya hota?
 
-## Q7. bind immediate execute kyu nahi karta?
+### Answer
 
-## Q8. debounce vs throttle difference?
-
-## Q9. call vs apply difference?
-
-## Q10. map() new array return kyu karta?
+`this` us object ko refer karta hai jisne function ko call kiya hai.
 
 ---
 
-# 📌 Advanced Questions
+## Q7. bind immediate execute kyu nahi karta?
+
+### Answer
+
+`bind()` sirf new function return karta hai. Execution tab hota hai jab returned function ko call karte hain.
+
+---
+
+## Q8. debounce vs throttle difference?
+
+### Answer
+
+| Debounce                     | Throttle                              |
+| ---------------------------- | ------------------------------------- |
+| User stop kare tab execute   | Fixed interval par execute            |
+| Search bar me use            | Scroll/Resize me use                  |
+| Last action execute hota hai | Regular interval par execute hota hai |
+
+---
+
+## Q9. call vs apply difference?
+
+### Answer
+
+| call()                    | apply()              |
+| ------------------------- | -------------------- |
+| Arguments comma separated | Arguments array me   |
+| fn.call(obj, 1, 2)        | fn.apply(obj, [1,2]) |
+
+---
+
+## Q10. map() new array return kyu karta?
+
+### Answer
+
+Original array ko modify kiye bina transformed values ke saath ek naya array return karne ke liye.
+
+---
+
+# Advanced Questions
 
 ## Q11. Promise internally kaise work karta?
 
+### Answer
+
+Promise asynchronous operation ko handle karta hai aur uski state:
+
+```text
+Pending
+ ↓
+Fulfilled / Rejected
+```
+
+maintain karta hai.
+
+---
+
 ## Q12. Event loop ka relation promises se?
+
+### Answer
+
+Promise callbacks Microtask Queue me jate hain aur Event Loop unhe Call Stack empty hone ke baad execute karta hai.
+
+---
 
 ## Q13. Microtask queue kya hoti?
 
+### Answer
+
+Microtask Queue ek high-priority queue hai jahan Promise callbacks, `queueMicrotask()` aur `MutationObserver` execute hote hain.
+
+---
+
 ## Q14. Native methods faster kyu hote?
 
+### Answer
+
+Kyuki native methods browser engine (V8, SpiderMonkey) ke optimized internal code me likhe hote hain.
+
+---
+
 ## Q15. Polyfills performance impact karte hai?
+
+### Answer
+
+Haan, polyfills native methods se thode slow ho sakte hain kyuki wo JavaScript me manually implement kiye jate hain.
+
+---
+
+# Quick Interview Revision
+
+### Polyfill
+
+> Browser me missing feature ka custom implementation.
+
+### bind()
+
+> New function return karta hai.
+
+### call()
+
+> Function immediately execute karta hai.
+
+### apply()
+
+> Array ke form me arguments leta hai.
+
+### Debounce
+
+> User stop kare tab execute.
+
+### Throttle
+
+> Fixed interval par execute.
+
+### Promise
+
+> Async operations handle karta hai.
+
+### Microtask Queue
+
+> Promise callbacks store karti hai.
+
+### Event Loop
+
+> Call Stack aur Queues ko manage karta hai.
+
 
 ---
 
@@ -635,39 +816,3 @@ Because it checks:
 * execution flow
 * problem solving
 
----
-
-# 📌 Best Revision Plan
-
-## Day 1
-
-map/filter/reduce
-
-## Day 2
-
-call/apply/bind
-
-## Day 3
-
-debounce/throttle
-
-## Day 4
-
-Promise basics
-
-## Day 5
-
-Machine coding practice
-
----
-
-# 📌 Final Interview Advice
-
-Agar aap:
-
-* code likh pao
-* line by line explain kar pao
-* real use case bata pao
-* interviewer ke follow-up answer kar pao
-
-to aapka JavaScript round bahut strong ho jayega 🚀

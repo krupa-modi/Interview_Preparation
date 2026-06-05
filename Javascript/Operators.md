@@ -1,5 +1,4 @@
 # ✅ JavaScript Operators (Interview Notes)
-
 # ✅ 1. Arithmetic Operators
 
 Math operations ke liye use hote hain.
@@ -126,7 +125,7 @@ Conditions combine karne ke liye.
 | Operator | Meaning |   |    |
 | -------- | ------- | - | -- |
 | `&&`     | AND     |   |    |
-| `        |         | ` | OR |
+| `||`     | OR      |   |    |
 | `!`      | NOT     |   |    |
 
 ---

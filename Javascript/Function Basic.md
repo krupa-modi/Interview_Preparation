@@ -907,4 +907,3 @@ Rest → collect values
 
 Callback → function inside function
 ```
-

@@ -11,7 +11,6 @@ In JavaScript, functions are treated like normal values.
 Because of this, JavaScript functions are called **First-Class Functions**.
 
 ---
-
 # 🔥 Example 1: Assign Function to Variable
 
 ```js

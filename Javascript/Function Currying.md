@@ -13,7 +13,6 @@ Simple words me:
 ```js
 f(a, b, c)
 ```
-
 ko convert karte hain:
 
 ```js

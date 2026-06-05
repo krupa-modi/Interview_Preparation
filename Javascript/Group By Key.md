@@ -8,7 +8,6 @@ Group By means:
 Mostly arrays of objects me use hota hai.
 
 ---
-
 # ✅ Example Problem
 
 Suppose:
@@ -135,8 +134,7 @@ Mostly `reduce()` se implement kiya jata hai.
 # ⚡ Short Interview Answer
 
 ```js id="6z1n0q"
-Array ko kisi specific property ke basis par
-multiple groups me divide karna = Group By
+Array ko kisi specific property ke basis par multiple groups me divide karna = Group By
 ```
 
 ---
@@ -156,25 +154,6 @@ Object.groupBy(users, user => user.city);
 Har browser me support nahi hota.
 
 Interview me mostly `reduce()` wala answer dena best hai.
-
----
-
-# 🚀 Real Interview Questions
-
-## Q1:
-
-Group employees by department
-
-## Q2:
-
-Group products by category
-
-## Q3:
-
-Group students by class
-
-👉 Sabka logic same rahega.
-
 ---
 
 # 💡 Quick Revision

@@ -173,8 +173,3 @@ return 30
 ## 🧾 One-Line Definition
 
 👉 *Execution Context is the environment where JavaScript code is evaluated and executed.*
-
----
-
-If you want, I can also give **interview tricky questions on Execution Context + Hoisting + Call Stack** — those are very commonly asked 🔥
-

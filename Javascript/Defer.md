@@ -13,8 +13,6 @@ It tells the browser to download the JavaScript file in the background without b
 <script src="app.js" defer></script>
 ````
 
----
-
 # Why We Use `defer`
 
 Normally, when the browser encounters a script tag:

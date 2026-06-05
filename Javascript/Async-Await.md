@@ -1,4 +1,3 @@
-
 ## 1. `async / await` kya hota hai?
 
 `async / await` JavaScript me **Promises ko handle karne ka modern aur readable tarika** hai.
@@ -151,7 +150,8 @@ console.log("Start");
 async function demo() {
   console.log("Inside function");
 
-  await Promise.resolve();
+  await Promise.resolve(); 
+  // await JavaScript ko bolta hai: "Is promise ke complete hone tak function ko pause karo." and await hamesha remaining code ko microtask queue me bhej deta hai.
 
   console.log("After await");
 }
@@ -484,3 +484,6 @@ main1();
 * `Promise.all()` → parallel execution
 * Async/await internally `.then()` par based hai
 * Event Loop async programming ka core concept hai
+
+Ye interview ke liye short and clear notes hain:
+

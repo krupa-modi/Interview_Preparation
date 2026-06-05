@@ -288,5 +288,3 @@ for...in → index/key
 for...of → value
 ```
 
-```
-```

@@ -6,7 +6,6 @@ A callback is a **function passed as an argument to another function**, which is
 
 👉 In simple words:
 "Function ko kisi aur function ke andar pass karna aur baad me call karna"
-
 ---
 
 ## Basic Example

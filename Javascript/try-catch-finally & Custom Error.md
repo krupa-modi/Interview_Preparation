@@ -1,4 +1,3 @@
-
 ## What is try...catch?
 
 `try...catch` JavaScript ka error handling mechanism hai.
@@ -223,11 +222,8 @@ JSON.parse()
 
 ## 3. Database Operations
 
----
-
 ## 4. File Handling
 
----
 
 # Important Interview Points
 
@@ -488,5 +484,4 @@ Readable code aur better debugging ke liye.
 
 > "Custom errors are used to create meaningful and application-specific error handling."
 
-```
-```
+

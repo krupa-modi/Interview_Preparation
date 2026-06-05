@@ -280,8 +280,6 @@ Yes.
 
 That is called Promise Chaining.
 
-
-
 # Promise Chaining in JavaScript
 
 # What is Promise Chaining?

@@ -62,7 +62,7 @@
 59. First Letter Capital of Every Word
 60. Frequency Count in Array
 61. Longest Word in Sentence
-62.  Count Spaces in String
+62. Count Spaces in String
 63. Toggle Case in String
 64. Sort Array of Objects
 65. Object Key with Highest Value
@@ -80,6 +80,24 @@
 77. Method Chaining Calculator Program
 78. Merge Sort basic
 79. Maximum Subarray Sum
+80. Group Array Objects by Property Using reduce()
+81. Promise-Based Delay Function
+82. Insertion Sort
+83. Bubble Sort
+84. Linear Search
+85. Selection Sort
+86. Merge objects
+87. Clone object
+88. Convert object to array
+89. Convert array to object
+90. Count object keys
+91. Nested object access
+92. Flatten object
+93. Compare objects
+
+
+
+
 
 
 
@@ -4207,4 +4225,558 @@ console.log(
 
 ```js id="qg6m6v"
 [1, 3, 5, 8]
+```
+
+# Insertion Sort
+
+---
+
+# Program
+
+```js id="5hp8rv"
+function insertionSort(arr){
+
+  for(let i = 1; i < arr.length ; i++){
+
+    let current = arr[i];
+
+    let j = i - 1;
+
+    while(j >= 0 && arr[j] > current){ // Jab tak left element bada hai tab tak shift karo
+
+      arr[j + 1] = arr[j];
+
+      j--;
+    }
+
+    arr[j + 1] = current;
+  }
+
+  return arr;
+}
+
+console.log(
+  insertionSort([5,3,8,1])
+);
+```
+
+---
+
+# Output
+
+```js id="6iq9sw"
+[1,3,5,8]
+```
+
+
+# Group Array Objects by Property Using `reduce()`
+
+# Definition
+
+This program groups objects based on a specific property using the `reduce()` method.
+
+---
+
+# Program
+
+```js id="t9m3ko"
+const users = [
+  {name: "Krupa", city: "Pune"},
+  {name: "Aman", city: "Mumbai"},
+  {name: "Rahul", city: "Pune"}
+];
+
+const result = users.reduce((acc, curr) => { // Accumulator means: Jo previous result ko store karta rahe.
+
+  if(!acc[curr.city]){
+    acc[curr.city] = [];
+  }
+
+  acc[curr.city].push(curr);
+
+  return acc;
+
+}, {});
+
+console.log(result);
+```
+
+---
+
+# Output
+
+```js id="s7l4ji"
+{
+  Pune: [
+    {name: "Krupa", city: "Pune"},
+    {name: "Rahul", city: "Pune"}
+  ],
+
+  Mumbai: [
+    {name: "Aman", city: "Mumbai"}
+  ]
+}
+```
+
+# Promise-Based Delay Function
+
+# Definition
+
+This function creates a delay using Promise and `setTimeout()`.
+
+---
+
+# Program
+
+```js id="r6k5hg"
+function dfqd
+  return new Promise((resolve) => {
+
+    setTimeout(() => {
+      resolve("Done");
+    }, ms);
+
+  });
+}
+
+delay(2000).then((res) => {
+  console.log(res);
+});
+```
+
+---
+
+# Output After 2 Seconds
+
+```js id="q5j6fd"
+Done
+```
+
+
+# Linear Search
+
+Linear Search checks each element one by one until the target element is found.
+
+---
+
+# Program
+
+```js id="4kp9tx"
+function linearSearch(arr, target){
+
+  for(let i = 0; i < arr.length; i++){
+
+    if(arr[i] === target){
+
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+console.log(
+  linearSearch([10,20,30,40,50], 30)
+);
+```
+
+---
+
+# Output
+
+```js id="5lq0uy"
+2
+```
+
+
+# Selection Sort
+
+```js
+function selectionSort(arr){
+  for(let i = 0 ; i < arr.length ; i++){
+
+    let min = i;
+
+    for(let j = i + 1 ; j < arr.length ; j++){
+
+      if(arr[j] < arr[min]){
+        min = j;
+      }
+    }
+    [arr[i], arr[min]] = [arr[min], arr[i]]; // swap
+  }
+  return arr;
+}
+
+console.log(selectionSort([64, 25, 12, 22, 11]));
+```
+
+---
+
+# Output
+
+```js
+[11, 12, 22, 25, 64]
+```
+
+
+# 1. Merge Objects
+
+---
+
+## Using Spread Operator
+
+```js
+const obj1 = {
+  name: "Krupa"
+};
+
+const obj2 = {
+  age: 25
+};
+
+const result = {
+  ...obj1,
+  ...obj2
+};
+
+OR
+
+const result = Object.assign({},obj1,obj2)
+
+console.log(result);
+```
+
+### Output
+
+```js
+{
+  name: "Krupa",
+  age: 25
+}
+```
+
+# 2. Clone Object
+```js
+const user = {
+  name: "Krupa",
+  age: 25
+};
+
+const copy = {
+  ...user
+};
+
+console.log(copy);
+```
+
+### Output
+
+```js
+{
+  name: "Krupa",
+  age: 25
+}
+```
+---
+
+# 3. Convert Object to Array
+
+---
+
+## Using Object.entries()
+
+```js
+const user = {
+  name: "Krupa",
+  age: 25
+};
+
+const result = Object.entries(user);
+
+console.log(result);
+```
+
+### Output
+
+```js
+[
+  ["name", "Krupa"],
+  ["age", 25]
+]
+```
+
+---
+
+## Using Object.keys()
+
+```js
+console.log(
+  Object.keys(user)
+);
+```
+
+### Output
+
+```js
+["name", "age"]
+```
+
+---
+
+## Using Object.values()
+
+```js
+console.log(
+  Object.values(user)
+);
+```
+
+### Output
+
+```js
+["Krupa", 25]
+```
+
+---
+
+# 4. Convert Array to Object
+
+## Using Object.fromEntries()
+
+```js
+const arr = [
+  ["name", "Krupa"],
+  ["age", 25]
+];
+
+const result =
+Object.fromEntries(arr);
+
+console.log(result);
+```
+
+### Output
+
+```js
+{
+  name: "Krupa",
+  age: 25
+}
+```
+
+---
+
+# 5. Count Object Keys
+
+## Using Object.keys()
+
+```js
+const user = {
+  name: "Krupa",
+  age: 25,
+  city: "Pune"
+};
+
+const count =
+Object.keys(user).length;
+
+console.log(count);
+```
+
+### Output
+
+```js
+3
+```
+
+# Nested Object Access
+
+```js id="twbn2d"
+const user = {
+  name: "Krupa",
+  address: {
+    city: "Pune",
+    state: "Maharashtra"
+  }
+};
+```
+
+---
+
+## Access Nested Properties
+
+```js id="4qkq7m"
+console.log(user.address.city);
+```
+
+### Output
+
+```js id="s49h68"
+Pune
+```
+---
+
+```js id="gqng0m"
+console.log(user.address.state);
+```
+
+### Output
+
+```js id="txk2f0"
+Maharashtra
+```
+
+# Flatten Object
+---
+
+## Input
+
+```js id="yckmv5"
+const user = {
+  name: "Krupa",
+  address: {
+    city: "Pune",
+    state: "Maharashtra"
+  }
+};
+```
+
+---
+
+## Output
+
+```js id="7fepva"
+{
+  name: "Krupa",
+  city: "Pune",
+  state: "Maharashtra"
+}
+```
+
+---
+
+## Easy Program
+
+```js id="7pv7z4"
+const user = {
+  name: "Krupa",
+  address: {
+    city: "Pune",
+    state: "Maharashtra"
+  }
+};
+
+const result = {
+  name: user.name,
+  city: user.address.city,
+  state: user.address.state
+};
+
+console.log(result);
+```
+
+### Output
+
+```js id="z5g0u8"
+{
+  name: "Krupa",
+  city: "Pune",
+  state: "Maharashtra"
+}
+```
+
+---
+
+## Using Spread Operator
+
+```js id="yjknyq"
+const user = {
+  name: "Krupa",
+  address: {
+    city: "Pune",
+    state: "Maharashtra"
+  }
+};
+
+const result = {
+  ...user,
+  ...user.address
+};
+
+delete result.address;
+
+console.log(result);
+```
+
+### Output
+
+```js id="fd31q5"
+{
+  name: "Krupa",
+  city: "Pune",
+  state: "Maharashtra"
+}
+```
+
+---
+
+# Compare Objects
+
+---
+
+## Example
+
+```js id="gb8m5x"
+const obj1 = {
+  name: "Krupa",
+  age: 20
+};
+
+const obj2 = {
+  name: "Krupa",
+  age: 20
+};
+```
+
+---
+
+# Wrong Way
+
+```js id="b4b8n9"
+console.log(obj1 === obj2);
+```
+
+### Output
+
+```js id="1g64h5"
+false
+```
+
+Because objects are compared by reference, not by value.
+
+---
+
+# Easy Way
+
+```js id="ecl2zw"
+const obj1 = {
+  name: "Krupa",
+  age: 20
+};
+
+const obj2 = {
+  name: "Krupa",
+  age: 20
+};
+
+const result = JSON.stringify(obj1) === JSON.stringify(obj2);
+
+console.log(result);
+```
+
+### Output
+
+```js id="3h8ifv"
+true
 ```

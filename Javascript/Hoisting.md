@@ -167,5 +167,249 @@ console.log(a); // Execution
 ```js
 20
 ```
+---
+
+Aap bol rahe ho:
+
+```js
+console.log(a);
+
+var a = 10;
+```
+
+Agar:
+
+```js
+console.log(a)
+```
+
+pehle execute ho raha hai,
+
+to declaration upar kaise gaya?
 
 ---
+
+# Actual Reality
+
+JavaScript code ko:
+
+```text id="6jlwm1"
+2 phases
+```
+
+me chalata hai.
+
+---
+
+# 1. Memory Creation Phase
+
+Pehle sirf memory allocate hoti hai.
+
+Execution nahi hota.
+
+---
+
+# 2. Execution Phase
+
+Fir line-by-line code execute hota hai.
+
+---
+
+# Important Thing
+
+Hoisting me:
+
+```text id="7jlwm2"
+Sirf declaration upar jata hai
+```
+
+NOT assignment.
+
+---
+
+# Example
+
+```js id="8jlwm3"
+console.log(a);
+
+var a = 10;
+```
+
+---
+
+# Memory Creation Phase
+
+JavaScript internally karta hai:
+
+```js id="9jlwm4"
+var a = undefined;
+```
+
+So memory me:
+
+```js id="0jlwm5"
+a → undefined
+```
+
+---
+
+# Execution Phase Starts
+
+Now actual code runs line by line.
+
+---
+
+# Line 1
+
+```js id="1jlwm6"
+console.log(a);
+```
+
+At this moment:
+
+```js id="2jlwm7"
+a = undefined
+```
+
+So output:
+
+```js id="3jlwm8"
+undefined
+```
+
+---
+
+# Line 2
+
+```js id="4’wini9"
+a = 10;
+```
+
+Now value update:
+
+```js id="5jlwm0"
+a = 10
+```
+
+---
+
+# Important Understanding
+
+JavaScript internally aise treat karta hai:
+
+```js id="6’wini1"
+var a;
+
+console.log(a);
+
+a = 10;
+```
+
+---
+
+# Variable Declaration vs Initialization
+
+## Declaration
+
+```js id="7’wini2"
+var a;
+```
+
+---
+
+## Initialization / Assignment
+
+```js id="8’wini3"
+a = 10;
+```
+
+---
+
+# Hoisting Me Kya Hota Hai?
+
+Only:
+
+```js id="9’wini4"
+var a;
+```
+
+upar jata hai.
+
+NOT:
+
+```js id="0’wini5"
+a = 10;
+```
+
+---
+
+# Same for Functions
+
+## Function Declaration
+
+```js id="1’wini6"
+hello();
+
+function hello(){
+  console.log("Hi");
+}
+```
+
+Works ✅
+
+---
+
+# Why?
+
+Memory phase me pura function store ho jata hai.
+
+Internally:
+
+```js id="2’wini7"
+function hello(){
+  console.log("Hi");
+}
+
+hello();
+```
+
+---
+
+# Function Declaration Fully Hoist Hota Hai
+
+Variables:
+
+```text id="3’wini8"
+Only declaration hoist
+```
+
+Functions:
+
+```text id="4’wini9"
+Complete function hoist
+```
+
+---
+
+# Easy Memory Trick
+
+# Variables (`var`)
+
+```text id="5’wini0"
+Name upar jata hai
+Value nahi
+```
+
+---
+
+# Functions
+
+```text id="6’wini1"
+Pura function upar jata hai
+```
+
+---
+
+# Final Easy Definition
+
+Hoisting means during the memory creation phase, JavaScript stores variable and function declarations in memory before executing the code.

@@ -2,11 +2,9 @@
 
 Memoization is an optimization technique.
 
-👉 It stores previous function results in cache  
-so same calculation dubara na karna pade.
+👉 It stores previous function results in cache so same calculation dubara na karna pade.
 
 ---
-
 # 🎯 Simple Definition
 
 > Memoization means caching function results to improve performance.
@@ -233,9 +231,7 @@ Factorial, Fibonacci etc.
 
 # 🚀 Most Asked Interview Question
 
-## Q:
-
-Difference between Memoization and Caching?
+## Q: Difference between Memoization and Caching?
 
 ## Answer:
 
@@ -260,4 +256,4 @@ Difference between Memoization and Caching?
 | Data Stored In | Cache/Object                |
 
 ```
-```
+

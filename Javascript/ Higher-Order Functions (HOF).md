@@ -14,7 +14,6 @@ JavaScript main functions ko first-class citizens treat karta hai, iska matlab:
 Isi wajah se Higher-Order Functions possible hote hain.
 
 ---
-
 # Simple Definition
 
 ```js

@@ -1,6 +1,5 @@
 
 # Pure vs Impure Functions in JavaScript (Deep Interview Guide)
-
 ## 1. What is a Pure Function?
 
 A **pure function** is a function that:

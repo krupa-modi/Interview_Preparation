@@ -212,7 +212,6 @@ console.log(str.slice(0, 4)); // Java
 ## 13. substring()
 
 Slice jaisa hi hai.
-
 ```js
 let str = "JavaScript";
 

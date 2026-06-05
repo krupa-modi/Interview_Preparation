@@ -7,7 +7,6 @@
 ```js id="syn1"
 setTimeout(callback, delay);
 ```
-
 ---
 
 ## Basic Example
@@ -329,11 +328,4 @@ setInterval(() => console.log("Interval"), 0);
 * Always clear timers to prevent memory issues
 
 ---
-
-If you want, I can give you **real interview coding questions based on timers & event loop** (very frequently asked 🔥).
-
-
-
-
-If you want, I can give you **event loop + setTimeout tricky questions (very important 🔥)** that are frequently asked in interviews.
 

@@ -9,7 +9,6 @@ Both are used to write reusable code,
 but they behave differently internally.
 
 ---
-
 # 1️⃣ Normal Function
 
 ## ✅ Definition

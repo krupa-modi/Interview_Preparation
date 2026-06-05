@@ -109,6 +109,3 @@ async function process() {
 
 👉 "Callback hell is a situation where deeply nested callbacks make code difficult to read and maintain, often solved using Promises or async/await."
 
----
-
-If you want, I can give you **real interview questions on callback hell + promises conversion** (very common 🔥).

@@ -5,7 +5,6 @@ A memory leak happens when:
 ```text id="n3f6ym"
 Memory that is no longer needed is not released.
 ```
-
 Because of this:
 
 * RAM usage increases
@@ -43,11 +42,8 @@ JavaScript automatically allocates memory for:
 * Functions
 * Variables
 
-And automatically removes unused memory using:
+And automatically removes unused memory using: Garbage Collection
 
-```text id="jlwm1m"
-Garbage Collection
-```
 
 But if references still exist,
 Garbage Collector cannot remove memory.
@@ -106,11 +102,7 @@ button.removeEventListener("click", handleClick);
 
 In React:
 
-```js id="b8lm4v"
-useEffect cleanup
-```
-
-is used to prevent leaks.
+useEffect cleanup is used to prevent leaks.
 
 ---
 

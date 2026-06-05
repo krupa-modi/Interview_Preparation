@@ -1,6 +1,3 @@
-Here’s a **clean, interview-ready Markdown file** with **in-depth explanation** of **Temporal Dead Zone (TDZ)** and **Block Scope vs Function Scope in JavaScript** 👇
-
----
 
 # 📘 JavaScript: TDZ & Scope (In-Depth Guide)
 

@@ -11,7 +11,6 @@ You can **change (modify) the original data directly**.
 > Mutable data can be changed **without creating a new copy**.
 
 ---
-
 ## 🧪 Example (Mutable)
 
 ```js
@@ -42,7 +41,7 @@ You **cannot modify the original data**, instead you create a **new copy** with 
 ```js
 let obj = { name: "Krupa" };
 
-let newObj = { ...obj, name: "Modi" }; // ✅ new object created
+let newObj = { ...obj, name: "Modi" }; // ✅ new object created and o/p { name: "Modi" } means ye andar ki property ko nikal deta hai
 
 console.log(obj);    // { name: "Krupa" }
 console.log(newObj); // { name: "Modi" }

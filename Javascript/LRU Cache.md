@@ -9,7 +9,6 @@ LRU Cache ek data structure/design pattern hai jo:
 > Most recently used data ko cache me rakhta hai aur least recently used data ko remove kar deta hai.
 
 ---
-
 # 📌 Real Life Example
 
 Suppose browser cache.

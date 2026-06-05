@@ -1,6 +1,5 @@
 # 📘 1. Debouncing in JavaScript – Complete Interview Notes
 
----
 
 # 🔹 What is Debouncing?
 
@@ -716,3 +715,75 @@ They improve performance and reduce unnecessary executions.
 | Debounce Use | Search input                      |
 | Throttle Use | Scroll/resize                     |
 | Main Goal    | Performance optimization          |
+
+
+# Debounce — Easy Definition
+
+```text id="9wdnmu"
+User typing stop karega
+Fir kuch delay ke baad API call hogi
+```
+
+---
+
+# Example
+
+Delay:
+
+```js id="5l8j0q"
+500ms
+```
+
+User type kar raha:
+
+```text id="tjlwm1"
+h
+he
+hel
+hell
+hello
+```
+
+Typing continue hai → API call nahi.
+
+User ruk gaya 500ms ke liye ✅
+
+Then:
+
+```text id="ujlwm2"
+API Call
+```
+
+---
+
+# Throttling — Easy Definition
+
+```text id="wjlwm4"
+Fixed time me sirf 1 baar function chalega
+```
+
+---
+
+# Example
+
+Throttle time:
+
+```js id="xjlwm5"
+1000ms
+```
+
+Agar user 100 baar scroll kare:
+
+Still:
+
+```text id="yjlwm6"
+1 second me sirf 1 execution
+```
+
+---
+
+# Easy Line
+
+```text id="zjlwm7"
+Har fixed interval me ek baar execute
+```

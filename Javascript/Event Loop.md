@@ -9,15 +9,14 @@ JavaScript is single-threaded, but the event loop allows it to handle asynchrono
 
 Note:
   * setTimeout(), DOM APis, fetch() , console, location, localstorage ye sab browser ki property hai javascript ki nae isko call  stack main access karne ke liye window(Global Object) keyword use hota hai.
-  * function ya jo bhi code pehle excute hota hai to wo call stack main pegle global execution context banta hai than code line by line execute hota hai . abhi call stack main jo bhi chize hogi wo immediatly execute ho jayegi.
+  * function ya jo bhi code pehle excute hota hai to wo call stack main pehle global execution context banta hai than code line by line execute hota hai . abhi call stack main jo bhi chize hogi wo immediatly execute ho jayegi.
   * jab settimeout ka function hoga wo wait krega webapis main jayega wo directly call stack main nae ja sakta to pehle wo callback queue main jayega and event loop dono side check karega call stack empty hai to wo callback queue ko call stack main push krega and call stack usko execute kar dega.
-  * jo b call back function promise throuth hoga usko wo microtask queue main dalega and priority micotask queue ki rahegi pehle wo execute hoga then mcallback queue.
-  * callback queue ko macrotask queue bhi bolte hia.
+  * jo b call back function promise throuth hoga usko wo microtask queue main dalega and priority micotask queue ki rahegi pehle wo execute hoga then macrocallback queue.
+  * callback queue ko macrotask queue bhi bolte hai.
 
 ---
 
 ## Components
-
 1. Call Stack (Synchronous code runs first)
 2. Web APIs
 3. Callback Queue

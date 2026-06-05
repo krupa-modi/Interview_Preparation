@@ -440,8 +440,6 @@ document
 </script>
 ```
 
----
-
 # 🎯 Final Interview Summary
 
 | Topic          | Purpose                   |

@@ -11,7 +11,6 @@
 ---
 
 ### 🔍 Syntax
-
 ```js
 array.map((item, index) => {})
 ```

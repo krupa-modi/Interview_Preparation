@@ -8,7 +8,6 @@ Arrow function is a shorter way to write functions.
 ```js
 const add = (a, b) => a + b;
 ````
-
 ---
 
 # 🎯 Main Difference

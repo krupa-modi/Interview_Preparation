@@ -1,5 +1,3 @@
---
-
 # 📘 2. Garbage Collection in JavaScript – Interview Notes
 
 ---

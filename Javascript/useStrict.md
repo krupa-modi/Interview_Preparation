@@ -77,7 +77,6 @@ function test(a, a) { // Error
 
 let interface = 10; // Error
 ```
-
 ---
 
 ## Important

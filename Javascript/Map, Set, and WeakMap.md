@@ -11,7 +11,6 @@
 * Duplicate keys are not allowed
 
 ---
-
 # Syntax
 
 ```js id="sjb8mh"

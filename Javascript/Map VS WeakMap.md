@@ -7,7 +7,6 @@
 - kisi bhi type ki key use kar sakte hain
 
 ---
-
 # ✅ Map Example
 
 ```js id="p4m8tx"
@@ -47,7 +46,7 @@ Aman
 | `clear()`  | Remove all   |
 
 ---
-````md id="m8x2qp"
+
 # ✅ JavaScript Map Methods
 
 # 🔥 Create a Map

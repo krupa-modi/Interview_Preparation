@@ -9,7 +9,6 @@ import add from "./math.js";
 ````
 
 Modern JavaScript / React / Next.js me mostly use hota hai.
-
 ---
 
 # 🔥 What is `require`?
@@ -207,9 +206,7 @@ console.log(add(2, 3));
 
 # 🎯 Interview Questions
 
-## Q1:
-
-Can we have multiple default exports?
+## Q1: Can we have multiple default exports?
 
 ## ❌ Answer:
 
@@ -217,9 +214,7 @@ No
 
 ---
 
-## Q2:
-
-Can we have multiple named exports?
+## Q2: Can we have multiple named exports?
 
 ## ✅ Answer:
 
@@ -227,9 +222,7 @@ Yes
 
 ---
 
-## Q3:
-
-Which export is mostly used in React components?
+## Q3:Which export is mostly used in React components?
 
 ## ✅ Answer:
 

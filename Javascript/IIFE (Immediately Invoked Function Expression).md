@@ -20,7 +20,6 @@ Ye ek aisa function hota hai jo:
 ````
 
 ## Output
-
 ```js
 IIFE Executed
 ```

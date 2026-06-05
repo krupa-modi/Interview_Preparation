@@ -10,7 +10,6 @@ function के `this` keyword को manually control करने के ल�
 > **call / apply / bind → function ko kisi aur object ke `this` ke sath chalana**
 
 ---
-
 # 📌 Why We Need Them?
 
 Normally:

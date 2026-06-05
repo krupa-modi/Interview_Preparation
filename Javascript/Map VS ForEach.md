@@ -15,7 +15,6 @@ Used to **loop over an array** and perform some action.
 * Used when you **just want to iterate**
 
 ---
-
 ## ✅ Example:
 
 ```js

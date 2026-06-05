@@ -1,11 +1,6 @@
-Got it 👍 — I’ll keep **your Hinglish format**, **add missing ES6 features**, and also include **clear ES5 vs ES6 comparison + deeper points** in a clean **Markdown file**.
-
----
-
 # 📌 JavaScript ES6 (ECMAScript 2015) – Complete Guide (Hinglish + In-Depth)
 
 ---
-
 ## 🔹 ES6 kya hota hai?
 
 ES6 ka full form **ECMAScript 2015** hai.

@@ -3,7 +3,6 @@
 Agar tumhe JavaScript interview crack karna hai, toh **spread (`...`)** aur **rest (`...`)** operators ka clear understanding bahut important hai. Dono ka syntax same hai, but **use-case alag hai**.
 
 ---
-
 # 🔥 1. Spread Operator (`...`)
 
 👉 **Spread ka kaam:**

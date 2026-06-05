@@ -4,7 +4,6 @@ for(var i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 1000);
 }
 ---
-
 # Output
 
 ```js id="3v8kpn"
@@ -1418,4 +1417,128 @@ Result:
 true
 ```
 
+# JavaScript Hoisting Example
+
+```js
+var x = 21;
+
+var print = function() {
+  console.log(x);
+  
+  var x = 11;
+}
+
+print();
+```
+
+# Output
+
+```js
+undefined
+```
+
+# Explanation
+
+Inside the `print()` function, JavaScript sees:
+
+```js
+var x = 11;
+```
+
+Because `var` is **hoisted**, JavaScript internally treats the function like this:
+
+```js
+var x = 21;
+
+var print = function() {
+
+  var x; // hoisted
+
+  console.log(x);
+
+  x = 11;
+}
+
+print();
+```
+
+## Step-by-Step Execution
+
+### Global Variable
+
+```js
+var x = 21;
+```
+
+A global variable `x` is created with value `21`.
+
 ---
+
+### Function Call
+
+```js
+print();
+```
+
+When the function runs:
+
+```js
+var x;
+```
+
+is created first because of hoisting.
+
+So inside the function, there is a **local variable `x`**.
+
+---
+
+### Console Execution
+
+```js
+console.log(x);
+```
+
+At this moment:
+
+* local `x` exists
+* but value is not assigned yet
+
+So its value is:
+
+```js
+undefined
+```
+
+---
+
+### Assignment Happens
+
+```js
+x = 11;
+```
+
+Now local `x` becomes `11`, but console already executed before this.
+
+# Important Concept
+
+`var` declarations are hoisted, but assignments are not hoisted.
+
+So:
+
+```js
+var x = 11;
+```
+
+becomes:
+
+```js
+var x;
+x = 11;
+```
+
+# Final Output
+
+```js
+undefined
+```
+

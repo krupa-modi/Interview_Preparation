@@ -11,7 +11,6 @@ const user = {
   city: "Pune"
 };
 ```
-
 * `name`, `age`, `city` → keys
 * `"Krupa"`, `25`, `"Pune"` → values
 

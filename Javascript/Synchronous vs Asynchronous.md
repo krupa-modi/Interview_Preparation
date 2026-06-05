@@ -1,7 +1,5 @@
 # 📘 Synchronous vs Asynchronous JavaScript – Complete Interview Notes
 
----
-
 # 🔹 What is Synchronous Programming?
 
 Synchronous means:
@@ -226,11 +224,7 @@ JavaScript is single-threaded and synchronous by default, but it can handle asyn
 
 # 📌 Simple Meaning
 
-JavaScript itself is:
-
-```text id="jlwm7o"
-Single-threaded + synchronous
-```
+JavaScript itself is:Single-threaded + synchronous
 
 BUT browser provides async features.
 
@@ -238,11 +232,8 @@ BUT browser provides async features.
 
 # 🔥 What is Single Threaded?
 
-JavaScript executes:
+JavaScript executes:One task at a time
 
-```text id="jlwm9p"
-One task at a time
-```
 
 using single call stack.
 

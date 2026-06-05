@@ -26,7 +26,6 @@ const sayHi = function() {
 ```
 
 👉 Not fully hoisted → behaves like variable
-
 ---
 
 ## Key Differences

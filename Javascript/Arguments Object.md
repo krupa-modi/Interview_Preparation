@@ -7,7 +7,6 @@
 It contains all arguments passed to the function.
 
 ---
-
 # 🎯 Interview Definition
 
 > The `arguments` object stores all arguments passed to a function, even if parameters are not defined.

@@ -11,7 +11,6 @@ They are used for:
 - encapsulation
 
 ---
-
 # 🎯 Interview Definition
 
 > Private variables are variables that are accessible only inside a specific scope and cannot be directly accessed from outside.
@@ -170,9 +169,7 @@ Private field cannot be accessed outside class.
 
 # 🎯 Most Asked Interview Question
 
-## Q:
-
-How can we create private variables in JavaScript?
+## Q: How can we create private variables in JavaScript?
 
 ## ✅ Answer:
 

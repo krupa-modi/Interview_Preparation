@@ -218,5 +218,4 @@ Execution Phase:
 
 👉 *Global Execution Context runs the whole program, while Function Execution Context runs individual functions — both go through Memory and Execution phases.*
 
----
 

@@ -1,5 +1,4 @@
 # ✅ Why `const` Object Modify Ho Sakta Hai?
-
 # 🔥 Interview Question
 
 ```js
@@ -220,5 +219,4 @@ const object change ho sakta hai,
 lekin object ka reference nahi.
 ```
 
-```
 

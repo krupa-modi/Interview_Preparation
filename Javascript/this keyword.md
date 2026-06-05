@@ -1,7 +1,5 @@
 # 📘 `this` Keyword in JavaScript – Complete Interview Notes
 
----
-
 # 🔹 What is `this`?
 
 `this` is a special keyword in JavaScript that refers to:
@@ -551,7 +549,7 @@ Arrow functions inherit `this` from their lexical scope.
 | Event listener  | Triggered element  |
 | Class method    | Class instance     |
 
-````md id="k8x2qp"
+
 # ✅ JavaScript `this` Keyword (Interview Notes)
 
 # ✅ What is `this`?

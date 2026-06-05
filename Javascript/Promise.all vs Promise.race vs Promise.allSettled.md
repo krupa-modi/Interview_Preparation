@@ -13,7 +13,6 @@ If one Promise fails:
 - entire Promise fails
 
 ---
-
 # Why Use It?
 
 Used when:

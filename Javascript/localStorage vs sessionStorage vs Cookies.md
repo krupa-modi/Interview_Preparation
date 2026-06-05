@@ -10,7 +10,6 @@ Used for:
 - login/session manage karna
 
 ---
-
 # ✅ 1. localStorage
 
 ## 📌 Definition
@@ -159,9 +158,7 @@ document.cookie = "username=Aman";
 
 # 🔥 Important Interview Question
 
-## Q:
-
-Difference between localStorage and sessionStorage?
+## Difference between localStorage and sessionStorage?
 
 ## ✅ Answer:
 
@@ -175,9 +172,7 @@ Difference between localStorage and sessionStorage?
 
 # 🔥 Important Interview Question
 
-## Q:
-
-Why cookies are used for authentication?
+## Why cookies are used for authentication?
 
 ## ✅ Answer:
 

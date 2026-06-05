@@ -348,5 +348,4 @@ const copy = cloneDeep(obj);
 ---
 
 # 📌 Short Interview Answer
-
 > Deep clone creates a completely separate copy of an object including nested objects. Any changes made in the copied object do not affect the original object. Common methods are structuredClone(), JSON.parse(JSON.stringify()), and recursive cloning.

@@ -1,5 +1,4 @@
 # ✅ JavaScript Truthy & Falsy Values (Interview Notes)
-
 # 🔥 Falsy Values in JavaScript
 These values become `false` when converted to boolean.
 
@@ -201,4 +200,3 @@ Because space is also a character.
 | "false"   | Truthy |
 | "0"       | Truthy |
 
-```

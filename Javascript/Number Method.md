@@ -1,4 +1,3 @@
-````md
 # 🔥 Math Object in JavaScript
 
 👉 `Math` ek built-in object hai  
@@ -6,7 +5,6 @@
 👉 Saare methods static hote hain → `Math.methodName()`
 
 ---
-
 # 🔹 1️⃣ Rounding Methods (Most Asked 🔥)
 
 | Method         | Kya karta hai     | Example         | Output |
@@ -146,4 +144,4 @@ Power → pow, sqrt
 Compare → max, min  
 Random → random  
 Constant → PI
-````
+

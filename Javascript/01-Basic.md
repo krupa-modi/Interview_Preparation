@@ -60,6 +60,7 @@ Its value depends on **how the function is called**, not where it is written.
 
 this refers to the current context and changes based on how a function is called.
 In object
+
 const obj = {
   name: "Amit",
   show() {
@@ -451,7 +452,6 @@ So synchronous code executes first.
 > JavaScript is single-threaded because it uses a single call stack and executes one task at a time. The browser handles asynchronous operations using Web APIs, Callback Queue, and the Event Loop.
 
 
-````md id="j5k2xp"
 # ✅ JavaScript Engine (V8)
 
 ## 🎯 Definition
@@ -656,7 +656,6 @@ comment
 | NaN            | Invalid number result       |
 | Comments       | Non-executable notes        |
 
-````md
 
 # JavaScript Notes
 
@@ -1968,3 +1967,173 @@ users.sort((a, b) => b.name.localeCompare(a.name));
 # Simple Interview Answer
 
 `localeCompare()` is a JavaScript string method used to compare two strings and mainly used for sorting strings alphabetically.
+
+
+# Scope Chain
+
+## Definition
+
+Scope chain is the mechanism in JavaScript that allows a function or block to access variables from its parent scope.
+
+JavaScript searches variables:
+
+1. Current scope
+2. Parent scope
+3. Global scope
+
+If variable is not found → ReferenceError.
+
+---
+
+# Example
+
+```js
+const globalVar = "I am Global";
+
+function outer() {
+
+    const outerVar = "I am Outer";
+
+    function inner() {
+
+        const innerVar = "I am Inner";
+
+        console.log(innerVar);   // current scope
+        console.log(outerVar);   // parent scope
+        console.log(globalVar);  // global scope
+    }
+
+    inner();
+}
+
+outer();
+```
+
+---
+
+# Output
+
+```js
+I am Inner
+I am Outer
+I am Global
+```
+
+---
+
+# Interview Point
+
+Scope chain helps JavaScript access variables from outer environments.
+
+---
+
+# Immutability
+
+## Definition
+
+Immutability means original data is NOT modified.
+Instead, a new copy is created.
+
+Primitive values are immutable in JavaScript.
+
+Examples:
+
+* string
+* number
+* boolean
+
+---
+
+# Example
+
+```js
+let str = "hello";
+
+let newStr = str.toUpperCase();
+
+console.log(str);     // hello
+console.log(newStr);  // HELLO
+```
+
+Original string is unchanged.
+
+---
+
+# Object Mutation Example
+
+```js
+const user = {
+    name: "Krupa"
+};
+
+user.name = "Modi";
+
+console.log(user);
+```
+
+Output:
+
+```js
+{ name: "Modi" }
+```
+
+Object got modified.
+
+---
+
+# Immutable Way
+
+```js
+const user = {
+    name: "Krupa"
+};
+
+const updatedUser = {
+    ...user,
+    name: "Modi"
+};
+
+console.log(user);
+console.log(updatedUser);
+```
+
+---
+
+# Object Cloning
+
+## Definition
+
+Object cloning means creating a copy of an object.
+
+---
+
+# 1. Shallow Copy
+# 2. Deep Copy
+
+
+# Common Interview Question
+
+## Q: Difference between mutable and immutable?
+
+### Mutable
+
+Data can be changed.
+
+Example:
+
+```js
+Object
+Array
+```
+
+### Immutable
+
+Original data cannot be changed.
+
+Example:
+
+```js
+String
+Number
+Boolean
+```

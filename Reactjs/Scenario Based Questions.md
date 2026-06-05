@@ -2436,3 +2436,504 @@ Avoid unnecessary global state updates.
 # Short Interview Closing Line
 
 > For handling 10k+ rows efficiently, I would use virtualization, memoization, pagination, lazy loading, and optimized rendering techniques to reduce unnecessary DOM updates and improve React performance.
+
+
+# 1. Tell me about a time when a deployment caused a UI issue and how you handled it.
+
+During one deployment, the UI broke on mobile devices because of a CSS issue. I quickly identified the problem using browser dev tools, fixed the responsive styles, tested the changes, and redeployed the patch. After that, I added proper testing checks before deployment.
+
+---
+
+# 2. How do you deal with last-minute design or functionality changes from the client?
+
+I first understand the priority and impact of the change, then discuss timelines with the team. I try to implement the most important changes efficiently without affecting application stability or deadlines.
+
+---
+
+# 3. Describe a project where you had to balance performance optimization and delivery deadlines.
+
+In one project, the application had slow loading due to large components. I optimized performance using lazy loading and memoization while delivering the core features on time by prioritizing critical tasks first.
+
+---
+
+# 4. How do you collaborate with backend teams and designers effectively?
+
+I maintain clear communication through regular discussions, API documentation, and design reviews. I also clarify requirements early to avoid misunderstandings and ensure smooth integration.
+
+---
+
+# 5. How do you mentor junior developers or contribute to your team’s skill growth?
+
+I help junior developers by explaining concepts, reviewing code, sharing best practices, and assisting them in debugging issues. I also encourage knowledge sharing within the team.
+
+---
+
+# 6. What’s your plan for career growth as a JavaScript Developer in the next few years?
+
+I want to strengthen my expertise in JavaScript, React, and Next.js, improve system design and performance optimization skills, and gradually grow into a senior frontend or full-stack developer role.
+
+
+# Handling API Rate Limits, Retries, and Error States in React
+
+## Interview Question
+
+How do you handle:
+
+✅ API Rate Limits
+
+✅ Retry Mechanism
+
+✅ Loading State
+
+✅ Error State
+
+✅ Failed Requests
+
+✅ User Feedback
+
+---
+
+# 1. What is API Rate Limiting?
+
+API Rate Limiting means the server restricts the number of requests a client can make within a specific time period.
+
+Example:
+
+```text
+100 Requests / Minute
+```
+
+If you exceed the limit:
+
+```text
+429 Too Many Requests
+```
+
+response is returned.
+
+---
+
+# Why Do APIs Use Rate Limiting?
+
+* Prevent Server Overload
+* Prevent Abuse
+* Improve Security
+* Ensure Fair Usage
+
+---
+
+# Common HTTP Status Codes
+
+| Status | Meaning               |
+| ------ | --------------------- |
+| 200    | Success               |
+| 400    | Bad Request           |
+| 401    | Unauthorized          |
+| 403    | Forbidden             |
+| 404    | Not Found             |
+| 429    | Too Many Requests     |
+| 500    | Internal Server Error |
+
+---
+
+# 2. Handling Loading State
+
+Before API completes:
+
+```jsx
+const [loading, setLoading] = useState(false);
+```
+
+---
+
+## Example
+
+```jsx
+setLoading(true);
+
+try {
+  const response = await fetch(url);
+}
+finally {
+  setLoading(false);
+}
+```
+
+---
+
+## UI
+
+```jsx
+{
+  loading && <p>Loading...</p>
+}
+```
+
+---
+
+# 3. Handling Error State
+
+Create error state:
+
+```jsx
+const [error, setError] = useState("");
+```
+
+---
+
+## Example
+
+```jsx
+try {
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("Something went wrong");
+  }
+
+}
+catch(error) {
+  setError(error.message);
+}
+```
+
+---
+
+## UI
+
+```jsx
+{
+  error && <p>{error}</p>
+}
+```
+
+---
+
+# 4. Retry Failed Requests
+
+Sometimes APIs fail because of:
+
+* Network issue
+* Server issue
+* Timeout
+* Temporary failure
+
+Instead of immediately showing an error:
+
+```text
+Retry Request
+```
+
+---
+
+# Simple Retry Example
+
+```jsx
+async function fetchData(retries = 3) {
+
+  try {
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("API Failed");
+    }
+
+    return await response.json();
+
+  } catch (error) {
+
+    if (retries > 0) {
+      return fetchData(retries - 1);
+    }
+
+    throw error;
+  }
+}
+```
+
+---
+
+# Retry Flow
+
+```text
+API Call
+   ↓
+Failed?
+   ↓
+Yes
+   ↓
+Retry
+   ↓
+Failed?
+   ↓
+Retry
+   ↓
+Failed?
+   ↓
+Show Error
+```
+
+---
+
+# 5. Handling Rate Limit (429)
+
+Server Response:
+
+```text
+429 Too Many Requests
+```
+
+---
+
+## Example
+
+```jsx
+if (response.status === 429) {
+
+  throw new Error(
+    "Too many requests. Please try again later."
+  );
+}
+```
+
+---
+
+# Better Approach
+
+Read Retry-After header.
+
+```jsx
+const retryAfter =
+response.headers.get("Retry-After");
+```
+
+Example:
+
+```text
+Retry-After: 60
+```
+
+Means:
+
+```text
+Wait 60 seconds
+```
+
+before retrying.
+
+---
+
+# 6. Exponential Backoff
+
+Industry Standard Retry Strategy.
+
+Instead of:
+
+```text
+Retry
+Retry
+Retry
+```
+
+Use increasing delay:
+
+```text
+1 sec
+2 sec
+4 sec
+8 sec
+```
+
+---
+
+## Example
+
+```jsx
+const delay = (ms) =>
+  new Promise(resolve =>
+    setTimeout(resolve, ms)
+  );
+```
+
+```jsx
+async function fetchData(retries = 3) {
+
+  try {
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    return await response.json();
+
+  } catch (error) {
+
+    if (retries > 0) {
+
+      await delay(
+        (4 - retries) * 1000
+      );
+
+      return fetchData(retries - 1);
+    }
+
+    throw error;
+  }
+}
+```
+
+---
+
+# Complete Example
+
+```jsx
+import React, { useState } from "react";
+
+function App() {
+
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const fetchData = async () => {
+
+    setLoading(true);
+    setError("");
+
+    try {
+
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+
+      if (response.status === 429) {
+        throw new Error(
+          "Rate limit exceeded"
+        );
+      }
+
+      if (!response.ok) {
+        throw new Error(
+          "Failed to fetch data"
+        );
+      }
+
+      const result =
+        await response.json();
+
+      setData(result);
+
+    } catch (err) {
+
+      setError(err.message);
+
+    } finally {
+
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+
+      <button onClick={fetchData}>
+        Fetch Users
+      </button>
+
+      {loading && <p>Loading...</p>}
+
+      {error && <p>{error}</p>}
+
+      {data &&
+        data.map(user => (
+          <p key={user.id}>
+            {user.name}
+          </p>
+      ))}
+
+    </div>
+  );
+}
+
+export default App;
+```
+
+---
+
+# React Query / TanStack Query
+
+Interviewers often expect this answer.
+
+React Query automatically handles:
+
+✅ Retries
+
+✅ Caching
+
+✅ Loading State
+
+✅ Error State
+
+✅ Background Refetching
+
+✅ Request Deduplication
+
+---
+
+## Example
+
+```jsx
+useQuery({
+  queryKey: ["users"],
+  queryFn: fetchUsers,
+  retry: 3
+});
+```
+
+---
+
+# Best Practices
+
+### Do
+
+✅ Show Loading Spinner
+
+✅ Show User Friendly Error
+
+✅ Retry Failed Requests
+
+✅ Use Exponential Backoff
+
+✅ Handle 429 Status
+
+✅ Cache Responses
+
+---
+
+### Don't
+
+❌ Infinite Retries
+
+❌ Hide Errors
+
+❌ Call API on Every Keystroke
+
+❌ Ignore Rate Limits
+
+❌ Retry Immediately Without Delay
+
+---
+
+# Interview Answer (Short)
+
+> I handle API requests using loading, error, and data states. For failures, I implement retry logic with exponential backoff. For rate-limited responses (429), I respect the Retry-After header and delay future requests. In production applications, I often use React Query because it provides built-in retries, caching, loading states, and error handling.
+
+---
+
+# 2-Line Interview Answer
+
+> API rate limits are handled by checking for HTTP 429 responses and delaying retries. Failed requests are retried using exponential backoff, while loading and error states are managed to provide proper user feedback.

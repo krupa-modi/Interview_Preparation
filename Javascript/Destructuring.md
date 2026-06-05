@@ -9,7 +9,6 @@ and store them into variables easily.
 It makes code cleaner and shorter.
 
 ---
-
 # 1. Array Destructuring
 
 ## Without Destructuring
@@ -294,5 +293,3 @@ Used to extract deeply nested values.
 * Object destructuring uses `{}`
 * Nested destructuring extracts nested values easily
 
-```
-```

@@ -1,4 +1,3 @@
-
 ## 📌 What is Call Stack?
 
 👉 **Call Stack** is a data structure used by JavaScript to keep track of function execution.
@@ -149,6 +148,4 @@ RangeError: Maximum call stack size exceeded ❌
 
 👉 *Call Stack is a structure that keeps track of function calls in JavaScript using LIFO order.*
 
----
 
-If you want next → I can explain **Event Loop + Callback Queue + Microtask Queue** (very important combo for interviews) 🔥

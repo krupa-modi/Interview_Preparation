@@ -3,7 +3,6 @@
 ---
 
 # 🔹 What is Copying?
-
 Copying means creating another variable/object from existing data.
 
 ---

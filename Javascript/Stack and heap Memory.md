@@ -1,7 +1,5 @@
 # 📘 Stack and Heap Memory in JavaScript – Interview Notes
 
----
-
 # 🔹 What is Memory in JavaScript?
 
 JavaScript stores data in memory while program runs.
@@ -10,7 +8,7 @@ Mainly memory is divided into:
 
 ```text id="3y1jcf"
 1. Stack Memory (ismain copy hota hai primitive value ka so original value change nae hoti)
-2. Heap Memory (ismain referbce pass hota hai nonprimitive main so original value bhi change ho jati hai)
+2. Heap Memory (ismain referance pass hota hai nonprimitive main so original value bhi change ho jati hai)
 ```
 
 ---

@@ -29,7 +29,6 @@ Event handlers,
 React hooks internally,
 
 ---
-
 ## 📦 Lexical Environment Includes
 
 * Local variables

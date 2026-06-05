@@ -3,7 +3,6 @@
 OOPs means **Object Oriented Programming System**.
 
 JavaScript me OOPs ka use code ko:
-
 * reusable banane ke liye
 * organized rakhne ke liye
 * real world objects ko represent karne ke liye hota hai.

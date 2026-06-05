@@ -13,7 +13,6 @@
  * stop.Propagation() event ko parent elements tak bubble/capture hone se rokne ke liye hota hai.
 
 ---
-
 # 🔥 Event Propagation ke 3 Phases
 
 ```text
@@ -712,11 +711,8 @@ controller.abort();
 
 # 🚀 Most Asked Interview Line
 
-```text id="n1cvfd"
 addEventListener() is used to attach events to elements with support for bubbling, capturing, and multiple handlers.
-```
 
-````md id="m8x2qp"
 # ✅ JavaScript Events (Interview Notes)
 
 # ✅ 1. addEventListener()
@@ -902,5 +898,76 @@ Parent event stop ho gaya.
 ```js id="j7p3lx"
 stopPropagation() stops event from moving to parent elements.
 ```
+
+
+If interviewer asks:
+
+# Why do we use Event Bubbling, Capturing, and Propagation?
+
+
+# Event Propagation
+
+Event propagation is the process that defines how an event travels through the DOM elements.
+
+It has three phases:
+
+1. Capturing Phase
+2. Target Phase
+3. Bubbling Phase
+
+---
+
+# Event Capturing
+
+In event capturing, the event travels from:
+
+```text id="2i7h3e"
+parent → child
+```
+
+We use capturing when we want the parent element to handle the event before the child element.
+
+Example:
+Handling security checks or global handlers before child actions.
+
+---
+
+# Event Bubbling
+
+In event bubbling, the event travels from:
+
+```text id="3j8i4f"
+child → parent
+```
+
+It is the default behavior in JavaScript.
+
+We use bubbling because it helps in:
+
+* Event delegation
+* Better performance
+* Handling multiple child elements using one parent listener
+
+Example:
+Click events in lists, tables, menus, etc.
+
+---
+
+# Why Event Propagation is Useful?
+
+Event propagation helps manage events efficiently between parent and child elements.
+
+It allows:
+
+* Better control over event flow
+* Event delegation
+* Cleaner and optimized code
+* Less memory usage
+
+---
+
+# Short Interview Answer
+
+Event propagation controls how events move in the DOM. Bubbling moves events from child to parent, while capturing moves from parent to child. They are used for efficient event handling and event delegation.
 
 
