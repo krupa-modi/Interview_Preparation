@@ -1,4 +1,3 @@
-
 # 📘 useMemo Hook in React (Easy Explanation)
 
 ## 🔹 What is `useMemo`?
@@ -428,14 +427,6 @@ Here:
 “I avoid using useMemo for small or inexpensive calculations because memoization itself has overhead.
 
 I mainly use useMemo only for expensive computations, large data filtering/sorting, or when preventing unnecessary recalculations improves performance.”
-
----
-
-# Important Rule 🚀
-
-## Don’t use useMemo because you CAN.
-
-## Use it because you NEED performance optimization.
 
 ---
 

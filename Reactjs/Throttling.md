@@ -7,7 +7,6 @@ Throttling is a technique used to limit how many times a function executes in a 
 Even if an event triggers many times, the function runs only after a fixed delay.
 
 ---
-
 ## Why Use Throttling?
 
 Used to improve performance for:

@@ -1,7 +1,6 @@
 # React Hooks Complete Interview Revision Notes 🚀
 
 ## 📌 What are Hooks?
-
 Hooks React ke special functions hote hain jo functional components me:
 
 * state use karne

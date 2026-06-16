@@ -1,7 +1,6 @@
 ## 📌 What is Tree Shaking?
 
 Tree Shaking ek optimization technique hai jisme **unused code remove** kiya jata hai final bundle se.
-
 Simple words me:
 
 👉 Jo code application me use nahi ho raha

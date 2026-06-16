@@ -1,5 +1,4 @@
 # React State Management (Short Interview Notes)
-
 ## What is State?
 
 State is data that changes in a React component.

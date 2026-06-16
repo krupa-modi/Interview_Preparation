@@ -1,5 +1,3 @@
-
-
 # 🔹 1. Controlled Components (Deep Understanding)
 
 👉 Controlled ka matlab: **React control karta hai form ka data (state ke through)**

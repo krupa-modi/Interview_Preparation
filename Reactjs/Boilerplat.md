@@ -3,7 +3,6 @@
 Boilerplate matlab:
 
 > “Repeated basic code template jo har project me baar baar likhna padta hai.”
-
 ---
 
 # 🧠 Easy Definition (Interview)

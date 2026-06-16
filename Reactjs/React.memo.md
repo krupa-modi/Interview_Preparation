@@ -3,7 +3,6 @@
 `React.memo` is a Higher Order Component (HOC) in React.
 
 It is used to optimize performance by preventing unnecessary re-rendering of components.
-
 If the component props do not change, React will reuse the previous rendered result instead of rendering the component again.
 
 ---

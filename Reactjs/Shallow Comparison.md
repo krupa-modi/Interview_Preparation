@@ -1,4 +1,3 @@
-
 # ⚛️ Shallow Comparison in React (Interview Guide)
 
 ## 📌 What is Shallow Comparison?
@@ -168,7 +167,3 @@ obj1 === obj2 // ❌ false
 * Immutable updates are required
 * Key concept for React interviews 🔥
 
----
-
-
-Just tell me 👍

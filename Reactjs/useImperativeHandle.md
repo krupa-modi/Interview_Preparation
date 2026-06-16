@@ -5,7 +5,6 @@
 `useImperativeHandle` React hook hai jo parent component ko child component ke functions ya values access karne deta hai using `ref`.
 
 Ye mostly `forwardRef` ke sath use hota hai.
-
 ---
 
 # Simple Definition

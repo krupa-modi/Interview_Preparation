@@ -1,7 +1,6 @@
 # 📘 Render Props in React
 
 ---
-
 # 📌 What is Render Props?
 
 ## 🔹 Definition

@@ -1,6 +1,3 @@
-Maine saare common topics ko combine karke ek clean aur easy-to-revise single markdown notes file bana diya hai — jisme duplicate topics remove karke proper interview-oriented explanations rakhe gaye hain.
-File source: 
-
 # 📘 Redux Toolkit Complete Interview Notes (Combined & Clean Version)
 
 ---
@@ -561,11 +558,9 @@ UI Re-render
 # 📌 What is Redux Data Flow?
 
 Redux follows:
-
-# 👉 Unidirectional Data Flow
+*  Unidirectional Data Flow
 
 Meaning:
-
 Data flows in one direction only.
 
 ---
@@ -654,11 +649,7 @@ Reducer ko information dena.
 
 # 📌 What is Reducer?
 
-Reducer current state aur action lekar:
-
-# 👉 New state
-
-return karta hai.
+Reducer current state aur action lekar New state return karta hai.
 
 ---
 
@@ -732,18 +723,13 @@ UI automatically update ho jata hai.
 # 📌 Slice
 
 ```js id="’winiijlwm6"
-import {
-  createSlice
-} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
-const counterSlice =
-  createSlice({
+const counterSlice =createSlice({
     name: "counter",
-
     initialState: {
       value: 0
     },
-
     reducers: {
       increment: (state) => {
         state.value += 1;
@@ -751,11 +737,9 @@ const counterSlice =
     }
   });
 
-export const { increment } =
-  counterSlice.actions;
+export const { increment } = counterSlice.actions;
 
-export default
-  counterSlice.reducer;
+export default counterSlice.reducer;
 ```
 
 ---
@@ -763,19 +747,11 @@ export default
 # 📌 Component
 
 ```jsx id="’winiijlwm1"
-import {
-  useSelector,
-  useDispatch
-} from "react-redux";
-
-import {
-  increment
-} from "./counterSlice";
+import {useSelector,useDispatch} from "react-redux";
+import { increment} from "./counterSlice";
 
 function Counter() {
-  const count = useSelector(
-    (state) => state.counter.value
-  );
+  const count = useSelector((state) => state.counter.value);
 
   const dispatch = useDispatch();
 
@@ -973,12 +949,9 @@ Redux Toolkit is the official modern way to write Redux.
 # 📌 Example — Redux Toolkit
 
 ```js id="’winiijlwm0"
-import {
-  createSlice
-} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
-const counterSlice =
-  createSlice({
+const counterSlice = createSlice({
     name: "counter",
 
     initialState: {
@@ -992,11 +965,9 @@ const counterSlice =
     }
   });
 
-export const { increment } =
-  counterSlice.actions;
+export const { increment } = counterSlice.actions;
 
-export default
-  counterSlice.reducer;
+export default counterSlice.reducer;
 ```
 
 ---
@@ -1065,11 +1036,7 @@ Redux Toolkit was introduced to solve Redux complexity and reduce excessive boil
 
 # 📌 What is createAsyncThunk?
 
-`createAsyncThunk` Redux Toolkit ka function hai jo:
-
-# 👉 Async operations
-
-handle karne ke liye use hota hai.
+`createAsyncThunk` Redux Toolkit ka function hai jo Async operations handle karne ke liye use hota hai.
 
 Mostly used for:
 
@@ -1119,20 +1086,11 @@ createAsyncThunk(
 # 🔥 Step 1 — Create Async Thunk
 
 ```js id="’winiijlwm7"
-import {
-  createAsyncThunk
-} from "@reduxjs/toolkit";
+import {createAsyncThunk} from "@reduxjs/toolkit";
 
-export const fetchUsers =
-  createAsyncThunk(
-    "users/fetchUsers",
-
-    async () => {
-      const response =
-        await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-
+export const fetchUsers =createAsyncThunk("users/fetchUsers",async () => 
+{
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
       return response.json();
     }
   );
@@ -1153,17 +1111,11 @@ API call karega aur data return karega.
 # 📘 Step 2 — Handle States in extraReducers
 
 ```js id="’winiijlwm5"
-import {
-  createSlice
-} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
+import { fetchUsers } from "./userThunk";
 
-import { fetchUsers }
-from "./userThunk";
-
-const userSlice =
-  createSlice({
+const userSlice = createSlice({
     name: "users",
-
     initialState: {
       users: [],
       loading: false,
@@ -1172,7 +1124,6 @@ const userSlice =
 
     extraReducers: (builder) => {
       builder
-
         .addCase(
           fetchUsers.pending,
           (state) => {
@@ -1184,9 +1135,7 @@ const userSlice =
           fetchUsers.fulfilled,
           (state, action) => {
             state.loading = false;
-
-            state.users =
-              action.payload;
+            state.users =  action.payload;
           }
         )
 
@@ -1194,16 +1143,13 @@ const userSlice =
           fetchUsers.rejected,
           (state, action) => {
             state.loading = false;
-
-            state.error =
-              action.error.message;
+            state.error = action.error.message;
           }
         );
     }
   });
 
-export default
-  userSlice.reducer;
+export default userSlice.reducer;
 ```
 
 ---
@@ -1211,13 +1157,8 @@ export default
 # 📘 Step 3 — Dispatch Async Thunk
 
 ```jsx id="’winiijlwm0"
-import {
-  useDispatch
-} from "react-redux";
-
-import {
-  fetchUsers
-} from "./userThunk";
+import {useDispatch} from "react-redux";
+import {fetchUsers} from "./userThunk";
 
 function App() {
   const dispatch = useDispatch();
@@ -1429,9 +1370,7 @@ Sirf required component re-render hoga.
 
 # 🔥 2️⃣ Memoized Selectors Use Karna
 
-Using:
-
-# 👉 Reselect
+Using:Reselect
 
 ---
 
@@ -1557,11 +1496,7 @@ Normalization is the process of storing Redux state in a flat structured format 
 
 # 📌 What is Memoization?
 
-Memoization means:
-
-# 👉 Reusing previously calculated result
-
-instead of recalculating again.
+Memoization means: Reusing previously calculated result instead of recalculating again.
 
 ---
 
@@ -1584,16 +1519,11 @@ Using:
 # 📌 Example
 
 ```js id="’winiijlwm5"
-import { createSelector }
-from "reselect";
+import { createSelector } from "reselect";
 
-const selectUsers =
-  (state) => state.users;
+const selectUsers =(state) => state.users;
 
-const activeUsers =
-  createSelector(
-    [selectUsers],
-
+const activeUsers =createSelector([selectUsers],
     (users) => {
       return users.filter(
         (user) => user.active
@@ -1670,11 +1600,7 @@ src
 
 # 📌 Important Point
 
-Store ko:
-
-# 👉 Feature-wise split
-
-karna best practice hai.
+Store ko Feature-wise split karna best practice hai.
 
 ---
 

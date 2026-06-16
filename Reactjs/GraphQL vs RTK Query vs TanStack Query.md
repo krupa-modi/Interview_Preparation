@@ -368,7 +368,6 @@ Both.
 It defines communication between frontend and backend.
 
 ---
-
 # 5. Which is better: RTK Query or TanStack Query?
 
 Depends on project requirements:

@@ -1,7 +1,6 @@
 ## 📌 What is `useContext`?
 
 `useContext` is a **React Hook** used to access data from a **Context API** without passing props manually through every component.
-
 It helps solve the problem of **Prop Drilling**.
 
 ---

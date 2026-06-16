@@ -1,7 +1,6 @@
 # 🚀 Micro Frontend Complete Interview Notes
 
 ---
-
 # 📌 What is Micro Frontend?
 
 Micro Frontend ek architecture pattern hai jisme:

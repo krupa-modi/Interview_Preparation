@@ -1,5 +1,4 @@
 # Lifting State Up in React
-
 ## What is Lifting State Up?
 
 Lifting state up means:

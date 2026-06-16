@@ -1,5 +1,3 @@
-
-
 # 📘 Difference Between `useMemo` and `useCallback` (In-Depth Guide)
 
 ---

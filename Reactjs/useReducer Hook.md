@@ -1,10 +1,8 @@
-````md id="u7m4xp"
 # useReducer Hook in React (A to Z Interview Notes)
 
 # What is useReducer?
 
 `useReducer` is a React Hook used for managing complex state logic.
-
 It works similar to Redux.
 
 Best for:

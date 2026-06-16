@@ -7,7 +7,6 @@ CORS ek browser security feature hai jo decide karta hai:
 > “Kya ek website dusri website/server se data access kar sakti hai ya nahi?”
 
 ---
-
 # 🧠 Easy Definition (Interview)
 
 > “CORS ek browser security mechanism hai jo different origins ke beech resource sharing ko control karta hai.”

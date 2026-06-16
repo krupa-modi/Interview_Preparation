@@ -94,7 +94,9 @@
 91. Nested object access
 92. Flatten object
 93. Compare objects
-
+94. Given an Array of User Objects, Find Users Who Are Not Active
+95. Calculate the Total Age of All Users
+96. Apply Logical Conditions While Iterating Over Structured Data
 
 
 
@@ -349,7 +351,7 @@ const number = [10,20,30,50,80,20,90,11,4,48,566]
 
 const uniqueNumber = [...new Set(number)]
 
-let firstLargest = -Infinity
+let firstLargest = -Infinity// ismain 0 isiliye use nae kiya bcz -Infinity means sabse small value 0,-2,-3 sabse small hoti hai isiiya Infinity liya 0 lete to logix break ho jata
 let secondlargest = -Infinity
 
 for(let i = 0; i < uniqueNumber.length; i++){
@@ -4779,4 +4781,174 @@ console.log(result);
 
 ```js id="3h8ifv"
 true
+```
+
+# Given an Array of User Objects, Find Users Who Are Not Active
+
+### Input
+
+```js
+const users = [
+    { id: 1, name: "John", active: true },
+    { id: 2, name: "Alice", active: false },
+    { id: 3, name: "Bob", active: true },
+    { id: 4, name: "Emma", active: false }
+];
+```
+
+---
+
+## Using `filter()` Method
+
+```js
+const result = users.filter((user) => !user.active);
+
+console.log(result);
+```
+
+### Output
+
+```js
+[
+  { id: 2, name: "Alice", active: false },
+  { id: 4, name: "Emma", active: false }
+]
+```
+
+---
+
+## Without Using Any Method
+
+```js
+const users = [
+    { id: 1, name: "John", active: true },
+    { id: 2, name: "Alice", active: false },
+    { id: 3, name: "Bob", active: true },
+    { id: 4, name: "Emma", active: false }
+];
+
+const result = [];
+
+for (let user of users) {
+    if (!user.active) {
+        result.push(user);
+    }
+}
+
+console.log(result);
+```
+
+### Output
+
+```js
+[
+  { id: 2, name: "Alice", active: false },
+  { id: 4, name: "Emma", active: false }
+]
+```
+
+# Calculate the Total Age of All Users
+
+## Using `reduce()` Method
+
+```js
+const users = [
+    { name: "John", age: 25 },
+    { name: "Alice", age: 30 },
+    { name: "Bob", age: 22 }
+];
+
+const result = users.reduce((sum, user) => sum + user.age, 0);
+
+console.log(result);
+```
+
+### Output
+
+```js
+77
+```
+
+---
+
+## Without Using Any Method
+
+```js
+const users = [
+    { name: "John", age: 25 },
+    { name: "Alice", age: 30 },
+    { name: "Bob", age: 22 }
+];
+
+let totalSumOfAge = 0;
+
+for (let user of users) {
+    totalSumOfAge += user.age;
+}
+
+console.log(totalSumOfAge);
+```
+
+### Output
+
+```js
+77
+```
+
+
+Yeh MD file format mein:
+
+# Apply Logical Conditions While Iterating Over Structured Data
+
+## Definition
+
+## Using `filter()` Method
+
+```js
+const users = [
+    { name: "John", age: 22, active: true },
+    { name: "Alice", age: 30, active: true },
+    { name: "Bob", age: 28, active: false },
+    { name: "Emma", age: 35, active: true }
+];
+
+const result = users.filter((user) => {
+    return user.active && user.age > 25;
+});
+
+console.log(result);
+```
+
+### Output
+
+```js
+[
+  { name: "Alice", age: 30, active: true },
+  { name: "Emma", age: 35, active: true }
+]
+```
+
+---
+
+## Without Using Any Method
+
+```js
+let output = [];
+
+for (let user of users) {
+    if (user.active && user.age > 25) {
+        output.push(user);
+    }
+}
+
+console.log(output);
+```
+
+### Output
+
+```js
+[
+  { name: "Alice", age: 30, active: true },
+  { name: "Emma", age: 35, active: true }
+]
 ```

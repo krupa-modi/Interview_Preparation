@@ -7,7 +7,6 @@ API stands for:
 ```txt
 Application Programming Interface
 ````
-
 API is a way for two applications/systems to communicate with each other.
 
 ---

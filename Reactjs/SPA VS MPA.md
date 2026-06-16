@@ -1,7 +1,6 @@
 # SPA vs MPA
 
 # SPA (Single Page Application)
-
 ## What is SPA?
 
 SPA loads a single HTML page and dynamically updates content without refreshing the full page.
@@ -117,4 +116,4 @@ Traditional websites mostly use MPA architecture.
 # Interview One-Line Answer
 
 > SPA loads a single page and updates content dynamically, while MPA reloads a new page from the server for every request.
-```
+

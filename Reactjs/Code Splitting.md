@@ -1,7 +1,6 @@
 # 🚀 Code Splitting in React – Complete Interview Guide
 
 ---
-
 # 1. What is Code Splitting?
 
 Code Splitting is a performance optimization technique where JavaScript code is divided into smaller chunks instead of loading the entire application at once.

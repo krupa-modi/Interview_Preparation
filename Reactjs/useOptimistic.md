@@ -3,7 +3,6 @@
 `useOptimistic` React ka ek Hook hai jo **UI ko instantly update** karne ke liye use hota hai, bina server response ka wait kiye.
 
 Ye mostly React Server Components aur Next.js App Router me use hota hai.
-
 ---
 
 # Simple Definition
@@ -269,13 +268,13 @@ API Background me
 
 # Best Use Cases
 
-## 1. Like Button
-## 2. Comment System
-## 3. Chat Apps
-## 4. Todo Apps
-## 5. Realtime Apps
-## 6. Voting Systems
-## 7. Cart Update
+* Like Button
+* Comment System
+* Chat Apps
+* Todo Apps
+* Realtime Apps
+* Voting Systems
+* Cart Update
 
 ---
 
@@ -324,13 +323,13 @@ Sync with Real State
 
 # Important Interview Points
 
-# 1. `useOptimistic` React Hook hai
-# 2. React 19 me introduce hua
-# 3. Optimistic UI updates ke liye use hota hai
-# 4. API response ka wait nahi karta
-# 5. User Experience improve karta hai
-# 6. Mostly async actions me use hota hai
-# 7. Temporary UI state manage karta hai
+* `useOptimistic` React Hook hai
+*  React 19 me introduce hua
+*  Optimistic UI updates ke liye use hota hai
+*  API response ka wait nahi karta
+*  User Experience improve karta hai
+*  Mostly async actions me use hota hai
+*  Temporary UI state manage karta hai
 
 ---
 

@@ -1,7 +1,6 @@
 # React Query / TanStack Query Complete A to Z Guide
 
 ## What is React Query / TanStack Query?
-
 Earlier its name was **React Query**.
 Now officially it is called:
 
@@ -275,12 +274,7 @@ function Users() {
     return res.data;
   };
 
-  const {
-    data,
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
+  const {data,isLoading,isError, error,} = useQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
   });
@@ -1099,19 +1093,19 @@ Dynamic query keys.
 
 # Real Interview Practical Questions
 
-## Create user list with React Query
+* Create user list with React Query
 
-## Implement pagination
+* Implement pagination
 
-## Implement infinite scrolling
+* Implement infinite scrolling
 
-## Create optimistic update
+* Create optimistic update
 
-## Create CRUD using mutation
+* Create CRUD using mutation
 
-## Cache API response
+* Cache API response
 
-## Refetch after POST
+* Refetch after POST
 
 ---
 
@@ -1183,17 +1177,17 @@ Shows:
 
 # Best Practices
 
-## Always use query keys properly
+* Always use query keys properly
 
-## Use custom hooks
+* Use custom hooks
 
-## Separate API logic
+* Separate API logic
 
-## Use staleTime wisely
+* Use staleTime wisely
 
-## Invalidate after mutation
+* Invalidate after mutation
 
-## Avoid unnecessary refetch
+* Avoid unnecessary refetch
 
 ---
 
@@ -1243,29 +1237,29 @@ invalidateQueries()
 
 # Final Revision Notes
 
-## React Query = Server State Management
+* React Query = Server State Management
 
-## useQuery = GET
+* useQuery = GET
 
-## useMutation = POST PUT DELETE
+* useMutation = POST PUT DELETE
 
-## queryKey = Cache identity
+* queryKey = Cache identity
 
-## staleTime = Fresh time
+* staleTime = Fresh time
 
-## gcTime = Cache cleanup
+* gcTime = Cache cleanup
 
-## invalidateQueries = Refetch query
+* invalidateQueries = Refetch query
 
-## Optimistic update = Instant UI update
+* Optimistic update = Instant UI update
 
-## Infinite query = Infinite scroll
+* Infinite query = Infinite scroll
 
 ---
 
 # One Line Definitions
 
-## useQuery
+* useQuery
 
 Fetch data from server.
 
@@ -1584,15 +1578,15 @@ Because hooks ko queryClient nahi mila.
 ["todos"]
 ```
 
-## Query data
+* Query data
 
-## Mutation data
+* Mutation data
 
-## Query states
+* Query states
 
-## Retry info
+* Retry info
 
-## Fetch status
+* Fetch status
 
 Sab kuch.
 

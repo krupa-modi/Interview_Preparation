@@ -3,7 +3,6 @@
 JWT (JSON Web Token) is a secure way to transfer data between client and server.
 
 Mostly used for:
-
 Authentication
 Authorization
 Secure API communication

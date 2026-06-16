@@ -1,7 +1,6 @@
 ## What is forwardRef?
 
 `forwardRef` React ka function hai jo parent component ki `ref` ko child component ke andar forward karta hai.
-
 Simple words me:
 
 > Parent component child component ke DOM element ko access kar sakta hai using `forwardRef`.

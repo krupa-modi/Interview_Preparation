@@ -10,8 +10,15 @@ API Handling means:
 
 React applications commonly use APIs to fetch dynamic data from backend servers.
 
----
+HTTP stands for HyperText Transfer Protocol. It is the set of rules that web browsers and web servers use to communicate with each other.
 
+When you visit a website:
+
+Your browser sends an HTTP request to the server.
+The server processes the request.
+The server sends back an HTTP response containing the webpage, images, data, or an error message.
+
+---
 # 📌 Common API Operations
 
 | Method | Purpose              |
@@ -74,6 +81,9 @@ function App() {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
+
+      // Why do we use await response.json()?
+      // response.json() asynchronous method hai jo Promise return karta hai. Actual JSON data lene ke liye await use karna padta hai, warna Promise object milta hai instead of parsed data.
       .then((data) => setUsers(data));
   }, []);
 

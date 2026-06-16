@@ -221,19 +221,6 @@ Browser runs app
 
 ---
 
-# Real Interview Questions
-
-1. What is Node.js?
-2. Why React needs Node.js?
-3. What is npm?
-4. Difference between React and Node.js?
-5. What happens when Node version upgrades?
-6. Why modern packages require latest Node versions?
-7. What is runtime environment?
-8. Can React run without Node.js?
-
----
-
 # Important Interview Point
 
 React application final browser me run hoti hai.

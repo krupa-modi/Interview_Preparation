@@ -16,7 +16,6 @@ Server Components send only the final HTML/UI to the client.
 > Server Components are React components that run on the server and send rendered UI to the client, reducing JavaScript bundle size and improving performance.
 
 ---
-
 # Why Use Server Components?
 
 Normally in React:

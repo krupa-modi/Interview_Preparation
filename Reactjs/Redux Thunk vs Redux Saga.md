@@ -1,5 +1,4 @@
 # 📘 Redux Thunk vs Redux Saga — Complete Interview Notes
-
 # 📌 What is Redux Middleware?
 
 Redux middleware actions aur reducers ke beech me kaam karta hai.
@@ -19,11 +18,8 @@ handle karta hai.
 # 📌 Important Point
 
 Both:
-
-# 👉 Redux Thunk
-
-# 👉 Redux Saga
-
+* Redux Thunk
+* Redux Saga
 are Redux middleware.
 
 ---
@@ -32,11 +28,7 @@ are Redux middleware.
 
 Redux Thunk ek simple middleware hai jo async operations handle karta hai.
 
-Thunk hume:
-
-# 👉 Function ko action ki tarah dispatch
-
-karne deta hai.
+Thunk hume: Function ko action ki tarah dispatch karne deta hai.
 
 ---
 
@@ -141,15 +133,7 @@ Success/Error action dispatch karta hai.
 
 # 📘 What is Redux Saga?
 
-Redux Saga advanced middleware hai jo:
-
-# 👉 Complex async side effects
-
-handle karta hai using:
-
-# 👉 Generator Functions
-
----
+Redux Saga advanced middleware hai jo: Complex async side effects handle karta hai using:
 
 # 📌 Generator Function
 
@@ -273,11 +257,7 @@ Success/Error action dispatch karta hai.
 
 # 📌 Important Point
 
-Redux Toolkit already includes:
-
-# 👉 Redux Thunk by default
-
-No separate installation needed.
+Redux Toolkit already includes: Redux Thunk by default No separate installation needed.
 
 ---
 
@@ -304,14 +284,12 @@ No separate installation needed.
 ---
 
 # 🔥 Redux Thunk
-
-# 👉 Simple & Quick
+* Simple & Quick
 
 ---
 
 # 🔥 Redux Saga
-
-# 👉 Powerful & Scalable
+* Powerful & Scalable
 
 ---
 

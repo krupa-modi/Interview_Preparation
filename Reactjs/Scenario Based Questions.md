@@ -2937,3 +2937,164 @@ useQuery({
 # 2-Line Interview Answer
 
 > API rate limits are handled by checking for HTTP 429 responses and delaying retries. Failed requests are retried using exponential backoff, while loading and error states are managed to provide proper user feedback.
+
+
+# React Interview Question: useState + setTimeout + Closure
+
+## Question
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+
+    setTimeout(() => {
+      console.log(count);
+    }, 3000);
+  };
+
+  return <button onClick={handleClick}>Increment</button>;
+}
+```
+
+---
+
+## What Will Be Logged?
+
+Initial State:
+
+```js
+count = 0
+```
+
+Click Button:
+
+```js
+setCount(count + 1); // setCount(1)
+```
+
+After 3 seconds:
+
+```js
+console.log(count);
+```
+
+### Output
+
+```js
+0
+```
+
+---
+
+## Why?
+
+### 1. State Update is Asynchronous
+
+```js
+setCount(count + 1);
+```
+
+React schedules a re-render.
+
+It does NOT immediately change the current value of `count`.
+
+---
+
+### 2. Closure Captures Old Value
+
+The callback inside `setTimeout` creates a closure.
+
+```js
+setTimeout(() => {
+  console.log(count);
+}, 3000);
+```
+
+This callback remembers the value of `count` from the render in which it was created.
+
+At that moment:
+
+```js
+count = 0
+```
+
+So after 3 seconds it logs:
+
+```js
+0
+```
+
+---
+
+## Multiple Clicks Example
+
+```js
+count = 0
+
+Click 1 -> logs 0
+Click 2 -> logs 1
+Click 3 -> logs 2
+```
+
+Each timeout remembers the value from its own render.
+
+---
+
+## How to Get Latest State?
+
+### Using useRef
+
+```jsx
+const countRef = useRef(count);
+
+useEffect(() => {
+  countRef.current = count;
+}, [count]);
+
+setTimeout(() => {
+  console.log(countRef.current);
+}, 3000);
+```
+
+Output:
+
+```js
+Latest count value
+```
+
+---
+
+## Interview Keywords
+
+* useState is asynchronous
+* React re-renders component on state update
+* Closure captures values from the render where it was created
+* setTimeout callback remembers old state
+* useRef can be used to access the latest value
+
+---
+
+## Interview Answer (Short)
+
+`setCount(count + 1)` schedules a state update but does not immediately change `count`. The `setTimeout` callback forms a closure and captures the value of `count` from the current render. Therefore, if `count` was `0` when the click happened, the callback logs `0` after 3 seconds even though the component has re-rendered with an updated state.
+
+
+# What was the most challenging task you faced in your project, and how did you solve it?
+```
+One of the most challenging tasks in my project was implementing a complex role-based workflow system in the PREET AI platform.
+
+The application had multiple user roles such as Admin, Department Users, Writers, PR Team, and PRO, and each role had different permissions and actions. The challenge was to ensure that users could only access the screens, buttons, and workflow actions relevant to their role while maintaining a smooth user experience.
+
+To solve this, I designed a centralized role and permission management system using React, TypeScript, and Redux Toolkit. I created reusable permission-based components and route guards that dynamically controlled UI access based on user roles and workflow status. I also optimized API integration and state management to keep the workflow consistent across different modules.
+
+As a result, we successfully implemented a secure and scalable workflow system that reduced manual errors, improved maintainability, and provided a seamless experience for different stakeholders involved in the advertisement and press-release approval process.
+```
+
+# How do you make a website responsive?
+```
+I make websites responsive by using a mobile-first approach, CSS Flexbox/Grid, media queries, responsive units like %, rem, and em, and responsive images. In React projects, I frequently use Tailwind CSS breakpoints such as sm, md, lg, and xl to adapt layouts for different screen sizes. This ensures a consistent user experience across mobile, tablet, and desktop devices.
+For images and media, I use responsive techniques like max-width: 100% so they fit within their containers.
+```

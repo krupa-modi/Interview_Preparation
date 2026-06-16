@@ -1,7 +1,6 @@
 # 📌 What are Error Boundaries?
 
 ## 🔹 Definition
-
 Error Boundaries are React components used to catch JavaScript errors in child components during rendering.
 
 They prevent the entire application from crashing.

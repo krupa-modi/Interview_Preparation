@@ -1,4 +1,3 @@
-
 # ⚛️ React Interview Notes (Core Concepts)
 
 ---

@@ -1,4 +1,3 @@
-
 # 🔥 Difference Between Lifecycle Methods vs useEffect Hook (React Interview Guide)
 
 ## 🧠 1. What are Lifecycle Methods?
@@ -212,7 +211,3 @@ useEffect(() => {
 ## 💬 Short Interview Answer
 
 👉 *"Lifecycle methods are used in class components to manage component behavior at different stages, while useEffect is a hook in functional components that handles side effects and replaces lifecycle methods like componentDidMount, componentDidUpdate, and componentWillUnmount."*
-
----
-
-Agar chaho toh main iska **real-world examples + tricky interview questions + pitfalls (like infinite loop in useEffect)** bhi bana deta hoon — wo interview me bahut kaam aata hai 👍

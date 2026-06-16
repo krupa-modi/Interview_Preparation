@@ -1,5 +1,4 @@
 # 📌 What is Props Drilling in React?
-
 ## 🔹 Definition
 
 **Props Drilling** means passing data from a parent component to a deeply nested child component through multiple intermediate components using `props`.

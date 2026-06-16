@@ -15,7 +15,6 @@ It takes all project files like:
 and combines them into optimized bundles for the browser.
 
 ---
-
 # 🔥 Simple Meaning
 
 Before Webpack:

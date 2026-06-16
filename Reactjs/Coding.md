@@ -508,3 +508,263 @@ function App() {
 }
 
 export default App;
+```
+
+
+## Counter App 
+```jsx
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  const reset = () => {
+    setCount(0);
+  };
+
+  return (
+    <div>
+      <h2>Counter: {count}</h2>
+
+      <button onClick={increment}>Increment</button>
+
+      <button onClick={decrement}>Decrement</button>
+
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+
+### Simple Pagination (React + useState)
+
+```jsx
+import React, { useState } from "react";
+
+function Pagination() {
+  const data = [
+    "User 1",
+    "User 2",
+    "User 3",
+    "User 4",
+    "User 5",
+    "User 6",
+    "User 7",
+    "User 8",
+    "User 9",
+    "User 10",
+  ];
+
+  const [page, setPage] = useState(1);
+
+  const itemsPerPage = 3;
+
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+
+  const currentData = data.slice(start, end);
+
+  const totalPages = Math.ceil(
+    data.length / itemsPerPage
+  );
+
+  return (
+    <div>
+      <h2>Pagination Example</h2>
+
+      {currentData.map((item, index) => (
+        <p key={index}>{item}</p>
+      ))}
+
+      <button
+        disabled={page === 1}
+        onClick={() => setPage(page - 1)}
+      >
+        Previous
+      </button>
+
+      <span>
+        {" "}
+        Page {page} of {totalPages}{" "}
+      </span>
+
+      <button
+        disabled={page === totalPages}
+        onClick={() => setPage(page + 1)}
+      >
+        Next
+      </button>
+    </div>
+  );
+}
+
+export default Pagination;
+```
+
+# React Form Validation (Name + Email)
+
+```jsx
+import React, { useState } from "react";
+
+function FormValidation() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let newErrors = {};
+
+    // Name Validation
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+
+    // Email Validation
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+        formData.email
+      )
+    ) {
+      newErrors.email = "Invalid Email";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      alert("Form Submitted Successfully");
+      console.log(formData);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter Name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+
+        {errors.name && (
+          <p style={{ color: "red" }}>
+            {errors.name}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          name="email"
+          placeholder="Enter Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+
+        {errors.email && (
+          <p style={{ color: "red" }}>
+            {errors.email}
+          </p>
+        )}
+      </div>
+
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  );
+}
+
+export default FormValidation;
+```
+
+# React Modal Popup
+
+```jsx
+import React, { useState } from "react";
+
+function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <div>
+      <button
+        onClick={() => setIsModalOpen(true)}
+      >
+        Open Modal
+      </button>
+
+      {isModalOpen && (
+        <div style={overlayStyle}>
+          <div style={modalStyle}>
+            <h2>Modal Title</h2>
+
+            <p>
+              This is a simple modal popup.
+            </p>
+
+            <button
+              onClick={() =>
+                setIsModalOpen(false)
+              }
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const overlayStyle = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor:
+    "rgba(0,0,0,0.5)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
+
+const modalStyle = {
+  background: "#fff",
+  padding: "20px",
+  borderRadius: "8px",
+  width: "300px",
+};
+
+export default App;
+```

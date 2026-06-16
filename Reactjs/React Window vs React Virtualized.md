@@ -1,5 +1,4 @@
 # 🚀 react-window vs react-virtualized
-
 * Dono libraries large list rendering optimize karne ke liye use hoti hain.
 * Ye virtualization technique use karti hain.
 

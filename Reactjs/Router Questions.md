@@ -1,4 +1,3 @@
-
 # 📌 Most Asked Interview Questions
 
 ---
@@ -875,13 +874,9 @@ Protected routes restrict unauthorized users from accessing pages.
 # 📌 Example
 
 ```jsx id="jlwm1c"
-import {
-  Navigate
-} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 
-function ProtectedRoute({
-  children
-}) {
+function ProtectedRoute({ children}) {
   const isAuth = true;
 
   if (!isAuth) {
@@ -1688,7 +1683,7 @@ Redux/React me original state directly modify nahi karte.
 
 Instead:
 
-# 👉 New copy create karke update karte hain.
+👉 New copy create karke update karte hain.
 
 ---
 

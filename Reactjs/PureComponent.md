@@ -1,4 +1,3 @@
-
 # ⚛️ React PureComponent – Complete Interview Guide
 
 ## 📌 What is PureComponent?

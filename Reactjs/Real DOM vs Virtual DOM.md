@@ -1,5 +1,4 @@
 ## 1. What is DOM?
-
 DOM (Document Object Model) is a **tree structure representation of HTML elements** in the browser.
 
 👉 Browser uses DOM to:

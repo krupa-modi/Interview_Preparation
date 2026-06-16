@@ -11,7 +11,6 @@
 * Functional components became **powerful + cleaner + easier to manage**
 
 ---
-
 ## 🔹 Why Hooks are Used?
 
 ### ✅ 1. Avoid Class Components

@@ -7,7 +7,6 @@ Ye heavy state updates ko **low priority** bana deta hai taaki important UI upda
 useTransition heavy updates ko background me chalata hai taaki UI slow na ho.
 
 ---
-
 # 📌 Syntax
 
 ```jsx id="jlwm5u"
@@ -202,15 +201,3 @@ Heavy/non-urgent updates ko low priority me run karta hai.
 
 `isPending` batata hai ki transition currently chal raha hai ya nahi.
 
----
-
-# 📌 Important Interview Keywords
-
-* useTransition
-* startTransition
-* isPending
-* Concurrent Rendering
-* Low Priority Updates
-* Performance Optimization
-* Smooth UI
-* Non-Urgent Updates

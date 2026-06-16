@@ -3,7 +3,6 @@
 ## What is useFetch Hook?
 
 `useFetch` is a custom React hook used to fetch API data and reuse fetching logic in multiple components.
-
 It helps:
 
 * Reduce duplicate code

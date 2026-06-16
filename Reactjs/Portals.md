@@ -1,5 +1,4 @@
 # 📌 What are Portals?
-
 ## 🔹 Definition
 
 Portals in React allow rendering a component outside the normal parent DOM hierarchy.
@@ -202,7 +201,7 @@ React event bubbling still works normally.
 
 Portal only changes:
 
-# 👉 Where component renders in DOM
+👉 Where component renders in DOM
 
 It does NOT break React parent-child relationship.
 

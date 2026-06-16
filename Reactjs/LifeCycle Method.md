@@ -1,8 +1,3 @@
-
-Here’s a **clean, interview-ready Markdown file** for React Lifecycle Methods 👇
-
----
-
 # ⚛️ React Lifecycle Methods (Complete Guide for Interview)
 
 ## 📌 What are Lifecycle Methods?
@@ -262,6 +257,3 @@ useEffect(() => {
 * componentDidUpdate
 * componentWillUnmount
 * shouldComponentUpdate
-
-
-Agar tu chahe to next step me main tujhe **class lifecycle vs useEffect mapping**, ya **diagram + tricky interview questions** bhi de sakta hu — wo aur zyada helpful rahega 🔥

@@ -147,8 +147,7 @@ function searchData() {
   console.log("API Call");
 }
 
-const betterFunction =
-debounce(searchData, 1000);
+const betterFunction = debounce(searchData, 1000);
 
 input.addEventListener("input", betterFunction);
 

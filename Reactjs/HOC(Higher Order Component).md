@@ -1,7 +1,6 @@
 # 📘 HOC (Higher Order Component) in React
 
 ---
-
 # 📌 What is HOC?
 
 ## 🔹 Definition
@@ -102,7 +101,6 @@ function withMessage(WrappedComponent) {
 export default withMessage;
 ```
 
-```
 🔥 First Function Purpose
 function withMessage(WrappedComponent)
 
@@ -120,9 +118,7 @@ This is the actual React component that gets rendered on screen.
 React can render only components/functions that return JSX.
 
 So HOC must return a component.
-```
 
----
 
 # 🔥 Step 3 — Wrap Component
 
@@ -375,18 +371,68 @@ No. HOC does not modify the original component. It returns a new enhanced compon
 HOCs wrap components to reuse logic, while Hooks reuse logic directly inside functional components. Modern React generally prefers Hooks because they are simpler and cleaner.
 
 ---
+### HOC Kya Hai?
 
-# 📌 Important Interview Keywords
+> A Higher Order Component is a function that takes a component as input and returns a new component with additional functionality.
 
-Remember these terms:
+---
 
-* Higher Order Component
-* Component Wrapping
-* Reusable Logic
-* Enhanced Component
-* Authentication
-* Props Forwarding
-* React.memo
-* Code Reusability
-* Custom Hooks
-* Wrapper Component
+# Easy Interview Example: withAuth
+
+### HOC
+
+```jsx id="q35e3x"
+function withAuth(WrappedComponent) {
+  return function EnhancedComponent(props) {
+    const isLoggedIn = true;
+
+    if (!isLoggedIn) {
+      return <h2>Please Login First</h2>;
+    }
+
+    return <WrappedComponent {...props} />;
+  };
+}
+```
+
+---
+
+### Dashboard Component
+
+```jsx id="q1e7fr"
+function Dashboard() {
+  return <h1>Welcome to Dashboard</h1>;
+}
+```
+
+---
+
+### Enhanced Component
+
+```jsx id="krv4rz"
+const ProtectedDashboard = withAuth(Dashboard);
+```
+
+---
+
+### Usage
+
+```jsx id="l7px26"
+function App() {
+  return <ProtectedDashboard />;
+}
+```
+
+---
+
+## Flow
+
+```text
+Dashboard
+    ↓
+withAuth(Dashboard)
+    ↓
+ProtectedDashboard
+    ↓
+Extra Authentication Logic Added
+```

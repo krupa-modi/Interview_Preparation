@@ -1,7 +1,6 @@
 # 📌 What is NPM?
 
 ## 🔹 Definition
-
 NPM stands for:
 
 # 👉 Node Package Manager

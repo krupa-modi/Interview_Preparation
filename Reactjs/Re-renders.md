@@ -1,5 +1,4 @@
 # 📌 How to Prevent Re-renders in React
-
 ## 🔹 What is Re-render in React?
 
 A **re-render** happens when a component updates and React runs the component function again to update the UI.
@@ -426,19 +425,3 @@ React is fast because it uses a Virtual DOM instead of directly updating the rea
 It compares old and new Virtual DOM using a diffing algorithm and updates only changed parts.
 
 React also uses component-based architecture, batching, and optimized rendering techniques to improve performance.
-
----
-
-# 📌 Important Interview Keywords
-
-Remember these keywords:
-
-* Virtual DOM
-* Reconciliation
-* Diffing Algorithm
-* React.memo
-* useMemo
-* useCallback
-* Component Re-rendering
-* Memoization
-* Fiber Architecture

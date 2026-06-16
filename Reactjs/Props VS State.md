@@ -1,12 +1,15 @@
+# Props vs State in React
 
-##  What are Props?
+## Props
 
-Props (short for **properties**) are used to **pass data from parent to child component**.
+Props (Properties) are used to pass data from a parent component to a child component.
 
-* Read-only (immutable)
-* Used for communication between components
+- Read-only (cannot be modified directly)
+- Used for communication between components
+- Controlled by the parent component
+- Re-renders when parent passes new props
 
-### Example:
+### Example
 
 ```jsx
 function Child(props) {
@@ -18,59 +21,75 @@ function App() {
 }
 ```
 
-👉 Props = Input to a component
+👉 Props = Data passed from Parent
 
 ---
 
-## What is State?
+## State
 
-State is used to store **dynamic data inside a component**.
+State is used to store and manage dynamic data inside a component.
 
-* Mutable (can change)
-* Triggers re-render when updated
+- Mutable (can be updated)
+- Managed inside the component
+- Used for changing or dynamic data
+- Re-renders when state changes
 
-### Example:
+### Example
 
 ```jsx
-import React, { useState } from "react";
+import { useState } from "react";
 
 function Counter() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-      <p>{count}</p>
-      <button onClick={() => setCount(count + 1)}>Increase</button>
-    </>
+    <button onClick={() => setCount(count + 1)}>
+      {count}
+    </button>
   );
 }
 ```
 
-👉 State = Internal data of component
+👉 State = Data stored inside Component
 
 ---
 
-## 🔥 Props vs State (Important Interview Question)
+## Difference Between Props and State
 
-| Feature    | Props              | State                    |
-| ---------- | ------------------ | ------------------------ |
-| Mutability | Read-only          | Mutable                  |
-| Usage      | Passed from parent | Managed inside component |
-| Control    | External           | Internal                 |
-| Re-render  | Yes                | Yes                      |
+| Feature | Props | State |
+|----------|--------|--------|
+| Meaning | Properties passed to component | Internal component data |
+| Data Source | Parent Component | Same Component |
+| Mutability | Read-only | Mutable |
+| Control | External | Internal |
+| Usage | Component communication | Dynamic data management |
+| Update | Changed by parent | Changed using state setter |
+| Re-render | When new props are received | When state changes |
 
-👉 Props = external data
-👉 State = internal data
+---
+
+## Interview Answer
+
+Props are used to pass data from a parent component to a child component and are read-only. State is used to manage a component's internal data and can be updated over time. Both props and state cause the component to re-render when their values change.
 
 ---
 
-## 🔥 Quick Revision
+## Easy Memory Trick
 
-* Functional Components → Modern, use Hooks
-* Class Components → Old, use lifecycle methods
-* Controlled → React handles form data
-* Uncontrolled → DOM handles form data
-* Props → Data from parent
-* State → Internal dynamic data
+```text
+Props = Passed from Parent
+
+State = Stored inside Component
+```
 
 ---
+
+## Quick Revision
+
+- Functional Components → Modern components using Hooks
+- Class Components → Older components using lifecycle methods
+- Controlled Components → React manages form data
+- Uncontrolled Components → DOM manages form data
+- Props → Data passed from parent to child
+- State → Internal dynamic data of component
+

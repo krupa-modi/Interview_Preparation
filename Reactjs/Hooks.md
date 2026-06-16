@@ -18,7 +18,6 @@ const [state, setState] = useState(initialValue);
 * `state` → current value
 * `setState` → function to update state
 * `initialValue` → starting value
-
 ---
 
 ## 📌 Example

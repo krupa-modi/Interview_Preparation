@@ -7,7 +7,6 @@ jo React 16 se introduce hua.
 > Fiber React ka internal system hai jo rendering ko **fast, smooth aur interruptible** banata hai.
 
 ---
-
 ## 🔹 Fiber ki zarurat kyun padi?
 
 Old React (Stack Reconciler) me problem thi:

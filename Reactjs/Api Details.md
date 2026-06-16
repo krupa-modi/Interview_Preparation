@@ -1,7 +1,5 @@
 # API Complete Interview Notes 🚀
 
----
-
 # 📌 What is API?
 
 API = **Application Programming Interface**

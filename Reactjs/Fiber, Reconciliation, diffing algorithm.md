@@ -1,7 +1,6 @@
 ## Diffing Algorithm, Reconciliation, Fiber, createRoot
 
 # 1. Diffing Algorithm
-
 ## What is Diffing Algorithm?
 
 React DOM ko directly har baar update nahi karta.

@@ -1,14 +1,9 @@
 # 📘 Redux Toolkit (RTK) — Complete Interview Notes
 
 ---
-
 # 📌 What is Redux?
 
-Redux is a state management library used to manage:
-
-# 👉 Global State
-
-in React applications.
+Redux is a state management library used to manage Global State in React applications.
 
 ---
 
@@ -48,9 +43,7 @@ If cart data needed everywhere:
 
 # 📌 Solution
 
-Redux stores data in one central store.
-
-Any component can access it.
+Redux stores data in one central store. Any component can access it.
 
 ---
 
@@ -89,10 +82,6 @@ RTK solves all these issues.
 
 # 📘 Redux Flow
 
----
-
-# 📌 Flow
-
 ```txt id="’winiijlwm7"
 Component
    ↓
@@ -117,21 +106,14 @@ UI Re-render
 npm install @reduxjs/toolkit react-redux
 ```
 
----
-
 # 📘 Step 2 — Create Store
-
----
 
 # 📌 store.js
 
 ```js id="’winiijlwm5"
-import {
-  configureStore
-} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
-import counterReducer
-from "./counterSlice";
+import counterReducer from "./counterSlice";
 
 export const store =
   configureStore({
@@ -184,14 +166,11 @@ Slice contains:
 # 📌 counterSlice.js
 
 ```js id="’winiijlwm0"
-import {
-  createSlice
-} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const counterSlice =
   createSlice({
     name: "counter",
-
     initialState: {
       value: 0
     },
@@ -207,13 +186,9 @@ const counterSlice =
     }
   });
 
-export const {
-  increment,
-  decrement
-} = counterSlice.actions;
+export const {increment, decrement} = counterSlice.actions;
 
-export default
-  counterSlice.reducer;
+export default counterSlice.reducer;
 ```
 
 ---
@@ -256,18 +231,11 @@ So direct state mutation syntax works safely.
 
 ```jsx id="’winiijlwm8"
 import ReactDOM from "react-dom/client";
-
-import { Provider }
-from "react-redux";
-
-import { store }
-from "./store";
-
+import { Provider } from "react-redux";
+import { store } from "./store";
 import App from "./App";
 
-ReactDOM.createRoot(
-  document.getElementById("root")
-).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <App />
   </Provider>
@@ -305,14 +273,10 @@ Used to read data from Redux store.
 # 📌 Example
 
 ```jsx id="’winiijlwm3"
-import {
-  useSelector
-} from "react-redux";
+import {useSelector} from "react-redux";
 
 function Counter() {
-  const count = useSelector(
-    (state) => state.counter.value
-  );
+  const count = useSelector((state) => state.counter.value);
 
   return <h1>{count}</h1>;
 }
@@ -343,13 +307,8 @@ Used to dispatch actions.
 # 📌 Example
 
 ```jsx id="’winiijlwm6"
-import {
-  useDispatch
-} from "react-redux";
-
-import {
-  increment
-} from "./counterSlice";
+import {useDispatch} from "react-redux";
+import {increment} from "./counterSlice";
 
 function Counter() {
   const dispatch = useDispatch();
@@ -399,20 +358,10 @@ Redux Toolkit provides:
 # 📌 Example
 
 ```js id="’winiijlwm1"
-import {
-  createAsyncThunk
-} from "@reduxjs/toolkit";
+import { createAsyncThunk} from "@reduxjs/toolkit";
 
-export const fetchUsers =
-  createAsyncThunk(
-    "users/fetchUsers",
-
-    async () => {
-      const response =
-        await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-
+export const fetchUsers = createAsyncThunk("users/fetchUsers",async () => {
+      const response = await fetch("https://jsonplaceholder.typicode.com/users" );
       return response.json();
     }
   );
@@ -436,9 +385,7 @@ extraReducers: (builder) => {
       fetchUsers.fulfilled,
       (state, action) => {
         state.loading = false;
-
-        state.users =
-          action.payload;
+        state.users = action.payload;
       }
     )
 

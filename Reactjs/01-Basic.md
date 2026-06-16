@@ -1,4 +1,3 @@
-
 # ⚛️ React Interview Notes
 
 ## 1. What is React?
@@ -84,7 +83,6 @@ If only one list item changes → React updates only that item, not the whole pa
 👉 Key concept: React follows **"Update only what changed"**
 
 
-````md
 # Key in React List
 
 ## What is Key in React?
@@ -2841,4 +2839,10 @@ JSON is:
 ```text id="u2tx8r"
 Data Format
 NOT JavaScript Object
+```
+```
+Authentication verifies the identity of a user, while Authorization determines what resources or actions that authenticated user is allowed to access. Authentication happens first, and Authorization happens after successful authentication.
+
+Login → Authentication
+Permission Check → Authorization
 ```

@@ -5,7 +5,6 @@ A **Design System** is a collection of **reusable UI components, design rules, s
 It works like a **single source of truth** for the entire application.
 
 ---
-
 # Simple Definition
 
 > A Design System is a set of reusable components and rules used to create consistent UI across an application.
@@ -178,13 +177,3 @@ Now entire application can use same button:
 
 > A Design System is a collection of reusable components, styles, and guidelines used to maintain consistent UI and improve development speed across an application.
 
----
-
-# Important Interview Points
-
-* Used in large applications
-* Helps maintain UI consistency
-* Includes reusable components
-* Improves scalability
-* Designers and developers both use it
-* Example: Material UI Design System

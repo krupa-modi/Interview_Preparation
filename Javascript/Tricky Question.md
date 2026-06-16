@@ -1542,3 +1542,226 @@ x = 11;
 undefined
 ```
 
+# JavaScript Interview Question: var + setTimeout
+
+## Question
+
+```javascript
+for (var i = 1; i <= 3; i++) {
+    setTimeout(() => {
+        console.log(i);
+    }, 1000);
+}
+```
+
+### Output
+
+```javascript
+4
+4
+4
+```
+
+---
+
+## Why?
+
+### 1. `var` is Function Scoped
+
+`var` creates only **one shared variable**.
+
+```javascript
+for (var i = 1; i <= 3; i++)
+```
+
+The loop runs immediately:
+
+```javascript
+i = 1
+i = 2
+i = 3
+i = 4  // loop ends
+```
+
+---
+
+### 2. `setTimeout` is Asynchronous
+
+`setTimeout` does not execute immediately.
+
+All callbacks are stored and wait for 1 second.
+
+By the time callbacks execute:
+
+```javascript
+i === 4
+```
+
+---
+
+### 3. All Callbacks Reference the Same Variable
+
+```javascript
+callback1 -> i
+callback2 -> i
+callback3 -> i
+```
+
+Since `i` is already `4`, output becomes:
+
+```javascript
+4
+4
+4
+```
+
+---
+
+## Using `let`
+
+```javascript
+for (let i = 1; i <= 3; i++) {
+    setTimeout(() => {
+        console.log(i);
+    }, 1000);
+}
+```
+
+### Output
+
+```javascript
+1
+2
+3
+```
+
+### Why?
+
+`let` is block scoped.
+
+Each iteration gets its own copy:
+
+```javascript
+Iteration 1 -> i = 1
+Iteration 2 -> i = 2
+Iteration 3 -> i = 3
+```
+
+So callbacks remember different values.
+
+---
+
+## Interview Answer (Short)
+
+`var` is function-scoped, so all `setTimeout` callbacks share the same variable `i`. The loop finishes before the callbacks execute, making `i = 4`. Therefore, all callbacks print `4`. With `let`, a new variable is created for each iteration, so the output becomes `1 2 3`.
+
+
+
+# Why Are Object Keys Strings in JavaScript?
+
+## Example
+
+```javascript
+const obj = {
+  1: "One",
+  2: "Two"
+};
+
+console.log(Object.keys(obj));
+```
+
+Output:
+
+```javascript
+["1", "2"]
+```
+
+---
+
+## Why?
+
+In JavaScript, **all object keys are stored as strings** (except Symbols).
+
+Even if you write:
+
+```javascript
+const obj = {
+  1: "One"
+};
+```
+
+JavaScript internally converts it to:
+
+```javascript
+const obj = {
+  "1": "One"
+};
+```
+
+Therefore:
+
+```javascript
+console.log(Object.keys(obj));
+```
+
+returns:
+
+```javascript
+["1"]
+```
+
+and not:
+
+```javascript
+[1]
+```
+
+---
+
+## What If We Want Numeric Keys?
+
+### Option 1: Convert Keys to Numbers
+
+```javascript
+const obj = {
+  1: "One",
+  2: "Two"
+};
+
+const numericKeys = Object.keys(obj).map(Number);
+
+console.log(numericKeys);
+```
+
+Output:
+
+```javascript
+[1, 2]
+```
+
+---
+
+### Option 2: Use Map
+
+```javascript
+const map = new Map();
+
+map.set(1, "One");
+map.set(2, "Two");
+
+console.log(map.keys());
+```
+
+`Map` preserves the original key type.
+
+Numeric keys remain numbers.
+
+---
+
+## Interview Answer (Short)
+
+Object keys are strings because JavaScript automatically converts object property names to strings (except Symbols). Therefore, `Object.keys()` always returns an array of strings. If numeric keys are required, we can convert them using `map(Number)` or use a `Map`, which preserves the original key type.
+
+### One-Line Interview Answer
+
+> JavaScript objects store keys as strings, so `Object.keys()` returns strings. To keep keys as numbers, use `Map` or convert the returned keys using `map(Number)`.

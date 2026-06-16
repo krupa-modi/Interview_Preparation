@@ -8,7 +8,6 @@
 - network requests
 
 It is used to communicate with servers and get/send data.
-
 ---
 
 # Why Fetch API is Used?

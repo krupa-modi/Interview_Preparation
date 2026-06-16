@@ -1,7 +1,6 @@
 # 🚀 Difference Between `React.lazy()` and Lazy Loading in React
 
 ---
-
 # 1. What is Lazy Loading?
 
 Lazy Loading is a **performance optimization technique** where resources/components are loaded only when needed.

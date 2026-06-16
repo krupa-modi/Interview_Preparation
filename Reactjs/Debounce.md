@@ -1,5 +1,4 @@
 # 📌 What is Debouncing?
-
 ## 🔹 Definition
 
 Debouncing is a technique used to delay the execution of a function until the user stops performing an action for a specific amount of time.

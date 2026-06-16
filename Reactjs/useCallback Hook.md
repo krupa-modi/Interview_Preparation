@@ -19,7 +19,6 @@ Helps avoid unnecessary re-renders in child components
 | useMemo     | Avoids recalculation       |
 | useCallback | Avoids function recreation |
 
-
 ---
 
 ## 🔹 Syntax

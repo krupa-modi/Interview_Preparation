@@ -413,3 +413,83 @@ Pura function upar jata hai
 # Final Easy Definition
 
 Hoisting means during the memory creation phase, JavaScript stores variable and function declarations in memory before executing the code.
+
+
+
+# Why are Function and Variable Declarations Moved to the Top? (Hoisting)
+
+## Answer
+
+In JavaScript, function and variable declarations appear to be moved to the top of their scope before the code executes. This behavior is called **Hoisting**.
+
+Hoisting is JavaScript's default behavior during the **Creation Phase** of the Execution Context, where memory is allocated for variables and functions before code execution starts.
+
+## Why Does Hoisting Exist?
+
+JavaScript first scans the code and allocates memory for variables and functions before executing it. This allows functions to be called before their declaration and helps JavaScript manage memory and execution efficiently.
+
+---
+
+## Interview Answer (Short)
+
+Function and variable declarations are moved to the top of their scope because of JavaScript's hoisting behavior. During the creation phase, JavaScript allocates memory for variables and functions before executing the code. Function declarations are fully hoisted, while `var` variables are hoisted with an initial value of `undefined`. `let` and `const` are also hoisted but remain in the Temporal Dead Zone until their declaration is executed.
+
+### One-Line Interview Answer
+
+> Function and variable declarations are "moved to the top" due to hoisting. During the creation phase, JavaScript allocates memory for them before code execution begins, allowing functions to be called before they are declared and `var` variables to be accessed as `undefined`.
+
+
+
+# What is the Purpose of Hoisting?
+
+## Answer
+
+The purpose of **Hoisting** is to allow JavaScript to allocate memory for variables and functions before the code starts executing.
+
+During the **Creation Phase** of the Execution Context, JavaScript scans the code and stores function and variable declarations in memory. This helps JavaScript know what identifiers exist before execution begins.
+
+---
+
+## Benefits of Hoisting
+
+### 1. Functions Can Be Called Before Declaration
+
+```javascript
+greet();
+
+function greet() {
+  console.log("Hello");
+}
+```
+
+Output:
+
+```javascript
+Hello
+```
+
+---
+
+### 2. Memory Allocation Before Execution
+
+JavaScript creates memory for variables and functions before running the code.
+
+```javascript
+console.log(a);
+
+var a = 10;
+```
+
+Output:
+
+```javascript
+undefined
+```
+
+Because memory was already allocated for `a`.
+
+---
+
+## Interview Answer (Short)
+
+The purpose of hoisting is to allocate memory for variables and functions before code execution begins. During the creation phase, JavaScript scans the code and stores declarations in memory, allowing function declarations to be called before they appear in the code and enabling JavaScript to create the execution context efficiently.

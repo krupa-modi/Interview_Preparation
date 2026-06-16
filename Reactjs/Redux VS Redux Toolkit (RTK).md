@@ -1,12 +1,10 @@
 # 📘 Difference Between Redux and Redux Toolkit (RTK)
-
 # 📌 What is Redux?
 
 Redux is a state management library used to manage global state in React applications.
 
 It follows:
-
-# 👉 Single Store + Actions + Reducers
+👉 Single Store + Actions + Reducers
 
 ---
 
@@ -201,8 +199,7 @@ const store =
 # 📌 Interview Important Point
 
 Today:
-
-# 👉 Redux Toolkit is the recommended way to use Redux.
+* Redux Toolkit is the recommended way to use Redux.
 
 ---
 

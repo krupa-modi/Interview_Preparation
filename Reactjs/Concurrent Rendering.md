@@ -7,7 +7,6 @@ Concurrent Rendering is a new feature introduced in React 18.
 It allows React to **prepare multiple UI updates in the background** and **prioritize important updates first**.
 
 React can:
-
 * Pause rendering
 * Resume rendering
 * Cancel unnecessary rendering

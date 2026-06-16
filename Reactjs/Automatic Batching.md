@@ -12,7 +12,6 @@ This improves:
 * User Experience
 
 ---
-
 # Before React 18
 
 React batched updates only inside:

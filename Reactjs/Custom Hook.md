@@ -1,4 +1,3 @@
-
 ## 1. What are Custom Hooks?
 
 Custom Hooks are **JavaScript functions** that start with `use` and allow you to **reuse stateful logic** across multiple components.
