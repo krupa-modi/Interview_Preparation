@@ -145,11 +145,9 @@ string ❗ (not "success")
 
 # 🔹 Limitations of Type Inference
 
-## ❌ 1. Too Generic (`any`)
-
-## ❌ 2. Complex Logic
-
-## ❌ 3. Narrowing Issues
+* Too Generic (`any`)
+* Complex Logic
+* Narrowing Issues
 
 
 # 🔹 Type Inference vs Explicit Typing

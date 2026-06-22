@@ -5276,3 +5276,99 @@ Margin → Border → Padding → Content
   box-sizing: border-box;
 }
 ```
+
+# Difference Between Flexbox and Grid
+
+| Flexbox                                       | Grid                                    |
+| --------------------------------------------- | --------------------------------------- |
+| One-dimensional layout system                 | Two-dimensional layout system           |
+| Works on either row OR column                 | Works on rows AND columns together      |
+| Best for aligning items in a single direction | Best for creating complete page layouts |
+| Content-first approach                        | Layout-first approach                   |
+| Easier for small UI components                | Better for complex layouts              |
+
+---
+
+## Flexbox Example
+
+```css
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+```
+
+Use Cases:
+
+* Navbar
+* Buttons group
+* Card alignment
+* Header/Footer
+* Menu items
+
+---
+
+## Grid Example
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+```
+
+Use Cases:
+
+* Dashboard layouts
+* Gallery layouts
+* Complex page structures
+* Responsive card grids
+
+---
+
+## When to Use Flexbox?
+
+When items need to be arranged in:
+
+* Single Row
+* Single Column
+
+Example:
+
+```text
+Logo   Home   About   Contact
+```
+
+---
+
+## When to Use Grid?
+
+When items need both rows and columns.
+
+Example:
+
+```text
+Card1  Card2  Card3
+Card4  Card5  Card6
+```
+
+---
+
+## Interview Answer (Short)
+
+Flexbox is a one-dimensional layout system that works either in a row or a column and is best suited for components like navbars, menus, and card alignment. Grid is a two-dimensional layout system that works with both rows and columns simultaneously and is ideal for building complete page layouts, dashboards, and responsive grids.
+
+### Easy Trick for Interview
+
+👉 **Flexbox = 1D (Row OR Column)**
+
+👉 **Grid = 2D (Rows AND Columns)**
+
+Agar interviewer puche **"Can Flexbox replace Grid?"**
+
+Answer:
+
+> Flexbox and Grid solve different problems. Flexbox is best for component-level layouts, while Grid is best for page-level layouts. In real projects, both are often used together.
+

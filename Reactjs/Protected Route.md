@@ -303,6 +303,5 @@ return token
 ```
 
 This is one of the most common React Router interview questions and is used in almost every production React application.
-````
 
 This level of explanation is usually enough for React Developer interviews from beginner to 3+ years experience.

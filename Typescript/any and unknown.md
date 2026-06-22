@@ -98,6 +98,3 @@ if (typeof value === "string") {
 👉 `any` = "I don’t care about type"
 👉 `unknown` = "I don’t know the type yet, but I’ll check it"
 
----
-
-If you want, I can also give you **interview questions + tricky scenarios on `any` vs `unknown`** 🔥

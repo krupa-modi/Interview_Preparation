@@ -3098,3 +3098,241 @@ As a result, we successfully implemented a secure and scalable workflow system t
 I make websites responsive by using a mobile-first approach, CSS Flexbox/Grid, media queries, responsive units like %, rem, and em, and responsive images. In React projects, I frequently use Tailwind CSS breakpoints such as sm, md, lg, and xl to adapt layouts for different screen sizes. This ensures a consistent user experience across mobile, tablet, and desktop devices.
 For images and media, I use responsive techniques like max-width: 100% so they fit within their containers.
 ```
+
+
+# React System Design Interview Questions & Short Answers
+
+## 1) A dashboard contains 50+ widgets, each fetching data independently and refreshing every 5 seconds. Users report UI lag, slow rendering, and memory issues. How would you redesign the architecture?
+
+### Answer:
+
+* Use TanStack Query/RTK Query for centralized data fetching.
+* Batch API requests where possible.
+* Implement caching and background refetching.
+* Use React.memo, useMemo, and virtualization.
+* Refresh only visible widgets.
+* Split dashboard into lazy-loaded modules.
+
+---
+
+## 2) An e-commerce application uses Context API, Redux Toolkit, and Zustand across different modules. How would you standardize state management and avoid duplication?
+
+### Answer:
+
+* Use Redux Toolkit as the primary global state solution.
+* Keep local UI state inside component state.
+* Use RTK Query for server state.
+* Remove duplicate state from Context and Zustand.
+* Define clear state ownership rules.
+
+---
+
+## 3) Three independent teams develop Product, Checkout, and User applications using Module Federation. How would you handle shared dependencies, communication, and deployments?
+
+### Answer:
+
+* Share React, ReactDOM, and common libraries as singletons.
+* Create a shared design system/package.
+* Use event-based communication or shared state contracts.
+* Deploy micro-frontends independently.
+* Maintain version compatibility policies.
+
+---
+
+## 4) A team stores responses from 100+ APIs inside Redux. The store size keeps growing and performance is degrading. What would you change?
+
+### Answer:
+
+* Store only required data in Redux.
+* Move server state to RTK Query/TanStack Query.
+* Use caching with expiration.
+* Normalize large datasets.
+* Remove unused data from the store.
+
+---
+
+## 5) Stock prices update every second via WebSocket. During market hours, the UI freezes. How would you optimize rendering and state updates?
+
+### Answer:
+
+* Batch WebSocket updates.
+* Update only changed rows.
+* Use React.memo and virtualization.
+* Debounce/throttle UI updates.
+* Store live data efficiently.
+* Avoid unnecessary re-renders.
+
+---
+
+## 6) A legacy React application contains 200 JavaScript files. Management wants a gradual TypeScript migration without disrupting production. What strategy would you follow?
+
+### Answer:
+
+* Enable TypeScript alongside JavaScript.
+* Migrate module by module.
+* Start with utilities and shared components.
+* Use allowJs configuration.
+* Add strict typing gradually.
+* Enforce TypeScript for new features.
+
+---
+
+## 7) A marketing website has excellent content but poor SEO performance. How would you evaluate SSR, CSR, SSG, and hybrid rendering strategies?
+
+### Answer:
+
+* Use SSG for static marketing pages.
+* Use SSR for dynamic SEO pages.
+* Use CSR for interactive dashboards.
+* Apply Hybrid Rendering in Next.js.
+* Optimize metadata, sitemap, and structured data.
+
+---
+
+## 8) An admin panel renders 100,000 rows and becomes unusable. How would you improve performance and user experience?
+
+### Answer:
+
+* Implement virtualization (react-window/react-virtualized).
+* Add server-side pagination.
+* Use filtering and search.
+* Render only visible rows.
+* Optimize row components using React.memo.
+
+---
+
+## 9) Your company plans to expand from 50,000 users to 5 million users. The current React application is a monolith. What architectural changes would you make to support scalability?
+
+### Answer:
+
+* Adopt Micro-Frontend architecture.
+* Create shared UI component library.
+* Use independent deployments.
+* Implement code splitting and lazy loading.
+* Standardize API contracts.
+* Add monitoring and performance tracking.
+
+---
+
+## 10) A React application is deployed multiple times per day. Teams face broken deployments, rollback difficulties, and environment inconsistencies. How would you design a robust CI/CD pipeline?
+
+### Answer:
+
+* Automate build, test, and deployment.
+* Add linting, unit, and integration tests.
+* Use separate environments (Dev, QA, Prod).
+* Enable blue-green or canary deployments.
+* Support one-click rollback.
+* Manage secrets securely using environment variables.
+
+
+## 1. What is the React Profiler, and how is it used to identify performance issues in a React application?
+
+React Profiler is a developer tool used to measure and analyze the rendering performance of React components. It helps identify components that are re-rendering unnecessarily and consuming more time than expected.
+
+### How to Use
+
+1. Open React Developer Tools.
+2. Go to the **Profiler** tab.
+3. Start recording.
+4. Perform actions in the application.
+5. Stop recording and analyze render times.
+
+### What It Helps Identify
+
+* Unnecessary re-renders
+* Slow rendering components
+* Expensive computations
+* Performance bottlenecks
+
+### Common Optimization Techniques
+
+* `React.memo()`
+* `useMemo()`
+* `useCallback()`
+* Code Splitting
+* Lazy Loading
+
+### Interview Answer (Short)
+
+> React Profiler is a tool available in React DevTools that helps measure component rendering performance. It shows which components are re-rendering, how long they take to render, and helps identify performance bottlenecks. Based on the analysis, we can optimize the application using React.memo, useMemo, useCallback, lazy loading, and code splitting.
+
+---
+
+# 2. How do you handle asynchronous operations in Redux?
+
+Asynchronous operations such as API calls cannot be handled directly inside Redux reducers because reducers must be pure functions.
+
+We use middleware like:
+
+* Redux Thunk
+* Redux Toolkit Async Thunk
+* Redux Saga (large applications)
+
+### Using Redux Toolkit
+
+```js
+export const fetchUsers = createAsyncThunk(
+  "users/fetchUsers",
+  async () => {
+    const response = await api.get("/users");
+    return response.data;
+  }
+);
+```
+
+### States Managed
+
+* Pending (Loading)
+* Fulfilled (Success)
+* Rejected (Error)
+
+### Benefits
+
+* Cleaner API handling
+* Centralized state management
+* Automatic loading and error handling
+
+### Interview Answer (Short)
+
+> In Redux, asynchronous operations are handled using middleware such as Redux Thunk or Redux Toolkit's createAsyncThunk. I generally use Redux Toolkit, where API calls are placed inside createAsyncThunk, and reducers handle pending, fulfilled, and rejected states for loading, success, and error management.
+
+---
+
+# 3. How do you implement or handle Server-Side Rendering (SSR) in React applications?
+
+Server-Side Rendering (SSR) means rendering React components on the server before sending HTML to the browser.
+
+SSR is commonly implemented using Next.js.
+
+### Benefits
+
+* Better SEO
+* Faster initial page load
+* Improved performance
+* Better user experience
+
+### Next.js Example
+
+```js
+export async function getServerSideProps() {
+  const res = await fetch("https://api.example.com/users");
+  const data = await res.json();
+
+  return {
+    props: { data },
+  };
+}
+```
+
+### SSR Flow
+
+1. Request reaches server.
+2. Server fetches required data.
+3. React page is rendered on the server.
+4. HTML is sent to the browser.
+5. React hydrates the page and adds interactivity.
+
+### Interview Answer (Short)
+
+> I usually implement SSR using Next.js. In SSR, the server renders the React page and sends the generated HTML to the browser before JavaScript loads. This improves SEO, reduces initial load time, and provides a better user experience. In Next.js, SSR is commonly implemented using getServerSideProps or server components.

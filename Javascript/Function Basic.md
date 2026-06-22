@@ -659,7 +659,6 @@ Say this 👇
 
 👉 “Parameters are placeholders, arguments are real values supplied to those placeholders.” 🚀
 
-````md id="k7x2qp"
 
 # ✅ Default Parameters in JavaScript
 

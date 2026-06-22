@@ -2846,3 +2846,331 @@ Authentication verifies the identity of a user, while Authorization determines w
 Login → Authentication
 Permission Check → Authorization
 ```
+
+# When should we use onSubmit and onClick?
+
+For form submissions, I prefer onSubmit on the <form> element because it supports Enter key submission, provides better accessibility, and follows standard HTML form behavior. onClick is generally used for custom button actions such as delete, edit, open modal, or other non-form operations.
+
+Ye React interview ka bahut common question hai.
+
+### Example
+
+```jsx
+const [count, setCount] = useState(0);
+
+const handleClick = () => {
+  setCount(count + 1);
+  setCount(count + 1);
+};
+
+console.log(count);
+```
+
+### Output
+
+Button click karne par count **1** hoga, **2 nahi**.
+
+#### Kyu?
+
+React state updates ko **batch** karta hai.
+
+Dono lines mein `count` ki value same hai (`0`).
+
+```jsx
+setCount(0 + 1);
+setCount(0 + 1);
+```
+
+React ko 2 baar same value (`1`) milti hai, isliye final value `1` ho jati hai.
+
+---
+
+## Correct Way (Functional Update)
+
+```jsx
+const handleClick = () => {
+  setCount(prev => prev + 1);
+  setCount(prev => prev + 1);
+};
+```
+
+### Output
+
+```jsx
+count = 2
+```
+
+#### Kaise?
+
+```jsx
+setCount(prev => prev + 1); // 0 → 1
+setCount(prev => prev + 1); // 1 → 2
+```
+
+Har update latest state use karta hai.
+
+---
+
+## Interview Answer
+
+**Q. What happens if we call setState/setCount twice in one function?**
+
+React batches state updates. If we use:
+
+```jsx
+setCount(count + 1);
+setCount(count + 1);
+```
+
+both updates use the same stale state value, so the state increases only once.
+
+To update based on the previous state, use the functional updater:
+
+```jsx
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+```
+
+This ensures each update receives the latest state value, so the count increases by 2.
+
+### Quick Demo
+
+```jsx
+const handleClick = () => {
+  setCount(count + 1);
+  setCount(count + 1);
+};
+// +1 only
+```
+
+```jsx
+const handleClick = () => {
+  setCount(prev => prev + 1);
+  setCount(prev => prev + 1);
+};
+// +2
+```
+
+**Rule:** Jab new state previous state par depend karti ho, hamesha functional update use karo:
+
+```jsx
+setState(prev => ...)
+```
+
+# Frontend Interview Notes
+
+## 1. Core Web Vitals
+
+Core Web Vitals are performance metrics introduced by Google to measure user experience on a website.
+
+### Important Metrics
+
+### 1. LCP (Largest Contentful Paint)
+
+Measures loading performance.
+
+* Good: Less than 2.5 seconds
+* Measures how quickly the largest visible content (image, heading, banner) loads.
+
+**Optimization:**
+
+* Image optimization
+* Lazy loading
+* CDN usage
+* Code splitting
+* SSR (Next.js)
+
+### 2. INP (Interaction to Next Paint)
+
+Measures responsiveness.
+
+* Good: Less than 200ms
+* Measures how quickly the UI responds after user interaction.
+
+**Optimization:**
+
+* Debouncing/Throttling
+* Reduce heavy JavaScript execution
+* Memoization (useMemo, useCallback)
+
+### 3. CLS (Cumulative Layout Shift)
+
+Measures visual stability.
+
+* Good: Less than 0.1
+* Checks whether elements unexpectedly move while loading.
+
+**Optimization:**
+
+* Set width & height for images
+* Reserve space for ads/banners
+* Avoid dynamically inserting content above existing content
+
+### Interview Answer
+
+"Core Web Vitals are Google performance metrics used to measure real user experience. The three main metrics are LCP for loading speed, INP for responsiveness, and CLS for visual stability. I improve them using image optimization, lazy loading, code splitting, memoization, and proper layout management."
+
+---
+
+# 2. Design System
+
+A Design System is a collection of reusable UI components, design guidelines, patterns, and standards used across applications.
+
+### Example Components
+
+* Button
+* Input
+* Modal
+* Dropdown
+* Table
+* Checkbox
+* Typography
+* Icons
+
+### Benefits
+
+* Consistent UI across products
+* Faster development
+* Reusability
+* Easier maintenance
+* Better accessibility
+
+### My Contribution Example
+
+* Created reusable React components
+* Used TypeScript for type safety
+* Added accessibility support
+* Published components as shared packages
+* Integrated Storybook for documentation
+
+### Interview Answer
+
+"A Design System is a centralized collection of reusable UI components and standards. It helps maintain consistency, improves development speed, and reduces duplicate code. In React projects, I usually build reusable components such as buttons, inputs, modals, and tables with TypeScript and document them using Storybook."
+
+---
+
+# 3. Storybook
+
+Storybook is a tool used to build, test, and document UI components in isolation.
+
+### Why Use Storybook?
+
+* Develop components independently
+* Component documentation
+* Visual testing
+* Easy collaboration with designers and QA
+* Showcase component states
+
+### Example
+
+Button Component States:
+
+* Primary
+* Secondary
+* Disabled
+* Loading
+
+Each state can be viewed separately in Storybook.
+
+### Benefits
+
+* Better component reusability
+* Faster UI development
+* Easy debugging
+* Design system documentation
+
+### Interview Answer
+
+"Storybook is a component-driven development tool. It allows developers to build and test UI components in isolation. It is commonly used with Design Systems to document components and showcase different states such as loading, disabled, and error states."
+
+---
+
+# 4. Monorepo
+
+A Monorepo (Monolithic Repository) is a single repository that contains multiple applications and shared packages.
+
+### Example Structure
+
+apps/
+├── admin-app
+├── customer-app
+├── vendor-app
+
+packages/
+├── ui-components
+├── utils
+├── hooks
+├── api-client
+
+### Why Use Monorepo?
+
+* Shared code reuse
+* Single source of truth
+* Easier dependency management
+* Consistent coding standards
+* Faster development
+
+### Popular Monorepo Tools
+
+* Nx
+* Turborepo
+* Lerna
+* pnpm Workspaces
+
+### Real Example
+
+Suppose a company has:
+
+* Admin Portal
+* Customer Portal
+* Mobile Web App
+
+All three use:
+
+* Same Button Component
+* Same API Client
+* Same Utility Functions
+
+Instead of duplicating code, we place shared code inside packages and use it across applications.
+
+### Advantages
+
+✅ Code Reusability
+
+✅ Easier Maintenance
+
+✅ Shared Design System
+
+✅ Consistent Dependencies
+
+✅ Better Developer Experience
+
+### Challenges
+
+* Initial setup complexity
+* Build optimization required
+* Larger repository size
+
+### Interview Answer
+
+"A Monorepo is a single repository that contains multiple applications and shared packages. It allows teams to share components, utilities, and configurations across projects. Tools like Nx, Turborepo, and pnpm Workspaces help manage monorepos efficiently. It improves code reuse and consistency while reducing duplication."
+
+---
+
+# One-Line Interview Answers
+
+### Core Web Vitals
+
+"Core Web Vitals are Google's metrics for measuring loading performance, responsiveness, and visual stability."
+
+### Design System
+
+"A Design System is a collection of reusable UI components and standards used to maintain consistency across applications."
+
+### Storybook
+
+"Storybook is a tool for building, testing, and documenting UI components in isolation."
+
+### Monorepo
+
+"A Monorepo is a single repository containing multiple applications and shared packages for better code reuse and maintenance."

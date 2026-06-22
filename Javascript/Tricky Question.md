@@ -913,7 +913,9 @@ Hello JS
 # C. Number Conversion
 
 ```js
-console.log(+"50")
+console.log(+"50") //50
+
+console.log(+"hello") // NaN
 ```
 
 ## Output

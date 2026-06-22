@@ -445,27 +445,12 @@ Consumers re-render.
 
 ---
 
-# ⚠️ Important Interview Points
-
----
-
-## ✅ `useContext` is a Hook
-
----
-
-## ✅ It works with Context API
-
----
-
-## ✅ It avoids prop drilling
-
----
-
-## ✅ Re-render happens when context changes
-
----
-
-## ✅ Used for global/shared state
+* ⚠️ Important Interview Points
+* `useContext` is a Hook
+* It works with Context API
+* It avoids prop drilling
+* Re-render happens when context changes
+* Used for global/shared state
 
 ---
 
@@ -538,21 +523,10 @@ const user = useContext(UserContext);
 
 # 📌 Best Practices
 
----
-
-## ✅ Create separate context files
-
----
-
-## ✅ Keep context small
-
----
-
-## ✅ Avoid storing everything in one context
-
----
-
-## ✅ Use custom hooks for cleaner code
+* Create separate context files
+* Keep context small
+* Avoid storing everything in one context
+* Use custom hooks for cleaner code
 
 Example:
 
@@ -628,3 +602,20 @@ Provider
    ↓
 useContext()
 ```
+
+* Redux and Context API can be used together in the same React application. Redux is generally used for complex global state and server data management, while Context API is suitable for lightweight UI-related states such as themes, language preferences, or sidebar visibility. Using both appropriately helps keep the application scalable and maintainable.
+
+Redux
+│
+├── Authentication
+├── User Profile
+├── API Data
+├── Cart
+└── Dashboard Stats
+
+Context API
+│
+├── Theme
+├── Language
+├── Sidebar State
+└── Modal State

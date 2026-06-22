@@ -97,6 +97,7 @@
 94. Given an Array of User Objects, Find Users Who Are Not Active
 95. Calculate the Total Age of All Users
 96. Apply Logical Conditions While Iterating Over Structured Data
+97. Rename Object Keys in Array using map()
 
 
 
@@ -593,7 +594,6 @@ console.log("Average Output", average)
 Average Output 30
 ```
 
--
 
 # 📌Even and Odd Numbers Separate Program in JavaScript
 
@@ -889,7 +889,7 @@ factorialTwo(5)
 ```
 
 
-# 1. Using flat() Method
+# Array using flat() Method
 
 ## Program
 
@@ -1405,6 +1405,22 @@ So output becomes:
 11
 ```
 
+# print both missing value
+
+```
+let arr = [1,2,3,5,6,8,9];
+
+let missing = [];
+
+for(let i = 1; i <= arr[arr.length - 1]; i++) {
+    if(!arr.includes(i)) {
+        missing.push(i);
+    }
+}
+
+console.log(missing); // [4, 7]
+
+```
 
 # First Non-Repeating Character in JavaScript
 
@@ -4895,9 +4911,6 @@ console.log(totalSumOfAge);
 77
 ```
 
-
-Yeh MD file format mein:
-
 # Apply Logical Conditions While Iterating Over Structured Data
 
 ## Definition
@@ -4950,5 +4963,32 @@ console.log(output);
 [
   { name: "Alice", age: 30, active: true },
   { name: "Emma", age: 35, active: true }
+]
+```
+
+# Rename Object Keys in Array using map()
+
+```javascript
+const array = [
+  { name: "ram", age: 16 },
+  { name: "shyam", age: 22 }
+];
+
+const result = array.map((item) => ({
+  username: item.name,
+  userage: item.age
+}));
+
+console.log(result);
+```
+
+---
+
+## Output
+
+```javascript
+[
+  { username: "ram", userage: 16 },
+  { username: "shyam", userage: 22 }
 ]
 ```

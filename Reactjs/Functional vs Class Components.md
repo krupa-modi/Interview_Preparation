@@ -1,7 +1,3 @@
-# ⚛️ React Interview Notes (Core Concepts)
-
----
-
 ## 1. Functional vs Class Components
 
 ### 🔹 Functional Components
@@ -85,7 +81,4 @@ export default Counter;
 
 👉 **Interview Tip:** Always prefer **Functional Components + Hooks**
 
----
 
-
----

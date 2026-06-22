@@ -768,3 +768,442 @@ const modalStyle = {
 
 export default App;
 ```
+
+# How do you implement Search Filter on a Table in React?
+
+### Example
+
+```jsx
+import { useState } from "react";
+
+function SearchTable() {
+  const [search, setSearch] = useState("");
+
+  const users = [
+    { id: 1, name: "Krupa", city: "Pune" },
+    { id: 2, name: "Rahul", city: "Mumbai" },
+    { id: 3, name: "Amit", city: "Delhi" },
+    { id: 4, name: "Neha", city: "Pune" },
+  ];
+
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Search User"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {filteredUsers.map((user) => (
+            <tr key={user.id}>
+              <td>{user.name}</td>
+              <td>{user.city}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default SearchTable;
+```
+## Multiple Columns Search
+
+Agar Name aur City dono par search karna ho:
+
+```js
+const filteredUsers = users.filter(
+  (user) =>
+    user.name.toLowerCase().includes(search.toLowerCase()) ||
+    user.city.toLowerCase().includes(search.toLowerCase())
+);
+```
+## Large Data Interview Point
+
+Agar table me 10,000+ records ho to:
+
+```js
+const filteredUsers = useMemo(() => {
+  return users.filter((user) =>
+    user.name.toLowerCase().includes(search.toLowerCase())
+  );
+}, [users, search]);
+```
+
+
+# React Interview Task: Car Brands and Models Filter
+
+## Problem Statement
+
+Build a basic UI using provided APIs.
+
+### Requirements
+
+* Fetch Car Brands and Models from APIs
+* Display data on the UI
+* Filter cars based on selected brand
+* Handle API integration and state management
+
+---
+
+## Approach
+
+1. Fetch car data using `useEffect`.
+2. Store data in state using `useState`.
+3. Create a dropdown for car brands.
+4. Filter models based on selected brand.
+5. Display filtered data in a list.
+
+---
+
+## Example API Response
+
+```javascript
+[
+  {
+    id: 1,
+    brand: "Toyota",
+    model: "Camry"
+  },
+  {
+    id: 2,
+    brand: "Honda",
+    model: "City"
+  },
+  {
+    id: 3,
+    brand: "Toyota",
+    model: "Corolla"
+  }
+]
+```
+
+---
+
+## React Code
+
+```jsx
+import React, { useEffect, useState } from "react";
+
+function App() {
+  const [cars, setCars] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState("");
+
+  useEffect(() => {
+    fetch("YOUR_API_URL")
+      .then((res) => res.json())
+      .then((data) => setCars(data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const filteredCars = selectedBrand
+    ? cars.filter((car) => car.brand === selectedBrand)
+    : cars;
+
+  const brands = [...new Set(cars.map((car) => car.brand))];
+
+  return (
+    <div>
+      <h2>Car Brands & Models</h2>
+
+      <select
+        value={selectedBrand}
+        onChange={(e) => setSelectedBrand(e.target.value)}
+      >
+        <option value="">All Brands</option>
+
+        {brands.map((brand) => (
+          <option key={brand} value={brand}>
+            {brand}
+          </option>
+        ))}
+      </select>
+
+      <ul>
+        {filteredCars.map((car) => (
+          <li key={car.id}>
+            {car.brand} - {car.model}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+****************************************************** OR ***************************************************************
+# withput Api
+
+import React from 'react';
+import { useState ,useEffect} from 'react'
+
+function App() {
+  const cars = [
+  {
+    id: 1,
+    brand: "Toyota",
+    model: "Camry"
+  },
+  {
+    id: 2,
+    brand: "Honda",
+    model: "City"
+  },
+  {
+    id: 3,
+    brand: "Toyota",
+    model: "Corolla"
+  }
+]
+
+  const[selectedbrand,setSelectedBrand] = useState("")
+
+ 
+    const filterdata = selectedbrand
+    ? cars.filter((car) => car.brand === selectedbrand)
+    : cars;
+
+  const brand = [...new Set(cars.map((item) => item.brand))]
+  
+  return (
+    <div>
+    <h1> Display Car Data</h1>
+    <select value = {selectedbrand} 
+    onChange = {(e) => setSelectedBrand(e.target.value)}
+    >
+    <option value="">All Brands</option>
+    {
+      brand.map((val) => (
+         <option key = {val}>{val}</option>
+      ))
+    }
+     
+    </select>
+    <ul>
+    {filterdata?.map((item,index) => {
+      return(
+        <li key = {item.id}>{item.brand}-{item.model}</li>
+      )
+    })}
+    </ul>
+      
+    </div>
+  )
+}
+
+export default App
+```
+
+---
+
+## Output
+
+### All Cars
+
+```text
+Toyota - Camry
+Honda - City
+Toyota - Corolla
+```
+
+### After Selecting Toyota
+
+```text
+Toyota - Camry
+Toyota - Corolla
+```
+
+
+
+Interview mein React CRUD (Create, Read, Update, Delete) bahut common question hai. Agar tum ye simple pattern yaad rakh lo to easily bana sakte ho.
+
+# 1. CRUD Kya Hota Hai?
+
+* **Create** → Naya data add karna
+* **Read** → Data dikhana
+* **Update** → Existing data edit karna
+* **Delete** → Data remove karna
+
+---
+
+# Simple React CRUD Example
+
+```jsx
+import { useState } from "react";
+
+function CrudApp() {
+  const [name, setName] = useState("");
+  const [users, setUsers] = useState([]);
+  const [editId, setEditId] = useState(null);
+
+  // CREATE & UPDATE
+  const handleSubmit = () => {
+    if (!name.trim()) return;
+
+    if (editId !== null) {
+      // Update
+      const updatedUsers = users.map((user) =>
+        user.id === editId ? { ...user, name } : user
+      );
+
+      setUsers(updatedUsers);
+      setEditId(null);
+    } else {
+      // Create
+      const newUser = {
+        id: Date.now(),
+        name,
+      };
+
+      setUsers([...users, newUser]);
+    }
+
+    setName("");
+  };
+
+  // DELETE
+  const handleDelete = (id) => {
+    const filteredUsers = users.filter((user) => user.id !== id);
+    setUsers(filteredUsers);
+  };
+
+  // EDIT
+  const handleEdit = (user) => {
+    setName(user.name);
+    setEditId(user.id);
+  };
+
+  return (
+    <div>
+      <h2>CRUD Operation</h2>
+
+      <input
+        type="text"
+        value={name}
+        placeholder="Enter Name"
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <button onClick={handleSubmit}>
+        {editId !== null ? "Update" : "Add"}
+      </button>
+
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.name}
+
+            <button onClick={() => handleEdit(user)}>
+              Edit
+            </button>
+
+            <button onClick={() => handleDelete(user.id)}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default CrudApp;
+```
+
+# without api
+
+```jsx
+import { useState } from "react";
+
+function App() {
+  const [users, setUsers] = useState([
+    { id: 1, name: "Krupa" },
+    { id: 2, name: "Rahul" },
+  ]);
+
+  const [name, setName] = useState("");
+  const [editId, setEditId] = useState(null);
+
+  const handleSubmit = () => {
+    if (editId) {
+      // Update
+      setUsers(
+        users.map((user) =>
+          user.id === editId
+            ? { ...user, name }
+            : user
+        )
+      );
+      setEditId(null);
+    } else {
+      // Create
+      setUsers([
+        ...users,
+        {
+          id: Date.now(),
+          name,
+        },
+      ]);
+    }
+
+    setName("");
+  };
+
+  const handleDelete = (id) => {
+    setUsers(users.filter((user) => user.id !== id));
+  };
+
+  const handleEdit = (user) => {
+    setName(user.name);
+    setEditId(user.id);
+  };
+
+  return (
+    <div>
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <button onClick={handleSubmit}>
+        {editId ? "Update" : "Add"}
+      </button>
+
+      {users.map((user) => (
+        <div key={user.id}>
+          {user.name}
+
+          <button onClick={() => handleEdit(user)}>
+            Edit
+          </button>
+
+          <button onClick={() => handleDelete(user.id)}>
+            Delete
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default App;
+```
+

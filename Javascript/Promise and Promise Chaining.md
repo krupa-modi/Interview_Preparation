@@ -498,5 +498,4 @@ It should return:
 * value
 * or another Promise
 
-```
 

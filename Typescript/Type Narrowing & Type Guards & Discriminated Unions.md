@@ -58,11 +58,7 @@ value = string
 
 inside if block.
 
-This is called:
-
-# Type Narrowing
-
----
+This is called: 
 
 # How Type Narrowing Works
 

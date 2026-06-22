@@ -83,7 +83,6 @@ class NormalComp extends React.Component {
 }
 ```
 
-```
 
 ## 🔴 1. Normal Component Example
 

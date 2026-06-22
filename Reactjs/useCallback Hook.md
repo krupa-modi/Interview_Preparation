@@ -121,7 +121,7 @@ function Parent() {
   );
 }
 
-const Child = React.memo(({ onClick }) => {
+const Child = React.memo(({ onClick }) => { // agar only usecallback lagaya react.memo nae lagaya to child component every time render hoga that's why recat.memo se child ko wrap kiya hai.
   console.log("Child Rendered");
   return <button onClick={onClick}>Child Button</button>;
 });
