@@ -4020,5 +4020,99 @@ Critical Rendering Path is the sequence of steps the browser follows to convert 
 Critical Rendering Path is the browser process used to render a webpage from HTML, CSS, and JavaScript as quickly as possible.
 
 
+# Which HTML5 APIs Have You Worked With? (Interview Answer)
+
+## Short Answer
+
+I have worked with several HTML5 APIs in frontend applications, mainly for improving user experience and browser capabilities.
+
+### 1. Local Storage API
+- Stores data permanently in the browser.
+- Used for theme preference, authentication tokens (non-sensitive), and user settings.
+
+```javascript
+localStorage.setItem("theme", "dark");
+const theme = localStorage.getItem("theme");
+```
+
+---
+
+### 2. Session Storage API
+- Stores data only for the current browser tab.
+- Used for temporary session data.
+
+```javascript
+sessionStorage.setItem("user", "Krupa");
+```
+
+---
+
+### 3. Geolocation API
+- Gets the user's current location (with permission).
+- Used in location-based applications.
+
+```javascript
+navigator.geolocation.getCurrentPosition((position) => {
+  console.log(position.coords.latitude);
+});
+```
+
+---
+
+### 4. Fetch API
+- Used to make HTTP requests to backend APIs.
+
+```javascript
+const data = await fetch("/api/users");
+```
+
+---
+
+### 5. Drag and Drop API
+- Allows dragging and dropping elements.
+- Used in file uploads and Kanban boards.
+
+---
+
+### 6. File API
+- Used to read uploaded files before sending them to the server.
+
+```javascript
+const file = event.target.files[0];
+console.log(file.name);
+```
+
+---
+
+### 7. Clipboard API
+- Used to copy text to the clipboard.
+
+```javascript
+navigator.clipboard.writeText("Copied!");
+```
+
+---
+
+### 8. History API
+- Used for browser navigation without page reload.
+- Commonly used by React Router.
+
+```javascript
+window.history.back();
+```
+
+---
+
+### 9. Web Storage API
+- Includes:
+  - localStorage
+  - sessionStorage
+
+---
+
+## Best Interview Answer (30 Seconds)
+
+> "I have mainly worked with HTML5 APIs like Local Storage and Session Storage for storing browser data, Fetch API for API calls, File API for file uploads, Clipboard API for copy functionality, Geolocation API for location-based features, Drag and Drop API for interactive UI, and History API for browser navigation. These APIs help build more interactive and user-friendly web applications."
+````
 
 

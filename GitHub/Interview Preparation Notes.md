@@ -1222,7 +1222,6 @@ git status
 | Amend Commit   | Edit last commit          |
 
 
-````md
 # Advanced Git Interview Questions & Scenarios (3–4 Years Experience)
 
 These are commonly asked in MNC and product-based companies.
@@ -1711,10 +1710,6 @@ git blame app.js
 ✅ Reflog
 ✅ Feature Branch Workflow
 
-```
-
-Your previous Git notes file already covers many basics well. :contentReference[oaicite:0]{index=0}
-```
 
 # What is Code Review?
 

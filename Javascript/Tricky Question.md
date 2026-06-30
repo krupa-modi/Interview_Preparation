@@ -1767,3 +1767,181 @@ Object keys are strings because JavaScript automatically converts object propert
 ### One-Line Interview Answer
 
 > JavaScript objects store keys as strings, so `Object.keys()` returns strings. To keep keys as numbers, use `Map` or convert the returned keys using `map(Number)`.
+
+
+## tricky output 
+
+let a = 10;
+
+const fn = () => console.log(a);
+
+a = 20;
+
+fn();
+
+Output
+
+20
+
+Kyuki closure reference hold karta hai, value nahi.
+
+# 1. JavaScript Event Loop (Microtask vs Macrotask)
+
+## Code
+
+```javascript
+setTimeout(() => console.log("A"), 0);
+
+Promise.resolve().then(() => {
+  setTimeout(() => console.log("A"), 0);
+
+  Promise.resolve().then(() => {
+    console.log("B");
+
+    setTimeout(() => {
+      console.log("C");
+    }, 0);
+  });
+
+  Promise.resolve().then(() => {
+    console.log("D");
+  });
+
+  console.log("E");
+});
+```
+
+---
+
+## Output
+
+```
+E
+B
+D
+A
+A
+C
+```
+
+---
+
+## Small Explanation
+
+### Step 1 (Call Stack)
+
+- `setTimeout(A)` → goes to **Macrotask Queue**
+- `Promise.then()` → goes to **Microtask Queue**
+
+Call Stack becomes empty.
+
+---
+
+### Step 2 (Microtasks execute first)
+
+Inside first Promise:
+
+```javascript
+setTimeout(A)
+```
+
+→ Added to Macrotask Queue
+
+```javascript
+Promise.then(B)
+```
+
+→ Added to Microtask Queue
+
+```javascript
+Promise.then(D)
+```
+
+→ Added to Microtask Queue
+
+```javascript
+console.log("E")
+```
+
+Prints immediately.
+
+Output:
+
+```
+E
+```
+
+---
+
+Next Microtask:
+
+```javascript
+console.log("B")
+```
+
+Prints:
+
+```
+B
+```
+
+Schedules
+
+```javascript
+setTimeout(C)
+```
+
+---
+
+Next Microtask:
+
+```javascript
+console.log("D")
+```
+
+Prints:
+
+```
+D
+```
+
+---
+
+### Step 3 (Macrotasks)
+
+Macrotask Queue contains
+
+```
+A
+A
+C
+```
+
+They execute one by one.
+
+Final Output
+
+```
+E
+B
+D
+A
+A
+C
+```
+
+---
+
+## Interview Rule
+
+✅ All Microtasks execute before any Macrotask.
+
+Priority:
+
+```
+Call Stack
+   ↓
+Microtasks (Promise, queueMicrotask)
+   ↓
+Macrotasks (setTimeout, setInterval)
+```

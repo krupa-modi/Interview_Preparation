@@ -98,7 +98,7 @@
 95. Calculate the Total Age of All Users
 96. Apply Logical Conditions While Iterating Over Structured Data
 97. Rename Object Keys in Array using map()
-
+98. concat using polyfill
 
 
 
@@ -106,9 +106,6 @@
 
 # 🔁 Reverse a String in JavaScript.
 
----
-
-## ✅ Using Method (Built-in Functions)
 
 ### 🔹 Using Function
 
@@ -120,30 +117,6 @@ function reverseString(str) {
 // Example
 console.log(reverseString("hello")); // "olleh"
 ```
-
----
-
-### 🔹 Direct Approach
-
-```javascript
-const string = "hello javascript";
-const output = string.split("").reverse().join("");
-
-console.log("output:", output); // "tpircsavaj olleh"
-```
-
----
-
-
----
-
-## 🚀 Summary
-
-* `sort()` method → simple but slower (O(n log n))
-* `for` loop method → faster and best for interviews (O(n))
-
----
-
 
 ### 🔹 Reverse Each Word (Same Space Maintained)
 
@@ -4992,3 +4965,115 @@ console.log(result);
   { username: "shyam", userage: 22 }
 ]
 ```
+
+
+# concat using polyfill
+[1, 2, 3].myConcat([4, 5, 6]); // [1, 2, 3, 4, 5, 6] 
+[1, 2, 3].myConcat(4, 5, 6); // [1, 2, 3, 4, 5, 6] 
+[1, 2, 3].myConcat(4, [5, 6]); // [1, 2, 3, 4, 5, 6]
+
+## Simple Polyfill
+
+```js
+Array.prototype.myConcat = function (...args) {
+  const result = [...this];
+
+  for (let item of args) {
+    if (Array.isArray(item)) {
+      result.push(...item);
+    } else {
+      result.push(item);
+    }
+  }
+
+  return result;
+};
+
+console.log([1, 2, 3].myConcat([4, 5, 6]));
+// [1, 2, 3, 4, 5, 6]
+
+console.log([1, 2, 3].myConcat(4, 5, 6));
+// [1, 2, 3, 4, 5, 6]
+
+console.log([1, 2, 3].myConcat(4, [5, 6]));
+// [1, 2, 3, 4, 5, 6]
+```
+
+---
+
+## Interview Explanation
+
+When you call:
+
+```js
+[1, 2, 3].myConcat([4, 5, 6]);
+```
+
+Inside `myConcat`:
+
+```js
+this = [1, 2, 3]
+args = [[4, 5, 6]]
+```
+
+`this` always refers to the array before the dot (`.`).
+
+---
+
+# Remove All Occurrences of a Specific Character from a String
+
+```javascript
+Input:  "banana", "a"
+Output: "bnn"
+```
+
+---
+
+# 1. Using replaceAll() Method
+
+```javascript
+function removeCharacter(str, char) {
+  return str.replaceAll(char, "");
+}
+
+console.log(removeCharacter("banana", "a")); // bnn
+```
+
+```javascript
+function removeCharacter(str, char) {
+  const regex = new RegExp(char, "g");
+  return str.replace(regex, "");
+}
+
+console.log(removeCharacter("banana", "a")); // bnn
+```
+
+# 3. Using split() and join() Method
+
+```javascript
+function removeCharacter(str, char) {
+  return str.split(char).join("");
+}
+
+console.log(removeCharacter("banana", "a")); // bnn
+```
+---
+
+# 4. Without Using Any Built-in Method
+
+```javascript
+function removeCharacter(str, char) {
+  let result = "";
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== char) {
+      result += str[i];
+    }
+  }
+
+  return result;
+}
+
+console.log(removeCharacter("banana", "a")); // bnn
+```
+

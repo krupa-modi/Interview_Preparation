@@ -103,7 +103,7 @@
 99. What is Symbol?
 100. What is Set and Map?
 
----
+--- 
 
 # JavaScript Coding Questions
 

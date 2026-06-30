@@ -1207,3 +1207,220 @@ function App() {
 export default App;
 ```
 
+
+# Conditionally Render Data from 2 Arrays of Objects (React Interview)
+
+Suppose you have two arrays:
+
+```javascript
+const employees = [
+  { id: 1, name: "Krupa", deptId: 101 },
+  { id: 2, name: "John", deptId: 102 },
+  { id: 3, name: "David", deptId: 103 },
+];
+
+const departments = [
+  { id: 101, deptName: "Frontend" },
+  { id: 102, deptName: "Backend" },
+];
+```
+
+### Render Only Matching Data
+
+```jsx
+function App() {
+  return (
+    <div>
+      {employees.map((emp) => {
+        const department = departments.find(
+          (dept) => dept.id === emp.deptId
+        );
+
+        return department ? (
+          <div key={emp.id}>
+            <h3>{emp.name}</h3>
+            <p>{department.deptName}</p>
+          </div>
+        ) : null;
+      })}
+    </div>
+  );
+}
+```
+
+### Output
+
+```text
+Krupa
+Frontend
+
+John
+Backend
+```
+
+---
+
+## Another Interview Example
+
+Render users only if they are active.
+
+```javascript
+const users = [
+  { id: 1, name: "Krupa", active: true },
+  { id: 2, name: "John", active: false },
+  { id: 3, name: "David", active: true },
+];
+```
+
+```jsx
+{
+  users.map((user) =>
+    user.active ? (
+      <div key={user.id}>{user.name}</div>
+    ) : null
+  );
+}
+```
+
+---
+
+## Optimized Approach (Using filter + map)
+
+```jsx
+{
+  users
+    .filter((user) => user.active)
+    .map((user) => (
+      <div key={user.id}>{user.name}</div>
+    ));
+}
+```
+
+
+# React Infinite Scrolling (Interview Notes)
+
+# What is Infinite Scrolling?
+
+Infinite Scrolling is a technique where new data is automatically loaded as the user scrolls to the bottom of the page instead of clicking a **Load More** button.
+
+### Real-life Examples
+
+* Instagram Feed
+* Facebook Feed
+* LinkedIn Feed
+* YouTube Comments
+* Amazon Product Listing
+
+---
+
+# Interview Definition
+
+> Infinite Scrolling is a feature in which additional data is fetched automatically when the user reaches the end of the current list. It improves user experience by loading data on demand instead of loading everything at once.
+
+---
+
+# Logic
+
+```text
+Page Load
+    ↓
+Fetch First 10 Records
+    ↓
+User Scrolls
+    ↓
+Reached Bottom?
+    ↓
+Yes
+    ↓
+Fetch Next 10 Records
+    ↓
+Append Data
+    ↓
+Repeat
+```
+
+---
+
+# Easy React Example
+
+```jsx
+import { useEffect, useState } from "react";
+
+function App() {
+  const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
+
+  // Fetch API
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10&_page=${page}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers((prev) => [...prev, ...data]);
+      });
+  }, [page]);
+
+  // Scroll Event
+  useEffect(() => {
+    function handleScroll() {
+      const bottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 5;
+
+      if (bottom) {
+        setPage((prev) => prev + 1);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div>
+      {users.map((user) => (
+        <p key={user.id}>{user.title}</p>
+      ))}
+    </div>
+  );
+}
+
+export default App;
+```
+# Interview Questions
+
+## Q1. Why do we use Infinite Scroll?
+
+* Better User Experience
+* Load data on demand
+* Faster initial page load
+* Less memory usage
+
+
+# React Timer (Auto Increment Every Second)
+
+```jsx
+import React, { useEffect, useState } from "react";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div>
+      <h2>Timer: {count}</h2>
+    </div>
+  );
+}
+
+export default Timer;
+```

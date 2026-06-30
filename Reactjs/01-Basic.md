@@ -3174,3 +3174,384 @@ Instead of duplicating code, we place shared code inside packages and use it acr
 ### Monorepo
 
 "A Monorepo is a single repository containing multiple applications and shared packages for better code reuse and maintenance."
+
+# project related 
+
+npm create vite@latest sirf project scaffold karta hai aur package.json create karta hai. Actual dependencies install nahi hoti. npm install package.json ko read karke required packages download karta hai, node_modules folder create karta hai aur package-lock.json generate karta hai. Iske baad hi hum npm run dev se application run kar sakte hain.
+
+Interview Follow-up
+
+Agar interviewer pooche:
+
+node_modules kya hota hai?
+
+Aap bol sakte ho:
+
+node_modules ek folder hai jisme project ki saari installed dependencies aur unki sub-dependencies store hoti hain. Jab hum code me import React from 'react' ya kisi aur package ko import karte hain, Node.js us package ko isi folder me dhoondhta hai.
+
+
+# What happens when you pass a function as a prop to a component?
+
+## Interview Answer
+
+When we pass a function as a prop from a parent component to a child component, the child can call that function to communicate with the parent or trigger some action.
+
+This is called **callback function** and is commonly used for:
+- Handling button clicks
+- Updating parent state
+- Sending data from child to parent
+- Reusing logic
+
+---
+
+## Example
+
+### Parent Component
+
+```jsx
+import Child from "./Child";
+
+function Parent() {
+  const handleClick = () => {
+    alert("Button clicked from Child!");
+  };
+
+  return <Child onClick={handleClick} />;
+}
+
+export default Parent;
+```
+
+### Child Component
+
+```jsx
+function Child({ onClick }) {
+  return <button onClick={onClick}>Click Me</button>;
+}
+
+export default Child;
+```
+
+### Flow
+
+```
+Parent
+   │
+   │ passes function as prop
+   ▼
+Child
+   │
+   │ User clicks button
+   ▼
+Child executes function
+   │
+   ▼
+Parent function runs
+```
+
+---
+
+## Why do we pass functions as props?
+
+- Child can notify Parent about an event.
+- Parent controls the state.
+- Makes components reusable.
+- Enables Parent-Child communication.
+
+---
+
+## Interview Follow-up
+
+### Q. Does the function execute while passing it?
+
+**No.**
+
+```jsx
+<Child onClick={handleClick} />
+```
+
+Here, we're passing the **function reference**, not calling it.
+
+If we write:
+
+```jsx
+<Child onClick={handleClick()} />
+```
+
+Then the function executes immediately during rendering, which is usually incorrect.
+
+---
+
+## Q. Why do child components use callback functions?
+
+Because React follows **one-way data flow**. Data flows from Parent → Child, but if the Child wants to update the Parent, it does so by calling a function passed from the Parent.
+
+---
+
+## Best Interview Answer (30 Seconds)
+
+> "When we pass a function as a prop, we're passing a reference to the child component. The child can invoke that function whenever needed, such as on a button click. This is known as a callback function and is the standard way for child components to communicate with their parent or trigger parent state updates while maintaining React's one-way data flow."
+
+
+### **File 2: React State Batching.md**
+
+# 2. React State Batching
+
+## Code
+
+```jsx
+const [count, setCount] = useState(0);
+
+function handleClick() {
+  setCount(count + 1);
+  setCount(count + 1);
+  setCount(count + 1);
+
+  console.log(count);
+}
+```
+
+---
+
+## Console Output
+
+```
+0
+```
+
+After Re-render
+
+```
+count = 1
+```
+
+---
+
+## Small Explanation
+
+Initial value
+
+```
+count = 0
+```
+
+React batches all state updates inside the event handler.
+
+All three updates become
+
+```jsx
+setCount(1);
+setCount(1);
+setCount(1);
+```
+
+React keeps only the latest value.
+
+So after re-render,
+
+```
+count = 1
+```
+
+---
+
+## Why console prints 0?
+
+Because state updates are **asynchronous**.
+
+During this function execution,
+
+```
+count
+```
+
+still refers to the old value.
+
+So
+
+```jsx
+console.log(count);
+```
+
+prints
+
+```
+0
+```
+
+---
+
+## Correct Way
+
+```jsx
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+```
+
+Output after re-render
+
+```
+count = 3
+```
+
+---
+
+## Interview Rule
+
+❌
+
+```jsx
+setCount(count + 1);
+setCount(count + 1);
+```
+
+Result
+
+```
++1 only
+```
+
+✅
+
+```jsx
+setCount(prev => prev + 1);
+```
+
+Result
+
+```
+Every update uses the latest state.
+```
+````
+
+---
+
+### **File 3: Stale Closure.md**
+
+````md
+# 3. React Stale Closure
+
+## Code
+
+```jsx
+const [count, setCount] = useState(0);
+
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount(count + 1);
+    console.log(count);
+  }, 1000);
+
+  return () => clearInterval(id);
+}, []);
+```
+
+---
+
+## Console Output
+
+```
+0
+0
+0
+0
+0
+...
+```
+
+UI
+
+```
+1
+```
+
+and never increases further.
+
+---
+
+## Small Explanation
+
+The effect runs only once because of
+
+```jsx
+[]
+```
+
+The interval callback captures the initial value of `count`.
+
+```
+count = 0
+```
+
+This is called a **Stale Closure**.
+
+Every second it executes
+
+```jsx
+setCount(0 + 1);
+```
+
+which is
+
+```jsx
+setCount(1);
+```
+
+again and again.
+
+So
+
+```
+console.log(count);
+```
+
+always prints
+
+```
+0
+```
+
+and the UI stays at
+
+```
+1
+```
+
+---
+
+## Correct Way
+
+```jsx
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount(prev => prev + 1);
+  }, 1000);
+
+  return () => clearInterval(id);
+}, []);
+```
+
+Output
+
+```
+1
+2
+3
+4
+5
+...
+```
+
+---
+
+## Interview Rule
+
+A stale closure happens when a callback remembers an old state or prop value because it was created earlier.
+
+Fix it using:
+
+- Functional state updates (`prev => prev + 1`)
+- `useRef` (when appropriate)
+- Proper dependency arrays
+
